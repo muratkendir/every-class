@@ -1,0 +1,42 @@
+site_name: every-class
+site_description: UML class diagrams generated from XSD schemas
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.top
+    - navigation.sections
+
+plugins:
+  - gen-files:
+      scripts:
+        - gen_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - build_plantuml:
+      render: local
+      bin_path: /usr/bin/plantuml
+      output_format: svg
+      allow_multiple_roots: true
+      diagram_root: UMLClassDiagram
+      input_folder: ""
+      input_extensions: .puml
+      output_folder: out
+      exclude_dirs:
+        - .git
+        - .env
+  - search
+
+markdown_extensions:
+  - pymdownx.superfences

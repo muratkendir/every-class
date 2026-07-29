@@ -13,3 +13,9 @@ __pycache__/
 
 # Backup folders starting with a dot
 .*/
+
+# MkDocs build output
+site/
+
+# build_plantuml plugin render output (SVGs next to the .puml sources)
+out/
