@@ -1,0 +1,67 @@
+@startuml
+title
+  CityGML - 2.0 - Generics - Only XSD based
+  http://www.opengis.net/citygml/generics/2.0
+end title
+
+class "GenericCityObject" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod0Geometry : gml:Geometry [0..1]
+  # lod1Geometry : gml:Geometry [0..1]
+  # lod2Geometry : gml:Geometry [0..1]
+  # lod3Geometry : gml:Geometry [0..1]
+  # lod4Geometry : gml:Geometry [0..1]
+  # lod0TerrainIntersection : gml:MultiCurve [0..1]
+  # lod1TerrainIntersection : gml:MultiCurve [0..1]
+  # lod2TerrainIntersection : gml:MultiCurve [0..1]
+  # lod3TerrainIntersection : gml:MultiCurve [0..1]
+  # lod4TerrainIntersection : gml:MultiCurve [0..1]
+  # lod0ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod1ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod2ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod3ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+}
+abstract class "AbstractGenericAttribute" <<DataType>>
+class "StringAttribute" <<DataType>> {
+  # value : xs:string
+}
+class "IntAttribute" <<DataType>> {
+  # value : xs:integer
+}
+class "DoubleAttribute" <<DataType>> {
+  # value : xs:double
+}
+class "DateAttribute" <<DataType>> {
+  # value : xs:date
+}
+class "UriAttribute" <<DataType>> {
+  # value : xs:anyURI
+}
+class "MeasureAttribute" <<DataType>> {
+  # value : gml:Measure
+}
+class "GenericAttributeSet" <<DataType>> {
+  #  : _genericAttribute [1..*]
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "GenericCityObject"
+"AbstractGenericAttribute" <|-- "StringAttribute"
+"AbstractGenericAttribute" <|-- "IntAttribute"
+"AbstractGenericAttribute" <|-- "DoubleAttribute"
+"AbstractGenericAttribute" <|-- "DateAttribute"
+"AbstractGenericAttribute" <|-- "UriAttribute"
+"AbstractGenericAttribute" <|-- "MeasureAttribute"
+"AbstractGenericAttribute" <|-- "GenericAttributeSet"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

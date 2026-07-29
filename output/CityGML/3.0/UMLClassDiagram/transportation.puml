@@ -1,0 +1,276 @@
+@startuml
+title
+  CityGML - 3.0 - Transportation - Only XSD based
+  http://www.opengis.net/citygml/transportation/3.0
+end title
+
+package tran {
+abstract class "tran:ADEOfAbstractTransportationSpace" $adeOf
+class "tran:ADEOfAbstractTransportationSpaceProperty" $property $adeOf {
+  ADEOfAbstractTransportationSpace : tran:ADEOfAbstractTransportationSpace
+}
+abstract class "tran:ADEOfAuxiliaryTrafficArea" $adeOf
+class "tran:ADEOfAuxiliaryTrafficAreaProperty" $property $adeOf {
+  ADEOfAuxiliaryTrafficArea : tran:ADEOfAuxiliaryTrafficArea
+}
+abstract class "tran:ADEOfAuxiliaryTrafficSpace" $adeOf
+class "tran:ADEOfAuxiliaryTrafficSpaceProperty" $property $adeOf {
+  ADEOfAuxiliaryTrafficSpace : tran:ADEOfAuxiliaryTrafficSpace
+}
+abstract class "tran:ADEOfClearanceSpace" $adeOf
+class "tran:ADEOfClearanceSpaceProperty" $property $adeOf {
+  ADEOfClearanceSpace : tran:ADEOfClearanceSpace
+}
+abstract class "tran:ADEOfHole" $adeOf
+class "tran:ADEOfHoleProperty" $property $adeOf {
+  ADEOfHole : tran:ADEOfHole
+}
+abstract class "tran:ADEOfHoleSurface" $adeOf
+class "tran:ADEOfHoleSurfaceProperty" $property $adeOf {
+  ADEOfHoleSurface : tran:ADEOfHoleSurface
+}
+abstract class "tran:ADEOfIntersection" $adeOf
+class "tran:ADEOfIntersectionProperty" $property $adeOf {
+  ADEOfIntersection : tran:ADEOfIntersection
+}
+abstract class "tran:ADEOfMarking" $adeOf
+class "tran:ADEOfMarkingProperty" $property $adeOf {
+  ADEOfMarking : tran:ADEOfMarking
+}
+abstract class "tran:ADEOfRailway" $adeOf
+class "tran:ADEOfRailwayProperty" $property $adeOf {
+  ADEOfRailway : tran:ADEOfRailway
+}
+abstract class "tran:ADEOfRoad" $adeOf
+class "tran:ADEOfRoadProperty" $property $adeOf {
+  ADEOfRoad : tran:ADEOfRoad
+}
+abstract class "tran:ADEOfSection" $adeOf
+class "tran:ADEOfSectionProperty" $property $adeOf {
+  ADEOfSection : tran:ADEOfSection
+}
+abstract class "tran:ADEOfSquare" $adeOf
+class "tran:ADEOfSquareProperty" $property $adeOf {
+  ADEOfSquare : tran:ADEOfSquare
+}
+abstract class "tran:ADEOfTrack" $adeOf
+class "tran:ADEOfTrackProperty" $property $adeOf {
+  ADEOfTrack : tran:ADEOfTrack
+}
+abstract class "tran:ADEOfTrafficArea" $adeOf
+class "tran:ADEOfTrafficAreaProperty" $property $adeOf {
+  ADEOfTrafficArea : tran:ADEOfTrafficArea
+}
+abstract class "tran:ADEOfTrafficSpace" $adeOf
+class "tran:ADEOfTrafficSpaceProperty" $property $adeOf {
+  ADEOfTrafficSpace : tran:ADEOfTrafficSpace
+}
+abstract class "tran:ADEOfWaterway" $adeOf
+class "tran:ADEOfWaterwayProperty" $property $adeOf {
+  ADEOfWaterway : tran:ADEOfWaterway
+}
+abstract class "tran:AbstractTransportationSpace" <<FeatureType>> {
+  trafficDirection : tran:TrafficDirectionValue [0..1]
+  # occupancy : core:Occupancy [0..*]
+  ~ adeOfAbstractTransportationSpace : tran:ADEOfAbstractTransportationSpace [0..*]
+}
+class "tran:AbstractTransportationSpaceProperty" $property {
+  AbstractTransportationSpace : tran:AbstractTransportationSpace
+}
+class "tran:AuxiliaryTrafficArea" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # surfaceMaterial : gml:Code [0..1]
+  ~ adeOfAuxiliaryTrafficArea : tran:ADEOfAuxiliaryTrafficArea [0..*]
+}
+class "tran:AuxiliaryTrafficAreaProperty" $property {
+  AuxiliaryTrafficArea : tran:AuxiliaryTrafficArea
+}
+class "tran:AuxiliaryTrafficSpace" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  granularity : tran:GranularityValue
+  ~ adeOfAuxiliaryTrafficSpace : tran:ADEOfAuxiliaryTrafficSpace [0..*]
+}
+class "tran:AuxiliaryTrafficSpaceProperty" $property {
+  AuxiliaryTrafficSpace : tran:AuxiliaryTrafficSpace
+}
+class "tran:ClearanceSpace" <<FeatureType>> {
+  # class : gml:Code [0..*]
+  ~ adeOfClearanceSpace : tran:ADEOfClearanceSpace [0..*]
+}
+class "tran:ClearanceSpaceProperty" $property {
+  ClearanceSpace : tran:ClearanceSpace
+}
+class "tran:Hole" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  ~ adeOfHole : tran:ADEOfHole [0..*]
+}
+class "tran:HoleProperty" $property {
+  Hole : tran:Hole
+}
+class "tran:HoleSurface" <<FeatureType>> {
+  ~ adeOfHoleSurface : tran:ADEOfHoleSurface [0..*]
+}
+class "tran:HoleSurfaceProperty" $property {
+  HoleSurface : tran:HoleSurface
+}
+class "tran:Intersection" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  ~ adeOfIntersection : tran:ADEOfIntersection [0..*]
+}
+class "tran:IntersectionProperty" $property {
+  Intersection : tran:Intersection
+}
+class "tran:Marking" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  ~ adeOfMarking : tran:ADEOfMarking [0..*]
+}
+class "tran:MarkingProperty" $property {
+  Marking : tran:Marking
+}
+class "tran:Railway" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfRailway : tran:ADEOfRailway [0..*]
+}
+class "tran:RailwayProperty" $property {
+  Railway : tran:Railway
+}
+class "tran:Road" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfRoad : tran:ADEOfRoad [0..*]
+}
+class "tran:RoadProperty" $property {
+  Road : tran:Road
+}
+class "tran:Section" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  ~ adeOfSection : tran:ADEOfSection [0..*]
+}
+class "tran:SectionProperty" $property {
+  Section : tran:Section
+}
+class "tran:Square" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfSquare : tran:ADEOfSquare [0..*]
+}
+class "tran:SquareProperty" $property {
+  Square : tran:Square
+}
+class "tran:Track" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfTrack : tran:ADEOfTrack [0..*]
+}
+class "tran:TrackProperty" $property {
+  Track : tran:Track
+}
+class "tran:TrafficArea" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # surfaceMaterial : gml:Code [0..1]
+  ~ adeOfTrafficArea : tran:ADEOfTrafficArea [0..*]
+}
+class "tran:TrafficAreaProperty" $property {
+  TrafficArea : tran:TrafficArea
+}
+class "tran:TrafficSpace" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  granularity : tran:GranularityValue
+  trafficDirection : tran:TrafficDirectionValue [0..1]
+  # occupancy : core:Occupancy [0..*]
+  ~ adeOfTrafficSpace : tran:ADEOfTrafficSpace [0..*]
+}
+class "tran:TrafficSpaceProperty" $property {
+  TrafficSpace : tran:TrafficSpace
+}
+class "tran:Waterway" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfWaterway : tran:ADEOfWaterway [0..*]
+}
+class "tran:WaterwayProperty" $property {
+  Waterway : tran:Waterway
+}
+
+' Simple types (from <simpleType> declarations)
+class "tran:GranularityValue" <<Enumeration>> {
+  lane
+  way
+}
+class "tran:TrafficDirectionValue" <<Enumeration>> {
+  forwards
+  backwards
+  both
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractThematicSurface"
+abstract class "core:AbstractUnoccupiedSpace"
+
+"core:AbstractUnoccupiedSpace" <|-- "tran:AbstractTransportationSpace"
+"core:AbstractThematicSurface" <|-- "tran:AuxiliaryTrafficArea"
+"core:AbstractUnoccupiedSpace" <|-- "tran:AuxiliaryTrafficSpace"
+"core:AbstractUnoccupiedSpace" <|-- "tran:ClearanceSpace"
+"core:AbstractUnoccupiedSpace" <|-- "tran:Hole"
+"core:AbstractThematicSurface" <|-- "tran:HoleSurface"
+"tran:AbstractTransportationSpace" <|-- "tran:Intersection"
+"core:AbstractThematicSurface" <|-- "tran:Marking"
+"tran:AbstractTransportationSpace" <|-- "tran:Railway"
+"tran:AbstractTransportationSpace" <|-- "tran:Road"
+"tran:AbstractTransportationSpace" <|-- "tran:Section"
+"tran:AbstractTransportationSpace" <|-- "tran:Square"
+"tran:AbstractTransportationSpace" <|-- "tran:Track"
+"core:AbstractThematicSurface" <|-- "tran:TrafficArea"
+"core:AbstractUnoccupiedSpace" <|-- "tran:TrafficSpace"
+"tran:AbstractTransportationSpace" <|-- "tran:Waterway"
+
+' Class relations (promoted from property wrappers)
+"tran:AbstractTransportationSpace" o-- "0..*" "tran:TrafficSpace" : trafficSpace
+"tran:AbstractTransportationSpace" o-- "0..*" "tran:AuxiliaryTrafficSpace" : auxiliaryTrafficSpace
+"tran:AbstractTransportationSpace" o-- "0..*" "tran:Hole" : hole
+"tran:AbstractTransportationSpace" o-- "0..*" "tran:Marking" : marking
+"tran:Railway" o-- "0..*" "tran:Section" : section
+"tran:Railway" o-- "0..*" "tran:Intersection" : intersection
+"tran:Road" o-- "0..*" "tran:Section" : section
+"tran:Road" o-- "0..*" "tran:Intersection" : intersection
+"tran:Track" o-- "0..*" "tran:Section" : section
+"tran:Track" o-- "0..*" "tran:Intersection" : intersection
+"tran:TrafficSpace" ..> "0..*" "tran:TrafficSpace" : predecessor
+"tran:TrafficSpace" ..> "0..*" "tran:TrafficSpace" : successor
+"tran:TrafficSpace" o-- "0..*" "tran:ClearanceSpace" : clearanceSpace
+"tran:Waterway" o-- "0..*" "tran:Section" : section
+"tran:Waterway" o-- "0..*" "tran:Intersection" : intersection
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

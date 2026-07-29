@@ -1,0 +1,64 @@
+@startuml
+title
+  CityGML - 2.0 - Waterbody - Only XSD based
+  http://www.opengis.net/citygml/waterbody/2.0
+end title
+
+abstract class "AbstractWaterObject" <<DataType>> {
+  #  : _GenericApplicationPropertyOfWaterObject [0..*]
+}
+class "WaterBody" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod0MultiCurve : gml:MultiCurve [0..1]
+  # lod0MultiSurface : gml:MultiSurface [0..1]
+  # lod1MultiCurve : gml:MultiCurve [0..1]
+  # lod1MultiSurface : gml:MultiSurface [0..1]
+  # lod1Solid : gml:Solid [0..1]
+  # lod2Solid : gml:Solid [0..1]
+  # lod3Solid : gml:Solid [0..1]
+  # lod4Solid : gml:Solid [0..1]
+  # boundedBy : BoundedByWaterSurface [0..*]
+  #  : _GenericApplicationPropertyOfWaterBody [0..*]
+}
+class "BoundedByWaterSurfaceProperty" $property {
+  #  : _WaterBoundarySurface
+}
+abstract class "AbstractWaterBoundarySurface" <<DataType>> {
+  # lod2Surface : gml:Surface [0..1]
+  # lod3Surface : gml:Surface [0..1]
+  # lod4Surface : gml:Surface [0..1]
+  #  : _GenericApplicationPropertyOfWaterBoundarySurface [0..*]
+}
+class "WaterSurface" <<DataType>> {
+  # waterLevel : gml:Code [0..1]
+  #  : _GenericApplicationPropertyOfWaterSurface [0..*]
+}
+class "WaterGroundSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfWaterGroundSurface [0..*]
+}
+class "WaterClosureSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfWaterClosureSurface [0..*]
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "AbstractWaterObject"
+"AbstractWaterObject" <|-- "WaterBody"
+"core:AbstractCityObject" <|-- "AbstractWaterBoundarySurface"
+"AbstractWaterBoundarySurface" <|-- "WaterSurface"
+"AbstractWaterBoundarySurface" <|-- "WaterGroundSurface"
+"AbstractWaterBoundarySurface" <|-- "WaterClosureSurface"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

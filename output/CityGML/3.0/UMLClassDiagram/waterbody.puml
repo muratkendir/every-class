@@ -1,0 +1,80 @@
+@startuml
+title
+  CityGML - 3.0 - Waterbody - Only XSD based
+  http://www.opengis.net/citygml/waterbody/3.0
+end title
+
+package wtr {
+abstract class "wtr:ADEOfAbstractWaterBoundarySurface" $adeOf
+class "wtr:ADEOfAbstractWaterBoundarySurfaceProperty" $property $adeOf {
+  ADEOfAbstractWaterBoundarySurface : wtr:ADEOfAbstractWaterBoundarySurface
+}
+abstract class "wtr:ADEOfWaterBody" $adeOf
+class "wtr:ADEOfWaterBodyProperty" $property $adeOf {
+  ADEOfWaterBody : wtr:ADEOfWaterBody
+}
+abstract class "wtr:ADEOfWaterGroundSurface" $adeOf
+class "wtr:ADEOfWaterGroundSurfaceProperty" $property $adeOf {
+  ADEOfWaterGroundSurface : wtr:ADEOfWaterGroundSurface
+}
+abstract class "wtr:ADEOfWaterSurface" $adeOf
+class "wtr:ADEOfWaterSurfaceProperty" $property $adeOf {
+  ADEOfWaterSurface : wtr:ADEOfWaterSurface
+}
+abstract class "wtr:AbstractWaterBoundarySurface" <<FeatureType>> {
+  ~ adeOfAbstractWaterBoundarySurface : wtr:ADEOfAbstractWaterBoundarySurface [0..*]
+}
+class "wtr:AbstractWaterBoundarySurfaceProperty" $property {
+  AbstractWaterBoundarySurface : wtr:AbstractWaterBoundarySurface
+}
+class "wtr:WaterBody" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfWaterBody : wtr:ADEOfWaterBody [0..*]
+}
+class "wtr:WaterBodyProperty" $property {
+  WaterBody : wtr:WaterBody
+}
+class "wtr:WaterGroundSurface" <<FeatureType>> {
+  ~ adeOfWaterGroundSurface : wtr:ADEOfWaterGroundSurface [0..*]
+}
+class "wtr:WaterGroundSurfaceProperty" $property {
+  WaterGroundSurface : wtr:WaterGroundSurface
+}
+class "wtr:WaterSurface" <<FeatureType>> {
+  # waterLevel : gml:Code [0..1]
+  ~ adeOfWaterSurface : wtr:ADEOfWaterSurface [0..*]
+}
+class "wtr:WaterSurfaceProperty" $property {
+  WaterSurface : wtr:WaterSurface
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractOccupiedSpace"
+abstract class "core:AbstractThematicSurface"
+
+"core:AbstractThematicSurface" <|-- "wtr:AbstractWaterBoundarySurface"
+"core:AbstractOccupiedSpace" <|-- "wtr:WaterBody"
+"wtr:AbstractWaterBoundarySurface" <|-- "wtr:WaterGroundSurface"
+"wtr:AbstractWaterBoundarySurface" <|-- "wtr:WaterSurface"
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

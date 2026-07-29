@@ -1,0 +1,156 @@
+@startuml
+title
+  CityGML - 3.0 - Generics - Only XSD based
+  http://www.opengis.net/citygml/generics/3.0
+end title
+
+package gen {
+abstract class "gen:ADEOfGenericLogicalSpace" $adeOf
+class "gen:ADEOfGenericLogicalSpaceProperty" $property $adeOf {
+  ADEOfGenericLogicalSpace : gen:ADEOfGenericLogicalSpace
+}
+abstract class "gen:ADEOfGenericOccupiedSpace" $adeOf
+class "gen:ADEOfGenericOccupiedSpaceProperty" $property $adeOf {
+  ADEOfGenericOccupiedSpace : gen:ADEOfGenericOccupiedSpace
+}
+abstract class "gen:ADEOfGenericThematicSurface" $adeOf
+class "gen:ADEOfGenericThematicSurfaceProperty" $property $adeOf {
+  ADEOfGenericThematicSurface : gen:ADEOfGenericThematicSurface
+}
+abstract class "gen:ADEOfGenericUnoccupiedSpace" $adeOf
+class "gen:ADEOfGenericUnoccupiedSpaceProperty" $property $adeOf {
+  ADEOfGenericUnoccupiedSpace : gen:ADEOfGenericUnoccupiedSpace
+}
+class "gen:CodeAttribute" <<DataType>> {
+  # name : xs:string
+  # value : gml:Code
+}
+class "gen:CodeAttributeProperty" $property {
+  CodeAttribute : gen:CodeAttribute
+}
+class "gen:DateAttribute" <<DataType>> {
+  # name : xs:string
+  # value : xs:date
+}
+class "gen:DateAttributeProperty" $property {
+  DateAttribute : gen:DateAttribute
+}
+class "gen:DoubleAttribute" <<DataType>> {
+  # name : xs:string
+  # value : xs:double
+}
+class "gen:DoubleAttributeProperty" $property {
+  DoubleAttribute : gen:DoubleAttribute
+}
+class "gen:GenericAttributeSet" <<DataType>> {
+  # name : xs:string
+  # codeSpace : xs:anyURI [0..1]
+  # genericAttribute : core:AbstractGenericAttribute [1..*]
+}
+class "gen:GenericAttributeSetProperty" $property {
+  GenericAttributeSet : gen:GenericAttributeSet
+}
+class "gen:GenericLogicalSpace" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfGenericLogicalSpace : gen:ADEOfGenericLogicalSpace [0..*]
+}
+class "gen:GenericLogicalSpaceProperty" $property {
+  GenericLogicalSpace : gen:GenericLogicalSpace
+}
+class "gen:GenericOccupiedSpace" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfGenericOccupiedSpace : gen:ADEOfGenericOccupiedSpace [0..*]
+}
+class "gen:GenericOccupiedSpaceProperty" $property {
+  GenericOccupiedSpace : gen:GenericOccupiedSpace
+}
+class "gen:GenericThematicSurface" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfGenericThematicSurface : gen:ADEOfGenericThematicSurface [0..*]
+}
+class "gen:GenericThematicSurfaceProperty" $property {
+  GenericThematicSurface : gen:GenericThematicSurface
+}
+class "gen:GenericUnoccupiedSpace" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfGenericUnoccupiedSpace : gen:ADEOfGenericUnoccupiedSpace [0..*]
+}
+class "gen:GenericUnoccupiedSpaceProperty" $property {
+  GenericUnoccupiedSpace : gen:GenericUnoccupiedSpace
+}
+class "gen:IntAttribute" <<DataType>> {
+  # name : xs:string
+  # value : xs:integer
+}
+class "gen:IntAttributeProperty" $property {
+  IntAttribute : gen:IntAttribute
+}
+class "gen:MeasureAttribute" <<DataType>> {
+  # name : xs:string
+  # value : gml:Measure
+}
+class "gen:MeasureAttributeProperty" $property {
+  MeasureAttribute : gen:MeasureAttribute
+}
+class "gen:StringAttribute" <<DataType>> {
+  # name : xs:string
+  # value : xs:string
+}
+class "gen:StringAttributeProperty" $property {
+  StringAttribute : gen:StringAttribute
+}
+class "gen:UriAttribute" <<DataType>> {
+  # name : xs:string
+  # value : xs:anyURI
+}
+class "gen:UriAttributeProperty" $property {
+  UriAttribute : gen:UriAttribute
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractGenericAttribute"
+abstract class "core:AbstractLogicalSpace"
+abstract class "core:AbstractOccupiedSpace"
+abstract class "core:AbstractThematicSurface"
+abstract class "core:AbstractUnoccupiedSpace"
+
+"core:AbstractGenericAttribute" <|-- "gen:CodeAttribute"
+"core:AbstractGenericAttribute" <|-- "gen:DateAttribute"
+"core:AbstractGenericAttribute" <|-- "gen:DoubleAttribute"
+"core:AbstractGenericAttribute" <|-- "gen:GenericAttributeSet"
+"core:AbstractLogicalSpace" <|-- "gen:GenericLogicalSpace"
+"core:AbstractOccupiedSpace" <|-- "gen:GenericOccupiedSpace"
+"core:AbstractThematicSurface" <|-- "gen:GenericThematicSurface"
+"core:AbstractUnoccupiedSpace" <|-- "gen:GenericUnoccupiedSpace"
+"core:AbstractGenericAttribute" <|-- "gen:IntAttribute"
+"core:AbstractGenericAttribute" <|-- "gen:MeasureAttribute"
+"core:AbstractGenericAttribute" <|-- "gen:StringAttribute"
+"core:AbstractGenericAttribute" <|-- "gen:UriAttribute"
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

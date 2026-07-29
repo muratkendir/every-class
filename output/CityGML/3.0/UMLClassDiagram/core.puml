@@ -1,0 +1,365 @@
+@startuml
+title
+  CityGML - 3.0 - Core - Only XSD based
+  http://www.opengis.net/citygml/3.0
+end title
+
+package core {
+abstract class "core:ADEOfAbstractAppearance" $adeOf
+class "core:ADEOfAbstractAppearanceProperty" $property $adeOf {
+  ADEOfAbstractAppearance : core:ADEOfAbstractAppearance
+}
+abstract class "core:ADEOfAbstractCityObject" $adeOf
+class "core:ADEOfAbstractCityObjectProperty" $property $adeOf {
+  ADEOfAbstractCityObject : core:ADEOfAbstractCityObject
+}
+abstract class "core:ADEOfAbstractDynamizer" $adeOf
+class "core:ADEOfAbstractDynamizerProperty" $property $adeOf {
+  ADEOfAbstractDynamizer : core:ADEOfAbstractDynamizer
+}
+abstract class "core:ADEOfAbstractFeature" $adeOf
+class "core:ADEOfAbstractFeatureProperty" $property $adeOf {
+  ADEOfAbstractFeature : core:ADEOfAbstractFeature
+}
+abstract class "core:ADEOfAbstractFeatureWithLifespan" $adeOf
+class "core:ADEOfAbstractFeatureWithLifespanProperty" $property $adeOf {
+  ADEOfAbstractFeatureWithLifespan : core:ADEOfAbstractFeatureWithLifespan
+}
+abstract class "core:ADEOfAbstractLogicalSpace" $adeOf
+class "core:ADEOfAbstractLogicalSpaceProperty" $property $adeOf {
+  ADEOfAbstractLogicalSpace : core:ADEOfAbstractLogicalSpace
+}
+abstract class "core:ADEOfAbstractOccupiedSpace" $adeOf
+class "core:ADEOfAbstractOccupiedSpaceProperty" $property $adeOf {
+  ADEOfAbstractOccupiedSpace : core:ADEOfAbstractOccupiedSpace
+}
+abstract class "core:ADEOfAbstractPhysicalSpace" $adeOf
+class "core:ADEOfAbstractPhysicalSpaceProperty" $property $adeOf {
+  ADEOfAbstractPhysicalSpace : core:ADEOfAbstractPhysicalSpace
+}
+abstract class "core:ADEOfAbstractPointCloud" $adeOf
+class "core:ADEOfAbstractPointCloudProperty" $property $adeOf {
+  ADEOfAbstractPointCloud : core:ADEOfAbstractPointCloud
+}
+abstract class "core:ADEOfAbstractSpace" $adeOf
+class "core:ADEOfAbstractSpaceProperty" $property $adeOf {
+  ADEOfAbstractSpace : core:ADEOfAbstractSpace
+}
+abstract class "core:ADEOfAbstractSpaceBoundary" $adeOf
+class "core:ADEOfAbstractSpaceBoundaryProperty" $property $adeOf {
+  ADEOfAbstractSpaceBoundary : core:ADEOfAbstractSpaceBoundary
+}
+abstract class "core:ADEOfAbstractThematicSurface" $adeOf
+class "core:ADEOfAbstractThematicSurfaceProperty" $property $adeOf {
+  ADEOfAbstractThematicSurface : core:ADEOfAbstractThematicSurface
+}
+abstract class "core:ADEOfAbstractUnoccupiedSpace" $adeOf
+class "core:ADEOfAbstractUnoccupiedSpaceProperty" $property $adeOf {
+  ADEOfAbstractUnoccupiedSpace : core:ADEOfAbstractUnoccupiedSpace
+}
+abstract class "core:ADEOfAbstractVersion" $adeOf
+class "core:ADEOfAbstractVersionProperty" $property $adeOf {
+  ADEOfAbstractVersion : core:ADEOfAbstractVersion
+}
+abstract class "core:ADEOfAbstractVersionTransition" $adeOf
+class "core:ADEOfAbstractVersionTransitionProperty" $property $adeOf {
+  ADEOfAbstractVersionTransition : core:ADEOfAbstractVersionTransition
+}
+abstract class "core:ADEOfAddress" $adeOf
+class "core:ADEOfAddressProperty" $property $adeOf {
+  ADEOfAddress : core:ADEOfAddress
+}
+abstract class "core:ADEOfCityModel" $adeOf
+class "core:ADEOfCityModelProperty" $property $adeOf {
+  ADEOfCityModel : core:ADEOfCityModel
+}
+abstract class "core:ADEOfClosureSurface" $adeOf
+class "core:ADEOfClosureSurfaceProperty" $property $adeOf {
+  ADEOfClosureSurface : core:ADEOfClosureSurface
+}
+abstract class "core:AbstractAppearance" <<FeatureType>> {
+  ~ adeOfAbstractAppearance : core:ADEOfAbstractAppearance [0..*]
+}
+class "core:AbstractAppearanceProperty" $property {
+  AbstractAppearance : core:AbstractAppearance
+}
+abstract class "core:AbstractCityObject" <<FeatureType>> {
+  relativeToTerrain : core:RelativeToTerrain [0..1]
+  relativeToWater : core:RelativeToWater [0..1]
+  ~ adeOfAbstractCityObject : core:ADEOfAbstractCityObject [0..*]
+  - externalReference : core:ExternalReference [0..*]
+}
+class "core:AbstractCityObjectProperty" $property {
+  AbstractCityObject : core:AbstractCityObject
+}
+abstract class "core:AbstractDynamizer" <<FeatureType>> {
+  ~ adeOfAbstractDynamizer : core:ADEOfAbstractDynamizer [0..*]
+}
+class "core:AbstractDynamizerProperty" $property {
+  AbstractDynamizer : core:AbstractDynamizer
+}
+abstract class "core:AbstractFeature" <<FeatureType>> {
+  ~ adeOfAbstractFeature : core:ADEOfAbstractFeature [0..*]
+}
+class "core:AbstractFeatureProperty" $property {
+  AbstractFeature : core:AbstractFeature
+}
+abstract class "core:AbstractFeatureWithLifespan" <<FeatureType>> {
+  # creationDate : xs:dateTime [0..1]
+  # terminationDate : xs:dateTime [0..1]
+  # validFrom : xs:dateTime [0..1]
+  # validTo : xs:dateTime [0..1]
+  ~ adeOfAbstractFeatureWithLifespan : core:ADEOfAbstractFeatureWithLifespan [0..*]
+}
+class "core:AbstractFeatureWithLifespanProperty" $property {
+  AbstractFeatureWithLifespan : core:AbstractFeatureWithLifespan
+}
+abstract class "core:AbstractGenericAttribute" <<DataType>>
+class "core:AbstractGenericAttributeProperty" $property {
+  AbstractGenericAttribute : core:AbstractGenericAttribute
+}
+abstract class "core:AbstractLogicalSpace" <<FeatureType>> {
+  ~ adeOfAbstractLogicalSpace : core:ADEOfAbstractLogicalSpace [0..*]
+}
+class "core:AbstractLogicalSpaceProperty" $property {
+  AbstractLogicalSpace : core:AbstractLogicalSpace
+}
+abstract class "core:AbstractOccupiedSpace" <<FeatureType>> {
+  ~ adeOfAbstractOccupiedSpace : core:ADEOfAbstractOccupiedSpace [0..*]
+}
+class "core:AbstractOccupiedSpaceProperty" $property {
+  AbstractOccupiedSpace : core:AbstractOccupiedSpace
+}
+abstract class "core:AbstractPhysicalSpace" <<FeatureType>> {
+  # lod1TerrainIntersectionCurve : gml:MultiCurve [0..1]
+  # lod2TerrainIntersectionCurve : gml:MultiCurve [0..1]
+  # lod3TerrainIntersectionCurve : gml:MultiCurve [0..1]
+  ~ adeOfAbstractPhysicalSpace : core:ADEOfAbstractPhysicalSpace [0..*]
+}
+class "core:AbstractPhysicalSpaceProperty" $property {
+  AbstractPhysicalSpace : core:AbstractPhysicalSpace
+}
+abstract class "core:AbstractPointCloud" <<FeatureType>> {
+  ~ adeOfAbstractPointCloud : core:ADEOfAbstractPointCloud [0..*]
+}
+class "core:AbstractPointCloudProperty" $property {
+  AbstractPointCloud : core:AbstractPointCloud
+}
+abstract class "core:AbstractSpace" <<FeatureType>> {
+  spaceType : core:SpaceType [0..1]
+  # lod0Point : gml:Point [0..1]
+  # lod0MultiSurface : gml:MultiSurface [0..1]
+  # lod0MultiCurve : gml:MultiCurve [0..1]
+  # lod1Solid : gml:Solid [0..1]
+  # lod2Solid : gml:Solid [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod2MultiCurve : gml:MultiCurve [0..1]
+  # lod3Solid : gml:Solid [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiCurve : gml:MultiCurve [0..1]
+  ~ adeOfAbstractSpace : core:ADEOfAbstractSpace [0..*]
+  - volume : core:QualifiedVolume [0..*]
+  - area : core:QualifiedArea [0..*]
+}
+class "core:AbstractSpaceProperty" $property {
+  AbstractSpace : core:AbstractSpace
+}
+abstract class "core:AbstractSpaceBoundary" <<FeatureType>> {
+  ~ adeOfAbstractSpaceBoundary : core:ADEOfAbstractSpaceBoundary [0..*]
+}
+class "core:AbstractSpaceBoundaryProperty" $property {
+  AbstractSpaceBoundary : core:AbstractSpaceBoundary
+}
+abstract class "core:AbstractThematicSurface" <<FeatureType>> {
+  # lod0MultiCurve : gml:MultiCurve [0..1]
+  # lod0MultiSurface : gml:MultiSurface [0..1]
+  # lod1MultiSurface : gml:MultiSurface [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  ~ adeOfAbstractThematicSurface : core:ADEOfAbstractThematicSurface [0..*]
+  - area : core:QualifiedArea [0..*]
+}
+class "core:AbstractThematicSurfaceProperty" $property {
+  AbstractThematicSurface : core:AbstractThematicSurface
+}
+abstract class "core:AbstractUnoccupiedSpace" <<FeatureType>> {
+  ~ adeOfAbstractUnoccupiedSpace : core:ADEOfAbstractUnoccupiedSpace [0..*]
+}
+class "core:AbstractUnoccupiedSpaceProperty" $property {
+  AbstractUnoccupiedSpace : core:AbstractUnoccupiedSpace
+}
+abstract class "core:AbstractVersion" <<FeatureType>> {
+  ~ adeOfAbstractVersion : core:ADEOfAbstractVersion [0..*]
+}
+class "core:AbstractVersionProperty" $property {
+  AbstractVersion : core:AbstractVersion
+}
+abstract class "core:AbstractVersionTransition" <<FeatureType>> {
+  ~ adeOfAbstractVersionTransition : core:ADEOfAbstractVersionTransition [0..*]
+}
+class "core:AbstractVersionTransitionProperty" $property {
+  AbstractVersionTransition : core:AbstractVersionTransition
+}
+class "core:Address" <<FeatureType>> {
+  # xalAddress : xAL:Address
+  # multiPoint : gml:MultiPoint [0..1]
+  ~ adeOfAddress : core:ADEOfAddress [0..*]
+}
+class "core:AddressProperty" $property {
+  Address : core:Address
+}
+class "core:CityModel" <<FeatureType>> {
+  # engineeringCRS : gml:EngineeringCRS [0..1]
+  ~ adeOfCityModel : core:ADEOfCityModel [0..*]
+}
+class "core:CityModelProperty" $property {
+  CityModel : core:CityModel
+}
+class "core:CityObjectRelation" <<ObjectType>> {
+  # relationType : gml:Code
+}
+class "core:CityObjectRelationProperty" $property {
+  CityObjectRelation : core:CityObjectRelation
+}
+class "core:ClosureSurface" <<FeatureType>> {
+  ~ adeOfClosureSurface : core:ADEOfClosureSurface [0..*]
+}
+class "core:ClosureSurfaceProperty" $property {
+  ClosureSurface : core:ClosureSurface
+}
+class "core:ExternalReference" <<DataType>> {
+  # targetResource : xs:anyURI
+  # informationSystem : xs:anyURI [0..1]
+  # relationType : xs:anyURI [0..1]
+}
+class "core:ExternalReferenceProperty" $property {
+  ExternalReference : core:ExternalReference
+}
+class "core:ImplicitGeometry" <<ObjectType>> {
+  transformationMatrix : core:TransformationMatrix4x4
+  # mimeType : gml:Code [0..1]
+  # libraryObject : xs:anyURI [0..1]
+  # referencePoint : gml:Point
+  # relativeGeometry : gml:Geometry [0..1]
+}
+class "core:ImplicitGeometryProperty" $property {
+  ImplicitGeometry : core:ImplicitGeometry
+}
+class "core:Occupancy" <<DataType>> {
+  # numberOfOccupants : xs:integer
+  # interval : gml:Code [0..1]
+  # occupantType : gml:Code [0..1]
+}
+class "core:OccupancyProperty" $property {
+  Occupancy : core:Occupancy
+}
+class "core:QualifiedArea" <<DataType>> {
+  # area : gml:Area
+  # typeOfArea : gml:Code
+}
+class "core:QualifiedAreaProperty" $property {
+  QualifiedArea : core:QualifiedArea
+}
+class "core:QualifiedVolume" <<DataType>> {
+  # volume : gml:Volume
+  # typeOfVolume : gml:Code
+}
+class "core:QualifiedVolumeProperty" $property {
+  QualifiedVolume : core:QualifiedVolume
+}
+
+' Simple types (from <simpleType> declarations)
+class "core:DoubleBetween0and1" <<BasicType>>
+class "core:IntegerBetween0and3" <<BasicType>>
+class "core:RelativeToTerrain" <<Enumeration>> {
+  entirelyAboveTerrain
+  substantiallyAboveTerrain
+  substantiallyAboveAndBelowTerrain
+  substantiallyBelowTerrain
+  entirelyBelowTerrain
+}
+class "core:RelativeToWater" <<Enumeration>> {
+  entirelyAboveWaterSurface
+  substantiallyAboveWaterSurface
+  substantiallyAboveAndBelowWaterSurface
+  substantiallyBelowWaterSurface
+  entirelyBelowWaterSurface
+  temporarilyAboveAndBelowWaterSurface
+}
+class "core:SpaceType" <<Enumeration>> {
+  closed
+  open
+  semiOpen
+}
+class "core:TransformationMatrix2x2" <<BasicType>>
+class "core:TransformationMatrix3x4" <<BasicType>>
+class "core:TransformationMatrix4x4" <<BasicType>>
+
+' Model groups (from <group> declarations)
+class "core:CityModelMember" <<Union>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractGML"
+
+"core:AbstractFeatureWithLifespan" <|-- "core:AbstractAppearance"
+"core:AbstractFeatureWithLifespan" <|-- "core:AbstractCityObject"
+"core:AbstractFeatureWithLifespan" <|-- "core:AbstractDynamizer"
+"gml:AbstractFeature" <|-- "core:AbstractFeature"
+"core:AbstractFeature" <|-- "core:AbstractFeatureWithLifespan"
+"core:AbstractSpace" <|-- "core:AbstractLogicalSpace"
+"core:AbstractPhysicalSpace" <|-- "core:AbstractOccupiedSpace"
+"core:AbstractSpace" <|-- "core:AbstractPhysicalSpace"
+"core:AbstractFeature" <|-- "core:AbstractPointCloud"
+"core:AbstractCityObject" <|-- "core:AbstractSpace"
+"core:AbstractCityObject" <|-- "core:AbstractSpaceBoundary"
+"core:AbstractSpaceBoundary" <|-- "core:AbstractThematicSurface"
+"core:AbstractPhysicalSpace" <|-- "core:AbstractUnoccupiedSpace"
+"core:AbstractFeatureWithLifespan" <|-- "core:AbstractVersion"
+"core:AbstractFeatureWithLifespan" <|-- "core:AbstractVersionTransition"
+"core:AbstractFeature" <|-- "core:Address"
+"core:AbstractFeatureWithLifespan" <|-- "core:CityModel"
+"gml:AbstractGML" <|-- "core:CityObjectRelation"
+"core:AbstractThematicSurface" <|-- "core:ClosureSurface"
+"gml:AbstractGML" <|-- "core:ImplicitGeometry"
+
+' Class relations (promoted from property wrappers)
+"core:AbstractCityObject" ..> "0..*" "core:AbstractCityObject" : generalizesTo
+"core:AbstractCityObject" "1" *-- "0..*" "core:CityObjectRelation" : relatedTo
+"core:AbstractCityObject" o-- "0..*" "core:AbstractAppearance" : appearance
+"core:AbstractCityObject" "1" *-- "0..*" "core:AbstractGenericAttribute" : genericAttribute
+"core:AbstractCityObject" o-- "0..*" "core:AbstractDynamizer" : dynamizer
+"core:AbstractOccupiedSpace" ..> "0..1" "core:ImplicitGeometry" : lod1ImplicitRepresentation
+"core:AbstractOccupiedSpace" ..> "0..1" "core:ImplicitGeometry" : lod2ImplicitRepresentation
+"core:AbstractOccupiedSpace" ..> "0..1" "core:ImplicitGeometry" : lod3ImplicitRepresentation
+"core:AbstractPhysicalSpace" o-- "0..1" "core:AbstractPointCloud" : pointCloud
+"core:AbstractSpace" o-- "0..*" "core:AbstractSpaceBoundary" : boundary
+"core:AbstractThematicSurface" o-- "0..1" "core:AbstractPointCloud" : pointCloud
+"core:CityModel" o-- "0..*" "core:AbstractCityObject" : cityObjectMember
+"core:CityModel" o-- "0..*" "core:AbstractAppearance" : appearanceMember
+"core:CityModel" o-- "0..*" "core:AbstractVersion" : versionMember
+"core:CityModel" o-- "0..*" "core:AbstractVersionTransition" : versionTransitionMember
+"core:CityModel" o-- "0..*" "core:AbstractFeature" : featureMember
+"core:CityObjectRelation" "1" *-- "0..*" "core:AbstractGenericAttribute" : genericAttribute
+"core:CityObjectRelation" ..> "1" "core:AbstractCityObject" : relatedTo
+"core:ImplicitGeometry" o-- "0..*" "core:AbstractAppearance" : appearance
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

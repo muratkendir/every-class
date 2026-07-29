@@ -1,0 +1,199 @@
+@startuml
+title
+  CityGML - 3.0 - Building - Only XSD based
+  http://www.opengis.net/citygml/building/3.0
+end title
+
+package bldg {
+abstract class "bldg:ADEOfAbstractBuilding" $adeOf
+class "bldg:ADEOfAbstractBuildingProperty" $property $adeOf {
+  ADEOfAbstractBuilding : bldg:ADEOfAbstractBuilding
+}
+abstract class "bldg:ADEOfAbstractBuildingSubdivision" $adeOf
+class "bldg:ADEOfAbstractBuildingSubdivisionProperty" $property $adeOf {
+  ADEOfAbstractBuildingSubdivision : bldg:ADEOfAbstractBuildingSubdivision
+}
+abstract class "bldg:ADEOfBuilding" $adeOf
+class "bldg:ADEOfBuildingProperty" $property $adeOf {
+  ADEOfBuilding : bldg:ADEOfBuilding
+}
+abstract class "bldg:ADEOfBuildingConstructiveElement" $adeOf
+class "bldg:ADEOfBuildingConstructiveElementProperty" $property $adeOf {
+  ADEOfBuildingConstructiveElement : bldg:ADEOfBuildingConstructiveElement
+}
+abstract class "bldg:ADEOfBuildingFurniture" $adeOf
+class "bldg:ADEOfBuildingFurnitureProperty" $property $adeOf {
+  ADEOfBuildingFurniture : bldg:ADEOfBuildingFurniture
+}
+abstract class "bldg:ADEOfBuildingInstallation" $adeOf
+class "bldg:ADEOfBuildingInstallationProperty" $property $adeOf {
+  ADEOfBuildingInstallation : bldg:ADEOfBuildingInstallation
+}
+abstract class "bldg:ADEOfBuildingPart" $adeOf
+class "bldg:ADEOfBuildingPartProperty" $property $adeOf {
+  ADEOfBuildingPart : bldg:ADEOfBuildingPart
+}
+abstract class "bldg:ADEOfBuildingRoom" $adeOf
+class "bldg:ADEOfBuildingRoomProperty" $property $adeOf {
+  ADEOfBuildingRoom : bldg:ADEOfBuildingRoom
+}
+abstract class "bldg:ADEOfBuildingUnit" $adeOf
+class "bldg:ADEOfBuildingUnitProperty" $property $adeOf {
+  ADEOfBuildingUnit : bldg:ADEOfBuildingUnit
+}
+abstract class "bldg:ADEOfStorey" $adeOf
+class "bldg:ADEOfStoreyProperty" $property $adeOf {
+  ADEOfStorey : bldg:ADEOfStorey
+}
+abstract class "bldg:AbstractBuilding" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # roofType : gml:Code [0..1]
+  # storeysAboveGround : xs:integer [0..1]
+  # storeysBelowGround : xs:integer [0..1]
+  # storeyHeightsAboveGround : gml:MeasureOrNilReasonList [0..1]
+  # storeyHeightsBelowGround : gml:MeasureOrNilReasonList [0..1]
+  # address : core:Address [0..*]
+  ~ adeOfAbstractBuilding : bldg:ADEOfAbstractBuilding [0..*]
+}
+class "bldg:AbstractBuildingProperty" $property {
+  AbstractBuilding : bldg:AbstractBuilding
+}
+abstract class "bldg:AbstractBuildingSubdivision" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # elevation : con:Elevation [0..*]
+  # sortKey : xs:double [0..1]
+  ~ adeOfAbstractBuildingSubdivision : bldg:ADEOfAbstractBuildingSubdivision [0..*]
+}
+class "bldg:AbstractBuildingSubdivisionProperty" $property {
+  AbstractBuildingSubdivision : bldg:AbstractBuildingSubdivision
+}
+class "bldg:Building" <<FeatureType>> {
+  ~ adeOfBuilding : bldg:ADEOfBuilding [0..*]
+}
+class "bldg:BuildingProperty" $property {
+  Building : bldg:Building
+}
+class "bldg:BuildingConstructiveElement" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBuildingConstructiveElement : bldg:ADEOfBuildingConstructiveElement [0..*]
+}
+class "bldg:BuildingConstructiveElementProperty" $property {
+  BuildingConstructiveElement : bldg:BuildingConstructiveElement
+}
+class "bldg:BuildingFurniture" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBuildingFurniture : bldg:ADEOfBuildingFurniture [0..*]
+}
+class "bldg:BuildingFurnitureProperty" $property {
+  BuildingFurniture : bldg:BuildingFurniture
+}
+class "bldg:BuildingInstallation" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBuildingInstallation : bldg:ADEOfBuildingInstallation [0..*]
+}
+class "bldg:BuildingInstallationProperty" $property {
+  BuildingInstallation : bldg:BuildingInstallation
+}
+class "bldg:BuildingPart" <<FeatureType>> {
+  ~ adeOfBuildingPart : bldg:ADEOfBuildingPart [0..*]
+}
+class "bldg:BuildingPartProperty" $property {
+  BuildingPart : bldg:BuildingPart
+}
+class "bldg:BuildingRoom" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBuildingRoom : bldg:ADEOfBuildingRoom [0..*]
+  - roomHeight : bldg:RoomHeight [0..*]
+}
+class "bldg:BuildingRoomProperty" $property {
+  BuildingRoom : bldg:BuildingRoom
+}
+class "bldg:BuildingUnit" <<FeatureType>> {
+  # address : core:Address [0..*]
+  ~ adeOfBuildingUnit : bldg:ADEOfBuildingUnit [0..*]
+}
+class "bldg:BuildingUnitProperty" $property {
+  BuildingUnit : bldg:BuildingUnit
+}
+class "bldg:RoomHeight" <<DataType>> {
+  # highReference : gml:Code
+  # lowReference : gml:Code
+  # status : con:HeightStatusValue
+  # value : gml:Length
+}
+class "bldg:RoomHeightProperty" $property {
+  RoomHeight : bldg:RoomHeight
+}
+class "bldg:Storey" <<FeatureType>> {
+  ~ adeOfStorey : bldg:ADEOfStorey [0..*]
+}
+class "bldg:StoreyProperty" $property {
+  Storey : bldg:Storey
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "con:AbstractConstruction"
+abstract class "con:AbstractConstructiveElement"
+abstract class "con:AbstractFurniture"
+abstract class "con:AbstractInstallation"
+abstract class "core:AbstractLogicalSpace"
+abstract class "core:AbstractUnoccupiedSpace"
+
+"con:AbstractConstruction" <|-- "bldg:AbstractBuilding"
+"core:AbstractLogicalSpace" <|-- "bldg:AbstractBuildingSubdivision"
+"bldg:AbstractBuilding" <|-- "bldg:Building"
+"con:AbstractConstructiveElement" <|-- "bldg:BuildingConstructiveElement"
+"con:AbstractFurniture" <|-- "bldg:BuildingFurniture"
+"con:AbstractInstallation" <|-- "bldg:BuildingInstallation"
+"bldg:AbstractBuilding" <|-- "bldg:BuildingPart"
+"core:AbstractUnoccupiedSpace" <|-- "bldg:BuildingRoom"
+"bldg:AbstractBuildingSubdivision" <|-- "bldg:BuildingUnit"
+"bldg:AbstractBuildingSubdivision" <|-- "bldg:Storey"
+
+' Class relations (promoted from property wrappers)
+"bldg:AbstractBuilding" o-- "0..*" "bldg:BuildingConstructiveElement" : buildingConstructiveElement
+"bldg:AbstractBuilding" o-- "0..*" "bldg:BuildingInstallation" : buildingInstallation
+"bldg:AbstractBuilding" o-- "0..*" "bldg:BuildingRoom" : buildingRoom
+"bldg:AbstractBuilding" o-- "0..*" "bldg:BuildingFurniture" : buildingFurniture
+"bldg:AbstractBuilding" o-- "0..*" "bldg:AbstractBuildingSubdivision" : buildingSubdivision
+"bldg:AbstractBuildingSubdivision" o-- "0..*" "bldg:BuildingConstructiveElement" : buildingConstructiveElement
+"bldg:AbstractBuildingSubdivision" o-- "0..*" "bldg:BuildingFurniture" : buildingFurniture
+"bldg:AbstractBuildingSubdivision" o-- "0..*" "bldg:BuildingInstallation" : buildingInstallation
+"bldg:AbstractBuildingSubdivision" o-- "0..*" "bldg:BuildingRoom" : buildingRoom
+"bldg:Building" o-- "0..*" "bldg:BuildingPart" : buildingPart
+"bldg:BuildingRoom" o-- "0..*" "bldg:BuildingFurniture" : buildingFurniture
+"bldg:BuildingRoom" o-- "0..*" "bldg:BuildingInstallation" : buildingInstallation
+"bldg:BuildingUnit" o-- "0..*" "bldg:Storey" : storey
+"bldg:Storey" o-- "0..*" "bldg:BuildingUnit" : buildingUnit
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

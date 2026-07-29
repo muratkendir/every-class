@@ -1,0 +1,110 @@
+@startuml
+title
+  Part3 - 1.0 - Alignment - Only XSD based
+  http://www.opengis.net/infragml/alignment/1.0
+end title
+
+package lia {
+class "lia:Alignment" <<FeatureType>> {
+  # alignmentID : anonymous
+  # purpose : xs:string [0..1]
+  # designAlternative : xs:string [0..1]
+  # linestring2DRepresentation : anonymous [0..1]
+  # linestring3DRepresentation : anonymous [0..1]
+}
+class "lia:AlignmentProperty" $property {
+  Alignment : lia:Alignment
+}
+class "lia:Alignment2DHorSegment" <<DataType>> {
+  # tangentialContinuity : xs:boolean
+  # geometry : anonymous [0..1]
+}
+class "lia:Alignment2DHorizontal" <<ObjectType>> {
+  # location : xs:string
+  # description : xs:string
+  # state : li:State
+  # segment : anonymous [1..*]
+}
+class "lia:Alignment2DHorizontalProperty" $property {
+  Alignment2DHorizontal : lia:Alignment2DHorizontal
+}
+class "lia:Alignment2DVertSegment" <<DataType>> {
+  # tangentialContinuity : xs:boolean
+  # startDistAlong : gmllr:DistanceExpression
+  # startHeight : gml:Length
+  # startGradient : xs:double
+  # horizontalLength : gml:Length
+  # isConvex : xs:boolean [0..1]
+  # radius : gml:Length
+  # constant : xs:double
+}
+class "lia:Alignment2DVertical" <<ObjectType>> {
+  # location : xs:string
+  # description : xs:string
+  # state : li:State
+  # alignmentOffset : gml:Length [0..1]
+  # segments : anonymous [1..*]
+}
+class "lia:Alignment2DVerticalProperty" $property {
+  Alignment2DVertical : lia:Alignment2DVertical
+}
+class "lia:AlignmentCurve" <<ObjectType>> {
+  # crs : gml:EngineeringCRS [0..1]
+}
+class "lia:AlignmentCurveProperty" $property {
+  AlignmentCurve : lia:AlignmentCurve
+}
+class "lia:AlignmentSet" <<ObjectType>>
+class "lia:AlignmentSetProperty" $property {
+  AlignmentSet : lia:AlignmentSet
+}
+class "lia:TransitionCurve" <<ObjectType>> {
+  # referenceLocation : gml:AffinePlacement
+  # length : gml:Length
+  # startCurvature : xs:double
+  # endCurvature : xs:double
+  transitionType : lia:Transition
+}
+
+' Simple types (from <simpleType> declarations)
+class "lia:Transition" <<Union>>
+class "lia:TransitionEnumeration" <<Enumeration>> {
+  biquadratic
+  bloss
+  clothoid
+  cosine
+  cubicParabola
+  sine
+}
+class "lia:TransitionOther" <<BasicType>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractCurve"
+abstract class "gml:AbstractGML"
+class "li:Feature"
+
+"li:Feature" <|-- "lia:Alignment"
+"gml:AbstractCurve" <|-- "lia:Alignment2DHorizontal"
+"gml:AbstractGML" <|-- "lia:Alignment2DVertical"
+"gml:AbstractCurve" <|-- "lia:AlignmentCurve"
+"gml:AbstractGML" <|-- "lia:AlignmentSet"
+"gml:AbstractCurve" <|-- "lia:TransitionCurve"
+
+' Class relations (promoted from property wrappers)
+"lia:Alignment" ..> "0..1" "lia:AlignmentCurve" : geometry
+"lia:Alignment2DVertical" ..> "1" "lia:Alignment2DHorizontal" : measuredAlong
+"lia:AlignmentCurve" ..> "1" "lia:Alignment2DHorizontal" : horizontal
+"lia:AlignmentCurve" ..> "0..1" "lia:Alignment2DVertical" : vertical
+"lia:AlignmentSet" o-- "1..*" "lia:Alignment" : alignment
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

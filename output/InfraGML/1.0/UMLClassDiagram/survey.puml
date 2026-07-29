@@ -1,0 +1,40 @@
+@startuml
+title
+  Part6 - 1.0 - Survey - Only XSD based
+  http://www.opengis.net/infragml/survey/1.0
+end title
+
+package lis {
+class "lis:Survey" <<ObjectType>> {
+  # surveyID : anonymous
+  # landSurveyor : li:Professional [0..1]
+  # purposeOfSurvey : xs:string [0..1]
+  # type : gml:Reference [0..1]
+  # document : li:Document [0..*]
+  # setup : li:Feature [0..*]
+  # equipment : li:Feature [0..1]
+  # surveyProcess : anonymous [0..*]
+  # surveyResult : li:Feature [0..*]
+  # sampling : li:Feature [0..*]
+  # samplingCollection : li:AbstractData [0..*]
+}
+class "lis:SurveyProperty" $property {
+  Survey : lis:Survey
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "li:AbstractData"
+
+"li:AbstractData" <|-- "lis:Survey"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

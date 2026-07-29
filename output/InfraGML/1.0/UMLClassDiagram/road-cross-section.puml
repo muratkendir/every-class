@@ -1,0 +1,85 @@
+@startuml
+title
+  Part4 - 1.0 - Road-cross-section - Only XSD based
+  http://www.opengis.net/infragml/roadcrosssection/1.0
+end title
+
+package lifrcs {
+class "lifrcs:CrossSection" <<ObjectType>> {
+  # crossSectionID : anonymous
+  # locatedAlong : gmllr:LinearElement
+  # distanceAlong : gmllr:DistanceExpression
+  # horizontalDisplacement : gml:Length [0..1]
+  # verticallDisplacement : gml:Length [0..1]
+}
+class "lifrcs:CrossSectionProperty" $property {
+  CrossSection : lifrcs:CrossSection
+}
+class "lifrcs:CrossSectionArea" <<ObjectType>> {
+  # crossSectionAreaID : anonymous
+  # material : xs:string [0..1]
+  # area : gml:Area
+}
+class "lifrcs:CrossSectionAreaProperty" $property {
+  CrossSectionArea : lifrcs:CrossSectionArea
+}
+class "lifrcs:CrossSectionComponent" <<ObjectType>> {
+  # crossSectionComponentID : anonymous
+  # material : xs:string [0..1]
+  # isClosed : xs:boolean
+  # state : li:State
+}
+class "lifrcs:CrossSectionComponentProperty" $property {
+  CrossSectionComponent : lifrcs:CrossSectionComponent
+}
+class "lifrcs:CrossSectionPoint" <<ObjectType>> {
+  # crossSectionPointID : anonymous
+  # horizontalOffset : gml:Length
+  # verticalOffset : gml:Length
+}
+class "lifrcs:CrossSectionPointProperty" $property {
+  CrossSectionPoint : lifrcs:CrossSectionPoint
+}
+class "lifrcs:CrossSectionSet" <<ObjectType>> {
+  # crossSectionSetID : anonymous
+}
+class "lifrcs:CrossSectionSetProperty" $property {
+  CrossSectionSet : lifrcs:CrossSectionSet
+}
+class "lifrcs:RoadWithCrossSection" <<FeatureType>>
+class "lifrcs:RoadWithCrossSectionProperty" $property {
+  RoadWithCrossSection : lifrcs:RoadWithCrossSection
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "li:AbstractData"
+class "li:Set"
+class "lifr:Road"
+
+"li:AbstractData" <|-- "lifrcs:CrossSection"
+"li:AbstractData" <|-- "lifrcs:CrossSectionArea"
+"li:AbstractData" <|-- "lifrcs:CrossSectionComponent"
+"li:AbstractData" <|-- "lifrcs:CrossSectionPoint"
+"li:Set" <|-- "lifrcs:CrossSectionSet"
+"lifr:Road" <|-- "lifrcs:RoadWithCrossSection"
+
+' Class relations (promoted from property wrappers)
+"lifrcs:CrossSection" ..> "0..*" "lifrcs:CrossSectionComponent" : component
+"lifrcs:CrossSection" ..> "0..*" "lifrcs:CrossSectionArea" : area
+"lifrcs:CrossSectionArea" ..> "3..*" "lifrcs:CrossSectionPoint" : point
+"lifrcs:CrossSectionComponent" ..> "2..*" "lifrcs:CrossSectionPoint" : point
+"lifrcs:CrossSectionSet" ..> "1..*" "lifrcs:CrossSection" : crossSection
+"lifrcs:RoadWithCrossSection" ..> "0..*" "lifrcs:CrossSection" : crossSection
+"lifrcs:RoadWithCrossSection" ..> "0..*" "lifrcs:CrossSectionSet" : crossSectionSet
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

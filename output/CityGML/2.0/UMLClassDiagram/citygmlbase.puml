@@ -1,0 +1,98 @@
+@startuml
+title
+  CityGML - 2.0 - Citygmlbase - Only XSD based
+  http://www.opengis.net/citygml/2.0
+end title
+
+class "CityModel" <<ObjectType>> {
+  #  : _GenericApplicationPropertyOfCityModel [0..*]
+}
+abstract class "AbstractCityObject" <<FeatureType>> {
+  # creationDate : xs:date [0..1]
+  # terminationDate : xs:date [0..1]
+  # externalReference : ExternalReference [0..*]
+  # generalizesTo : GeneralizationRelation [0..*]
+  # relativeToTerrain : RelativeToTerrain [0..1]
+  # relativeToWater : RelativeToWater [0..1]
+  #  : _GenericApplicationPropertyOfCityObject [0..*]
+}
+abstract class "AbstractSite" <<FeatureType>> {
+  #  : _GenericApplicationPropertyOfSite [0..*]
+}
+class "GeneralizationRelation" <<DataType>> {
+  #  : _CityObject
+}
+class "ExternalReference" <<DataType>> {
+  # informationSystem : xs:anyURI [0..1]
+  # externalObject : ExternalObjectReference
+}
+class "ExternalObjectReference" <<DataType>> {
+  # name : xs:string
+  # uri : xs:anyURI
+}
+class "AddressProperty" $property {
+  #  : Address
+}
+class "Address" <<FeatureType>> {
+  # xalAddress : xalAddress
+  # multiPoint : gml:MultiPoint [0..1]
+  #  : _GenericApplicationPropertyOfAddress [0..*]
+}
+class "xalAddressProperty" $property {
+  # AddressDetails : xAL:AddressDetails
+}
+class "ImplicitGeometry" <<ObjectType>> {
+  # mimeType : gml:Code [0..1]
+  # transformationMatrix : TransformationMatrix4x4 [0..1]
+  # libraryObject : xs:anyURI [0..1]
+  # relativeGMLGeometry : gml:Geometry [0..1]
+  # referencePoint : gml:Point
+}
+class "ImplicitRepresentationProperty" $property {
+  #  : ImplicitGeometry
+}
+
+' Simple types (from <simpleType> declarations)
+class "RelativeToTerrain" <<Enumeration>> {
+  entirelyAboveTerrain
+  substantiallyAboveTerrain
+  substantiallyAboveAndBelowTerrain
+  substantiallyBelowTerrain
+  entirelyBelowTerrain
+}
+class "RelativeToWater" <<Enumeration>> {
+  entirelyAboveWaterSurface
+  substantiallyAboveWaterSurface
+  substantiallyAboveAndBelowWaterSurface
+  substantiallyBelowWaterSurface
+  entirelyBelowWaterSurface
+  temporarilyAboveAndBelowWaterSurface
+}
+class "doubleBetween0and1" <<BasicType>>
+class "doubleBetween0and1List" <<BasicType>>
+class "TransformationMatrix4x4" <<BasicType>>
+class "TransformationMatrix2x2" <<BasicType>>
+class "TransformationMatrix3x4" <<BasicType>>
+class "integerBetween0and4" <<BasicType>>
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractFeatureCollection"
+abstract class "gml:AbstractGML"
+
+"gml:AbstractFeatureCollection" <|-- "CityModel"
+"gml:AbstractFeature" <|-- "AbstractCityObject"
+"AbstractCityObject" <|-- "AbstractSite"
+"gml:AbstractFeature" <|-- "Address"
+"gml:AbstractGML" <|-- "ImplicitGeometry"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

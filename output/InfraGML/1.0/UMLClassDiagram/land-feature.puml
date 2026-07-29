@@ -1,0 +1,106 @@
+@startuml
+title
+  Part1 - 1.0 - Land-feature - Only XSD based
+  http://www.opengis.net/infragml/landfeature/1.0
+end title
+
+package lilf {
+class "lilf:CrossSectionArea" <<ObjectType>> {
+  # material : xs:string [0..1]
+  # area : gml:Area
+  # crossSectionPoint : anonymous [3..*]
+}
+class "lilf:CrossSectionAreaProperty" $property {
+  CrossSectionArea : lilf:CrossSectionArea
+}
+class "lilf:LandCrossSection" <<ObjectType>> {
+  # locatedAlong : gmllr:LinearElement
+  # distanceAlong : gmllr:DistanceExpression
+  # horizontalDisplacement : gml:Length [0..1]
+  # verticalDisplacement : gml:Length [0..1]
+}
+class "lilf:LandCrossSectionProperty" $property {
+  LandCrossSection : lilf:LandCrossSection
+}
+class "lilf:LandElement" <<FeatureType>> {
+  # elementID : anonymous
+  # elementType : gml:Reference
+  # material : xs:string [0..1]
+}
+class "lilf:LandElementProperty" $property {
+  LandElement : lilf:LandElement
+}
+class "lilf:LandFeature" <<FeatureType>> {
+  # landFeatureID : anonymous [0..1]
+  # state : li:State
+}
+class "lilf:LandFeatureProperty" $property {
+  LandFeature : lilf:LandFeature
+}
+class "lilf:LandLayer" <<FeatureType>> {
+  # landLayerID : anonymous
+}
+class "lilf:LandLayerProperty" $property {
+  LandLayer : lilf:LandLayer
+}
+class "lilf:LandSurface" <<FeatureType>> {
+  # landSurfaceID : anonymous
+  spatialRepresentation : lilf:TIN
+  # material : xs:string [0..1]
+}
+class "lilf:LandSurfaceProperty" $property {
+  LandSurface : lilf:LandSurface
+}
+class "lilf:LinearLayer" <<FeatureType>>
+class "lilf:LinearLayerProperty" $property {
+  LinearLayer : lilf:LinearLayer
+}
+class "lilf:SolidLayer" <<FeatureType>> {
+  # spatialRepresentation : li:PolyfaceMesh
+  # material : xs:string [0..1]
+}
+class "lilf:SolidLayerProperty" $property {
+  SolidLayer : lilf:SolidLayer
+}
+class "lilf:SurfacesLayer" <<FeatureType>> {
+  # extent : gml:Polygon
+  # material : xs:string [0..1]
+}
+class "lilf:SurfacesLayerProperty" $property {
+  SurfacesLayer : lilf:SurfacesLayer
+}
+class "lilf:TINProperty" $property {
+  # TIN : tin:TIN
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "li:AbstractData"
+class "li:Feature"
+
+"li:AbstractData" <|-- "lilf:CrossSectionArea"
+"li:AbstractData" <|-- "lilf:LandCrossSection"
+"lilf:LandFeature" <|-- "lilf:LandElement"
+"li:Feature" <|-- "lilf:LandFeature"
+"lilf:LandFeature" <|-- "lilf:LandLayer"
+"lilf:LandFeature" <|-- "lilf:LandSurface"
+"lilf:LandLayer" <|-- "lilf:LinearLayer"
+"lilf:LandLayer" <|-- "lilf:SolidLayer"
+"lilf:LandLayer" <|-- "lilf:SurfacesLayer"
+
+' Class relations (promoted from property wrappers)
+"lilf:LandCrossSection" ..> "0..*" "lilf:CrossSectionArea" : crossSectionArea
+"lilf:LinearLayer" ..> "2..*" "lilf:LandCrossSection" : landCrossSection
+"lilf:SurfacesLayer" o-- "1" "lilf:LandSurface" : topSurface
+"lilf:SurfacesLayer" o-- "0..1" "lilf:LandSurface" : bottomSurface
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

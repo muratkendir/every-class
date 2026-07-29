@@ -1,0 +1,212 @@
+@startuml
+title
+  CityGML - 2.0 - Bridge - Only XSD based
+  http://www.opengis.net/citygml/bridge/2.0
+end title
+
+abstract class "AbstractBridge" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # yearOfConstruction : xs:gYear [0..1]
+  # yearOfDemolition : xs:gYear [0..1]
+  # isMovable : xs:boolean [0..1]
+  # lod1Solid : gml:Solid [0..1]
+  # lod1MultiSurface : gml:MultiSurface [0..1]
+  # lod1TerrainIntersection : gml:MultiCurve [0..1]
+  # lod2Solid : gml:Solid [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod2MultiCurve : gml:MultiCurve [0..1]
+  # lod2TerrainIntersection : gml:MultiCurve [0..1]
+  # outerBridgeConstruction : BridgeConstructionElement [0..*]
+  # outerBridgeInstallation : BridgeInstallation [0..*]
+  # interiorBridgeInstallation : IntBridgeInstallation [0..*]
+  # boundedBy : BoundarySurface [0..*]
+  # lod3Solid : gml:Solid [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiCurve : gml:MultiCurve [0..1]
+  # lod3TerrainIntersection : gml:MultiCurve [0..1]
+  # lod4Solid : gml:Solid [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiCurve : gml:MultiCurve [0..1]
+  # lod4TerrainIntersection : gml:MultiCurve [0..1]
+  # interiorBridgeRoom : InteriorBridgeRoom [0..*]
+  # consistsOfBridgePart : BridgePart [0..*]
+  # address : core:Address [0..*]
+  #  : _GenericApplicationPropertyOfAbstractBridge [0..*]
+}
+class "Bridge" <<DataType>> {
+  #  : _GenericApplicationPropertyOfBridge [0..*]
+}
+class "BridgePart" <<DataType>> {
+  #  : _GenericApplicationPropertyOfBridgePart [0..*]
+}
+class "BridgePartProperty" $property {
+  #  : BridgePart
+}
+class "BridgeInstallation" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod2Geometry : gml:Geometry [0..1]
+  # lod3Geometry : gml:Geometry [0..1]
+  # lod4Geometry : gml:Geometry [0..1]
+  # lod2ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod3ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # boundedBy : BoundarySurface [0..*]
+  #  : _GenericApplicationPropertyOfBridgeInstallation [0..*]
+}
+class "BridgeInstallationProperty" $property {
+  #  : BridgeInstallation
+}
+class "IntBridgeInstallation" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod4Geometry : gml:Geometry [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # boundedBy : BoundarySurface [0..*]
+  #  : _GenericApplicationPropertyOfIntBridgeInstallation [0..*]
+}
+class "IntBridgeInstallationProperty" $property {
+  #  : IntBridgeInstallation
+}
+class "BridgeConstructionElement" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod1Geometry : gml:Geometry [0..1]
+  # lod2Geometry : gml:Geometry [0..1]
+  # lod3Geometry : gml:Geometry [0..1]
+  # lod4Geometry : gml:Geometry [0..1]
+  # lod1TerrainIntersection : gml:MultiCurve [0..1]
+  # lod2TerrainIntersection : gml:MultiCurve [0..1]
+  # lod3TerrainIntersection : gml:MultiCurve [0..1]
+  # lod4TerrainIntersection : gml:MultiCurve [0..1]
+  # lod1ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod2ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod3ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # boundedBy : BoundarySurface [0..*]
+  #  : _GenericApplicationPropertyOfBridgeConstructionElement [0..*]
+}
+class "BridgeConstructionElementProperty" $property {
+  #  : BridgeConstructionElement
+}
+abstract class "AbstractBoundarySurface" <<DataType>> {
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  # opening : Opening [0..*]
+  #  : _GenericApplicationPropertyOfBoundarySurface [0..*]
+}
+class "RoofSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfRoofSurface [0..*]
+}
+class "WallSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfWallSurface [0..*]
+}
+class "GroundSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfGroundSurface [0..*]
+}
+class "ClosureSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfClosureSurface [0..*]
+}
+class "OuterFloorSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfOuterFloorSurface [0..*]
+}
+class "OuterCeilingSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfOuterCeilingSurface [0..*]
+}
+class "FloorSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfFloorSurface [0..*]
+}
+class "InteriorWallSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfInteriorWallSurface [0..*]
+}
+class "CeilingSurface" <<DataType>> {
+  #  : _GenericApplicationPropertyOfCeilingSurface [0..*]
+}
+class "BoundarySurfaceProperty" $property {
+  #  : _BoundarySurface
+}
+class "OpeningProperty" $property {
+  #  : _Opening
+}
+abstract class "AbstractOpening" <<DataType>> {
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  # lod3ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  #  : _GenericApplicationPropertyOfOpening [0..*]
+}
+class "Window" <<DataType>> {
+  #  : _GenericApplicationPropertyOfWindow [0..*]
+}
+class "Door" <<DataType>> {
+  # address : core:Address [0..*]
+  #  : _GenericApplicationPropertyOfDoor [0..*]
+}
+class "BridgeRoom" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod4Solid : gml:Solid [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  # boundedBy : BoundarySurface [0..*]
+  # interiorFurniture : InteriorFurniture [0..*]
+  # bridgeRoomInstallation : IntBridgeInstallation [0..*]
+  #  : _GenericApplicationPropertyOfBridgeRoom [0..*]
+}
+class "BridgeFurniture" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod4Geometry : gml:Geometry [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  #  : _GenericApplicationPropertyOfBridgeFurniture [0..*]
+}
+class "InteriorBridgeRoomProperty" $property {
+  #  : BridgeRoom
+}
+class "InteriorFurnitureProperty" $property {
+  #  : BridgeFurniture
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+abstract class "core:AbstractSite"
+
+"core:AbstractSite" <|-- "AbstractBridge"
+"AbstractBridge" <|-- "Bridge"
+"AbstractBridge" <|-- "BridgePart"
+"core:AbstractCityObject" <|-- "BridgeInstallation"
+"core:AbstractCityObject" <|-- "IntBridgeInstallation"
+"core:AbstractCityObject" <|-- "BridgeConstructionElement"
+"core:AbstractCityObject" <|-- "AbstractBoundarySurface"
+"AbstractBoundarySurface" <|-- "RoofSurface"
+"AbstractBoundarySurface" <|-- "WallSurface"
+"AbstractBoundarySurface" <|-- "GroundSurface"
+"AbstractBoundarySurface" <|-- "ClosureSurface"
+"AbstractBoundarySurface" <|-- "OuterFloorSurface"
+"AbstractBoundarySurface" <|-- "OuterCeilingSurface"
+"AbstractBoundarySurface" <|-- "FloorSurface"
+"AbstractBoundarySurface" <|-- "InteriorWallSurface"
+"AbstractBoundarySurface" <|-- "CeilingSurface"
+"core:AbstractCityObject" <|-- "AbstractOpening"
+"AbstractOpening" <|-- "Window"
+"AbstractOpening" <|-- "Door"
+"core:AbstractCityObject" <|-- "BridgeRoom"
+"core:AbstractCityObject" <|-- "BridgeFurniture"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

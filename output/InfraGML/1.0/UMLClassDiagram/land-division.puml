@@ -1,0 +1,232 @@
+@startuml
+title
+  Part7 - 1.0 - Land-division - Only XSD based
+  http://www.opengis.net/infragml/landdivision/1.0
+end title
+
+package lild {
+class "lild:AdministrativeDivision" <<FeatureType>> {
+  # adID : anonymous
+  # adType : xs:string
+  # isoCode : xs:string [0..1]
+}
+class "lild:AdministrativeDivisionProperty" $property {
+  AdministrativeDivision : lild:AdministrativeDivision
+}
+class "lild:BEExplicitFace" <<ObjectType>> {
+  # geometry : gml:Surface
+}
+class "lild:BEExplicitFaceProperty" $property {
+  BEExplicitFace : lild:BEExplicitFace
+}
+class "lild:BEExtrudedFace" <<ObjectType>> {
+  # geometry : gml:Geometry
+  # lowerLimit : anonymous
+  # upperLimit : anonymous
+}
+class "lild:BEExtrudedFaceProperty" $property {
+  BEExtrudedFace : lild:BEExtrudedFace
+}
+abstract class "lild:BEFace" <<ObjectType>>
+class "lild:BEFaceProperty" $property {
+  BEFace : lild:BEFace
+}
+class "lild:BEImplicitFace" <<ObjectType>> {
+  # geometry : anonymous
+}
+class "lild:BEImplicitFaceProperty" $property {
+  BEImplicitFace : lild:BEImplicitFace
+}
+class "lild:BEPoint" <<ObjectType>> {
+  # geometry : gml:Point
+}
+class "lild:BEPointProperty" $property {
+  BEPoint : lild:BEPoint
+}
+class "lild:BESolid" <<ObjectType>> {
+  # geometry : gml:Solid
+}
+class "lild:BESolidProperty" $property {
+  BESolid : lild:BESolid
+}
+class "lild:BEString" <<ObjectType>> {
+  # geometry : gml:Geometry
+  # stringType : anonymous
+  # direction : anonymous [0..1]
+}
+class "lild:BEStringProperty" $property {
+  BEString : lild:BEString
+}
+class "lild:BEText" <<ObjectType>> {
+  # geometry : xs:string
+}
+class "lild:BETextProperty" $property {
+  BEText : lild:BEText
+}
+class "lild:BoundingElement" <<ObjectType>> {
+  # boundingElementID : xs:string
+  # isComplete : xs:boolean
+}
+class "lild:BoundingElementProperty" $property {
+  BoundingElement : lild:BoundingElement
+}
+class "lild:Easement" <<FeatureType>> {
+  # easementID : anonymous
+  # type : gml:Reference
+  # beneficiaryParty : xs:string [0..*]
+  # permittedUse : xs:string
+}
+class "lild:EasementProperty" $property {
+  Easement : lild:Easement
+}
+class "lild:ExtrusionLimit" <<DataType>> {
+  # distance : xs:double
+  # elevation : xs:double
+  # text : xs:string
+}
+abstract class "lild:InterestInLand" <<FeatureType>>
+class "lild:InterestInLandProperty" $property {
+  InterestInLand : lild:InterestInLand
+}
+abstract class "lild:LandDivision" <<FeatureType>>
+class "lild:LandDivisionProperty" $property {
+  LandDivision : lild:LandDivision
+}
+class "lild:LandParcel" <<FeatureType>> {
+  # cadastralParcelId : anonymous
+  # landRecordingDocumentId : anonymous [0..1]
+  # parcelArea : gml:Area
+  # currentLandUse : xs:string [0..1]
+  # plannedLandUse : xs:string [0..1]
+  parcelState : lild:LandParcelState [0..1]
+}
+class "lild:LandParcelProperty" $property {
+  LandParcel : lild:LandParcel
+}
+class "lild:LandPropertyUnit" <<FeatureType>>
+class "lild:LandPropertyUnitProperty" $property {
+  LandPropertyUnit : lild:LandPropertyUnit
+}
+class "lild:Ownership" <<ObjectType>> {
+  # name : xs:string
+  # relativeShare : xs:double [0..1]
+  # ownerAddress : xs:string [0..1]
+}
+class "lild:OwnershipProperty" $property {
+  Ownership : lild:Ownership
+}
+class "lild:PropertyUnit" <<FeatureType>> {
+  # propertyUnitID : anonymous
+  # postAddress : xs:string [0..*]
+}
+class "lild:PropertyUnitProperty" $property {
+  PropertyUnit : lild:PropertyUnit
+}
+class "lild:Signatory" <<ObjectType>> {
+  # signingParty : xs:string
+  # role : gml:Reference [0..1]
+  # signingDate : xs:date
+}
+class "lild:SpatialUnit" <<ObjectType>> {
+  # spatialUnitID : anonymous
+  # dimension : anonymous
+  # area : gml:Area [0..1]
+  # volume : gml:Volume [0..1]
+  # height : gml:Length [0..1]
+}
+class "lild:SpatialUnitProperty" $property {
+  SpatialUnit : lild:SpatialUnit
+}
+class "lild:Statement" <<FeatureType>> {
+  # type : gml:Reference
+  # draftsman : li:Professional
+  # caseID : anonymous
+  # landRecordingDocumentId : anonymous [0..1]
+  # signatory : anonymous [1..*]
+}
+class "lild:StatementProperty" $property {
+  Statement : lild:Statement
+}
+class "lild:SuperficieObject" <<FeatureType>> {
+  # superficieID : anonymous
+  # type : xs:string
+}
+class "lild:SuperficieObjectProperty" $property {
+  SuperficieObject : lild:SuperficieObject
+}
+class "lild:SurveyMonument" <<FeatureType>> {
+  # type : gml:Reference
+}
+class "lild:SurveyMonumentProperty" $property {
+  SurveyMonument : lild:SurveyMonument
+}
+
+' Simple types (from <simpleType> declarations)
+class "lild:LandParcelState" <<Union>>
+class "lild:LandParcelStateEnumeration" <<Enumeration>> {
+  firstRegistration
+  transitory
+  current
+  carrierParcel
+  mainParcel
+  extinguished
+}
+class "lild:LandParcelStateOther" <<BasicType>>
+}
+
+' External types (unresolved namespaces)
+abstract class "li:AbstractData"
+class "li:Document"
+class "li:Feature"
+class "li:SurveyMark"
+
+"lild:LandDivision" <|-- "lild:AdministrativeDivision"
+"lild:BEFace" <|-- "lild:BEExplicitFace"
+"lild:BEFace" <|-- "lild:BEExtrudedFace"
+"lild:BoundingElement" <|-- "lild:BEFace"
+"lild:BEFace" <|-- "lild:BEImplicitFace"
+"lild:BoundingElement" <|-- "lild:BEPoint"
+"lild:BoundingElement" <|-- "lild:BESolid"
+"lild:BoundingElement" <|-- "lild:BEString"
+"lild:BoundingElement" <|-- "lild:BEText"
+"li:AbstractData" <|-- "lild:BoundingElement"
+"lild:InterestInLand" <|-- "lild:Easement"
+"lild:LandDivision" <|-- "lild:InterestInLand"
+"li:Feature" <|-- "lild:LandDivision"
+"li:Feature" <|-- "lild:LandParcel"
+"lild:PropertyUnit" <|-- "lild:LandPropertyUnit"
+"li:AbstractData" <|-- "lild:Ownership"
+"lild:InterestInLand" <|-- "lild:PropertyUnit"
+"li:AbstractData" <|-- "lild:Signatory"
+"li:AbstractData" <|-- "lild:SpatialUnit"
+"li:Document" <|-- "lild:Statement"
+"li:Feature" <|-- "lild:SuperficieObject"
+"li:SurveyMark" <|-- "lild:SurveyMonument"
+
+' Class relations (promoted from property wrappers)
+"lild:AdministrativeDivision" ..> "1..*" "lild:SpatialUnit" : shapeAndLocation
+"lild:AdministrativeDivision" o-- "0..*" "lild:AdministrativeDivision" : part
+"lild:AdministrativeDivision" o-- "0..1" "lild:AdministrativeDivision" : ownedBy
+"lild:Easement" ..> "0..*" "lild:SpatialUnit" : shapeAndLocation
+"lild:Easement" o-- "1..*" "lild:LandParcel" : across
+"lild:InterestInLand" o-- "1..*" "lild:Statement" : documentation
+"lild:LandParcel" ..> "1" "lild:SpatialUnit" : shapeAndLocation
+"lild:LandParcel" o-- "0..*" "lild:AdministrativeDivision" : within
+"lild:LandPropertyUnit" o-- "1..*" "lild:LandParcel" : landParcel
+"lild:LandPropertyUnit" o-- "0..*" "lild:SuperficieObject" : encumbrance
+"lild:PropertyUnit" ..> "1..*" "lild:Ownership" : ownership
+"lild:SpatialUnit" ..> "1..*" "lild:BoundingElement" : boundingElement
+"lild:SuperficieObject" ..> "1..*" "lild:Ownership" : ownership
+"lild:SuperficieObject" o-- "1" "lild:Statement" : encumbranceScheme
+"lild:SurveyMonument" o-- "1" "lild:Statement" : documentation
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

@@ -1,0 +1,194 @@
+@startuml
+title
+  CityGML - 3.0 - Dynamizer - Only XSD based
+  http://www.opengis.net/citygml/dynamizer/3.0
+end title
+
+package dyn {
+abstract class "dyn:ADEOfAbstractAtomicTimeseries" $adeOf
+class "dyn:ADEOfAbstractAtomicTimeseriesProperty" $property $adeOf {
+  ADEOfAbstractAtomicTimeseries : dyn:ADEOfAbstractAtomicTimeseries
+}
+abstract class "dyn:ADEOfAbstractTimeseries" $adeOf
+class "dyn:ADEOfAbstractTimeseriesProperty" $property $adeOf {
+  ADEOfAbstractTimeseries : dyn:ADEOfAbstractTimeseries
+}
+abstract class "dyn:ADEOfCompositeTimeseries" $adeOf
+class "dyn:ADEOfCompositeTimeseriesProperty" $property $adeOf {
+  ADEOfCompositeTimeseries : dyn:ADEOfCompositeTimeseries
+}
+abstract class "dyn:ADEOfDynamizer" $adeOf
+class "dyn:ADEOfDynamizerProperty" $property $adeOf {
+  ADEOfDynamizer : dyn:ADEOfDynamizer
+}
+abstract class "dyn:ADEOfGenericTimeseries" $adeOf
+class "dyn:ADEOfGenericTimeseriesProperty" $property $adeOf {
+  ADEOfGenericTimeseries : dyn:ADEOfGenericTimeseries
+}
+abstract class "dyn:ADEOfStandardFileTimeseries" $adeOf
+class "dyn:ADEOfStandardFileTimeseriesProperty" $property $adeOf {
+  ADEOfStandardFileTimeseries : dyn:ADEOfStandardFileTimeseries
+}
+abstract class "dyn:ADEOfTabulatedFileTimeseries" $adeOf
+class "dyn:ADEOfTabulatedFileTimeseriesProperty" $property $adeOf {
+  ADEOfTabulatedFileTimeseries : dyn:ADEOfTabulatedFileTimeseries
+}
+abstract class "dyn:AbstractAtomicTimeseries" <<FeatureType>> {
+  # observationProperty : xs:string
+  # uom : xs:string [0..1]
+  ~ adeOfAbstractAtomicTimeseries : dyn:ADEOfAbstractAtomicTimeseries [0..*]
+}
+class "dyn:AbstractAtomicTimeseriesProperty" $property {
+  AbstractAtomicTimeseries : dyn:AbstractAtomicTimeseries
+}
+abstract class "dyn:AbstractTimeseries" <<FeatureType>> {
+  # firstTimestamp : gml:TimePosition [0..1]
+  # lastTimestamp : gml:TimePosition [0..1]
+  ~ adeOfAbstractTimeseries : dyn:ADEOfAbstractTimeseries [0..*]
+}
+class "dyn:AbstractTimeseriesProperty" $property {
+  AbstractTimeseries : dyn:AbstractTimeseries
+}
+class "dyn:CompositeTimeseries" <<FeatureType>> {
+  ~ adeOfCompositeTimeseries : dyn:ADEOfCompositeTimeseries [0..*]
+  - component : dyn:TimeseriesComponent [1..*]
+}
+class "dyn:CompositeTimeseriesProperty" $property {
+  CompositeTimeseries : dyn:CompositeTimeseries
+}
+class "dyn:Dynamizer" <<FeatureType>> {
+  # attributeRef : xs:string
+  # startTime : gml:TimePosition [0..1]
+  # endTime : gml:TimePosition [0..1]
+  ~ adeOfDynamizer : dyn:ADEOfDynamizer [0..*]
+  - sensorConnection : dyn:SensorConnection [0..1]
+}
+class "dyn:DynamizerProperty" $property {
+  Dynamizer : dyn:Dynamizer
+}
+class "dyn:GenericTimeseries" <<FeatureType>> {
+  valueType : dyn:TimeseriesTypeValue
+  ~ adeOfGenericTimeseries : dyn:ADEOfGenericTimeseries [0..*]
+  - timeValuePair : dyn:TimeValuePair [1..*]
+}
+class "dyn:GenericTimeseriesProperty" $property {
+  GenericTimeseries : dyn:GenericTimeseries
+}
+class "dyn:SensorConnection" <<DataType>> {
+  # connectionType : gml:Code
+  # observationProperty : xs:string
+  # uom : xs:string [0..1]
+  # sensorID : xs:string [0..1]
+  # sensorName : xs:string [0..1]
+  # observationID : xs:string [0..1]
+  # datastreamID : xs:string [0..1]
+  # baseURL : xs:anyURI [0..1]
+  # authType : gml:Code [0..1]
+  # mqttServer : xs:string [0..1]
+  # mqttTopic : xs:string [0..1]
+  # linkToObservation : xs:string [0..1]
+  # linkToSensorDescription : xs:string [0..1]
+}
+class "dyn:SensorConnectionProperty" $property {
+  SensorConnection : dyn:SensorConnection
+}
+class "dyn:StandardFileTimeseries" <<FeatureType>> {
+  # fileLocation : xs:anyURI
+  # fileType : gml:Code
+  # mimeType : gml:Code [0..1]
+  ~ adeOfStandardFileTimeseries : dyn:ADEOfStandardFileTimeseries [0..*]
+}
+class "dyn:StandardFileTimeseriesProperty" $property {
+  StandardFileTimeseries : dyn:StandardFileTimeseries
+}
+class "dyn:TabulatedFileTimeseries" <<FeatureType>> {
+  # fileLocation : xs:anyURI
+  # fileType : gml:Code
+  # mimeType : gml:Code [0..1]
+  valueType : dyn:TimeseriesTypeValue
+  # numberOfHeaderLines : xs:integer [0..1]
+  # fieldSeparator : xs:string
+  # decimalSymbol : xs:string [0..1]
+  # idColumnNo : xs:integer [0..1]
+  # idColumnName : xs:string [0..1]
+  # idValue : xs:string [0..1]
+  # timeColumnNo : xs:integer [0..1]
+  # timeColumnName : xs:string [0..1]
+  # valueColumnNo : xs:integer [0..1]
+  # valueColumnName : xs:string [0..1]
+  ~ adeOfTabulatedFileTimeseries : dyn:ADEOfTabulatedFileTimeseries [0..*]
+}
+class "dyn:TabulatedFileTimeseriesProperty" $property {
+  TabulatedFileTimeseries : dyn:TabulatedFileTimeseries
+}
+class "dyn:TimeValuePair" <<DataType>> {
+  # timestamp : gml:TimePosition
+  # intValue : xs:integer [0..1]
+  # doubleValue : xs:double [0..1]
+  # stringValue : xs:string [0..1]
+  # geometryValue : gml:Geometry [0..1]
+  # uriValue : xs:anyURI [0..1]
+  # boolValue : xs:boolean [0..1]
+  # implicitGeometryValue : core:ImplicitGeometry [0..1]
+  # appearanceValue : core:AbstractAppearance [0..1]
+}
+class "dyn:TimeValuePairProperty" $property {
+  TimeValuePair : dyn:TimeValuePair
+}
+class "dyn:TimeseriesComponent" <<DataType>> {
+  # repetitions : xs:integer
+  # additionalGap : xs:duration [0..1]
+}
+class "dyn:TimeseriesComponentProperty" $property {
+  TimeseriesComponent : dyn:TimeseriesComponent
+}
+
+' Simple types (from <simpleType> declarations)
+class "dyn:TimeseriesTypeValue" <<Enumeration>> {
+  int
+  double
+  string
+  geometry
+  uri
+  bool
+  implicitGeometry
+  appearance
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+abstract class "core:AbstractDynamizer"
+abstract class "core:AbstractFeature"
+
+"dyn:AbstractTimeseries" <|-- "dyn:AbstractAtomicTimeseries"
+"core:AbstractFeature" <|-- "dyn:AbstractTimeseries"
+"dyn:AbstractTimeseries" <|-- "dyn:CompositeTimeseries"
+"core:AbstractDynamizer" <|-- "dyn:Dynamizer"
+"dyn:AbstractAtomicTimeseries" <|-- "dyn:GenericTimeseries"
+"dyn:AbstractAtomicTimeseries" <|-- "dyn:StandardFileTimeseries"
+"dyn:AbstractAtomicTimeseries" <|-- "dyn:TabulatedFileTimeseries"
+
+' Class relations (promoted from property wrappers)
+"dyn:Dynamizer" o-- "0..1" "dyn:AbstractTimeseries" : dynamicData
+"dyn:SensorConnection" ..> "0..1" "core:AbstractCityObject" : sensorLocation
+"dyn:TimeseriesComponent" o-- "1" "dyn:AbstractTimeseries" : timeseries
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

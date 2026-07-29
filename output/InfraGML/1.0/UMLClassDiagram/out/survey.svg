@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="380px" preserveAspectRatio="none" style="width:404px;height:380px;" version="1.1" viewBox="0 0 404 380" width="404px" zoomAndPan="magnify"><defs><filter height="300%" id="f1p9p6eq7ork6v" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="337" x="28.5" y="16.708">Part6 - 1.0 - Survey - Only XSD based</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="390" x="2" y="37.6611">http://www.opengis.net/infragml/survey/1.0</text><!--MD5=[d499c551ae35360c33bfbba7b312f415]
+cluster lis--><polygon fill="#FFFFFF" filter="url(#f1p9p6eq7ork6v)" points="44,122.9063,67,122.9063,74,145.2031,338,145.2031,338,368.9063,44,368.9063,44,122.9063" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="44" x2="74" y1="145.2031" y2="145.2031"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="17" x="48" y="137.9014">lis</text><!--MD5=[7e389f6917c7d93aadb24228b2cf3dbc]
+class lis:Survey--><rect fill="#FEFECE" filter="url(#f1p9p6eq7ork6v)" height="194.7891" id="lis:Survey" style="stroke: #A80036; stroke-width: 1.5;" width="261" x="60.5" y="157.9063"/><ellipse cx="147.25" cy="176.875" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M150.2188,182.5156 Q149.6406,182.8125 149,182.9531 Q148.3594,183.1094 147.6563,183.1094 Q145.1563,183.1094 143.8281,181.4688 Q142.5156,179.8125 142.5156,176.6875 Q142.5156,173.5625 143.8281,171.9063 Q145.1563,170.25 147.6563,170.25 Q148.3594,170.25 149,170.4063 Q149.6563,170.5625 150.2188,170.8594 L150.2188,173.5781 Q149.5938,173 149,172.7344 Q148.4063,172.4531 147.7813,172.4531 Q146.4375,172.4531 145.75,173.5313 Q145.0625,174.5938 145.0625,176.6875 Q145.0625,178.7813 145.75,179.8594 Q146.4375,180.9219 147.7813,180.9219 Q148.4063,180.9219 149,180.6563 Q149.5938,180.375 150.2188,179.7969 L150.2188,182.5156 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="165.75" y="174.0449">«ObjectType»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="58" x="178.25" y="188.0137">lis:Survey</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="61.5" x2="320.5" y1="195.8438" y2="195.8438"/><polygon fill="none" points="71.5,201.8438,75.5,205.8438,71.5,209.8438,67.5,205.8438" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="127" x="80.5" y="210.0542">surveyID : anonymous</text><polygon fill="none" points="71.5,214.6484,75.5,218.6484,71.5,222.6484,67.5,218.6484" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="202" x="80.5" y="222.8589">landSurveyor : li:Professional [0..1]</text><polygon fill="none" points="71.5,227.4531,75.5,231.4531,71.5,235.4531,67.5,231.4531" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="80.5" y="235.6636">purposeOfSurvey : xs:string [0..1]</text><polygon fill="none" points="71.5,240.2578,75.5,244.2578,71.5,248.2578,67.5,244.2578" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="152" x="80.5" y="248.4683">type : gml:Reference [0..1]</text><polygon fill="none" points="71.5,253.0625,75.5,257.0625,71.5,261.0625,67.5,257.0625" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="168" x="80.5" y="261.2729">document : li:Document [0..*]</text><polygon fill="none" points="71.5,265.8672,75.5,269.8672,71.5,273.8672,67.5,269.8672" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130" x="80.5" y="274.0776">setup : li:Feature [0..*]</text><polygon fill="none" points="71.5,278.6719,75.5,282.6719,71.5,286.6719,67.5,282.6719" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="159" x="80.5" y="286.8823">equipment : li:Feature [0..1]</text><polygon fill="none" points="71.5,291.4766,75.5,295.4766,71.5,299.4766,67.5,295.4766" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="80.5" y="299.687">surveyProcess : anonymous [0..*]</text><polygon fill="none" points="71.5,304.2813,75.5,308.2813,71.5,312.2813,67.5,308.2813" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="171" x="80.5" y="312.4917">surveyResult : li:Feature [0..*]</text><polygon fill="none" points="71.5,317.0859,75.5,321.0859,71.5,325.0859,67.5,321.0859" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="150" x="80.5" y="325.2964">sampling : li:Feature [0..*]</text><polygon fill="none" points="71.5,329.8906,75.5,333.8906,71.5,337.8906,67.5,333.8906" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="235" x="80.5" y="338.1011">samplingCollection : li:AbstractData [0..*]</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="61.5" x2="320.5" y1="344.6953" y2="344.6953"/><!--MD5=[a806a878fb0d13cf0439d5b984533d2e]
+class li:AbstractData--><rect fill="#FEFECE" filter="url(#f1p9p6eq7ork6v)" height="48" id="li:AbstractData" style="stroke: #A80036; stroke-width: 1.5;" width="124" x="129" y="49.9063"/><ellipse cx="144" cy="65.9063" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M144.1094,61.25 L142.9531,66.3281 L145.2813,66.3281 L144.1094,61.25 Z M142.625,59.0156 L145.6094,59.0156 L148.9688,71.4063 L146.5156,71.4063 L145.75,68.3438 L142.4688,68.3438 L141.7188,71.4063 L139.2813,71.4063 L142.625,59.0156 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="92" x="158" y="70.0605">li:AbstractData</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="130" x2="252" y1="81.9063" y2="81.9063"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="130" x2="252" y1="89.9063" y2="89.9063"/><!--MD5=[adc94c7db0e0660d8cf95d69b0539cf1]
+reverse link li:AbstractData to lis:Survey--><path d="M191,118.3463 C191,130.3963 191,143.9863 191,157.7963 " fill="none" id="li:AbstractData&lt;-lis:Survey" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="184,118.0063,191,98.0063,198,118.0063,184,118.0063" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[72a2a3b17a7d967457ab73f8f3a45014]
+@startuml
+title
+  Part6 - 1.0 - Survey - Only XSD based
+  http://www.opengis.net/infragml/survey/1.0
+end title
+
+package lis {
+class "lis:Survey" <<ObjectType>> {
+  # surveyID : anonymous
+  # landSurveyor : li:Professional [0..1]
+  # purposeOfSurvey : xs:string [0..1]
+  # type : gml:Reference [0..1]
+  # document : li:Document [0..*]
+  # setup : li:Feature [0..*]
+  # equipment : li:Feature [0..1]
+  # surveyProcess : anonymous [0..*]
+  # surveyResult : li:Feature [0..*]
+  # sampling : li:Feature [0..*]
+  # samplingCollection : li:AbstractData [0..*]
+}
+class "lis:SurveyProperty" $property {
+  Survey : lis:Survey
+}
+}
+
+abstract class "li:AbstractData"
+
+"li:AbstractData" <|- - "lis:Survey"
+
+remove $property
+
+
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 21.0.11+10-1-24.04.2-Ubuntu
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

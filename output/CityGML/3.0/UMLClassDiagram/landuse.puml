@@ -1,0 +1,45 @@
+@startuml
+title
+  CityGML - 3.0 - Landuse - Only XSD based
+  http://www.opengis.net/citygml/landuse/3.0
+end title
+
+package luse {
+abstract class "luse:ADEOfLandUse" $adeOf
+class "luse:ADEOfLandUseProperty" $property $adeOf {
+  ADEOfLandUse : luse:ADEOfLandUse
+}
+class "luse:LandUse" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfLandUse : luse:ADEOfLandUse [0..*]
+}
+class "luse:LandUseProperty" $property {
+  LandUse : luse:LandUse
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractThematicSurface"
+
+"core:AbstractThematicSurface" <|-- "luse:LandUse"
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

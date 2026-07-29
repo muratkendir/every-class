@@ -1,0 +1,165 @@
+@startuml
+title
+  CityGML - 3.0 - Appearance - Only XSD based
+  http://www.opengis.net/citygml/appearance/3.0
+end title
+
+package app {
+abstract class "app:ADEOfAbstractSurfaceData" $adeOf
+class "app:ADEOfAbstractSurfaceDataProperty" $property $adeOf {
+  ADEOfAbstractSurfaceData : app:ADEOfAbstractSurfaceData
+}
+abstract class "app:ADEOfAbstractTexture" $adeOf
+class "app:ADEOfAbstractTextureProperty" $property $adeOf {
+  ADEOfAbstractTexture : app:ADEOfAbstractTexture
+}
+abstract class "app:ADEOfAppearance" $adeOf
+class "app:ADEOfAppearanceProperty" $property $adeOf {
+  ADEOfAppearance : app:ADEOfAppearance
+}
+abstract class "app:ADEOfGeoreferencedTexture" $adeOf
+class "app:ADEOfGeoreferencedTextureProperty" $property $adeOf {
+  ADEOfGeoreferencedTexture : app:ADEOfGeoreferencedTexture
+}
+abstract class "app:ADEOfParameterizedTexture" $adeOf
+class "app:ADEOfParameterizedTextureProperty" $property $adeOf {
+  ADEOfParameterizedTexture : app:ADEOfParameterizedTexture
+}
+abstract class "app:ADEOfX3DMaterial" $adeOf
+class "app:ADEOfX3DMaterialProperty" $property $adeOf {
+  ADEOfX3DMaterial : app:ADEOfX3DMaterial
+}
+abstract class "app:AbstractSurfaceData" <<FeatureType>> {
+  # isFront : xs:boolean [0..1]
+  ~ adeOfAbstractSurfaceData : app:ADEOfAbstractSurfaceData [0..*]
+}
+class "app:AbstractSurfaceDataProperty" $property {
+  AbstractSurfaceData : app:AbstractSurfaceData
+}
+abstract class "app:AbstractTexture" <<FeatureType>> {
+  # imageURI : xs:anyURI
+  # mimeType : gml:Code [0..1]
+  textureType : app:TextureType [0..1]
+  wrapMode : app:WrapMode [0..1]
+  borderColor : app:ColorPlusOpacity [0..1]
+  ~ adeOfAbstractTexture : app:ADEOfAbstractTexture [0..*]
+}
+class "app:AbstractTextureProperty" $property {
+  AbstractTexture : app:AbstractTexture
+}
+abstract class "app:AbstractTextureParameterization" <<DataType>>
+class "app:AbstractTextureParameterizationProperty" $property {
+  AbstractTextureParameterization : app:AbstractTextureParameterization
+}
+class "app:Appearance" <<FeatureType>> {
+  # theme : xs:string [0..1]
+  ~ adeOfAppearance : app:ADEOfAppearance [0..*]
+}
+class "app:AppearanceProperty" $property {
+  Appearance : app:Appearance
+}
+class "app:GeoreferencedTexture" <<FeatureType>> {
+  # preferWorldFile : xs:boolean [0..1]
+  # referencePoint : gml:Point [0..1]
+  # orientation : core:TransformationMatrix2x2 [0..1]
+  # target : xs:anyURI [0..*]
+  ~ adeOfGeoreferencedTexture : app:ADEOfGeoreferencedTexture [0..*]
+}
+class "app:GeoreferencedTextureProperty" $property {
+  GeoreferencedTexture : app:GeoreferencedTexture
+}
+class "app:ParameterizedTexture" <<FeatureType>> {
+  ~ adeOfParameterizedTexture : app:ADEOfParameterizedTexture [0..*]
+}
+class "app:ParameterizedTextureProperty" $property {
+  ParameterizedTexture : app:ParameterizedTexture
+}
+class "app:TexCoordGen" <<DataType>> {
+  # worldToTexture : core:TransformationMatrix3x4
+}
+class "app:TexCoordGenProperty" $property {
+  TexCoordGen : app:TexCoordGen
+}
+class "app:TexCoordList" <<DataType>> {
+  # textureCoordinates : gml:doubleList [1..*]
+  # ring : xs:anyURI [1..*]
+}
+class "app:TexCoordListProperty" $property {
+  TexCoordList : app:TexCoordList
+}
+class "app:TextureAssociation" <<ObjectType>> {
+  # target : xs:anyURI
+}
+class "app:TextureAssociationProperty" $property {
+  TextureAssociation : app:TextureAssociation
+}
+class "app:X3DMaterial" <<FeatureType>> {
+  # ambientIntensity : core:DoubleBetween0and1 [0..1]
+  diffuseColor : app:Color [0..1]
+  emissiveColor : app:Color [0..1]
+  specularColor : app:Color [0..1]
+  # shininess : core:DoubleBetween0and1 [0..1]
+  # transparency : core:DoubleBetween0and1 [0..1]
+  # isSmooth : xs:boolean [0..1]
+  # target : xs:anyURI [0..*]
+  ~ adeOfX3DMaterial : app:ADEOfX3DMaterial [0..*]
+}
+class "app:X3DMaterialProperty" $property {
+  X3DMaterial : app:X3DMaterial
+}
+
+' Simple types (from <simpleType> declarations)
+class "app:Color" <<BasicType>>
+class "app:ColorPlusOpacity" <<BasicType>>
+class "app:TextureType" <<Enumeration>> {
+  specific
+  typical
+  unknown
+}
+class "app:WrapMode" <<Enumeration>> {
+  none
+  wrap
+  mirror
+  clamp
+  border
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractAppearance"
+abstract class "core:AbstractFeature"
+abstract class "gml:AbstractGML"
+
+"core:AbstractFeature" <|-- "app:AbstractSurfaceData"
+"app:AbstractSurfaceData" <|-- "app:AbstractTexture"
+"core:AbstractAppearance" <|-- "app:Appearance"
+"app:AbstractTexture" <|-- "app:GeoreferencedTexture"
+"app:AbstractTexture" <|-- "app:ParameterizedTexture"
+"app:AbstractTextureParameterization" <|-- "app:TexCoordGen"
+"app:AbstractTextureParameterization" <|-- "app:TexCoordList"
+"gml:AbstractGML" <|-- "app:TextureAssociation"
+"app:AbstractSurfaceData" <|-- "app:X3DMaterial"
+
+' Class relations (promoted from property wrappers)
+"app:Appearance" o-- "0..*" "app:AbstractSurfaceData" : surfaceData
+"app:ParameterizedTexture" "1" *-- "0..*" "app:TextureAssociation" : textureParameterization
+"app:TextureAssociation" "1" *-- "1" "app:AbstractTextureParameterization" : textureParameterization
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

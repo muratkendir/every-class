@@ -1,0 +1,36 @@
+@startuml
+title
+  CityGML - 2.0 - Cityfurniture - Only XSD based
+  http://www.opengis.net/citygml/cityfurniture/2.0
+end title
+
+class "CityFurniture" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod1Geometry : gml:Geometry [0..1]
+  # lod2Geometry : gml:Geometry [0..1]
+  # lod3Geometry : gml:Geometry [0..1]
+  # lod4Geometry : gml:Geometry [0..1]
+  # lod1TerrainIntersection : gml:MultiCurve [0..1]
+  # lod2TerrainIntersection : gml:MultiCurve [0..1]
+  # lod3TerrainIntersection : gml:MultiCurve [0..1]
+  # lod4TerrainIntersection : gml:MultiCurve [0..1]
+  # lod1ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod2ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod3ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  #  : _GenericApplicationPropertyOfCityFurniture [0..*]
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "CityFurniture"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

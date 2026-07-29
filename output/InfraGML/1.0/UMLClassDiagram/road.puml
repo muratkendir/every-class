@@ -1,0 +1,92 @@
+@startuml
+title
+  Part4 - 1.0 - Road - Only XSD based
+  http://www.opengis.net/infragml/road/1.0
+end title
+
+package lifr {
+class "lifr:Road" <<FeatureType>> {
+  # roadID : anonymous
+  # approximateWidth : gml:Length [0..1]
+}
+class "lifr:RoadProperty" $property {
+  Road : lifr:Road
+}
+class "lifr:RoadElement" <<FeatureType>> {
+  # roadElementID : anonymous
+  # roadElementType : gml:Reference
+  # material : xs:string [0..1]
+}
+class "lifr:RoadElementProperty" $property {
+  RoadElement : lifr:RoadElement
+}
+class "lifr:RoadElementSet" <<ObjectType>> {
+  # roadElementSetID : anonymous
+}
+class "lifr:RoadElementSetProperty" $property {
+  RoadElementSet : lifr:RoadElementSet
+}
+class "lifr:StringLine" <<ObjectType>> {
+  # stringLineID : anonymous
+  # geometry : anonymous
+  # alternativeGeometry : lia:AlignmentCurve [0..1]
+}
+class "lifr:StringLineProperty" $property {
+  StringLine : lifr:StringLine
+}
+class "lifr:StringLineSet" <<ObjectType>> {
+  # stringLineSetID : anonymous
+}
+class "lifr:StringLineSetProperty" $property {
+  StringLineSet : lifr:StringLineSet
+}
+class "lifr:Surface" <<ObjectType>> {
+  # surfaceID : anonymous
+  # geometry : anonymous
+}
+class "lifr:SurfaceProperty" $property {
+  Surface : lifr:Surface
+}
+class "lifr:SurfaceSet" <<ObjectType>> {
+  # surfaceSetID : anonymous
+}
+class "lifr:SurfaceSetProperty" $property {
+  SurfaceSet : lifr:SurfaceSet
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "li:AbstractData"
+class "li:Set"
+class "lif:FacilityPart"
+class "lif:PhysicalElement"
+
+"lif:FacilityPart" <|-- "lifr:Road"
+"lif:PhysicalElement" <|-- "lifr:RoadElement"
+"li:Set" <|-- "lifr:RoadElementSet"
+"li:AbstractData" <|-- "lifr:StringLine"
+"li:Set" <|-- "lifr:StringLineSet"
+"li:AbstractData" <|-- "lifr:Surface"
+"li:Set" <|-- "lifr:SurfaceSet"
+
+' Class relations (promoted from property wrappers)
+"lifr:Road" o-- "0..*" "lifr:RoadElement" : element
+"lifr:Road" ..> "0..*" "lifr:RoadElementSet" : roadElementSet
+"lifr:Road" ..> "0..*" "lifr:StringLine" : stringLine
+"lifr:Road" ..> "0..*" "lifr:StringLineSet" : stringLineSet
+"lifr:Road" ..> "0..*" "lifr:Surface" : surface
+"lifr:Road" ..> "0..*" "lifr:SurfaceSet" : surfaceSet
+"lifr:RoadElementSet" o-- "1..*" "lifr:RoadElement" : element
+"lifr:StringLineSet" ..> "1..*" "lifr:StringLine" : stringLine
+"lifr:SurfaceSet" ..> "1..*" "lifr:Surface" : surface
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

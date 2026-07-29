@@ -1,0 +1,138 @@
+@startuml
+title
+  CityGML - 3.0 - Bridge - Only XSD based
+  http://www.opengis.net/citygml/bridge/3.0
+end title
+
+package brid {
+abstract class "brid:ADEOfAbstractBridge" $adeOf
+class "brid:ADEOfAbstractBridgeProperty" $property $adeOf {
+  ADEOfAbstractBridge : brid:ADEOfAbstractBridge
+}
+abstract class "brid:ADEOfBridge" $adeOf
+class "brid:ADEOfBridgeProperty" $property $adeOf {
+  ADEOfBridge : brid:ADEOfBridge
+}
+abstract class "brid:ADEOfBridgeConstructiveElement" $adeOf
+class "brid:ADEOfBridgeConstructiveElementProperty" $property $adeOf {
+  ADEOfBridgeConstructiveElement : brid:ADEOfBridgeConstructiveElement
+}
+abstract class "brid:ADEOfBridgeFurniture" $adeOf
+class "brid:ADEOfBridgeFurnitureProperty" $property $adeOf {
+  ADEOfBridgeFurniture : brid:ADEOfBridgeFurniture
+}
+abstract class "brid:ADEOfBridgeInstallation" $adeOf
+class "brid:ADEOfBridgeInstallationProperty" $property $adeOf {
+  ADEOfBridgeInstallation : brid:ADEOfBridgeInstallation
+}
+abstract class "brid:ADEOfBridgePart" $adeOf
+class "brid:ADEOfBridgePartProperty" $property $adeOf {
+  ADEOfBridgePart : brid:ADEOfBridgePart
+}
+abstract class "brid:ADEOfBridgeRoom" $adeOf
+class "brid:ADEOfBridgeRoomProperty" $property $adeOf {
+  ADEOfBridgeRoom : brid:ADEOfBridgeRoom
+}
+abstract class "brid:AbstractBridge" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # isMovable : xs:boolean [0..1]
+  # address : core:Address [0..*]
+  ~ adeOfAbstractBridge : brid:ADEOfAbstractBridge [0..*]
+}
+class "brid:AbstractBridgeProperty" $property {
+  AbstractBridge : brid:AbstractBridge
+}
+class "brid:Bridge" <<FeatureType>> {
+  ~ adeOfBridge : brid:ADEOfBridge [0..*]
+}
+class "brid:BridgeProperty" $property {
+  Bridge : brid:Bridge
+}
+class "brid:BridgeConstructiveElement" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBridgeConstructiveElement : brid:ADEOfBridgeConstructiveElement [0..*]
+}
+class "brid:BridgeConstructiveElementProperty" $property {
+  BridgeConstructiveElement : brid:BridgeConstructiveElement
+}
+class "brid:BridgeFurniture" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBridgeFurniture : brid:ADEOfBridgeFurniture [0..*]
+}
+class "brid:BridgeFurnitureProperty" $property {
+  BridgeFurniture : brid:BridgeFurniture
+}
+class "brid:BridgeInstallation" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBridgeInstallation : brid:ADEOfBridgeInstallation [0..*]
+}
+class "brid:BridgeInstallationProperty" $property {
+  BridgeInstallation : brid:BridgeInstallation
+}
+class "brid:BridgePart" <<FeatureType>> {
+  ~ adeOfBridgePart : brid:ADEOfBridgePart [0..*]
+}
+class "brid:BridgePartProperty" $property {
+  BridgePart : brid:BridgePart
+}
+class "brid:BridgeRoom" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfBridgeRoom : brid:ADEOfBridgeRoom [0..*]
+}
+class "brid:BridgeRoomProperty" $property {
+  BridgeRoom : brid:BridgeRoom
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "con:AbstractConstruction"
+abstract class "con:AbstractConstructiveElement"
+abstract class "con:AbstractFurniture"
+abstract class "con:AbstractInstallation"
+abstract class "core:AbstractUnoccupiedSpace"
+
+"con:AbstractConstruction" <|-- "brid:AbstractBridge"
+"brid:AbstractBridge" <|-- "brid:Bridge"
+"con:AbstractConstructiveElement" <|-- "brid:BridgeConstructiveElement"
+"con:AbstractFurniture" <|-- "brid:BridgeFurniture"
+"con:AbstractInstallation" <|-- "brid:BridgeInstallation"
+"brid:AbstractBridge" <|-- "brid:BridgePart"
+"core:AbstractUnoccupiedSpace" <|-- "brid:BridgeRoom"
+
+' Class relations (promoted from property wrappers)
+"brid:AbstractBridge" o-- "0..*" "brid:BridgeConstructiveElement" : bridgeConstructiveElement
+"brid:AbstractBridge" o-- "0..*" "brid:BridgeInstallation" : bridgeInstallation
+"brid:AbstractBridge" o-- "0..*" "brid:BridgeRoom" : bridgeRoom
+"brid:AbstractBridge" o-- "0..*" "brid:BridgeFurniture" : bridgeFurniture
+"brid:Bridge" o-- "0..*" "brid:BridgePart" : bridgePart
+"brid:BridgeRoom" o-- "0..*" "brid:BridgeFurniture" : bridgeFurniture
+"brid:BridgeRoom" o-- "0..*" "brid:BridgeInstallation" : bridgeInstallation
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

@@ -1,0 +1,70 @@
+@startuml
+title
+  Part2 - 1.0 - Facility - Only XSD based
+  http://www.opengis.net/infragml/facility/1.0
+end title
+
+package lif {
+class "lif:Building" <<FeatureType>>
+class "lif:BuildingProperty" $property {
+  Building : lif:Building
+}
+class "lif:Facility" <<FeatureType>> {
+  # facilityID : anonymous
+  # type : xs:string
+  # status : gml:Reference
+  # footprint : gml:Surface [0..1]
+}
+class "lif:FacilityProperty" $property {
+  Facility : lif:Facility
+}
+class "lif:FacilityPart" <<FeatureType>> {
+  # facilityPartID : anonymous
+  # type : gml:Reference
+  # status : gml:Reference
+  # footprint : gml:Surface [0..1]
+  # alternative : xs:string [0..1]
+}
+class "lif:FacilityPartProperty" $property {
+  FacilityPart : lif:FacilityPart
+}
+class "lif:FacilityPartRelationship" <<ObjectType>> {
+  # relationship : xs:string
+  # description : xs:string
+}
+class "lif:FacilityPartRelationshipProperty" $property {
+  FacilityPartRelationship : lif:FacilityPartRelationship
+}
+class "lif:PhysicalElement" <<FeatureType>>
+class "lif:PhysicalElementProperty" $property {
+  PhysicalElement : lif:PhysicalElement
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+class "li:Feature"
+
+"lif:FacilityPart" <|-- "lif:Building"
+"li:Feature" <|-- "lif:Facility"
+"li:Feature" <|-- "lif:FacilityPart"
+"gml:AbstractGML" <|-- "lif:FacilityPartRelationship"
+"li:Feature" <|-- "lif:PhysicalElement"
+
+' Class relations (promoted from property wrappers)
+"lif:Facility" o-- "0..*" "lif:FacilityPart" : part
+"lif:FacilityPart" ..> "0..*" "lif:FacilityPartRelationship" : relationship
+"lif:FacilityPartRelationship" o-- "1..*" "lif:FacilityPart" : facilityPart
+"lif:PhysicalElement" o-- "0..1" "lif:PhysicalElement" : partOf
+"lif:PhysicalElement" o-- "0..*" "lif:PhysicalElement" : part
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

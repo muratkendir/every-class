@@ -1,0 +1,179 @@
+@startuml
+title
+  IndoorGML - 1.0 - Indoorgmlcore - Only XSD based
+  http://www.opengis.net/indoorgml/1.0/core
+end title
+
+class "IndoorFeatures" <<FeatureType>> {
+  # primalSpaceFeatures : PrimalSpaceFeatures [0..1]
+  # multiLayeredGraph : MultiLayeredGraph [0..1]
+}
+class "PrimalSpaceFeaturesProperty" $property {
+  #  : PrimalSpaceFeatures
+}
+class "PrimalSpaceFeatures" <<FeatureType>> {
+  # cellSpaceMember : CellSpaceMember [0..*]
+  # cellSpaceBoundaryMember : CellSpaceBoundaryMember [0..*]
+}
+class "CellSpaceMember" <<ObjectType>> {
+  #  : CellSpace
+}
+class "CellSpaceBoundaryMember" <<ObjectType>> {
+  #  : CellSpaceBoundary
+}
+class "MultiLayeredGraphProperty" $property {
+  #  : MultiLayeredGraph
+}
+class "MultiLayeredGraph" <<FeatureType>> {
+  # spaceLayers : SpaceLayers [1..*]
+  # interEdges : InterEdges [0..*]
+}
+class "SpaceLayers" <<FeatureType>> {
+  # spaceLayerMember : SpaceLayerMember [1..*]
+}
+class "SpaceLayerMember" <<ObjectType>> {
+  #  : SpaceLayer
+}
+class "InterEdges" <<FeatureType>> {
+  # interLayerConnectionMember : InterLayerConnectionMember [1..*]
+}
+class "InterLayerConnectionMember" <<ObjectType>> {
+  #  : InterLayerConnection
+}
+class "InterLayerConnection" <<FeatureType>> {
+  # typeOfTopoExpression : typeOfTopoExpressionCode [0..1]
+  # comment : xs:string [0..1]
+  # interConnects : State [2]
+  # ConnectedLayers : SpaceLayer [2]
+}
+class "InterLayerConnectionProperty" $property {
+  #  : InterLayerConnection
+}
+class "SpaceLayer" <<FeatureType>> {
+  # usage : gml:Code [0..*]
+  # terminationDate : xs:dateTime [0..1]
+  # function : gml:Code [0..*]
+  # creationDate : xs:dateTime [0..1]
+  # class : SpaceLayerClassType [0..1]
+  # nodes : Nodes [1..*]
+  # edges : Edges [0..*]
+}
+class "SpaceLayerProperty" $property {
+  #  : SpaceLayer
+}
+class "Nodes" <<FeatureType>> {
+  # stateMember : StateMember [1..*]
+}
+class "StateMember" <<ObjectType>> {
+  #  : State
+}
+class "Edges" <<FeatureType>> {
+  # transitionMember : TransitionMember [0..*]
+}
+class "TransitionMember" <<ObjectType>> {
+  #  : Transition
+}
+class "State" <<FeatureType>> {
+  # duality : CellSpace [0..1]
+  # connects : Transition [0..*]
+  # geometry : gml:Point [0..1]
+}
+class "StateProperty" $property {
+  #  : State
+}
+class "Transition" <<FeatureType>> {
+  # weight : xs:double [0..1]
+  # connects : State [2]
+  # duality : CellSpaceBoundary [0..1]
+  # geometry : gml:Curve [0..1]
+}
+class "TransitionProperty" $property {
+  #  : Transition
+}
+class "CellSpace" <<FeatureType>> {
+  # cellSpaceGeometry : CellSpaceGeometry [0..1]
+  # duality : State [0..1]
+  # externalReference : ExternalReference [0..*]
+  # partialboundedBy : CellSpaceBoundary [0..*]
+}
+class "CellSpaceProperty" $property {
+  #  : CellSpace
+}
+class "CellSpaceGeometry" <<DataType>> {
+  # Geometry3D : gml:Solid
+  # Geometry2D : gml:Surface
+}
+class "CellSpaceBoundary" <<FeatureType>> {
+  # duality : Transition [0..1]
+  # cellSpaceBoundaryGeometry : CellSpaceBoundaryGeometry [0..1]
+  # externalReference : ExternalReference [0..*]
+}
+class "CellSpaceBoundaryGeometry" <<DataType>> {
+  # geometry3D : gml:Surface
+  # geometry2D : gml:Curve
+}
+class "CellSpaceBoundaryProperty" $property {
+  #  : CellSpaceBoundary
+}
+class "ExternalReference" <<DataType>> {
+  # informationSystem : xs:anyURI [0..1]
+  # externalObject : externalObjectReference
+}
+class "externalObjectReference" <<DataType>> {
+  # name : xs:string [0..1]
+  # uri : xs:anyURI
+}
+
+' Simple types (from <simpleType> declarations)
+class "SpaceLayerClassType" <<Enumeration>> {
+  TOPOGRAPHIC
+  SENSOR
+  LOGICAL
+  TAGS
+  UNKNOWN
+}
+class "typeOfTopoExpressionCode" <<Union>>
+class "typeOfTopoExpressionCodeEnumeration" <<Enumeration>> {
+  CONTAINS
+  OVERLAPS
+  EQUALS
+  WITHIN
+  CROSSES
+  INTERSECTS
+}
+class "typeOfTopoExpressionCodeOther" <<BasicType>>
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractFeatureMember"
+
+"gml:AbstractFeature" <|-- "IndoorFeatures"
+"gml:AbstractFeature" <|-- "PrimalSpaceFeatures"
+"gml:AbstractFeatureMember" <|-- "CellSpaceMember"
+"gml:AbstractFeatureMember" <|-- "CellSpaceBoundaryMember"
+"gml:AbstractFeature" <|-- "MultiLayeredGraph"
+"gml:AbstractFeature" <|-- "SpaceLayers"
+"gml:AbstractFeatureMember" <|-- "SpaceLayerMember"
+"gml:AbstractFeature" <|-- "InterEdges"
+"gml:AbstractFeatureMember" <|-- "InterLayerConnectionMember"
+"gml:AbstractFeature" <|-- "InterLayerConnection"
+"gml:AbstractFeature" <|-- "SpaceLayer"
+"gml:AbstractFeature" <|-- "Nodes"
+"gml:AbstractFeatureMember" <|-- "StateMember"
+"gml:AbstractFeature" <|-- "Edges"
+"gml:AbstractFeatureMember" <|-- "TransitionMember"
+"gml:AbstractFeature" <|-- "State"
+"gml:AbstractFeature" <|-- "Transition"
+"gml:AbstractFeature" <|-- "CellSpace"
+"gml:AbstractFeature" <|-- "CellSpaceBoundary"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

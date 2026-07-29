@@ -1,0 +1,83 @@
+@startuml
+title
+  CityGML - 2.0 - Transportation - Only XSD based
+  http://www.opengis.net/citygml/transportation/2.0
+end title
+
+abstract class "AbstractTransportationObject" <<DataType>> {
+  #  : _GenericApplicationPropertyOfTransportationObject [0..*]
+}
+class "TransportationComplex" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # trafficArea : TrafficArea [0..*]
+  # auxiliaryTrafficArea : AuxiliaryTrafficArea [0..*]
+  # lod0Network : gml:GeometricComplex [0..*]
+  # lod1MultiSurface : gml:MultiSurface [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  #  : _GenericApplicationPropertyOfTransportationComplex [0..*]
+}
+class "TrafficArea" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # surfaceMaterial : gml:Code [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  #  : _GenericApplicationPropertyOfTrafficArea [0..*]
+}
+class "AuxiliaryTrafficArea" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # surfaceMaterial : gml:Code [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  #  : _GenericApplicationPropertyOfAuxiliaryTrafficArea [0..*]
+}
+class "TrafficAreaProperty" $property {
+  #  : TrafficArea
+}
+class "AuxiliaryTrafficAreaProperty" $property {
+  #  : AuxiliaryTrafficArea
+}
+class "Track" <<DataType>> {
+  #  : _GenericApplicationPropertyOfTrack [0..*]
+}
+class "Road" <<DataType>> {
+  #  : _GenericApplicationPropertyOfRoad [0..*]
+}
+class "Railway" <<DataType>> {
+  #  : _GenericApplicationPropertyOfRailway [0..*]
+}
+class "Square" <<DataType>> {
+  #  : _GenericApplicationPropertyOfSquare [0..*]
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "AbstractTransportationObject"
+"AbstractTransportationObject" <|-- "TransportationComplex"
+"AbstractTransportationObject" <|-- "TrafficArea"
+"AbstractTransportationObject" <|-- "AuxiliaryTrafficArea"
+"TransportationComplex" <|-- "Track"
+"TransportationComplex" <|-- "Road"
+"TransportationComplex" <|-- "Railway"
+"TransportationComplex" <|-- "Square"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

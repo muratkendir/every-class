@@ -1,0 +1,29 @@
+@startuml
+title
+  CityGML - 2.0 - Landuse - Only XSD based
+  http://www.opengis.net/citygml/landuse/2.0
+end title
+
+class "LandUse" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # lod0MultiSurface : gml:MultiSurface [0..1]
+  # lod1MultiSurface : gml:MultiSurface [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  #  : _GenericApplicationPropertyOfLandUse [0..*]
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "LandUse"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

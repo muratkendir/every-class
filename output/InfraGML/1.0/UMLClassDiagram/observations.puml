@@ -1,0 +1,210 @@
+@startuml
+title
+  Part6 - 1.0 - Observations - Only XSD based
+  http://www.opengis.net/infragml/observations/1.0
+end title
+
+package liso {
+class "liso:AngularObservation" <<ObjectType>> {
+  # angle : gml:Angle
+  # angularType : gml:Reference [0..1]
+  # angularQuality : gml:Angle [0..1]
+}
+class "liso:AngularObservationProperty" $property {
+  AngularObservation : liso:AngularObservation
+}
+class "liso:DistanceObservation" <<ObjectType>> {
+  # distance : gml:Length
+  # distanceType : gml:Reference [0..1]
+  # distanceQuality : gml:Length [0..1]
+}
+class "liso:DistanceObservationProperty" $property {
+  DistanceObservation : liso:DistanceObservation
+}
+class "liso:ExteriorOrientation" <<ObjectType>> {
+  # projectionCenterX : gml:Length
+  # projectionCenterY : gml:Length
+  # projectionCenterZ : gml:Length
+  # phi : gml:Angle
+  # theta : gml:Angle
+  # kappa : gml:Angle
+}
+class "liso:ExteriorOrientationProperty" $property {
+  ExteriorOrientation : liso:ExteriorOrientation
+}
+class "liso:GF_PropertyType" <<ObjectType>>
+class "liso:GF_PropertyTypeProperty" $property {
+  GF_PropertyType : liso:GF_
+}
+class "liso:GnssObservation" <<ObjectType>> {
+  # antennaHeight : gml:Length
+}
+class "liso:GnssObservationProperty" $property {
+  GnssObservation : liso:GnssObservation
+}
+class "liso:GnssQuality" <<ObjectType>> {
+  # hDOP : xs:double [0..1]
+  # gDOP : xs:double [0..1]
+  # pDOP : xs:double [0..1]
+  # vDOP : xs:double [0..1]
+  # tDOP : xs:double [0..1]
+}
+class "liso:GnssQualityProperty" $property {
+  GnssQuality : liso:GnssQuality
+}
+class "liso:ImageObservation" <<ObjectType>> {
+  # illuminationElevationAngle : gml:Angle [0..1]
+  # illuminationAzimuthAngle : gml:Angle [0..1]
+  # cloudCoverPercentage : xs:double [0..1]
+  # triangulationIndicator : xs:boolean [0..1]
+  # radiometricCalibrationDataAvailability : xs:boolean [0..1]
+  # cameraCalibrationInformationAvailability : xs:boolean [0..1]
+  # filmDistortionInformationAvailability : xs:boolean [0..1]
+  # lensDistortionInformationAvailability : xs:boolean [0..1]
+}
+class "liso:ImageObservationProperty" $property {
+  ImageObservation : liso:ImageObservation
+}
+class "liso:InstrumentPoint" <<FeatureType>>
+class "liso:InstrumentPointProperty" $property {
+  InstrumentPoint : liso:InstrumentPoint
+}
+class "liso:LevelObservation" <<ObjectType>> {
+  # deltaHeight : gml:Length
+  # deltaHeightQuality : gml:Length [0..1]
+}
+class "liso:LevelObservationProperty" $property {
+  LevelObservation : liso:LevelObservation
+}
+class "liso:PanoramaImage" <<FeatureType>> {
+  # panoramaImageID : anonymous
+}
+class "liso:PanoramaImageProperty" $property {
+  PanoramaImage : liso:PanoramaImage
+}
+class "liso:PointCloudObservation" <<ObjectType>> {
+  # numberPoints : xs:integer [0..1]
+  # maxSNR : xs:integer [0..1]
+  # minSNR : xs:integer [0..1]
+  # maxIntensity : xs:integer [0..1]
+  # minIntensity : xs:integer [0..1]
+  # maxDistance : gml:Length [0..1]
+  # minDistance : gml:Length [0..1]
+  # maxNorthing : gml:Length [0..1]
+  # minNorthing : gml:Length [0..1]
+  # maxEasting : gml:Length [0..1]
+  # minEasting : gml:Length [0..1]
+  # maxElevation : gml:Length [0..1]
+  # minElevation : gml:Length [0..1]
+}
+class "liso:PointCloudObservationProperty" $property {
+  PointCloudObservation : liso:PointCloudObservation
+}
+class "liso:RtkInfo" <<ObjectType>> {
+  # networkSolution : xs:boolean [0..1]
+  # networkType : gml:Reference [0..1]
+  # dataFormat : xs:string [0..1]
+  # insideRTKNetwork : xs:boolean [0..1]
+  # mountpoint : xs:string [0..1]
+  # numNetworkReferences : xs:integer [0..1]
+  # numRtkPositionsUsed : xs:integer [0..1]
+}
+class "liso:RtkInfoProperty" $property {
+  RtkInfo : liso:RtkInfo
+}
+class "liso:SatelliteInfo" <<ObjectType>> {
+  # systemType : gml:Reference
+  # numSatsTracked : xs:integer [0..1]
+  # numSatsUsed : xs:integer [0..1]
+}
+class "liso:SatelliteInfoProperty" $property {
+  SatelliteInfo : liso:SatelliteInfo
+}
+class "liso:Setup" <<FeatureType>> {
+  # instrumentHeight : gml:Length [0..1]
+  # validTime : gml:TimePeriod [0..1]
+  # observations : anonymous [0..*]
+  # setupObservations : anonymous [0..*]
+}
+class "liso:SetupProperty" $property {
+  Setup : liso:Setup
+}
+class "liso:SurveyObservation" <<ObjectType>> {
+  phenomenonTime : liso:TimeObject [0..1]
+  # resultTime : gml:TimeInstant
+  # type : gml:Reference [0..1]
+  # bInstrumentPoint : xs:boolean
+}
+class "liso:SurveyObservationProperty" $property {
+  SurveyObservation : liso:SurveyObservation
+}
+class "liso:TimeObjectProperty" $property {
+  # AbstractTimeObject : gml:AbstractTimeObject
+}
+class "liso:TpsObservation" <<ObjectType>> {
+  # reflectorHeight : gml:Length
+  # directFace : xs:boolean
+  # meanFace : xs:boolean
+  # horizontalAngle : gml:Angle
+  # hzAngleQuality : gml:Angle [0..1]
+  # verticalAngle : gml:Angle
+  # vAngleQuality : gml:Angle [0..1]
+  # slopeDistance : gml:Length [0..1]
+  # sDistanceQuality : gml:Length [0..1]
+  # azimuth : gml:Angle [0..1]
+  # azQuality : gml:Angle [0..1]
+  # horizontalDistance : gml:Length [0..1]
+  # hDistanceQuality : gml:Length [0..1]
+  # inclinationLength : gml:Angle [0..1]
+  # inclLengthQuality : gml:Angle [0..1]
+  # inclinationCross : gml:Angle [0..1]
+  # inclCrossQuality : gml:Angle [0..1]
+}
+class "liso:TpsObservationProperty" $property {
+  TpsObservation : liso:TpsObservation
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+class "gml:Observation"
+class "li:Feature"
+
+"liso:SurveyObservation" <|-- "liso:AngularObservation"
+"liso:SurveyObservation" <|-- "liso:DistanceObservation"
+"gml:AbstractGML" <|-- "liso:ExteriorOrientation"
+"gml:AbstractGML" <|-- "liso:GF_PropertyType"
+"liso:SurveyObservation" <|-- "liso:GnssObservation"
+"gml:AbstractGML" <|-- "liso:GnssQuality"
+"liso:SurveyObservation" <|-- "liso:ImageObservation"
+"li:Feature" <|-- "liso:InstrumentPoint"
+"liso:SurveyObservation" <|-- "liso:LevelObservation"
+"li:Feature" <|-- "liso:PanoramaImage"
+"liso:SurveyObservation" <|-- "liso:PointCloudObservation"
+"gml:AbstractGML" <|-- "liso:RtkInfo"
+"gml:AbstractGML" <|-- "liso:SatelliteInfo"
+"li:Feature" <|-- "liso:Setup"
+"gml:Observation" <|-- "liso:SurveyObservation"
+"liso:SurveyObservation" <|-- "liso:TpsObservation"
+
+' Class relations (promoted from property wrappers)
+"liso:GnssObservation" ..> "0..1" "liso:GnssQuality" : quality
+"liso:GnssObservation" ..> "0..1" "liso:RtkInfo" : rtkInfo
+"liso:GnssObservation" ..> "0..*" "liso:SatelliteInfo" : satInfo
+"liso:ImageObservation" ..> "0..1" "liso:ExteriorOrientation" : exteriorOrientation
+"liso:PanoramaImage" ..> "1..*" "liso:ImageObservation" : image
+"liso:Setup" o-- "0..1" "liso:InstrumentPoint" : instrumentPoint
+"liso:Setup" o-- "0..1" "liso:PanoramaImage" : panoImage
+"liso:SurveyObservation" ..> "0..*" "liso:ImageObservation" : image
+"liso:SurveyObservation" o-- "0..1" "liso:PanoramaImage" : panoImage
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

@@ -1,0 +1,561 @@
+@startuml
+title
+  KML - 2.2.0 - Ogckml22 - Only XSD based
+  http://www.opengis.net/kml/2.2
+end title
+
+package kml {
+class "kml:vec2" <<DataType>>
+abstract class "kml:AbstractObject" <<DataType>> {
+  ObjectSimpleExtensionGroup : kml:ObjectSimpleExtensionGroup [0..*]
+}
+abstract class "kml:AbstractFeature" <<DataType>> {
+  name : kml:name [0..1]
+  visibility : kml:visibility [0..1]
+  open : kml:open [0..1]
+  # author : atom:author [0..1]
+  # link : atom:link [0..1]
+  address : kml:address [0..1]
+  # AddressDetails : xal:AddressDetails [0..1]
+  phoneNumber : kml:phoneNumber [0..1]
+  Snippet : kml:Snippet [0..1]
+  snippet : kml:snippet [0..1]
+  description : kml:description [0..1]
+  AbstractViewGroup : kml:AbstractViewGroup [0..1]
+  AbstractTimePrimitiveGroup : kml:AbstractTimePrimitiveGroup [0..1]
+  styleUrl : kml:styleUrl [0..1]
+  AbstractStyleSelectorGroup : kml:AbstractStyleSelectorGroup [0..*]
+  Region : kml:Region [0..1]
+  Metadata : kml:Metadata [0..1]
+  ExtendedData : kml:ExtendedData [0..1]
+  AbstractFeatureSimpleExtensionGroup : kml:AbstractFeatureSimpleExtensionGroup [0..*]
+  AbstractFeatureObjectExtensionGroup : kml:AbstractFeatureObjectExtensionGroup [0..*]
+}
+class "kml:Snippet" <<DataType>>
+abstract class "kml:AbstractView" <<DataType>> {
+  AbstractViewSimpleExtensionGroup : kml:AbstractViewSimpleExtensionGroup [0..*]
+  AbstractViewObjectExtensionGroup : kml:AbstractViewObjectExtensionGroup [0..*]
+}
+class "kml:LookAt" <<DataType>> {
+  longitude : kml:longitude [0..1]
+  latitude : kml:latitude [0..1]
+  altitude : kml:altitude [0..1]
+  heading : kml:heading [0..1]
+  tilt : kml:tilt [0..1]
+  range : kml:range [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  LookAtSimpleExtensionGroup : kml:LookAtSimpleExtensionGroup [0..*]
+  LookAtObjectExtensionGroup : kml:LookAtObjectExtensionGroup [0..*]
+}
+class "kml:Camera" <<DataType>> {
+  longitude : kml:longitude [0..1]
+  latitude : kml:latitude [0..1]
+  altitude : kml:altitude [0..1]
+  heading : kml:heading [0..1]
+  tilt : kml:tilt [0..1]
+  roll : kml:roll [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  CameraSimpleExtensionGroup : kml:CameraSimpleExtensionGroup [0..*]
+  CameraObjectExtensionGroup : kml:CameraObjectExtensionGroup [0..*]
+}
+class "kml:Metadata" <<DataType>>
+class "kml:ExtendedData" <<DataType>> {
+  Data : kml:Data [0..*]
+  SchemaData : kml:SchemaData [0..*]
+}
+class "kml:SchemaData" <<DataType>> {
+  SimpleData : kml:SimpleData [0..*]
+  SchemaDataExtension : kml:SchemaDataExtension [0..*]
+}
+class "kml:SimpleData" <<DataType>>
+class "kml:Data" <<DataType>> {
+  displayName : kml:displayName [0..1]
+  value : kml:value
+  DataExtension : kml:DataExtension [0..*]
+}
+abstract class "kml:AbstractContainer" <<DataType>> {
+  AbstractContainerSimpleExtensionGroup : kml:AbstractContainerSimpleExtensionGroup [0..*]
+  AbstractContainerObjectExtensionGroup : kml:AbstractContainerObjectExtensionGroup [0..*]
+}
+abstract class "kml:AbstractGeometry" <<DataType>> {
+  AbstractGeometrySimpleExtensionGroup : kml:AbstractGeometrySimpleExtensionGroup [0..*]
+  AbstractGeometryObjectExtensionGroup : kml:AbstractGeometryObjectExtensionGroup [0..*]
+}
+abstract class "kml:AbstractOverlay" <<DataType>> {
+  color : kml:color [0..1]
+  drawOrder : kml:drawOrder [0..1]
+  Icon : kml:Icon [0..1]
+  AbstractOverlaySimpleExtensionGroup : kml:AbstractOverlaySimpleExtensionGroup [0..*]
+  AbstractOverlayObjectExtensionGroup : kml:AbstractOverlayObjectExtensionGroup [0..*]
+}
+abstract class "kml:AbstractStyleSelector" <<DataType>> {
+  AbstractStyleSelectorSimpleExtensionGroup : kml:AbstractStyleSelectorSimpleExtensionGroup [0..*]
+  AbstractStyleSelectorObjectExtensionGroup : kml:AbstractStyleSelectorObjectExtensionGroup [0..*]
+}
+abstract class "kml:AbstractTimePrimitive" <<DataType>> {
+  AbstractTimePrimitiveSimpleExtensionGroup : kml:AbstractTimePrimitiveSimpleExtensionGroup [0..*]
+  AbstractTimePrimitiveObjectExtensionGroup : kml:AbstractTimePrimitiveObjectExtensionGroup [0..*]
+}
+class "kml:Kml" <<DataType>> {
+  NetworkLinkControl : kml:NetworkLinkControl [0..1]
+  AbstractFeatureGroup : kml:AbstractFeatureGroup [0..1]
+  KmlSimpleExtensionGroup : kml:KmlSimpleExtensionGroup [0..*]
+  KmlObjectExtensionGroup : kml:KmlObjectExtensionGroup [0..*]
+}
+class "kml:NetworkLinkControl" <<DataType>> {
+  minRefreshPeriod : kml:minRefreshPeriod [0..1]
+  maxSessionLength : kml:maxSessionLength [0..1]
+  cookie : kml:cookie [0..1]
+  message : kml:message [0..1]
+  linkName : kml:linkName [0..1]
+  linkDescription : kml:linkDescription [0..1]
+  linkSnippet : kml:linkSnippet [0..1]
+  expires : kml:expires [0..1]
+  Update : kml:Update [0..1]
+  AbstractViewGroup : kml:AbstractViewGroup [0..1]
+  NetworkLinkControlSimpleExtensionGroup : kml:NetworkLinkControlSimpleExtensionGroup [0..*]
+  NetworkLinkControlObjectExtensionGroup : kml:NetworkLinkControlObjectExtensionGroup [0..*]
+}
+class "kml:Document" <<DataType>> {
+  Schema : kml:Schema [0..*]
+  AbstractFeatureGroup : kml:AbstractFeatureGroup [0..*]
+  DocumentSimpleExtensionGroup : kml:DocumentSimpleExtensionGroup [0..*]
+  DocumentObjectExtensionGroup : kml:DocumentObjectExtensionGroup [0..*]
+}
+class "kml:Schema" <<DataType>> {
+  SimpleField : kml:SimpleField [0..*]
+  SchemaExtension : kml:SchemaExtension [0..*]
+}
+class "kml:SimpleField" <<DataType>> {
+  displayName : kml:displayName [0..1]
+  SimpleFieldExtension : kml:SimpleFieldExtension [0..*]
+}
+class "kml:Folder" <<DataType>> {
+  AbstractFeatureGroup : kml:AbstractFeatureGroup [0..*]
+  FolderSimpleExtensionGroup : kml:FolderSimpleExtensionGroup [0..*]
+  FolderObjectExtensionGroup : kml:FolderObjectExtensionGroup [0..*]
+}
+class "kml:Placemark" <<DataType>> {
+  AbstractGeometryGroup : kml:AbstractGeometryGroup [0..1]
+  PlacemarkSimpleExtensionGroup : kml:PlacemarkSimpleExtensionGroup [0..*]
+  PlacemarkObjectExtensionGroup : kml:PlacemarkObjectExtensionGroup [0..*]
+}
+class "kml:NetworkLink" <<DataType>> {
+  refreshVisibility : kml:refreshVisibility [0..1]
+  flyToView : kml:flyToView [0..1]
+  Url : kml:Url [0..1]
+  Link : kml:Link [0..1]
+  NetworkLinkSimpleExtensionGroup : kml:NetworkLinkSimpleExtensionGroup [0..*]
+  NetworkLinkObjectExtensionGroup : kml:NetworkLinkObjectExtensionGroup [0..*]
+}
+class "kml:Region" <<DataType>> {
+  LatLonAltBox : kml:LatLonAltBox [0..1]
+  Lod : kml:Lod [0..1]
+  RegionSimpleExtensionGroup : kml:RegionSimpleExtensionGroup [0..*]
+  RegionObjectExtensionGroup : kml:RegionObjectExtensionGroup [0..*]
+}
+class "kml:LatLonAltBox" <<DataType>> {
+  minAltitude : kml:minAltitude [0..1]
+  maxAltitude : kml:maxAltitude [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  LatLonAltBoxSimpleExtensionGroup : kml:LatLonAltBoxSimpleExtensionGroup [0..*]
+  LatLonAltBoxObjectExtensionGroup : kml:LatLonAltBoxObjectExtensionGroup [0..*]
+}
+class "kml:Lod" <<DataType>> {
+  minLodPixels : kml:minLodPixels [0..1]
+  maxLodPixels : kml:maxLodPixels [0..1]
+  minFadeExtent : kml:minFadeExtent [0..1]
+  maxFadeExtent : kml:maxFadeExtent [0..1]
+  LodSimpleExtensionGroup : kml:LodSimpleExtensionGroup [0..*]
+  LodObjectExtensionGroup : kml:LodObjectExtensionGroup [0..*]
+}
+class "kml:Link" <<DataType>> {
+  refreshMode : kml:refreshMode [0..1]
+  refreshInterval : kml:refreshInterval [0..1]
+  viewRefreshMode : kml:viewRefreshMode [0..1]
+  viewRefreshTime : kml:viewRefreshTime [0..1]
+  viewBoundScale : kml:viewBoundScale [0..1]
+  viewFormat : kml:viewFormat [0..1]
+  httpQuery : kml:httpQuery [0..1]
+  LinkSimpleExtensionGroup : kml:LinkSimpleExtensionGroup [0..*]
+  LinkObjectExtensionGroup : kml:LinkObjectExtensionGroup [0..*]
+}
+class "kml:MultiGeometry" <<DataType>> {
+  AbstractGeometryGroup : kml:AbstractGeometryGroup [0..*]
+  MultiGeometrySimpleExtensionGroup : kml:MultiGeometrySimpleExtensionGroup [0..*]
+  MultiGeometryObjectExtensionGroup : kml:MultiGeometryObjectExtensionGroup [0..*]
+}
+class "kml:Point" <<DataType>> {
+  extrude : kml:extrude [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  coordinates : kml:coordinates [0..1]
+  PointSimpleExtensionGroup : kml:PointSimpleExtensionGroup [0..*]
+  PointObjectExtensionGroup : kml:PointObjectExtensionGroup [0..*]
+}
+class "kml:LineString" <<DataType>> {
+  extrude : kml:extrude [0..1]
+  tessellate : kml:tessellate [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  coordinates : kml:coordinates [0..1]
+  LineStringSimpleExtensionGroup : kml:LineStringSimpleExtensionGroup [0..*]
+  LineStringObjectExtensionGroup : kml:LineStringObjectExtensionGroup [0..*]
+}
+class "kml:LinearRing" <<DataType>> {
+  extrude : kml:extrude [0..1]
+  tessellate : kml:tessellate [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  coordinates : kml:coordinates [0..1]
+  LinearRingSimpleExtensionGroup : kml:LinearRingSimpleExtensionGroup [0..*]
+  LinearRingObjectExtensionGroup : kml:LinearRingObjectExtensionGroup [0..*]
+}
+class "kml:Polygon" <<DataType>> {
+  extrude : kml:extrude [0..1]
+  tessellate : kml:tessellate [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  outerBoundaryIs : kml:outerBoundaryIs [0..1]
+  innerBoundaryIs : kml:innerBoundaryIs [0..*]
+  PolygonSimpleExtensionGroup : kml:PolygonSimpleExtensionGroup [0..*]
+  PolygonObjectExtensionGroup : kml:PolygonObjectExtensionGroup [0..*]
+}
+class "kml:Boundary" <<DataType>> {
+  LinearRing : kml:LinearRing [0..1]
+  BoundarySimpleExtensionGroup : kml:BoundarySimpleExtensionGroup [0..*]
+  BoundaryObjectExtensionGroup : kml:BoundaryObjectExtensionGroup [0..*]
+}
+class "kml:Model" <<DataType>> {
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  Location : kml:Location [0..1]
+  Orientation : kml:Orientation [0..1]
+  Scale : kml:Scale [0..1]
+  Link : kml:Link [0..1]
+  ResourceMap : kml:ResourceMap [0..1]
+  ModelSimpleExtensionGroup : kml:ModelSimpleExtensionGroup [0..*]
+  ModelObjectExtensionGroup : kml:ModelObjectExtensionGroup [0..*]
+}
+class "kml:Location" <<DataType>> {
+  longitude : kml:longitude [0..1]
+  latitude : kml:latitude [0..1]
+  altitude : kml:altitude [0..1]
+  LocationSimpleExtensionGroup : kml:LocationSimpleExtensionGroup [0..*]
+  LocationObjectExtensionGroup : kml:LocationObjectExtensionGroup [0..*]
+}
+class "kml:Orientation" <<DataType>> {
+  heading : kml:heading [0..1]
+  tilt : kml:tilt [0..1]
+  roll : kml:roll [0..1]
+  OrientationSimpleExtensionGroup : kml:OrientationSimpleExtensionGroup [0..*]
+  OrientationObjectExtensionGroup : kml:OrientationObjectExtensionGroup [0..*]
+}
+class "kml:Scale" <<DataType>> {
+  x : kml:x [0..1]
+  y : kml:y [0..1]
+  z : kml:z [0..1]
+  ScaleSimpleExtensionGroup : kml:ScaleSimpleExtensionGroup [0..*]
+  ScaleObjectExtensionGroup : kml:ScaleObjectExtensionGroup [0..*]
+}
+class "kml:ResourceMap" <<DataType>> {
+  Alias : kml:Alias [0..*]
+  ResourceMapSimpleExtensionGroup : kml:ResourceMapSimpleExtensionGroup [0..*]
+  ResourceMapObjectExtensionGroup : kml:ResourceMapObjectExtensionGroup [0..*]
+}
+class "kml:Alias" <<DataType>> {
+  targetHref : kml:targetHref [0..1]
+  sourceHref : kml:sourceHref [0..1]
+  AliasSimpleExtensionGroup : kml:AliasSimpleExtensionGroup [0..*]
+  AliasObjectExtensionGroup : kml:AliasObjectExtensionGroup [0..*]
+}
+class "kml:GroundOverlay" <<DataType>> {
+  altitude : kml:altitude [0..1]
+  altitudeModeGroup : kml:altitudeModeGroup [0..1]
+  LatLonBox : kml:LatLonBox [0..1]
+  GroundOverlaySimpleExtensionGroup : kml:GroundOverlaySimpleExtensionGroup [0..*]
+  GroundOverlayObjectExtensionGroup : kml:GroundOverlayObjectExtensionGroup [0..*]
+}
+abstract class "kml:AbstractLatLonBox" <<DataType>> {
+  north : kml:north [0..1]
+  south : kml:south [0..1]
+  east : kml:east [0..1]
+  west : kml:west [0..1]
+  AbstractLatLonBoxSimpleExtensionGroup : kml:AbstractLatLonBoxSimpleExtensionGroup [0..*]
+  AbstractLatLonBoxObjectExtensionGroup : kml:AbstractLatLonBoxObjectExtensionGroup [0..*]
+}
+class "kml:LatLonBox" <<DataType>> {
+  rotation : kml:rotation [0..1]
+  LatLonBoxSimpleExtensionGroup : kml:LatLonBoxSimpleExtensionGroup [0..*]
+  LatLonBoxObjectExtensionGroup : kml:LatLonBoxObjectExtensionGroup [0..*]
+}
+class "kml:ScreenOverlay" <<DataType>> {
+  overlayXY : kml:overlayXY [0..1]
+  screenXY : kml:screenXY [0..1]
+  rotationXY : kml:rotationXY [0..1]
+  size : kml:size [0..1]
+  rotation : kml:rotation [0..1]
+  ScreenOverlaySimpleExtensionGroup : kml:ScreenOverlaySimpleExtensionGroup [0..*]
+  ScreenOverlayObjectExtensionGroup : kml:ScreenOverlayObjectExtensionGroup [0..*]
+}
+class "kml:PhotoOverlay" <<DataType>> {
+  rotation : kml:rotation [0..1]
+  ViewVolume : kml:ViewVolume [0..1]
+  ImagePyramid : kml:ImagePyramid [0..1]
+  Point : kml:Point [0..1]
+  shape : kml:shape [0..1]
+  PhotoOverlaySimpleExtensionGroup : kml:PhotoOverlaySimpleExtensionGroup [0..*]
+  PhotoOverlayObjectExtensionGroup : kml:PhotoOverlayObjectExtensionGroup [0..*]
+}
+class "kml:ViewVolume" <<DataType>> {
+  leftFov : kml:leftFov [0..1]
+  rightFov : kml:rightFov [0..1]
+  bottomFov : kml:bottomFov [0..1]
+  topFov : kml:topFov [0..1]
+  near : kml:near [0..1]
+  ViewVolumeSimpleExtensionGroup : kml:ViewVolumeSimpleExtensionGroup [0..*]
+  ViewVolumeObjectExtensionGroup : kml:ViewVolumeObjectExtensionGroup [0..*]
+}
+class "kml:ImagePyramid" <<DataType>> {
+  tileSize : kml:tileSize [0..1]
+  maxWidth : kml:maxWidth [0..1]
+  maxHeight : kml:maxHeight [0..1]
+  gridOrigin : kml:gridOrigin [0..1]
+  ImagePyramidSimpleExtensionGroup : kml:ImagePyramidSimpleExtensionGroup [0..*]
+  ImagePyramidObjectExtensionGroup : kml:ImagePyramidObjectExtensionGroup [0..*]
+}
+class "kml:Style" <<DataType>> {
+  IconStyle : kml:IconStyle [0..1]
+  LabelStyle : kml:LabelStyle [0..1]
+  LineStyle : kml:LineStyle [0..1]
+  PolyStyle : kml:PolyStyle [0..1]
+  BalloonStyle : kml:BalloonStyle [0..1]
+  ListStyle : kml:ListStyle [0..1]
+  StyleSimpleExtensionGroup : kml:StyleSimpleExtensionGroup [0..*]
+  StyleObjectExtensionGroup : kml:StyleObjectExtensionGroup [0..*]
+}
+class "kml:StyleMap" <<DataType>> {
+  Pair : kml:Pair [0..*]
+  StyleMapSimpleExtensionGroup : kml:StyleMapSimpleExtensionGroup [0..*]
+  StyleMapObjectExtensionGroup : kml:StyleMapObjectExtensionGroup [0..*]
+}
+class "kml:Pair" <<DataType>> {
+  key : kml:key [0..1]
+  styleUrl : kml:styleUrl [0..1]
+  AbstractStyleSelectorGroup : kml:AbstractStyleSelectorGroup [0..1]
+  PairSimpleExtensionGroup : kml:PairSimpleExtensionGroup [0..*]
+  PairObjectExtensionGroup : kml:PairObjectExtensionGroup [0..*]
+}
+abstract class "kml:AbstractSubStyle" <<DataType>> {
+  AbstractSubStyleSimpleExtensionGroup : kml:AbstractSubStyleSimpleExtensionGroup [0..*]
+  AbstractSubStyleObjectExtensionGroup : kml:AbstractSubStyleObjectExtensionGroup [0..*]
+}
+abstract class "kml:AbstractColorStyle" <<DataType>> {
+  color : kml:color [0..1]
+  colorMode : kml:colorMode [0..1]
+  AbstractColorStyleSimpleExtensionGroup : kml:AbstractColorStyleSimpleExtensionGroup [0..*]
+  AbstractColorStyleObjectExtensionGroup : kml:AbstractColorStyleObjectExtensionGroup [0..*]
+}
+class "kml:IconStyle" <<DataType>> {
+  scale : kml:scale [0..1]
+  heading : kml:heading [0..1]
+  Icon : kml:BasicLink [0..1]
+  hotSpot : kml:hotSpot [0..1]
+  IconStyleSimpleExtensionGroup : kml:IconStyleSimpleExtensionGroup [0..*]
+  IconStyleObjectExtensionGroup : kml:IconStyleObjectExtensionGroup [0..*]
+}
+class "kml:BasicLink" <<DataType>> {
+  href : kml:href [0..1]
+  BasicLinkSimpleExtensionGroup : kml:BasicLinkSimpleExtensionGroup [0..*]
+  BasicLinkObjectExtensionGroup : kml:BasicLinkObjectExtensionGroup [0..*]
+}
+class "kml:LabelStyle" <<DataType>> {
+  scale : kml:scale [0..1]
+  LabelStyleSimpleExtensionGroup : kml:LabelStyleSimpleExtensionGroup [0..*]
+  LabelStyleObjectExtensionGroup : kml:LabelStyleObjectExtensionGroup [0..*]
+}
+class "kml:LineStyle" <<DataType>> {
+  width : kml:width [0..1]
+  LineStyleSimpleExtensionGroup : kml:LineStyleSimpleExtensionGroup [0..*]
+  LineStyleObjectExtensionGroup : kml:LineStyleObjectExtensionGroup [0..*]
+}
+class "kml:PolyStyle" <<DataType>> {
+  fill : kml:fill [0..1]
+  outline : kml:outline [0..1]
+  PolyStyleSimpleExtensionGroup : kml:PolyStyleSimpleExtensionGroup [0..*]
+  PolyStyleObjectExtensionGroup : kml:PolyStyleObjectExtensionGroup [0..*]
+}
+class "kml:BalloonStyle" <<DataType>> {
+  color : kml:color [0..1]
+  bgColor : kml:bgColor [0..1]
+  textColor : kml:textColor [0..1]
+  text : kml:text [0..1]
+  displayMode : kml:displayMode [0..1]
+  BalloonStyleSimpleExtensionGroup : kml:BalloonStyleSimpleExtensionGroup [0..*]
+  BalloonStyleObjectExtensionGroup : kml:BalloonStyleObjectExtensionGroup [0..*]
+}
+class "kml:ListStyle" <<DataType>> {
+  listItemType : kml:listItem [0..1]
+  bgColor : kml:bgColor [0..1]
+  ItemIcon : kml:ItemIcon [0..*]
+  maxSnippetLines : kml:maxSnippetLines [0..1]
+  ListStyleSimpleExtensionGroup : kml:ListStyleSimpleExtensionGroup [0..*]
+  ListStyleObjectExtensionGroup : kml:ListStyleObjectExtensionGroup [0..*]
+}
+class "kml:ItemIcon" <<DataType>> {
+  state : kml:state [0..1]
+  href : kml:href [0..1]
+  ItemIconSimpleExtensionGroup : kml:ItemIconSimpleExtensionGroup [0..*]
+  ItemIconObjectExtensionGroup : kml:ItemIconObjectExtensionGroup [0..*]
+}
+class "kml:TimeStamp" <<DataType>> {
+  when : kml:when [0..1]
+  TimeStampSimpleExtensionGroup : kml:TimeStampSimpleExtensionGroup [0..*]
+  TimeStampObjectExtensionGroup : kml:TimeStampObjectExtensionGroup [0..*]
+}
+class "kml:TimeSpan" <<DataType>> {
+  begin : kml:begin [0..1]
+  end : kml:end [0..1]
+  TimeSpanSimpleExtensionGroup : kml:TimeSpanSimpleExtensionGroup [0..*]
+  TimeSpanObjectExtensionGroup : kml:TimeSpanObjectExtensionGroup [0..*]
+}
+class "kml:Update" <<DataType>> {
+  targetHref : kml:targetHref
+  Create : kml:Create
+  Delete : kml:Delete
+  Change : kml:Change
+  UpdateOpExtensionGroup : kml:UpdateOpExtensionGroup
+  UpdateExtensionGroup : kml:UpdateExtensionGroup [0..*]
+}
+class "kml:Create" <<DataType>> {
+  AbstractContainerGroup : kml:AbstractContainerGroup [0..*]
+}
+class "kml:Delete" <<DataType>> {
+  AbstractFeatureGroup : kml:AbstractFeatureGroup [0..*]
+}
+class "kml:Change" <<DataType>> {
+  AbstractObjectGroup : kml:AbstractObjectGroup [0..*]
+}
+
+' Simple types (from <simpleType> declarations)
+class "kml:anglepos90" <<BasicType>>
+class "kml:angle90" <<BasicType>>
+class "kml:anglepos180" <<BasicType>>
+class "kml:angle180" <<BasicType>>
+class "kml:angle360" <<BasicType>>
+class "kml:altitudeModeEnum" <<Enumeration>> {
+  clampToGround
+  relativeToGround
+  absolute
+}
+class "kml:color" <<BasicType>>
+class "kml:coordinates" <<BasicType>>
+class "kml:colorModeEnum" <<Enumeration>> {
+  normal
+  random
+}
+class "kml:dateTime" <<Union>>
+class "kml:displayModeEnum" <<Enumeration>> {
+  default
+  hide
+}
+class "kml:gridOriginEnum" <<Enumeration>> {
+  lowerLeft
+  upperLeft
+}
+class "kml:itemIconState" <<BasicType>>
+class "kml:itemIconStateEnum" <<Enumeration>> {
+  open
+  closed
+  error
+  fetching0
+  fetching1
+  fetching2
+}
+class "kml:listItemTypeEnum" <<Enumeration>> {
+  radioFolder
+  check
+  checkHideChildren
+  checkOffOnly
+}
+class "kml:refreshModeEnum" <<Enumeration>> {
+  onChange
+  onInterval
+  onExpire
+}
+class "kml:viewRefreshModeEnum" <<Enumeration>> {
+  never
+  onRequest
+  onStop
+  onRegion
+}
+class "kml:shapeEnum" <<Enumeration>> {
+  rectangle
+  cylinder
+  sphere
+}
+class "kml:styleStateEnum" <<Enumeration>> {
+  normal
+  highlight
+}
+class "kml:unitsEnum" <<Enumeration>> {
+  fraction
+  pixels
+  insetPixels
+}
+}
+
+"kml:AbstractObject" <|-- "kml:AbstractFeature"
+"kml:AbstractObject" <|-- "kml:AbstractView"
+"kml:AbstractView" <|-- "kml:LookAt"
+"kml:AbstractView" <|-- "kml:Camera"
+"kml:AbstractObject" <|-- "kml:SchemaData"
+"kml:AbstractObject" <|-- "kml:Data"
+"kml:AbstractFeature" <|-- "kml:AbstractContainer"
+"kml:AbstractObject" <|-- "kml:AbstractGeometry"
+"kml:AbstractFeature" <|-- "kml:AbstractOverlay"
+"kml:AbstractObject" <|-- "kml:AbstractStyleSelector"
+"kml:AbstractObject" <|-- "kml:AbstractTimePrimitive"
+"kml:AbstractContainer" <|-- "kml:Document"
+"kml:AbstractContainer" <|-- "kml:Folder"
+"kml:AbstractFeature" <|-- "kml:Placemark"
+"kml:AbstractFeature" <|-- "kml:NetworkLink"
+"kml:AbstractObject" <|-- "kml:Region"
+"kml:AbstractLatLonBox" <|-- "kml:LatLonAltBox"
+"kml:AbstractObject" <|-- "kml:Lod"
+"kml:BasicLink" <|-- "kml:Link"
+"kml:AbstractGeometry" <|-- "kml:MultiGeometry"
+"kml:AbstractGeometry" <|-- "kml:Point"
+"kml:AbstractGeometry" <|-- "kml:LineString"
+"kml:AbstractGeometry" <|-- "kml:LinearRing"
+"kml:AbstractGeometry" <|-- "kml:Polygon"
+"kml:AbstractGeometry" <|-- "kml:Model"
+"kml:AbstractObject" <|-- "kml:Location"
+"kml:AbstractObject" <|-- "kml:Orientation"
+"kml:AbstractObject" <|-- "kml:Scale"
+"kml:AbstractObject" <|-- "kml:ResourceMap"
+"kml:AbstractObject" <|-- "kml:Alias"
+"kml:AbstractOverlay" <|-- "kml:GroundOverlay"
+"kml:AbstractObject" <|-- "kml:AbstractLatLonBox"
+"kml:AbstractLatLonBox" <|-- "kml:LatLonBox"
+"kml:AbstractOverlay" <|-- "kml:ScreenOverlay"
+"kml:AbstractOverlay" <|-- "kml:PhotoOverlay"
+"kml:AbstractObject" <|-- "kml:ViewVolume"
+"kml:AbstractObject" <|-- "kml:ImagePyramid"
+"kml:AbstractStyleSelector" <|-- "kml:Style"
+"kml:AbstractStyleSelector" <|-- "kml:StyleMap"
+"kml:AbstractObject" <|-- "kml:Pair"
+"kml:AbstractObject" <|-- "kml:AbstractSubStyle"
+"kml:AbstractSubStyle" <|-- "kml:AbstractColorStyle"
+"kml:AbstractColorStyle" <|-- "kml:IconStyle"
+"kml:AbstractObject" <|-- "kml:BasicLink"
+"kml:AbstractColorStyle" <|-- "kml:LabelStyle"
+"kml:AbstractColorStyle" <|-- "kml:LineStyle"
+"kml:AbstractColorStyle" <|-- "kml:PolyStyle"
+"kml:AbstractSubStyle" <|-- "kml:BalloonStyle"
+"kml:AbstractSubStyle" <|-- "kml:ListStyle"
+"kml:AbstractObject" <|-- "kml:ItemIcon"
+"kml:AbstractTimePrimitive" <|-- "kml:TimeStamp"
+"kml:AbstractTimePrimitive" <|-- "kml:TimeSpan"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml
