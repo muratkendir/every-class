@@ -7,7 +7,7 @@ for) the core/base schema, then runs the full pipeline: steps 01-08 for
 every package (each overwrites the same .puml with a richer diagram, so
 the latest step's output is the final one) and step 09 for the combined
 all_packages diagram. All PlantUML files land in
-output/<DataModel>/<Version>/UMLClassDiagram/.
+docs/output/<DataModel>/<Version>/UMLClassDiagram/.
 
 Detection rules (see AGENTS.md):
 - DataModel name = folder name; display name via NAME_MAP
@@ -39,7 +39,7 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from step01_list_classes import NAME_MAP, XSD_NS, schema_prefix
+from step01_list_classes import NAME_MAP, OUTPUT_ROOT, XSD_NS, schema_prefix
 
 VERSION_RE = re.compile(r"\d+(\.\d+)*")
 
@@ -188,7 +188,7 @@ def main() -> None:
         core = pick_core(paths, model_dir.name, args.core)
         center = schema_prefix(core) or core.stem.lower()
 
-        parts = [Path("output"), model]
+        parts = [OUTPUT_ROOT, model]
         if version:
             parts.append(version)
         out_dir = Path(*parts) / "UMLClassDiagram"

@@ -96,13 +96,16 @@ def diagram_title(xsd_path: Path) -> str:
     return f"{label} - Only XSD based"
 
 
+OUTPUT_ROOT = Path("docs") / "output"
+
+
 def default_output(xsd_path: Path) -> Path:
     """Default output file, so several data models can live side by side:
-    output/<DataModelName>/<Version>/UMLClassDiagram/<module>.puml
+    docs/output/<DataModelName>/<Version>/UMLClassDiagram/<module>.puml
     (module = schema file stem, lowercased)."""
     family, version = model_version(xsd_path)
     model = NAME_MAP.get((family or "").lower(), (family or "Model").capitalize())
-    parts = [Path("output"), model]
+    parts = [OUTPUT_ROOT, model]
     if version:
         parts.append(version)
     parts.append("UMLClassDiagram")

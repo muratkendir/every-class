@@ -38,7 +38,7 @@ Stub detection is structural, not stereotype-based: in every module file
 the real classes are declared inside the `package <prefix> { ... }`
 block and external stubs are the only class declarations outside it.
 
-Run with no arguments: scans output/CityGML/3.0/UMLClassDiagram/ and
+Run with no arguments: scans docs/output/CityGML/3.0/UMLClassDiagram/ and
 writes all_packages.puml there. Render from inside that directory
 (includes are basename-relative), as with the per-module files.
 
@@ -53,7 +53,7 @@ import re
 import sys
 from pathlib import Path
 
-DEFAULT_DIR = Path("output/CityGML/3.0/UMLClassDiagram")
+DEFAULT_DIR = Path("docs/output/CityGML/3.0/UMLClassDiagram")
 
 DECL_RE = re.compile(r'^(abstract class|class) "([^"]+)"(?: <<([^>]+)>>)?')
 TITLE_LINE_RE = re.compile(r"^  (.+)$")

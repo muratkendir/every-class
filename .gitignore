@@ -1,0 +1,15 @@
+# Project-specific ignores
+AGENTS.md
+conversations/
+schemas_for_xsd_diagram/
+print-outs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Backup files ending with a tilde
+*~
+
+# Backup folders starting with a dot
+.*/
