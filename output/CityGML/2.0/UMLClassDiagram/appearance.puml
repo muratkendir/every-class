@@ -1,0 +1,106 @@
+@startuml
+title
+  CityGML - 2.0 - Appearance - Only XSD based
+  http://www.opengis.net/citygml/appearance/2.0
+end title
+
+class "Appearance" <<FeatureType>> {
+  # theme : xs:string [0..1]
+  # surfaceDataMember : SurfaceData [0..*]
+  #  : _GenericApplicationPropertyOfAppearance [0..*]
+}
+class "AppearanceProperty" $property {
+  #  : Appearance
+}
+abstract class "AbstractSurfaceData" <<FeatureType>> {
+  # isFront : xs:boolean [0..1]
+  #  : _GenericApplicationPropertyOfSurfaceData [0..*]
+}
+class "SurfaceDataProperty" $property {
+  #  : _SurfaceData [0..1]
+}
+abstract class "AbstractTexture" <<FeatureType>> {
+  # imageURI : xs:anyURI
+  # mimeType : gml:Code [0..1]
+  # textureType : TextureType [0..1]
+  # wrapMode : WrapMode [0..1]
+  # borderColor : ColorPlusOpacity [0..1]
+  #  : _GenericApplicationPropertyOfTexture [0..*]
+}
+class "ParameterizedTexture" <<FeatureType>> {
+  # target : TextureAssociation [0..*]
+  #  : _GenericApplicationPropertyOfParameterizedTexture [0..*]
+}
+class "GeoreferencedTexture" <<FeatureType>> {
+  # preferWorldFile : xs:boolean [0..1]
+  # referencePoint : gml:Point [0..1]
+  # orientation : core:TransformationMatrix2x2 [0..1]
+  # target : xs:anyURI [0..*]
+  #  : _GenericApplicationPropertyOfGeoreferencedTexture [0..*]
+}
+class "TextureAssociation" <<DataType>> {
+  #  : _TextureParameterization
+}
+abstract class "AbstractTextureParameterization" <<ObjectType>> {
+  #  : _GenericApplicationPropertyOfTextureParameterization [0..*]
+}
+class "TexCoordList" <<ObjectType>> {
+  # textureCoordinates : anonymous [1..*]
+  #  : _GenericApplicationPropertyOfTexCoordList [0..*]
+}
+class "TexCoordGen" <<ObjectType>> {
+  # worldToTexture : anonymous
+  #  : _GenericApplicationPropertyOfTexCoordGen [0..*]
+}
+class "X3DMaterial" <<FeatureType>> {
+  # ambientIntensity : core:doubleBetween0and1 [0..1]
+  # diffuseColor : Color [0..1]
+  # emissiveColor : Color [0..1]
+  # specularColor : Color [0..1]
+  # shininess : core:doubleBetween0and1 [0..1]
+  # transparency : core:doubleBetween0and1 [0..1]
+  # isSmooth : xs:boolean [0..1]
+  # target : xs:anyURI [0..*]
+  #  : _GenericApplicationPropertyOfX3DMaterial [0..*]
+}
+
+' Simple types (from <simpleType> declarations)
+class "WrapMode" <<Enumeration>> {
+  none
+  wrap
+  mirror
+  clamp
+  border
+}
+class "TextureType" <<Enumeration>> {
+  specific
+  typical
+  unknown
+}
+class "Color" <<BasicType>>
+class "ColorPlusOpacity" <<BasicType>>
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractGML"
+
+"gml:AbstractFeature" <|-- "Appearance"
+"gml:AbstractFeature" <|-- "AbstractSurfaceData"
+"AbstractSurfaceData" <|-- "AbstractTexture"
+"AbstractTexture" <|-- "ParameterizedTexture"
+"AbstractTexture" <|-- "GeoreferencedTexture"
+"gml:AbstractGML" <|-- "AbstractTextureParameterization"
+"AbstractTextureParameterization" <|-- "TexCoordList"
+"AbstractTextureParameterization" <|-- "TexCoordGen"
+"AbstractSurfaceData" <|-- "X3DMaterial"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

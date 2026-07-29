@@ -1,0 +1,63 @@
+@startuml
+title
+  CityGML - 2.0 - Relief - Only XSD based
+  http://www.opengis.net/citygml/relief/2.0
+end title
+
+class "ReliefFeature" <<DataType>> {
+  # lod : core:integerBetween0and4
+  # reliefComponent : ReliefComponent [1..*]
+  #  : _GenericApplicationPropertyOfReliefFeature [0..*]
+}
+abstract class "AbstractReliefComponent" <<DataType>> {
+  # lod : core:integerBetween0and4
+  # extent : gml:Polygon [0..1]
+  #  : _GenericApplicationPropertyOfReliefComponent [0..*]
+}
+class "ReliefComponentProperty" $property {
+  #  : _ReliefComponent
+}
+class "TINRelief" <<DataType>> {
+  # tin : tin
+  #  : _GenericApplicationPropertyOfTinRelief [0..*]
+}
+class "RasterRelief" <<DataType>> {
+  # grid : grid
+  #  : _GenericApplicationPropertyOfRasterRelief [0..*]
+}
+class "MassPointRelief" <<DataType>> {
+  # reliefPoints : gml:MultiPoint
+  #  : _GenericApplicationPropertyOfMassPointRelief [0..*]
+}
+class "BreaklineRelief" <<DataType>> {
+  # ridgeOrValleyLines : gml:MultiCurve [0..1]
+  # breaklines : gml:MultiCurve [0..1]
+  #  : _GenericApplicationPropertyOfBreaklineRelief [0..*]
+}
+class "tinProperty" $property {
+  # TriangulatedSurface : gml:TriangulatedSurface
+}
+class "gridProperty" $property {
+  # RectifiedGridCoverage : gml:RectifiedGridCoverage
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "ReliefFeature"
+"core:AbstractCityObject" <|-- "AbstractReliefComponent"
+"AbstractReliefComponent" <|-- "TINRelief"
+"AbstractReliefComponent" <|-- "RasterRelief"
+"AbstractReliefComponent" <|-- "MassPointRelief"
+"AbstractReliefComponent" <|-- "BreaklineRelief"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

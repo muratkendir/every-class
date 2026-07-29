@@ -1,0 +1,126 @@
+@startuml
+title
+  Part6 - 1.0 - Survey-results - Only XSD based
+  http://www.opengis.net/infragml/surveyresults/1.0
+end title
+
+package lisr {
+class "lisr:Average" <<FeatureType>>
+class "lisr:AverageProperty" $property {
+  Average : lisr:Average
+}
+class "lisr:AveragePoint" <<ObjectType>> {
+  # geometry : gml:Point
+}
+class "lisr:AveragePointProperty" $property {
+  AveragePoint : lisr:AveragePoint
+}
+class "lisr:DesignPoint" <<ObjectType>> {
+  # geometry : gml:Point
+}
+class "lisr:DesignPointProperty" $property {
+  DesignPoint : lisr:DesignPoint
+}
+class "lisr:Image" <<FeatureType>> {
+  # file : anonymous [0..1]
+}
+class "lisr:ImageProperty" $property {
+  Image : lisr:Image
+}
+class "lisr:PointCloud" <<FeatureType>> {
+  # file : anonymous [0..1]
+}
+class "lisr:PointCloudProperty" $property {
+  PointCloud : lisr:PointCloud
+}
+class "lisr:PointQuality" <<ObjectType>> {
+  # meanError : gml:Length
+  # qxx : xs:double
+  # qxy : xs:double
+  # qxz : xs:double
+  # qyy : xs:double
+  # qyz : xs:double
+  # qzz : xs:double
+}
+class "lisr:PointQualityProperty" $property {
+  PointQuality : lisr:PointQuality
+}
+class "lisr:Stakeout" <<FeatureType>> {
+  # diffNorthing : gml:Length
+  # diffEasting : gml:Length
+  # diffElevation : gml:Length
+}
+class "lisr:StakeoutProperty" $property {
+  Stakeout : lisr:Stakeout
+}
+class "lisr:String" <<FeatureType>>
+class "lisr:StringProperty" $property {
+  String : lisr:String
+}
+class "lisr:SurveyResult" <<FeatureType>> {
+  # surveyResultID : anonymous
+  # type : gml:Reference [0..1]
+  # featureOfInterest : li:Feature [0..1]
+}
+class "lisr:SurveyResultProperty" $property {
+  SurveyResult : lisr:SurveyResult
+}
+class "lisr:TargetPoint" <<FeatureType>> {
+  # geometry : gml:Point
+  # isComplete : xs:boolean
+}
+class "lisr:TargetPointProperty" $property {
+  TargetPoint : lisr:TargetPoint
+}
+class "lisr:UserDefined" <<FeatureType>> {
+  # name : xs:string [0..1]
+  # description : xs:string [0..1]
+}
+class "lisr:UserDefinedProperty" $property {
+  UserDefined : lisr:UserDefined
+}
+class "lisr:Value" <<ObjectType>> {
+  # valueType : anonymous
+}
+class "lisr:ValueProperty" $property {
+  Value : lisr:Value
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+class "li:Feature"
+
+"lisr:SurveyResult" <|-- "lisr:Average"
+"gml:AbstractGML" <|-- "lisr:AveragePoint"
+"gml:AbstractGML" <|-- "lisr:DesignPoint"
+"lisr:SurveyResult" <|-- "lisr:Image"
+"lisr:SurveyResult" <|-- "lisr:PointCloud"
+"gml:AbstractGML" <|-- "lisr:PointQuality"
+"lisr:SurveyResult" <|-- "lisr:Stakeout"
+"lisr:SurveyResult" <|-- "lisr:String"
+"li:Feature" <|-- "lisr:SurveyResult"
+"lisr:SurveyResult" <|-- "lisr:TargetPoint"
+"lisr:SurveyResult" <|-- "lisr:UserDefined"
+"gml:AbstractGML" <|-- "lisr:Value"
+
+' Class relations (promoted from property wrappers)
+"lisr:Average" ..> "0..1" "lisr:AveragePoint" : averagePoint
+"lisr:AveragePoint" ..> "0..1" "lisr:PointQuality" : quality
+"lisr:AveragePoint" o-- "2..*" "lisr:TargetPoint" : targetPoint
+"lisr:DesignPoint" ..> "0..1" "lisr:PointQuality" : quality
+"lisr:Stakeout" o-- "1" "lisr:TargetPoint" : targetPoint
+"lisr:Stakeout" ..> "0..1" "lisr:DesignPoint" : designPoint
+"lisr:String" o-- "2..*" "lisr:TargetPoint" : targetPoint
+"lisr:TargetPoint" ..> "0..1" "lisr:PointQuality" : quality
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

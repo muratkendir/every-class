@@ -1,0 +1,87 @@
+@startuml
+title
+  CityGML - 3.0 - Versioning - Only XSD based
+  http://www.opengis.net/citygml/versioning/3.0
+end title
+
+package vers {
+abstract class "vers:ADEOfVersion" $adeOf
+class "vers:ADEOfVersionProperty" $property $adeOf {
+  ADEOfVersion : vers:ADEOfVersion
+}
+abstract class "vers:ADEOfVersionTransition" $adeOf
+class "vers:ADEOfVersionTransitionProperty" $property $adeOf {
+  ADEOfVersionTransition : vers:ADEOfVersionTransition
+}
+class "vers:Transaction" <<DataType>> {
+  type : vers:TransactionTypeValue
+}
+class "vers:TransactionProperty" $property {
+  Transaction : vers:Transaction
+}
+class "vers:Version" <<FeatureType>> {
+  # tag : xs:string [0..*]
+  ~ adeOfVersion : vers:ADEOfVersion [0..*]
+}
+class "vers:VersionProperty" $property {
+  Version : vers:Version
+}
+class "vers:VersionTransition" <<FeatureType>> {
+  # reason : xs:string [0..1]
+  # clonePredecessor : xs:boolean
+  type : vers:TransitionTypeValue [0..1]
+  ~ adeOfVersionTransition : vers:ADEOfVersionTransition [0..*]
+  - transaction : vers:Transaction [0..*]
+}
+class "vers:VersionTransitionProperty" $property {
+  VersionTransition : vers:VersionTransition
+}
+
+' Simple types (from <simpleType> declarations)
+class "vers:TransactionTypeValue" <<Enumeration>> {
+  insert
+  delete
+  replace
+}
+class "vers:TransitionTypeValue" <<Enumeration>> {
+  planned
+  realized
+  historicalSuccession
+  fork
+  merge
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractFeatureWithLifespan"
+abstract class "core:AbstractVersion"
+abstract class "core:AbstractVersionTransition"
+
+"core:AbstractVersion" <|-- "vers:Version"
+"core:AbstractVersionTransition" <|-- "vers:VersionTransition"
+
+' Class relations (promoted from property wrappers)
+"vers:Transaction" ..> "0..1" "core:AbstractFeatureWithLifespan" : oldFeature
+"vers:Transaction" ..> "0..1" "core:AbstractFeatureWithLifespan" : newFeature
+"vers:Version" o-- "0..*" "core:AbstractFeatureWithLifespan" : versionMember
+"vers:VersionTransition" ..> "0..1" "vers:Version" : from
+"vers:VersionTransition" ..> "0..1" "vers:Version" : to
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

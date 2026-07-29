@@ -1,0 +1,98 @@
+Session log — 2026-07-28 (summary written at session end; the 2026_07_21.txt
+file is a raw terminal capture, this one is a structured summary)
+
+Topic: layout of the combined diagram (all_packages.puml, step 09)
+==================================================================
+
+State at session start: all 17 CityGML 3.0 modules processed (steps 01-08),
+step 09 combined diagram existed (landscape, core package wherever Graphviz
+put it). Note: core.puml had been touched at 10:15 after the morning's SVG
+render (possibly stale core.svg — never investigated further).
+
+Requests and outcomes, in order:
+
+1. "Can core.xsd be placed in the center of all_packages.puml without
+   breaking the !include method?"
+   - Answer: includes are safe, but PlantUML has no absolute positioning;
+     only layout BIAS via hidden package-to-package links is possible.
+   - Verified on local PlantUML 1.2020.02: arrows between packages work,
+     hidden ones only affect layout.
+   - Implemented in step09: plain `core -[hidden]- <pkg>` for all 16 other
+     modules. Result: diagram ~17% narrower (19757 -> 16378 px wide) but
+     core stayed pinned top-left (generalization ranks dominate).
+
+2. "Distribute the other modules around core: split into groups, assign
+   groups to directions left/right/up/down."
+   - Implemented group rotation, measured all variants (SVG cluster coords):
+     * 4-way incl. `up`: contradicts generalization ranks (core's subclasses
+       must be below it) -> giant looping edges. `up` dropped permanently.
+     * left/right/down rotations: chaotic — core at 18-82% of diagram width
+       depending on group composition; a tie in class counts (building vs
+       dynamizer) flipped core from 55% to 21%. Added deterministic
+       tie-break by package name. Best: 55%.
+   - User rejected the result aesthetically ("i didn't like the final
+     product").
+
+3. "Vertical style?" (question only, no implementation)
+   - Explained `left to right direction` rotates the layout 90 deg;
+     parked for later (implemented in step 5 below).
+
+4. "Core at the bottom, other modules ordered upward by their connection
+   count to core, tree-like, use dash length for distance. What do you
+   think?"
+   - Core at bottom: impossible. No bottom-to-top direction in PlantUML,
+     and hundreds of generalization edges force core upward. Root-at-top
+     is also UML convention.
+   - The rest (connectivity-count ordering + dash-length layers): good,
+     works WITH Graphviz. User approved the reversed version (core at top).
+
+5. Implemented connectivity layering in step09_all_packages.py:
+   - Per module, count lines referencing `core:` in its .puml (core-typed
+     attributes + stub declarations + inheritance/relation edges):
+     gen 18, tran 13, con 12, app 9, dyn/vers 8, bldg/dem 6, grp 5,
+     wtr 4, brid 3, veg/tun/pcl/luse/frn 2.
+   - Distinct counts compressed into ~sqrt(n)=4 layers, equal counts share
+     a layer; one hidden link per module with dash count = layer
+     (`core -[hidden]-- gen` ... `core -[hidden]----- frn`; dash count maps
+     to Graphviz minlen).
+   - Tried and rejected (documented in AGENTS.md):
+     * class-level hidden links -> Graphviz/smetana CRASHES on this
+       diagram size ("dot/GraphViz has crashed"), even 16 edges, no minlen;
+     * package chain (core -> gen -> tran -> ... -> frn): renders but ugly
+       diagonal sprawl.
+   - Result: weak but real layering (L1 modules ~47-56% height vs L4
+     ~47-94%), tidy landscape cascade, 19010x3344 px.
+
+6. "Still landscape — order them up to down."
+   - Added `left to right direction` to step09 output -> PORTRAIT,
+     6933x11323 px. Core at top (7% height, cluster spans left edge like
+     a trunk), 16 modules stacked below — most tree-shaped result so far.
+   - Measured: without the hidden links core drifts to the MIDDLE (6th of
+     17 clusters vertically) -> the connectivity links now serve as the
+     anchor keeping core at top; they stay.
+   - Honest caveat: vertical module order only loosely follows the
+     connectivity layers (vers at bottom despite layer 2); vertical order
+     within ranks is Graphviz crossing-minimization, not controllable.
+
+Final state
+===========
+- step09_all_packages.py: portrait orientation + connectivity-count
+  layering (CENTER_PACKAGE = "core"), deterministic, documented docstring.
+- output/CityGML/3.0/UMLClassDiagram/all_packages.{puml,svg,png}
+  re-rendered, 6933x11323 px portrait (PNG needs PLANTUML_LIMIT_SIZE=30000).
+- AGENTS.md "Combined diagram (step 09)" section documents orientation,
+  layer scheme, all measured findings and rejected approaches.
+- Render command (from inside output/CityGML/3.0/UMLClassDiagram/):
+    plantuml -tsvg all_packages.puml
+    PLANTUML_LIMIT_SIZE=30000 plantuml -tpng all_packages.puml
+
+Open items / possible next steps
+================================
+- User may react to the portrait render (not yet seen by them).
+- If layout hints are ever unwanted: deleting the hidden-links block and
+  the `left to right direction` line in step09 restores the plain look.
+- If core.puml's 10:15 manual edit matters, core.svg / combined render
+  may need a refresh check.
+- Further data models in schemas/ (indoorgml, infragml, kml, pipelineml)
+  are untouched candidates, per AGENTS.md "Candidate next steps" — user
+  directs, one at a time.

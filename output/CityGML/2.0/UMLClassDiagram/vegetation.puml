@@ -1,0 +1,56 @@
+@startuml
+title
+  CityGML - 2.0 - Vegetation - Only XSD based
+  http://www.opengis.net/citygml/vegetation/2.0
+end title
+
+abstract class "AbstractVegetationObject" <<DataType>> {
+  #  : _GenericApplicationPropertyOfVegetationObject [0..*]
+}
+class "PlantCover" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # averageHeight : gml:Length [0..1]
+  # lod1MultiSurface : gml:MultiSurface [0..1]
+  # lod2MultiSurface : gml:MultiSurface [0..1]
+  # lod3MultiSurface : gml:MultiSurface [0..1]
+  # lod4MultiSurface : gml:MultiSurface [0..1]
+  # lod1MultiSolid : gml:MultiSolid [0..1]
+  # lod2MultiSolid : gml:MultiSolid [0..1]
+  # lod3MultiSolid : gml:MultiSolid [0..1]
+  # lod4MultiSolid : gml:MultiSolid [0..1]
+  #  : _GenericApplicationPropertyOfPlantCover [0..*]
+}
+class "SolitaryVegetationObject" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # species : gml:Code [0..1]
+  # height : gml:Length [0..1]
+  # trunkDiameter : gml:Length [0..1]
+  # crownDiameter : gml:Length [0..1]
+  # lod1Geometry : gml:Geometry [0..1]
+  # lod2Geometry : gml:Geometry [0..1]
+  # lod3Geometry : gml:Geometry [0..1]
+  # lod4Geometry : gml:Geometry [0..1]
+  # lod1ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod2ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod3ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  # lod4ImplicitRepresentation : core:ImplicitRepresentation [0..1]
+  #  : _GenericApplicationPropertyOfSolitaryVegetationObject [0..*]
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "AbstractVegetationObject"
+"AbstractVegetationObject" <|-- "PlantCover"
+"AbstractVegetationObject" <|-- "SolitaryVegetationObject"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

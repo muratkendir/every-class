@@ -1,0 +1,33 @@
+@startuml
+title
+  CityGML - 2.0 - Cityobjectgroup - Only XSD based
+  http://www.opengis.net/citygml/cityobjectgroup/2.0
+end title
+
+class "CityObjectGroup" <<DataType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # groupMember : CityObjectGroupMember [0..*]
+  # parent : CityObjectGroupParent [0..1]
+  # geometry : gml:Geometry [0..1]
+  #  : _GenericApplicationPropertyOfCityObjectGroup [0..*]
+}
+class "CityObjectGroupMember" <<DataType>> {
+  # _CityObject : core:_CityObject
+}
+class "CityObjectGroupParent" <<DataType>> {
+  # _CityObject : core:_CityObject
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+
+"core:AbstractCityObject" <|-- "CityObjectGroup"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

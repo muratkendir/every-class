@@ -1,0 +1,1055 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"db",
+				"db_username"
+			],
+			[
+				"new",
+				"new_type_names"
+			],
+			[
+				"set",
+				"setof_typenames"
+			],
+			[
+				"Li",
+				"LimOffElement"
+			],
+			[
+				"count",
+				"count_limoff_elements"
+			],
+			[
+				"li",
+				"limoff_part"
+			],
+			[
+				"limoff",
+				"limoff_part"
+			],
+			[
+				"lim",
+				"limoff_part"
+			],
+			[
+				"limo",
+				"limoff_elements"
+			],
+			[
+				"WMS",
+				"WMS_v130"
+			],
+			[
+				"GetLegen",
+				"GetLegendGraphicRequest"
+			],
+			[
+				"XML",
+				"XMLLint"
+			],
+			[
+				"Map",
+				"MapAttributes"
+			],
+			[
+				"La",
+				"Layers"
+			],
+			[
+				"M",
+				"MIMEType"
+			],
+			[
+				"select",
+				"select_elements"
+			],
+			[
+				"dar",
+				"darkturquoise"
+			],
+			[
+				"Select",
+				"SelectConverterType"
+			],
+			[
+				"Combination",
+				"CombinationElement"
+			],
+			[
+				"inner",
+				"inner_query_blocks"
+			],
+			[
+				"se",
+				"selection_part"
+			],
+			[
+				"attri",
+				"attribute_list"
+			],
+			[
+				"attr",
+				"attribute_list"
+			],
+			[
+				"attribute",
+				"attribute_list"
+			],
+			[
+				"where",
+				"where_elements"
+			],
+			[
+				"from",
+				"from_elements"
+			],
+			[
+				"Se",
+				"SelectElements"
+			],
+			[
+				"Selec",
+				"SelectElement"
+			],
+			[
+				"S",
+				"SelectElement"
+			],
+			[
+				"wi",
+				"wiki_page"
+			],
+			[
+				"poly",
+				"polyhedralsurfaceConvertedToMesh"
+			],
+			[
+				"min",
+				"minCoordsCalculated"
+			],
+			[
+				"here",
+				"where_elements"
+			],
+			[
+				"join",
+				"join_elements"
+			],
+			[
+				"el",
+				"else_result"
+			],
+			[
+				"i",
+				"inner_where_elements"
+			],
+			[
+				"test_campa",
+				"test_campaign_02_hamburg"
+			],
+			[
+				"oc_",
+				"oc_statistics"
+			],
+			[
+				"geom",
+				"geom_col_idx"
+			],
+			[
+				"count_",
+				"count_group_elements"
+			],
+			[
+				"selec",
+				"select_element"
+			],
+			[
+				"QueryBlo",
+				"QueryBlock"
+			],
+			[
+				"Sele",
+				"SelectElement"
+			],
+			[
+				"sele",
+				"select_elements"
+			],
+			[
+				"SelectE",
+				"SelectElements"
+			],
+			[
+				"max",
+				"max_features"
+			],
+			[
+				"Gr",
+				"GroupElement"
+			],
+			[
+				"Where",
+				"WhereElement"
+			],
+			[
+				"Object",
+				"objectclasses"
+			],
+			[
+				"re",
+				"recommended_max_features"
+			],
+			[
+				"group_",
+				"group_part"
+			],
+			[
+				"sor",
+				"sorted_query_blocks"
+			],
+			[
+				"jo",
+				"join_elements"
+			],
+			[
+				"q",
+				"query_blocks"
+			],
+			[
+				"s",
+				"select_elements"
+			],
+			[
+				"out",
+				"output_folder"
+			],
+			[
+				"objec",
+				"objectclasses"
+			],
+			[
+				"Si",
+				"SimpleQueryBlock"
+			],
+			[
+				"ra",
+				"range_alias"
+			],
+			[
+				"inn",
+				"inner_query_block"
+			],
+			[
+				"inner_query",
+				"inner_query_block"
+			],
+			[
+				"gr",
+				"group_elements"
+			],
+			[
+				"type",
+				"type_of_effect"
+			],
+			[
+				"t",
+				"type_of_effects"
+			],
+			[
+				"pg_",
+				"pg_establish"
+			],
+			[
+				"advise_",
+				"advise_file"
+			],
+			[
+				"strip",
+				"strip_namespace"
+			],
+			[
+				"file_",
+				"file_extension"
+			],
+			[
+				"list_",
+				"list_toplevel_entities"
+			],
+			[
+				"replace",
+				"replacement_string"
+			],
+			[
+				"full",
+				"full_path"
+			],
+			[
+				"X",
+				"XChildEntity"
+			],
+			[
+				"chil",
+				"child_entity"
+			],
+			[
+				"filte",
+				"filtered_file_list"
+			],
+			[
+				"get",
+				"get_configuration"
+			],
+			[
+				"POSTGRES",
+				"POSTGRES_PASSWORD"
+			],
+			[
+				"a",
+				"assertTrue"
+			],
+			[
+				"assert",
+				"assertTrue"
+			],
+			[
+				"con",
+				"buildingConstructiveElement"
+			],
+			[
+				"Buil",
+				"BuildingConstructiveElement"
+			],
+			[
+				"TE",
+				"textarea"
+			],
+			[
+				"ac",
+				"action"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "output/CityGML/3.0/UMLClassDiagram/all_packages.puml",
+			"settings":
+			{
+				"buffer_size": 1574,
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					1,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAABTAgAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgp0aXRsZQogIENpdHlHTUwgLSAzLjAgLSBBbGwgUGFja2FnZXMgYXMgU2luZ2xlIERpYWdyYW0KZW5kIHRpdGxlCgpAZW5kdW1sCgAAAAAAAAAAywMAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					2,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAADLAwAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBsaW5rczoga2VlcCB0aGUgY2VudHJhbCBwYWNrYWdlIGNlbnRlcmVkCmNvcmUgLVtoaWRkZW5dLSBhcHAKY29yZSAtW2hpZGRlbl0tIGJsZGcKY29yZSAtW2hpZGRlbl0tIGJyaWQKY29yZSAtW2hpZGRlbl0tIGNvbgpjb3JlIC1baGlkZGVuXS0gZGVtCmNvcmUgLVtoaWRkZW5dLSBkeW4KY29yZSAtW2hpZGRlbl0tIGZybgpjb3JlIC1baGlkZGVuXS0gZ2VuCmNvcmUgLVtoaWRkZW5dLSBncnAKY29yZSAtW2hpZGRlbl0tIGx1c2UKY29yZSAtW2hpZGRlbl0tIHBjbApjb3JlIC1baGlkZGVuXS0gdHJhbgpjb3JlIC1baGlkZGVuXS0gdHVuCmNvcmUgLVtoaWRkZW5dLSB2ZWcKY29yZSAtW2hpZGRlbl0tIHZlcnMKY29yZSAtW2hpZGRlbl0tIHd0cgoKdGl0bGUKICBDaXR5R01MIC0gMy4wIC0gQWxsIFBhY2thZ2VzIGFzIFNpbmdsZSBEaWFncmFtCmVuZCB0aXRsZQoKQGVuZHVtbAoAAAAAAAAAAMsDAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					7,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAADLAwAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBsaW5rczoga2VlcCB0aGUgY2VudHJhbCBwYWNrYWdlIGNlbnRlcmVkCmNvcmUgLVtoaWRkZW5dLSBhcHAKY29yZSAtW2hpZGRlbl0tIGJsZGcKY29yZSAtW2hpZGRlbl0tIGJyaWQKY29yZSAtW2hpZGRlbl0tIGNvbgpjb3JlIC1baGlkZGVuXS0gZGVtCmNvcmUgLVtoaWRkZW5dLSBkeW4KY29yZSAtW2hpZGRlbl0tIGZybgpjb3JlIC1baGlkZGVuXS0gZ2VuCmNvcmUgLVtoaWRkZW5dLSBncnAKY29yZSAtW2hpZGRlbl0tIGx1c2UKY29yZSAtW2hpZGRlbl0tIHBjbApjb3JlIC1baGlkZGVuXS0gdHJhbgpjb3JlIC1baGlkZGVuXS0gdHVuCmNvcmUgLVtoaWRkZW5dLSB2ZWcKY29yZSAtW2hpZGRlbl0tIHZlcnMKY29yZSAtW2hpZGRlbl0tIHd0cgoKdGl0bGUKICBDaXR5R01MIC0gMy4wIC0gQWxsIFBhY2thZ2VzIGFzIFNpbmdsZSBEaWFncmFtCmVuZCB0aXRsZQoKQGVuZHVtbAoAAAAAAAAAAFgEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA3AIAAAAAAADcAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					10,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAAAgDAAAAAAAACQMAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAACAMAAAAAAAAIAwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					13,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAABZBAAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBsaW5rcwonIGxlZnQ6IHRyYW4sIGdlbiwgYnJpZCwgdmVycywgZ3JwCnRyYW4gLVtoaWRkZW5dbGVmdC0gY29yZQpnZW4gLVtoaWRkZW5dbGVmdC0gY29yZQpicmlkIC1baGlkZGVuXWxlZnQtIGNvcmUKdmVycyAtW2hpZGRlbl1sZWZ0LSBjb3JlCmdycCAtW2hpZGRlbl1sZWZ0LSBjb3JlCicgcmlnaHQ6IGNvbiwgYXBwLCB0dW4sIHZlZywgZnJuCmNvbiAtW2hpZGRlbl1yaWdodC0gY29yZQphcHAgLVtoaWRkZW5dcmlnaHQtIGNvcmUKCnR1biAtW2hpZGRlbl1yaWdodC0gY29yZQp2ZWcgLVtoaWRkZW5dcmlnaHQtIGNvcmUKZnJuIC1baGlkZGVuXXJpZ2h0LSBjb3JlCicgZG93bjogYmxkZywgZHluLCBkZW0sIHd0ciwgbHVzZSwgcGNsCmJsZGcgLVtoaWRkZW5dZG93bi0gY29yZQpkeW4gLVtoaWRkZW5dZG93bi0gY29yZQpkZW0gLVtoaWRkZW5dZG93bi0gY29yZQp3dHIgLVtoaWRkZW5dZG93bi0gY29yZQpsdXNlIC1baGlkZGVuXWRvd24tIGNvcmUKcGNsIC1baGlkZGVuXWRvd24tIGNvcmUKCnRpdGxlCiAgQ2l0eUdNTCAtIDMuMCAtIEFsbCBQYWNrYWdlcyBhcyBTaW5nbGUgRGlhZ3JhbQplbmQgdGl0bGUKCkBlbmR1bWwKAAAAAAAAAABZBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAUAQAAAAAAAC1AgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					15,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAABZBAAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBsaW5rcwonIGxlZnQ6IHRyYW4sIGR5biwgZ2VuLCBkZW0sIHZlZywgZnJuLCBwY2wKdHJhbiAtW2hpZGRlbl1sZWZ0LSBjb3JlCmR5biAtW2hpZGRlbl1sZWZ0LSBjb3JlCmdlbiAtW2hpZGRlbl1sZWZ0LSBjb3JlCmRlbSAtW2hpZGRlbl1sZWZ0LSBjb3JlCnZlZyAtW2hpZGRlbl1sZWZ0LSBjb3JlCmZybiAtW2hpZGRlbl1sZWZ0LSBjb3JlCnBjbCAtW2hpZGRlbl1sZWZ0LSBjb3JlCicgcmlnaHQ6IGNvbiwgYXBwLCBicmlkLCB3dHIsIHZlcnMsIGx1c2UKY29uIC1baGlkZGVuXXJpZ2h0LSBjb3JlCmFwcCAtW2hpZGRlbl1yaWdodC0gY29yZQpicmlkIC1baGlkZGVuXXJpZ2h0LSBjb3JlCnd0ciAtW2hpZGRlbl1yaWdodC0gY29yZQp2ZXJzIC1baGlkZGVuXXJpZ2h0LSBjb3JlCmx1c2UgLVtoaWRkZW5dcmlnaHQtIGNvcmUKJyBkb3duOiBibGRnLCB0dW4sIGdycApibGRnIC1baGlkZGVuXWRvd24tIGNvcmUKdHVuIC1baGlkZGVuXWRvd24tIGNvcmUKZ3JwIC1baGlkZGVuXWRvd24tIGNvcmUKCnRpdGxlCiAgQ2l0eUdNTCAtIDMuMCAtIEFsbCBQYWNrYWdlcyBhcyBTaW5nbGUgRGlhZ3JhbQplbmQgdGl0bGUKCkBlbmR1bWwKAAAAAAAAAABcBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA0wIAAAAAAADTAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					16,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAABcBAAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBsaW5rcwonIGxlZnQ6IHRyYW4sIGdlbiwgdmVnLCBwY2wKdHJhbiAtW2hpZGRlbl1sZWZ0LSBjb3JlCmdlbiAtW2hpZGRlbl1sZWZ0LSBjb3JlCnZlZyAtW2hpZGRlbl1sZWZ0LSBjb3JlCnBjbCAtW2hpZGRlbl1sZWZ0LSBjb3JlCicgcmlnaHQ6IGNvbiwgYmxkZywgYXBwLCBicmlkLCB0dW4sIHd0ciwgdmVycywgZ3JwLCBsdXNlCmNvbiAtW2hpZGRlbl1yaWdodC0gY29yZQpibGRnIC1baGlkZGVuXXJpZ2h0LSBjb3JlCmFwcCAtW2hpZGRlbl1yaWdodC0gY29yZQpicmlkIC1baGlkZGVuXXJpZ2h0LSBjb3JlCnR1biAtW2hpZGRlbl1yaWdodC0gY29yZQp3dHIgLVtoaWRkZW5dcmlnaHQtIGNvcmUKdmVycyAtW2hpZGRlbl1yaWdodC0gY29yZQpncnAgLVtoaWRkZW5dcmlnaHQtIGNvcmUKbHVzZSAtW2hpZGRlbl1yaWdodC0gY29yZQonIGRvd246IGR5biwgZGVtLCBmcm4KZHluIC1baGlkZGVuXWRvd24tIGNvcmUKZGVtIC1baGlkZGVuXWRvd24tIGNvcmUKZnJuIC1baGlkZGVuXWRvd24tIGNvcmUKCnRpdGxlCiAgQ2l0eUdNTCAtIDMuMCAtIEFsbCBQYWNrYWdlcyBhcyBTaW5nbGUgRGlhZ3JhbQplbmQgdGl0bGUKCkBlbmR1bWwKAAAAAAAAAAAJBgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA0wIAAAAAAADTAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					18,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAAAJBgAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBsaW5rczogdHJlZS1saWtlIGxheWVyaW5nIGJlbG93IHRoZQonIGNlbnRyYWwgcGFja2FnZSAoZGFzaCBjb3VudCA9IGRpc3RhbmNlIGZyb20gY29yZSwKJyBsYXllciBhc3NpZ25lZCBieSBkZWNyZWFzaW5nIGNvcmUtY29ubmVjdGlvbiBjb3VudCkKJyBsYXllciAxICgxOCBjb25uZWN0aW9ucyB0byBjb3JlKTogZ2VuCmNvcmUgLVtoaWRkZW5dLS0gZ2VuCicgbGF5ZXIgMSAoMTMgY29ubmVjdGlvbnMgdG8gY29yZSk6IHRyYW4KY29yZSAtW2hpZGRlbl0tLSB0cmFuCicgbGF5ZXIgMSAoMTIgY29ubmVjdGlvbnMgdG8gY29yZSk6IGNvbgpjb3JlIC1baGlkZGVuXS0tIGNvbgonIGxheWVyIDIgKDkgY29ubmVjdGlvbnMgdG8gY29yZSk6IGFwcApjb3JlIC1baGlkZGVuXS0tLSBhcHAKJyBsYXllciAyICg4IGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBkeW4sIHZlcnMKY29yZSAtW2hpZGRlbl0tLS0gZHluCmNvcmUgLVtoaWRkZW5dLS0tIHZlcnMKJyBsYXllciAzICg2IGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBibGRnLCBkZW0KY29yZSAtW2hpZGRlbl0tLS0tIGJsZGcKY29yZSAtW2hpZGRlbl0tLS0tIGRlbQonIGxheWVyIDMgKDUgY29ubmVjdGlvbnMgdG8gY29yZSk6IGdycApjb3JlIC1baGlkZGVuXS0tLS0gZ3JwCicgbGF5ZXIgMyAoNCBjb25uZWN0aW9ucyB0byBjb3JlKTogd3RyCmNvcmUgLVtoaWRkZW5dLS0tLSB3dHIKJyBsYXllciA0ICgzIGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBicmlkCmNvcmUgLVtoaWRkZW5dLS0tLS0gYnJpZAonIGxheWVyIDQgKDIgY29ubmVjdGlvbnMgdG8gY29yZSk6IGZybiwgbHVzZSwgcGNsLCB0dW4sIHZlZwpjb3JlIC1baGlkZGVuXS0tLS0tIGZybgpjb3JlIC1baGlkZGVuXS0tLS0tIGx1c2UKY29yZSAtW2hpZGRlbl0tLS0tLSBwY2wKY29yZSAtW2hpZGRlbl0tLS0tLSB0dW4KY29yZSAtW2hpZGRlbl0tLS0tLSB2ZWcKCnRpdGxlCiAgQ2l0eUdNTCAtIDMuMCAtIEFsbCBQYWNrYWdlcyBhcyBTaW5nbGUgRGlhZ3JhbQplbmQgdGl0bGUKCkBlbmR1bWwKAAAAAAAAAACVDgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA0wIAAAAAAADTAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					19,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAACVDgAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBjbGFzcy1sZXZlbCBsYXllciBsaW5rcwoiY29yZTpBYnN0cmFjdEZlYXR1cmUiIC1baGlkZGVuXS0tLSAiYXBwOkFic3RyYWN0U3VyZmFjZURhdGEiCiJjb3JlOkFic3RyYWN0QXBwZWFyYW5jZSIgLVtoaWRkZW5dLS0tICJhcHA6QXBwZWFyYW5jZSIKImNvcmU6QWJzdHJhY3RVbm9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tLS0tICJicmlkOkJyaWRnZVJvb20iCiJjb3JlOkFic3RyYWN0TG9naWNhbFNwYWNlIiAtW2hpZGRlbl0tLS0tICJibGRnOkFic3RyYWN0QnVpbGRpbmdTdWJkaXZpc2lvbiIKImNvcmU6QWJzdHJhY3RVbm9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tLS0gImJsZGc6QnVpbGRpbmdSb29tIgoiY29yZTpBYnN0cmFjdE9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tLS0tICJmcm46Q2l0eUZ1cm5pdHVyZSIKImNvcmU6QWJzdHJhY3RMb2dpY2FsU3BhY2UiIC1baGlkZGVuXS0tLS0gImdycDpDaXR5T2JqZWN0R3JvdXAiCiJjb3JlOkFic3RyYWN0T2NjdXBpZWRTcGFjZSIgLVtoaWRkZW5dLS0gImNvbjpBYnN0cmFjdENvbnN0cnVjdGlvbiIKImNvcmU6QWJzdHJhY3RUaGVtYXRpY1N1cmZhY2UiIC1baGlkZGVuXS0tICJjb246QWJzdHJhY3RDb25zdHJ1Y3Rpb25TdXJmYWNlIgoiY29yZTpBYnN0cmFjdE9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tICJjb246QWJzdHJhY3RDb25zdHJ1Y3RpdmVFbGVtZW50IgoiY29yZTpBYnN0cmFjdE9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tICJjb246QWJzdHJhY3RGaWxsaW5nRWxlbWVudCIKImNvcmU6QWJzdHJhY3RUaGVtYXRpY1N1cmZhY2UiIC1baGlkZGVuXS0tICJjb246QWJzdHJhY3RGaWxsaW5nU3VyZmFjZSIKImNvcmU6QWJzdHJhY3RPY2N1cGllZFNwYWNlIiAtW2hpZGRlbl0tLSAiY29uOkFic3RyYWN0RnVybml0dXJlIgoiY29yZTpBYnN0cmFjdE9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tICJjb246QWJzdHJhY3RJbnN0YWxsYXRpb24iCiJjb3JlOkFic3RyYWN0RmVhdHVyZSIgLVtoaWRkZW5dLS0tICJkeW46QWJzdHJhY3RUaW1lc2VyaWVzIgoiY29yZTpBYnN0cmFjdER5bmFtaXplciIgLVtoaWRkZW5dLS0tICJkeW46RHluYW1pemVyIgoiY29yZTpBYnN0cmFjdEdlbmVyaWNBdHRyaWJ1dGUiIC1baGlkZGVuXS0tICJnZW46Q29kZUF0dHJpYnV0ZSIKImNvcmU6QWJzdHJhY3RHZW5lcmljQXR0cmlidXRlIiAtW2hpZGRlbl0tLSAiZ2VuOkRhdGVBdHRyaWJ1dGUiCiJjb3JlOkFic3RyYWN0R2VuZXJpY0F0dHJpYnV0ZSIgLVtoaWRkZW5dLS0gImdlbjpEb3VibGVBdHRyaWJ1dGUiCiJjb3JlOkFic3RyYWN0R2VuZXJpY0F0dHJpYnV0ZSIgLVtoaWRkZW5dLS0gImdlbjpHZW5lcmljQXR0cmlidXRlU2V0IgoiY29yZTpBYnN0cmFjdExvZ2ljYWxTcGFjZSIgLVtoaWRkZW5dLS0gImdlbjpHZW5lcmljTG9naWNhbFNwYWNlIgoiY29yZTpBYnN0cmFjdE9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tICJnZW46R2VuZXJpY09jY3VwaWVkU3BhY2UiCiJjb3JlOkFic3RyYWN0VGhlbWF0aWNTdXJmYWNlIiAtW2hpZGRlbl0tLSAiZ2VuOkdlbmVyaWNUaGVtYXRpY1N1cmZhY2UiCiJjb3JlOkFic3RyYWN0VW5vY2N1cGllZFNwYWNlIiAtW2hpZGRlbl0tLSAiZ2VuOkdlbmVyaWNVbm9jY3VwaWVkU3BhY2UiCiJjb3JlOkFic3RyYWN0R2VuZXJpY0F0dHJpYnV0ZSIgLVtoaWRkZW5dLS0gImdlbjpJbnRBdHRyaWJ1dGUiCiJjb3JlOkFic3RyYWN0R2VuZXJpY0F0dHJpYnV0ZSIgLVtoaWRkZW5dLS0gImdlbjpNZWFzdXJlQXR0cmlidXRlIgoiY29yZTpBYnN0cmFjdEdlbmVyaWNBdHRyaWJ1dGUiIC1baGlkZGVuXS0tICJnZW46U3RyaW5nQXR0cmlidXRlIgoiY29yZTpBYnN0cmFjdEdlbmVyaWNBdHRyaWJ1dGUiIC1baGlkZGVuXS0tICJnZW46VXJpQXR0cmlidXRlIgoiY29yZTpBYnN0cmFjdFRoZW1hdGljU3VyZmFjZSIgLVtoaWRkZW5dLS0tLS0gImx1c2U6TGFuZFVzZSIKImNvcmU6QWJzdHJhY3RQb2ludENsb3VkIiAtW2hpZGRlbl0tLS0tLSAicGNsOlBvaW50Q2xvdWQiCiJjb3JlOkFic3RyYWN0U3BhY2VCb3VuZGFyeSIgLVtoaWRkZW5dLS0tLSAiZGVtOkFic3RyYWN0UmVsaWVmQ29tcG9uZW50IgoiY29yZTpBYnN0cmFjdFNwYWNlQm91bmRhcnkiIC1baGlkZGVuXS0tLS0gImRlbTpSZWxpZWZGZWF0dXJlIgoiY29yZTpBYnN0cmFjdFVub2NjdXBpZWRTcGFjZSIgLVtoaWRkZW5dLS0gInRyYW46QWJzdHJhY3RUcmFuc3BvcnRhdGlvblNwYWNlIgoiY29yZTpBYnN0cmFjdFRoZW1hdGljU3VyZmFjZSIgLVtoaWRkZW5dLS0gInRyYW46QXV4aWxpYXJ5VHJhZmZpY0FyZWEiCiJjb3JlOkFic3RyYWN0VW5vY2N1cGllZFNwYWNlIiAtW2hpZGRlbl0tLSAidHJhbjpBdXhpbGlhcnlUcmFmZmljU3BhY2UiCiJjb3JlOkFic3RyYWN0VW5vY2N1cGllZFNwYWNlIiAtW2hpZGRlbl0tLSAidHJhbjpDbGVhcmFuY2VTcGFjZSIKImNvcmU6QWJzdHJhY3RVbm9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tICJ0cmFuOkhvbGUiCiJjb3JlOkFic3RyYWN0VGhlbWF0aWNTdXJmYWNlIiAtW2hpZGRlbl0tLSAidHJhbjpIb2xlU3VyZmFjZSIKImNvcmU6QWJzdHJhY3RUaGVtYXRpY1N1cmZhY2UiIC1baGlkZGVuXS0tICJ0cmFuOk1hcmtpbmciCiJjb3JlOkFic3RyYWN0VGhlbWF0aWNTdXJmYWNlIiAtW2hpZGRlbl0tLSAidHJhbjpUcmFmZmljQXJlYSIKImNvcmU6QWJzdHJhY3RVbm9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tICJ0cmFuOlRyYWZmaWNTcGFjZSIKImNvcmU6QWJzdHJhY3RVbm9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tLS0tICJ0dW46SG9sbG93U3BhY2UiCiJjb3JlOkFic3RyYWN0T2NjdXBpZWRTcGFjZSIgLVtoaWRkZW5dLS0tLS0gInZlZzpBYnN0cmFjdFZlZ2V0YXRpb25PYmplY3QiCiJjb3JlOkFic3RyYWN0VmVyc2lvbiIgLVtoaWRkZW5dLS0tICJ2ZXJzOlZlcnNpb24iCiJjb3JlOkFic3RyYWN0VmVyc2lvblRyYW5zaXRpb24iIC1baGlkZGVuXS0tLSAidmVyczpWZXJzaW9uVHJhbnNpdGlvbiIKImNvcmU6QWJzdHJhY3RUaGVtYXRpY1N1cmZhY2UiIC1baGlkZGVuXS0tLS0gInd0cjpBYnN0cmFjdFdhdGVyQm91bmRhcnlTdXJmYWNlIgoiY29yZTpBYnN0cmFjdE9jY3VwaWVkU3BhY2UiIC1baGlkZGVuXS0tLS0gInd0cjpXYXRlckJvZHkiCgp0aXRsZQogIENpdHlHTUwgLSAzLjAgLSBBbGwgUGFja2FnZXMgYXMgU2luZ2xlIERpYWdyYW0KZW5kIHRpdGxlCgpAZW5kdW1sCgAAAAAAAAAACQYAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA0wIAAAAAAADTAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					23,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAAAJBgAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgonIGhpZGRlbiBsaW5rczogdHJlZS1saWtlIGxheWVyaW5nIGJlbG93IHRoZQonIGNlbnRyYWwgcGFja2FnZSAoZGFzaCBjb3VudCA9IGRpc3RhbmNlIGZyb20gY29yZSwKJyBsYXllciBhc3NpZ25lZCBieSBkZWNyZWFzaW5nIGNvcmUtY29ubmVjdGlvbiBjb3VudCkKJyBsYXllciAxICgxOCBjb25uZWN0aW9ucyB0byBjb3JlKTogZ2VuCmNvcmUgLVtoaWRkZW5dLS0gZ2VuCicgbGF5ZXIgMSAoMTMgY29ubmVjdGlvbnMgdG8gY29yZSk6IHRyYW4KY29yZSAtW2hpZGRlbl0tLSB0cmFuCicgbGF5ZXIgMSAoMTIgY29ubmVjdGlvbnMgdG8gY29yZSk6IGNvbgpjb3JlIC1baGlkZGVuXS0tIGNvbgonIGxheWVyIDIgKDkgY29ubmVjdGlvbnMgdG8gY29yZSk6IGFwcApjb3JlIC1baGlkZGVuXS0tLSBhcHAKJyBsYXllciAyICg4IGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBkeW4sIHZlcnMKY29yZSAtW2hpZGRlbl0tLS0gZHluCmNvcmUgLVtoaWRkZW5dLS0tIHZlcnMKJyBsYXllciAzICg2IGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBibGRnLCBkZW0KY29yZSAtW2hpZGRlbl0tLS0tIGJsZGcKY29yZSAtW2hpZGRlbl0tLS0tIGRlbQonIGxheWVyIDMgKDUgY29ubmVjdGlvbnMgdG8gY29yZSk6IGdycApjb3JlIC1baGlkZGVuXS0tLS0gZ3JwCicgbGF5ZXIgMyAoNCBjb25uZWN0aW9ucyB0byBjb3JlKTogd3RyCmNvcmUgLVtoaWRkZW5dLS0tLSB3dHIKJyBsYXllciA0ICgzIGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBicmlkCmNvcmUgLVtoaWRkZW5dLS0tLS0gYnJpZAonIGxheWVyIDQgKDIgY29ubmVjdGlvbnMgdG8gY29yZSk6IGZybiwgbHVzZSwgcGNsLCB0dW4sIHZlZwpjb3JlIC1baGlkZGVuXS0tLS0tIGZybgpjb3JlIC1baGlkZGVuXS0tLS0tIGx1c2UKY29yZSAtW2hpZGRlbl0tLS0tLSBwY2wKY29yZSAtW2hpZGRlbl0tLS0tLSB0dW4KY29yZSAtW2hpZGRlbl0tLS0tLSB2ZWcKCnRpdGxlCiAgQ2l0eUdNTCAtIDMuMCAtIEFsbCBQYWNrYWdlcyBhcyBTaW5nbGUgRGlhZ3JhbQplbmQgdGl0bGUKCkBlbmR1bWwKAAAAAAAAAAAiBgAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAfwMAAAAAAAB/AwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					30,
+					1,
+					"revert",
+					null,
+					"AgAAAAAAAAAAAAAAAAAAAAAAAAAiBgAAQHN0YXJ0dW1sCicgR2VuZXJhdGVkIGJ5IHN0ZXAwOV9hbGxfcGFja2FnZXMucHkgLSBkbyBub3QgZWRpdC4KJyBDb21iaW5lcyBhbGwgbW9kdWxlIGRpYWdyYW1zIHZpYSBpbmNsdWRlcy4KIWluY2x1ZGUgY29yZS5wdW1sCiFpbmNsdWRlIGFwcGVhcmFuY2UucHVtbAohaW5jbHVkZSBjaXR5ZnVybml0dXJlLnB1bWwKIWluY2x1ZGUgY2l0eW9iamVjdGdyb3VwLnB1bWwKIWluY2x1ZGUgY29uc3RydWN0aW9uLnB1bWwKIWluY2x1ZGUgZHluYW1pemVyLnB1bWwKIWluY2x1ZGUgZ2VuZXJpY3MucHVtbAohaW5jbHVkZSBsYW5kdXNlLnB1bWwKIWluY2x1ZGUgcG9pbnRjbG91ZC5wdW1sCiFpbmNsdWRlIHJlbGllZi5wdW1sCiFpbmNsdWRlIHRyYW5zcG9ydGF0aW9uLnB1bWwKIWluY2x1ZGUgdmVnZXRhdGlvbi5wdW1sCiFpbmNsdWRlIHZlcnNpb25pbmcucHVtbAohaW5jbHVkZSB3YXRlcmJvZHkucHVtbAohaW5jbHVkZSBicmlkZ2UucHVtbAohaW5jbHVkZSBidWlsZGluZy5wdW1sCiFpbmNsdWRlIHR1bm5lbC5wdW1sCgpsZWZ0IHRvIHJpZ2h0IGRpcmVjdGlvbgoKJyBoaWRkZW4gbGlua3M6IHRyZWUtbGlrZSBsYXllcmluZyBiZWxvdyB0aGUKJyBjZW50cmFsIHBhY2thZ2UgKGRhc2ggY291bnQgPSBkaXN0YW5jZSBmcm9tIGNvcmUsCicgbGF5ZXIgYXNzaWduZWQgYnkgZGVjcmVhc2luZyBjb3JlLWNvbm5lY3Rpb24gY291bnQpCicgbGF5ZXIgMSAoMTggY29ubmVjdGlvbnMgdG8gY29yZSk6IGdlbgpjb3JlIC1baGlkZGVuXS0tIGdlbgonIGxheWVyIDEgKDEzIGNvbm5lY3Rpb25zIHRvIGNvcmUpOiB0cmFuCmNvcmUgLVtoaWRkZW5dLS0gdHJhbgonIGxheWVyIDEgKDEyIGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBjb24KY29yZSAtW2hpZGRlbl0tLSBjb24KJyBsYXllciAyICg5IGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBhcHAKY29yZSAtW2hpZGRlbl0tLS0gYXBwCicgbGF5ZXIgMiAoOCBjb25uZWN0aW9ucyB0byBjb3JlKTogZHluLCB2ZXJzCmNvcmUgLVtoaWRkZW5dLS0tIGR5bgpjb3JlIC1baGlkZGVuXS0tLSB2ZXJzCicgbGF5ZXIgMyAoNiBjb25uZWN0aW9ucyB0byBjb3JlKTogYmxkZywgZGVtCmNvcmUgLVtoaWRkZW5dLS0tLSBibGRnCmNvcmUgLVtoaWRkZW5dLS0tLSBkZW0KJyBsYXllciAzICg1IGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBncnAKY29yZSAtW2hpZGRlbl0tLS0tIGdycAonIGxheWVyIDMgKDQgY29ubmVjdGlvbnMgdG8gY29yZSk6IHd0cgpjb3JlIC1baGlkZGVuXS0tLS0gd3RyCicgbGF5ZXIgNCAoMyBjb25uZWN0aW9ucyB0byBjb3JlKTogYnJpZApjb3JlIC1baGlkZGVuXS0tLS0tIGJyaWQKJyBsYXllciA0ICgyIGNvbm5lY3Rpb25zIHRvIGNvcmUpOiBmcm4sIGx1c2UsIHBjbCwgdHVuLCB2ZWcKY29yZSAtW2hpZGRlbl0tLS0tLSBmcm4KY29yZSAtW2hpZGRlbl0tLS0tLSBsdXNlCmNvcmUgLVtoaWRkZW5dLS0tLS0gcGNsCmNvcmUgLVtoaWRkZW5dLS0tLS0gdHVuCmNvcmUgLVtoaWRkZW5dLS0tLS0gdmVnCgp0aXRsZQogIENpdHlHTUwgLSAzLjAgLSBBbGwgUGFja2FnZXMgYXMgU2luZ2xlIERpYWdyYW0KZW5kIHRpdGxlCgpAZW5kdW1sCgAAAAAAAAAAJgYAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA4AQAAAAAAADgBAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pla",
+				"PlantUmlDiagrams: Generate Diagrams for Active View"
+			],
+			[
+				"plant",
+				"PlantUmlDiagrams: Generate Diagrams for Active View"
+			],
+			[
+				"plan",
+				"PlantUmlDiagrams: Generate Diagrams for Active View"
+			],
+			[
+				"plantuml",
+				"PlantUmlDiagrams: Generate Diagrams for Active View"
+			],
+			[
+				"previe",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"format",
+				"Pretty JSON: Format JSON"
+			],
+			[
+				"forma",
+				"ST: Format SQL"
+			],
+			[
+				"javasc",
+				"Format: Javascript"
+			],
+			[
+				"re",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"xml",
+				"Indent XML"
+			],
+			[
+				"ind",
+				"Indentation: Detect"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"raw ",
+				"Raw Line Edit: View Line Endings"
+			],
+			[
+				"markdow",
+				"Set Syntax: Markdown"
+			],
+			[
+				"palnt",
+				"PlantUmlDiagrams: Generate Diagrams for Active View"
+			],
+			[
+				"fo",
+				"ST: Format SQL"
+			],
+			[
+				"for",
+				"ST: Format SQL"
+			],
+			[
+				"pos",
+				"Set Syntax: PostgreSQL"
+			],
+			[
+				"post",
+				"Set Syntax: PostgreSQL"
+			],
+			[
+				"form",
+				"ST: Format SQL"
+			],
+			[
+				"postgre",
+				"Set Syntax: PostgreSQL"
+			],
+			[
+				"sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"jso",
+				"Pretty JSON: Format JSON"
+			],
+			[
+				"yaml",
+				"Set Syntax: YAML"
+			],
+			[
+				"markd",
+				"Set Syntax: Markdown"
+			],
+			[
+				"inde",
+				"Indent XML"
+			],
+			[
+				"json",
+				"Pretty JSON: Format JSON"
+			],
+			[
+				"previ",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"prev",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"format ",
+				"Pretty YAML: Reformat (Pretty Print) YAML"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pyt",
+				"Set Syntax: Python"
+			],
+			[
+				"pre",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"i",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"li",
+				"Linearize XML"
+			],
+			[
+				"uml",
+				"PlantUmlDiagrams: Continually Generate Diagram"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"raw",
+				"Raw Line Edit: Toggle Line Edit Mode"
+			],
+			[
+				"markdown",
+				"MarkdownEditing: Select Color scheme"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"pyth",
+				"Set Syntax: Python"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"js",
+				"Pretty JSON: Format JSON"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"linear",
+				"Linearize XML"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"reinden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"view",
+				"View In Browser"
+			],
+			[
+				"brow",
+				"View In Browser"
+			],
+			[
+				"browser",
+				"View In Browser"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/murat/gitpot/every-class",
+		"/home/murat/gitpot/every-class/output",
+		"/home/murat/gitpot/every-class/output/CityGML",
+		"/home/murat/gitpot/every-class/output/CityGML/3.0",
+		"/home/murat/gitpot/every-class/output/CityGML/3.0/UMLClassDiagram",
+		"/home/murat/gitpot/every-class/schemas",
+		"/home/murat/gitpot/every-class/schemas/citygml",
+		"/home/murat/gitpot/every-class/schemas/citygml/3.0",
+		"/home/murat/gitpot/every-class/schemas/citygml/construction",
+		"/home/murat/gitpot/every-class/schemas/citygml/construction/3.0"
+	],
+	"file_history":
+	[
+		"/tmp/svg-viewer/f46dd2f63d1d017dec23cd832a6fb12a/all_packages.png",
+		"/home/murat/gitpot/every-class/output/all_packages.puml",
+		"/tmp/svg-viewer/797ef8fc275643d5c82e628ce5886d30/transportation.png",
+		"/home/murat/gitpot/every-class/output/transportation.svg",
+		"/home/murat/gitpot/every-class/output/all_packages.svg",
+		"/tmp/svg-viewer/2b58dfbc15fb306626e44dab474d2c5f/tunnel_classes.png",
+		"/home/murat/gitpot/every-class/output/tunnel_classes.svg",
+		"/tmp/svg-viewer/09f8ede46709a2521c1d577e3d5b6f22/bridge_classes.png",
+		"/tmp/svg-viewer/e3774c24518a13d6eef7347d8bf14330/cityfurniture_classes.png",
+		"/home/murat/gitpot/every-class/output/cityfurniture_classes.svg",
+		"/home/murat/gitpot/every-class/output/bridge_classes.svg",
+		"/tmp/svg-viewer/8cf66945bb31d97885d0ebc2ca162c6d/waterbody_classes.png",
+		"/home/murat/gitpot/every-class/output/waterbody_classes.svg",
+		"/tmp/svg-viewer/2c633720d115bd0b155cae69994a6589/versioning_classes.png",
+		"/home/murat/gitpot/every-class/output/versioning_classes.svg",
+		"/tmp/svg-viewer/633dd9512e331d3d685ed9d522b12e04/vegetation_classes.png",
+		"/home/murat/gitpot/every-class/output/vegetation_classes.svg",
+		"/tmp/svg-viewer/83ce94e26bb4ce835521cb4bd9be27c8/transportation_classes.png",
+		"/home/murat/gitpot/every-class/output/transportation_classes.svg",
+		"/tmp/svg-viewer/ea9bb26a5b6dbc4d6eeedd5483cef2a5/relief_classes.png",
+		"/home/murat/gitpot/every-class/output/relief_classes.svg",
+		"/tmp/svg-viewer/a3d3e845e0d8708593d934c52315fabd/pointcloud_classes.png",
+		"/home/murat/gitpot/every-class/output/pointcloud_classes.svg",
+		"/tmp/svg-viewer/bbdd755534b318261e3183d7bb03c8b0/landuse_classes.png",
+		"/home/murat/gitpot/every-class/output/landuse_classes.svg",
+		"/tmp/svg-viewer/df2146b2dd1db2348cca4a2dd3804a0a/dynamizer_classes.png",
+		"/tmp/svg-viewer/896a6f4c1e63d36b318558d1173583cd/generics_classes.png",
+		"/home/murat/gitpot/every-class/output/generics_classes.svg",
+		"/home/murat/gitpot/every-class/output/dynamizer_classes.svg",
+		"/tmp/svg-viewer/0ed93950520533529a24e3d7bbd726a9/appearance_classes.png",
+		"/home/murat/gitpot/every-class/output/appearance_classes.svg",
+		"/home/murat/gitpot/every-class/output/cityobjectgroup_classes.puml",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q1_sequence_diagram.puml",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/card-style.puml",
+		"/tmp/svg-viewer/6df105fc95dd72567fb80a3b05912d86/q1_sequence_diagram.png",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/modern-style.puml",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q53_tr_ortpht_rqst2.txt",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q1_sequence_diagram.svg",
+		"/tmp/svg-viewer/6a007a8b393ea024cf892091b61f5c79/cityobjectgroup_classes.png",
+		"/home/murat/gitpot/every-class/output/cityobjectgroup_classes.svg",
+		"/home/murat/gitpot/every-class/output/building_classes.puml",
+		"/tmp/svg-viewer/590bf5f25ec762f2ac7e5a36b6330ad8/building_classes.png",
+		"/home/murat/gitpot/every-class/output/building_classes.svg",
+		"/home/murat/gitpot/every-class/output/construction_classes.puml",
+		"/tmp/svg-viewer/2ebc44fd55da49c43f4b57c22308d184/construction_classes.png",
+		"/home/murat/gitpot/every-class/output/construction_classes.svg",
+		"/home/murat/gitpot/every-class/output/core_classes.puml",
+		"/tmp/svg-viewer/7d1aa7edbd06c94eb1e35c264e9fada4/core_classes.png",
+		"/home/murat/gitpot/every-class/output/core_classes.svg",
+		"/home/murat/gitpot/every-class/schemas/citygml/3.0/core.xsd",
+		"/home/murat/gitpot/every-class/conversations/2026_07_21.txt",
+		"/home/murat/gitpot/plant_4_all/citygml30/organized_diagrams/citygml_3-0_con_delta.puml",
+		"/home/murat/gitpot/plant_4_all/citygml30/diagram_images/citygml_3-0_aio.puml",
+		"/home/murat/gitpot/plant_4_all/citygml30/diagram_images/citygml_3-0_bldg_delta.puml",
+		"/tmp/svg-viewer/2fe9cc87429439db922cf89f2d889d61/citygml_3-0_core_beta.png",
+		"/home/murat/gitpot/plant_4_all/citygml30/organized_diagrams/citygml_3-0_core_beta.puml",
+		"/home/murat/gitpot/plant_4_all/citygml30/organized_diagrams/citygml_3-0_core_alpha.puml",
+		"/home/murat/gitpot/plant_4_all/citygml30/diagram_images/citygml_3-0_con_delta.puml",
+		"/home/murat/gitpot/plant_4_all/citygml30/organized_diagrams/citygml_3-0_core_beta.svg",
+		"/home/murat/gitpot/citydb-3dtiler/quick_runs.md",
+		"/home/murat/gitpot/citydb-3dtiler/validators/validate_cql2.py",
+		"/home/murat/gitpot/citydb-3dtiler/citydb-3dtiler.py",
+		"/home/murat/gitpot/citydb-3dtiler/tile_main.py",
+		"/home/murat/gitpot/citydb-3dtiler/validators/validate_sql.py",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/functionality_matrix.puml",
+		"/home/murat/gitpot/citydb-3dtiler/docs/developer_docs.md",
+		"/home/murat/gitpot/citydb-3dtiler/docs/samples_4_advanced.md",
+		"/home/murat/gitpot/citydb-3dtiler/docs/to-do_list.md",
+		"/tmp/svg-viewer/cb8803896b3b10527453b476b6513877/test_procedure.png",
+		"/tmp/svg-viewer/d320aed10728eae3a7a8c5e6bff2a651/q2_network_layers_w_answer.png",
+		"/home/murat/gitpot/citydb-3dtiler/docs/test_procedures.md",
+		"/tmp/svg-viewer/bed590bfb9137890f3892883415c7ac2/q3_state_machine_diagram2.png",
+		"/tmp/svg-viewer/64b25852aa1a31f43e2742eee6573d87/q3_state_machine_diagram.png",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q3_state_machine_diagram2.puml",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q3_state_machine_diagram2.svg",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q3_state_machine_diagram.puml",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q3_state_machine_diagram.svg",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q2_network_layers_w_answer.puml",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/sources/q2_network_layers_w_answer.svg",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/test_procedure.puml",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/card-style.puml",
+		"/tmp/svg-viewer/305156f023055f795733229786b91cff/q1_sequence_diagram.png",
+		"/home/murat/Documents/0097_distgis_exam_suse2026_rep/q1_sequence_diagram.svg",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/test_procedure.svg",
+		"/home/murat/gitpot/citydb-3dtiler/docs/index.md",
+		"/run/user/1000/gvfs/smb-share:server=129.187.38.127,share=public/kendir/index.html",
+		"/home/murat/Downloads/Wyoming-56001-000.gml",
+		"/home/murat/gitpot/citydb-3dtiler/mkdocs.yml",
+		"/home/murat/gitpot/citydb-3dtiler/requirements.txt",
+		"/home/murat/gitpot/citydb-3dtiler/quick_runs.txt~",
+		"/home/murat/gitpot/citydb-3dtiler/shared/advice.yml",
+		"/home/murat/gitpot/citydb-3dtiler/io_tools/pg_sql.py",
+		"/home/murat/gitpot/citydb-3dtiler/validators/validate_filters.py",
+		"/home/murat/gitpot/citydb-3dtiler/validators/__init__.py",
+		"/tmp/svg-viewer/0e6f673de88c4aa8c906f992a147df64/classes_advice.png",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/classes_advice.svg",
+		"/tmp/svg-viewer/1524d776f21b63486a5743a707da9444/functionality_matrix.png",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/functionality_matrix.svg",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/classes_sqlblocks.puml",
+		"/home/murat/gitpot/citydb-3dtiler/classes/sql_blocks.py",
+		"/home/murat/gitpot/citydb-3dtiler/standalone_queries/get_crs_code.sql",
+		"/home/murat/gitpot/citydb-3dtiler/database/pg_connection.py",
+		"/home/murat/gitpot/citydb-3dtiler/classes/advisement.py",
+		"/home/murat/gitpot/citydb-3dtiler/advise_main.py",
+		"/home/murat/gitpot/citydb-3dtiler/sources/plantuml/classes_advice.puml",
+		"/home/murat/gitpot/citydb-3dtiler/instances/filters.py",
+		"/home/murat/Downloads/citydb-tool-main/citydb-cli/src/main/java/org/citydb/cli/common/TypeNameOptions.java",
+		"/home/murat/Downloads/citydb-tool-main/citydb-cli/src/main/java/org/citydb/cli/deleter/options/QueryOptions.java",
+		"/home/murat/Downloads/citydb-tool-main/citydb-cli/src/main/java/org/citydb/cli/importer/options/FilterOptions.java",
+		"/home/murat/Downloads/citydb-tool-main/citydb-cli/src/main/java/org/citydb/cli/importer/filter/FeatureTypeFilterPredicate.java",
+		"/home/murat/Downloads/citydb-tool-main/citydb-cli/src/main/java/org/citydb/cli/common/CrsOptions.java",
+		"/var/www/html/openlayers/custom2.js",
+		"/var/www/html/openlayers/simple4.html",
+		"/var/www/html/openlayers/custom.css",
+		"/home/murat/Downloads/v10.9.0-site/en/latest/main.js",
+		"/var/www/html/openlayers/custom.js",
+		"/var/www/html/leaflet/DEMO6A/demo6a.js",
+		"/home/murat/gitpot/dist-gis-exercises/docs/raw_codes/basics_of_web_map/demo9a_leaflet.html",
+		"/home/murat/gitpot/dist-gis-exercises/docs/raw_codes/basics_of_web_map/demo9a.css",
+		"/home/murat/gitpot/dist-gis-exercises/docs/raw_codes/basics_of_web_map/demo9a.js",
+		"/home/murat/Downloads/demo6a.html",
+		"/home/murat/Downloads/v10.9.0-site/en/latest/test_01.html",
+		"/home/murat/Downloads/v10.9.0-site/index.html",
+		"/home/murat/Documents/0095_Foundations_of_SDI/lectures/_sources/plantuml/wms_uml_operations_with_sld.puml",
+		"/home/murat/Downloads/parzellarkarte.meta4",
+		"/home/murat/Downloads/095_Mittelfranken_Hausumringe/hausumringe.dbf",
+		"/tmp/svg-viewer/02ae52ed52c1aa3f9d5fc9f00d61b0f8/wms_uml_operations_with_sld.png",
+		"/home/murat/Documents/0095_Foundations_of_SDI/lectures/_sources/plantuml/wms_uml_operations_with_sld.svg"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 322.0,
+		"where_history":
+		[
+			"/home/murat/gitpot,*.puml",
+			"/home/murat/gitpot,*.pu"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"TimeValue",
+			"&",
+			"20",
+			"line",
+			"boundary",
+			"abstractgeneric",
+			"Proper",
+			"relativetoterr",
+			"relativet",
+			"relativetoterrain",
+			"externalRe",
+			"cityModelMember",
+			"cityMoodelMember",
+			"citymodelMem",
+			"iso",
+			"\\$geom",
+			"hide $geom",
+			"~ ",
+			"hide"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\\n&"
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "output/CityGML/3.0/UMLClassDiagram/all_packages.puml",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1574,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1248,
+								1248
+							]
+						],
+						"settings":
+						{
+							"allow_quiet_save": true,
+							"syntax": "Packages/PlantUmlDiagrams/Syntaxes/DiagramEx.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 342.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 110.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.Terminus":
+	{
+		"height": 379.0,
+		"history":
+		[
+		]
+	},
+	"output.diff_views":
+	{
+		"height": 508.0
+	},
+	"output.exec":
+	{
+		"height": 156.0,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.raw_line_edit_view":
+	{
+		"height": 550.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "every-class.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/gitpot/samplycity/samplycity.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 347.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

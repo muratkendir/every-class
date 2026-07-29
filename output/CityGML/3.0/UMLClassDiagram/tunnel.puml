@@ -1,0 +1,136 @@
+@startuml
+title
+  CityGML - 3.0 - Tunnel - Only XSD based
+  http://www.opengis.net/citygml/tunnel/3.0
+end title
+
+package tun {
+abstract class "tun:ADEOfAbstractTunnel" $adeOf
+class "tun:ADEOfAbstractTunnelProperty" $property $adeOf {
+  ADEOfAbstractTunnel : tun:ADEOfAbstractTunnel
+}
+abstract class "tun:ADEOfHollowSpace" $adeOf
+class "tun:ADEOfHollowSpaceProperty" $property $adeOf {
+  ADEOfHollowSpace : tun:ADEOfHollowSpace
+}
+abstract class "tun:ADEOfTunnel" $adeOf
+class "tun:ADEOfTunnelProperty" $property $adeOf {
+  ADEOfTunnel : tun:ADEOfTunnel
+}
+abstract class "tun:ADEOfTunnelConstructiveElement" $adeOf
+class "tun:ADEOfTunnelConstructiveElementProperty" $property $adeOf {
+  ADEOfTunnelConstructiveElement : tun:ADEOfTunnelConstructiveElement
+}
+abstract class "tun:ADEOfTunnelFurniture" $adeOf
+class "tun:ADEOfTunnelFurnitureProperty" $property $adeOf {
+  ADEOfTunnelFurniture : tun:ADEOfTunnelFurniture
+}
+abstract class "tun:ADEOfTunnelInstallation" $adeOf
+class "tun:ADEOfTunnelInstallationProperty" $property $adeOf {
+  ADEOfTunnelInstallation : tun:ADEOfTunnelInstallation
+}
+abstract class "tun:ADEOfTunnelPart" $adeOf
+class "tun:ADEOfTunnelPartProperty" $property $adeOf {
+  ADEOfTunnelPart : tun:ADEOfTunnelPart
+}
+abstract class "tun:AbstractTunnel" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfAbstractTunnel : tun:ADEOfAbstractTunnel [0..*]
+}
+class "tun:AbstractTunnelProperty" $property {
+  AbstractTunnel : tun:AbstractTunnel
+}
+class "tun:HollowSpace" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfHollowSpace : tun:ADEOfHollowSpace [0..*]
+}
+class "tun:HollowSpaceProperty" $property {
+  HollowSpace : tun:HollowSpace
+}
+class "tun:Tunnel" <<FeatureType>> {
+  ~ adeOfTunnel : tun:ADEOfTunnel [0..*]
+}
+class "tun:TunnelProperty" $property {
+  Tunnel : tun:Tunnel
+}
+class "tun:TunnelConstructiveElement" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfTunnelConstructiveElement : tun:ADEOfTunnelConstructiveElement [0..*]
+}
+class "tun:TunnelConstructiveElementProperty" $property {
+  TunnelConstructiveElement : tun:TunnelConstructiveElement
+}
+class "tun:TunnelFurniture" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfTunnelFurniture : tun:ADEOfTunnelFurniture [0..*]
+}
+class "tun:TunnelFurnitureProperty" $property {
+  TunnelFurniture : tun:TunnelFurniture
+}
+class "tun:TunnelInstallation" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfTunnelInstallation : tun:ADEOfTunnelInstallation [0..*]
+}
+class "tun:TunnelInstallationProperty" $property {
+  TunnelInstallation : tun:TunnelInstallation
+}
+class "tun:TunnelPart" <<FeatureType>> {
+  ~ adeOfTunnelPart : tun:ADEOfTunnelPart [0..*]
+}
+class "tun:TunnelPartProperty" $property {
+  TunnelPart : tun:TunnelPart
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "con:AbstractConstruction"
+abstract class "con:AbstractConstructiveElement"
+abstract class "con:AbstractFurniture"
+abstract class "con:AbstractInstallation"
+abstract class "core:AbstractUnoccupiedSpace"
+
+"con:AbstractConstruction" <|-- "tun:AbstractTunnel"
+"core:AbstractUnoccupiedSpace" <|-- "tun:HollowSpace"
+"tun:AbstractTunnel" <|-- "tun:Tunnel"
+"con:AbstractConstructiveElement" <|-- "tun:TunnelConstructiveElement"
+"con:AbstractFurniture" <|-- "tun:TunnelFurniture"
+"con:AbstractInstallation" <|-- "tun:TunnelInstallation"
+"tun:AbstractTunnel" <|-- "tun:TunnelPart"
+
+' Class relations (promoted from property wrappers)
+"tun:AbstractTunnel" o-- "0..*" "tun:TunnelConstructiveElement" : tunnelConstructiveElement
+"tun:AbstractTunnel" o-- "0..*" "tun:TunnelInstallation" : tunnelInstallation
+"tun:AbstractTunnel" o-- "0..*" "tun:HollowSpace" : hollowSpace
+"tun:AbstractTunnel" o-- "0..*" "tun:TunnelFurniture" : tunnelFurniture
+"tun:HollowSpace" o-- "0..*" "tun:TunnelFurniture" : tunnelFurniture
+"tun:HollowSpace" o-- "0..*" "tun:TunnelInstallation" : tunnelInstallation
+"tun:Tunnel" o-- "0..*" "tun:TunnelPart" : tunnelPart
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

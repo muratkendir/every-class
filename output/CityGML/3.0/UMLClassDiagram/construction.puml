@@ -1,0 +1,319 @@
+@startuml
+title
+  CityGML - 3.0 - Construction - Only XSD based
+  http://www.opengis.net/citygml/construction/3.0
+end title
+
+package con {
+abstract class "con:ADEOfAbstractConstruction" $adeOf
+class "con:ADEOfAbstractConstructionProperty" $property $adeOf {
+  ADEOfAbstractConstruction : con:ADEOfAbstractConstruction
+}
+abstract class "con:ADEOfAbstractConstructionSurface" $adeOf
+class "con:ADEOfAbstractConstructionSurfaceProperty" $property $adeOf {
+  ADEOfAbstractConstructionSurface : con:ADEOfAbstractConstructionSurface
+}
+abstract class "con:ADEOfAbstractConstructiveElement" $adeOf
+class "con:ADEOfAbstractConstructiveElementProperty" $property $adeOf {
+  ADEOfAbstractConstructiveElement : con:ADEOfAbstractConstructiveElement
+}
+abstract class "con:ADEOfAbstractFillingElement" $adeOf
+class "con:ADEOfAbstractFillingElementProperty" $property $adeOf {
+  ADEOfAbstractFillingElement : con:ADEOfAbstractFillingElement
+}
+abstract class "con:ADEOfAbstractFillingSurface" $adeOf
+class "con:ADEOfAbstractFillingSurfaceProperty" $property $adeOf {
+  ADEOfAbstractFillingSurface : con:ADEOfAbstractFillingSurface
+}
+abstract class "con:ADEOfAbstractFurniture" $adeOf
+class "con:ADEOfAbstractFurnitureProperty" $property $adeOf {
+  ADEOfAbstractFurniture : con:ADEOfAbstractFurniture
+}
+abstract class "con:ADEOfAbstractInstallation" $adeOf
+class "con:ADEOfAbstractInstallationProperty" $property $adeOf {
+  ADEOfAbstractInstallation : con:ADEOfAbstractInstallation
+}
+abstract class "con:ADEOfCeilingSurface" $adeOf
+class "con:ADEOfCeilingSurfaceProperty" $property $adeOf {
+  ADEOfCeilingSurface : con:ADEOfCeilingSurface
+}
+abstract class "con:ADEOfDoor" $adeOf
+class "con:ADEOfDoorProperty" $property $adeOf {
+  ADEOfDoor : con:ADEOfDoor
+}
+abstract class "con:ADEOfDoorSurface" $adeOf
+class "con:ADEOfDoorSurfaceProperty" $property $adeOf {
+  ADEOfDoorSurface : con:ADEOfDoorSurface
+}
+abstract class "con:ADEOfFloorSurface" $adeOf
+class "con:ADEOfFloorSurfaceProperty" $property $adeOf {
+  ADEOfFloorSurface : con:ADEOfFloorSurface
+}
+abstract class "con:ADEOfGroundSurface" $adeOf
+class "con:ADEOfGroundSurfaceProperty" $property $adeOf {
+  ADEOfGroundSurface : con:ADEOfGroundSurface
+}
+abstract class "con:ADEOfInteriorWallSurface" $adeOf
+class "con:ADEOfInteriorWallSurfaceProperty" $property $adeOf {
+  ADEOfInteriorWallSurface : con:ADEOfInteriorWallSurface
+}
+abstract class "con:ADEOfOtherConstruction" $adeOf
+class "con:ADEOfOtherConstructionProperty" $property $adeOf {
+  ADEOfOtherConstruction : con:ADEOfOtherConstruction
+}
+abstract class "con:ADEOfOuterCeilingSurface" $adeOf
+class "con:ADEOfOuterCeilingSurfaceProperty" $property $adeOf {
+  ADEOfOuterCeilingSurface : con:ADEOfOuterCeilingSurface
+}
+abstract class "con:ADEOfOuterFloorSurface" $adeOf
+class "con:ADEOfOuterFloorSurfaceProperty" $property $adeOf {
+  ADEOfOuterFloorSurface : con:ADEOfOuterFloorSurface
+}
+abstract class "con:ADEOfRoofSurface" $adeOf
+class "con:ADEOfRoofSurfaceProperty" $property $adeOf {
+  ADEOfRoofSurface : con:ADEOfRoofSurface
+}
+abstract class "con:ADEOfWallSurface" $adeOf
+class "con:ADEOfWallSurfaceProperty" $property $adeOf {
+  ADEOfWallSurface : con:ADEOfWallSurface
+}
+abstract class "con:ADEOfWindow" $adeOf
+class "con:ADEOfWindowProperty" $property $adeOf {
+  ADEOfWindow : con:ADEOfWindow
+}
+abstract class "con:ADEOfWindowSurface" $adeOf
+class "con:ADEOfWindowSurfaceProperty" $property $adeOf {
+  ADEOfWindowSurface : con:ADEOfWindowSurface
+}
+abstract class "con:AbstractConstruction" <<FeatureType>> {
+  conditionOfConstruction : con:ConditionOfConstructionValue [0..1]
+  # dateOfConstruction : xs:date [0..1]
+  # dateOfDemolition : xs:date [0..1]
+  # occupancy : core:Occupancy [0..*]
+  ~ adeOfAbstractConstruction : con:ADEOfAbstractConstruction [0..*]
+  - constructionEvent : con:ConstructionEvent [0..*]
+  - elevation : con:Elevation [0..*]
+  - height : con:Height [0..*]
+}
+class "con:AbstractConstructionProperty" $property {
+  AbstractConstruction : con:AbstractConstruction
+}
+abstract class "con:AbstractConstructionSurface" <<FeatureType>> {
+  ~ adeOfAbstractConstructionSurface : con:ADEOfAbstractConstructionSurface [0..*]
+}
+class "con:AbstractConstructionSurfaceProperty" $property {
+  AbstractConstructionSurface : con:AbstractConstructionSurface
+}
+abstract class "con:AbstractConstructiveElement" <<FeatureType>> {
+  # isStructuralElement : xs:boolean [0..1]
+  ~ adeOfAbstractConstructiveElement : con:ADEOfAbstractConstructiveElement [0..*]
+}
+class "con:AbstractConstructiveElementProperty" $property {
+  AbstractConstructiveElement : con:AbstractConstructiveElement
+}
+abstract class "con:AbstractFillingElement" <<FeatureType>> {
+  ~ adeOfAbstractFillingElement : con:ADEOfAbstractFillingElement [0..*]
+}
+class "con:AbstractFillingElementProperty" $property {
+  AbstractFillingElement : con:AbstractFillingElement
+}
+abstract class "con:AbstractFillingSurface" <<FeatureType>> {
+  ~ adeOfAbstractFillingSurface : con:ADEOfAbstractFillingSurface [0..*]
+}
+class "con:AbstractFillingSurfaceProperty" $property {
+  AbstractFillingSurface : con:AbstractFillingSurface
+}
+abstract class "con:AbstractFurniture" <<FeatureType>> {
+  ~ adeOfAbstractFurniture : con:ADEOfAbstractFurniture [0..*]
+}
+class "con:AbstractFurnitureProperty" $property {
+  AbstractFurniture : con:AbstractFurniture
+}
+abstract class "con:AbstractInstallation" <<FeatureType>> {
+  relationToConstruction : con:RelationToConstruction [0..1]
+  ~ adeOfAbstractInstallation : con:ADEOfAbstractInstallation [0..*]
+}
+class "con:AbstractInstallationProperty" $property {
+  AbstractInstallation : con:AbstractInstallation
+}
+class "con:CeilingSurface" <<FeatureType>> {
+  ~ adeOfCeilingSurface : con:ADEOfCeilingSurface [0..*]
+}
+class "con:CeilingSurfaceProperty" $property {
+  CeilingSurface : con:CeilingSurface
+}
+class "con:ConstructionEvent" <<DataType>> {
+  # event : gml:Code
+  # dateOfEvent : xs:date
+  # description : xs:string [0..1]
+}
+class "con:ConstructionEventProperty" $property {
+  ConstructionEvent : con:ConstructionEvent
+}
+class "con:Door" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # address : core:Address [0..*]
+  ~ adeOfDoor : con:ADEOfDoor [0..*]
+}
+class "con:DoorProperty" $property {
+  Door : con:Door
+}
+class "con:DoorSurface" <<FeatureType>> {
+  # address : core:Address [0..*]
+  ~ adeOfDoorSurface : con:ADEOfDoorSurface [0..*]
+}
+class "con:DoorSurfaceProperty" $property {
+  DoorSurface : con:DoorSurface
+}
+class "con:Elevation" <<DataType>> {
+  # elevationReference : gml:Code
+  # elevationValue : gml:DirectPosition
+}
+class "con:ElevationProperty" $property {
+  Elevation : con:Elevation
+}
+class "con:FloorSurface" <<FeatureType>> {
+  ~ adeOfFloorSurface : con:ADEOfFloorSurface [0..*]
+}
+class "con:FloorSurfaceProperty" $property {
+  FloorSurface : con:FloorSurface
+}
+class "con:GroundSurface" <<FeatureType>> {
+  ~ adeOfGroundSurface : con:ADEOfGroundSurface [0..*]
+}
+class "con:GroundSurfaceProperty" $property {
+  GroundSurface : con:GroundSurface
+}
+class "con:Height" <<DataType>> {
+  # highReference : gml:Code
+  # lowReference : gml:Code
+  status : con:HeightStatusValue
+  # value : gml:Length
+}
+class "con:HeightProperty" $property {
+  Height : con:Height
+}
+class "con:InteriorWallSurface" <<FeatureType>> {
+  ~ adeOfInteriorWallSurface : con:ADEOfInteriorWallSurface [0..*]
+}
+class "con:InteriorWallSurfaceProperty" $property {
+  InteriorWallSurface : con:InteriorWallSurface
+}
+class "con:OtherConstruction" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfOtherConstruction : con:ADEOfOtherConstruction [0..*]
+}
+class "con:OtherConstructionProperty" $property {
+  OtherConstruction : con:OtherConstruction
+}
+class "con:OuterCeilingSurface" <<FeatureType>> {
+  ~ adeOfOuterCeilingSurface : con:ADEOfOuterCeilingSurface [0..*]
+}
+class "con:OuterCeilingSurfaceProperty" $property {
+  OuterCeilingSurface : con:OuterCeilingSurface
+}
+class "con:OuterFloorSurface" <<FeatureType>> {
+  ~ adeOfOuterFloorSurface : con:ADEOfOuterFloorSurface [0..*]
+}
+class "con:OuterFloorSurfaceProperty" $property {
+  OuterFloorSurface : con:OuterFloorSurface
+}
+class "con:RoofSurface" <<FeatureType>> {
+  ~ adeOfRoofSurface : con:ADEOfRoofSurface [0..*]
+}
+class "con:RoofSurfaceProperty" $property {
+  RoofSurface : con:RoofSurface
+}
+class "con:WallSurface" <<FeatureType>> {
+  ~ adeOfWallSurface : con:ADEOfWallSurface [0..*]
+}
+class "con:WallSurfaceProperty" $property {
+  WallSurface : con:WallSurface
+}
+class "con:Window" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfWindow : con:ADEOfWindow [0..*]
+}
+class "con:WindowProperty" $property {
+  Window : con:Window
+}
+class "con:WindowSurface" <<FeatureType>> {
+  ~ adeOfWindowSurface : con:ADEOfWindowSurface [0..*]
+}
+class "con:WindowSurfaceProperty" $property {
+  WindowSurface : con:WindowSurface
+}
+
+' Simple types (from <simpleType> declarations)
+class "con:ConditionOfConstructionValue" <<Enumeration>> {
+  declined
+  demolished
+  functional
+  projected
+  ruin
+  underConstruction
+}
+class "con:HeightStatusValue" <<Enumeration>> {
+  estimated
+  measured
+}
+class "con:RelationToConstruction" <<Enumeration>> {
+  inside
+  outside
+  bothInsideAndOutside
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractOccupiedSpace"
+abstract class "core:AbstractThematicSurface"
+
+"core:AbstractOccupiedSpace" <|-- "con:AbstractConstruction"
+"core:AbstractThematicSurface" <|-- "con:AbstractConstructionSurface"
+"core:AbstractOccupiedSpace" <|-- "con:AbstractConstructiveElement"
+"core:AbstractOccupiedSpace" <|-- "con:AbstractFillingElement"
+"core:AbstractThematicSurface" <|-- "con:AbstractFillingSurface"
+"core:AbstractOccupiedSpace" <|-- "con:AbstractFurniture"
+"core:AbstractOccupiedSpace" <|-- "con:AbstractInstallation"
+"con:AbstractConstructionSurface" <|-- "con:CeilingSurface"
+"con:AbstractFillingElement" <|-- "con:Door"
+"con:AbstractFillingSurface" <|-- "con:DoorSurface"
+"con:AbstractConstructionSurface" <|-- "con:FloorSurface"
+"con:AbstractConstructionSurface" <|-- "con:GroundSurface"
+"con:AbstractConstructionSurface" <|-- "con:InteriorWallSurface"
+"con:AbstractConstruction" <|-- "con:OtherConstruction"
+"con:AbstractConstructionSurface" <|-- "con:OuterCeilingSurface"
+"con:AbstractConstructionSurface" <|-- "con:OuterFloorSurface"
+"con:AbstractConstructionSurface" <|-- "con:RoofSurface"
+"con:AbstractConstructionSurface" <|-- "con:WallSurface"
+"con:AbstractFillingElement" <|-- "con:Window"
+"con:AbstractFillingSurface" <|-- "con:WindowSurface"
+
+' Class relations (promoted from property wrappers)
+"con:AbstractConstructionSurface" o-- "0..*" "con:AbstractFillingSurface" : fillingSurface
+"con:AbstractConstructiveElement" o-- "0..*" "con:AbstractFillingElement" : filling
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

@@ -1,0 +1,66 @@
+@startuml
+title
+  Part7 - 1.0 - Condominium - Only XSD based
+  http://www.opengis.net/infragml/condominium/1.0
+end title
+
+package lic {
+class "lic:BuildingPart" <<FeatureType>> {
+  # floorNumber : xs:string [1..*]
+  # subSurfaceFloor : xs:boolean
+  # floorArea : gml:Area [0..1]
+  # buildingPartType : anonymous
+  # shapeAndLocation : lild:SpatialUnit
+}
+class "lic:BuildingPartProperty" $property {
+  BuildingPart : lic:BuildingPart
+}
+class "lic:CondominiumBuilding" <<FeatureType>> {
+  # buildingNumber : xs:string
+  # parcelLocation : lild:LandParcel [1..*]
+}
+class "lic:CondominiumBuildingProperty" $property {
+  CondominiumBuilding : lic:CondominiumBuilding
+}
+class "lic:CondominiumScheme" <<FeatureType>> {
+  # buildingDescription : xs:string
+}
+class "lic:CondominiumSchemeProperty" $property {
+  CondominiumScheme : lic:CondominiumScheme
+}
+class "lic:CondominiumUnit" <<FeatureType>> {
+  # shareInJointFacilities : xs:string
+  # condominiumUseType : gml:Reference [0..1]
+  # designUnitID : xs:string [0..*]
+}
+class "lic:CondominiumUnitProperty" $property {
+  CondominiumUnit : lic:CondominiumUnit
+}
+}
+
+' External types (unresolved namespaces)
+class "li:Feature"
+class "lild:PropertyUnit"
+class "lild:Statement"
+
+"li:Feature" <|-- "lic:BuildingPart"
+"li:Feature" <|-- "lic:CondominiumBuilding"
+"lild:Statement" <|-- "lic:CondominiumScheme"
+"lild:PropertyUnit" <|-- "lic:CondominiumUnit"
+
+' Class relations (promoted from property wrappers)
+"lic:BuildingPart" o-- "1" "lic:CondominiumBuilding" : partOf
+"lic:CondominiumScheme" o-- "2..*" "lic:CondominiumUnit" : unit
+"lic:CondominiumUnit" o-- "1" "lic:BuildingPart" : mainPart
+"lic:CondominiumUnit" o-- "0..*" "lic:BuildingPart" : accessoryPart
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+title
+  CityGML - 3.0 - Cityobjectgroup - Only XSD based
+  http://www.opengis.net/citygml/cityobjectgroup/3.0
+end title
+
+package grp {
+abstract class "grp:ADEOfCityObjectGroup" $adeOf
+class "grp:ADEOfCityObjectGroupProperty" $property $adeOf {
+  ADEOfCityObjectGroup : grp:ADEOfCityObjectGroup
+}
+class "grp:CityObjectGroup" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  ~ adeOfCityObjectGroup : grp:ADEOfCityObjectGroup [0..*]
+}
+class "grp:CityObjectGroupProperty" $property {
+  CityObjectGroup : grp:CityObjectGroup
+}
+class "grp:Role" <<ObjectType>> {
+  # role : xs:string [0..1]
+}
+class "grp:RoleProperty" $property {
+  Role : grp:Role
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "core:AbstractCityObject"
+abstract class "core:AbstractLogicalSpace"
+abstract class "gml:AbstractGML"
+
+"core:AbstractLogicalSpace" <|-- "grp:CityObjectGroup"
+"gml:AbstractGML" <|-- "grp:Role"
+
+' Class relations (promoted from property wrappers)
+"grp:CityObjectGroup" "1" *-- "0..*" "grp:Role" : groupMember
+"grp:CityObjectGroup" ..> "0..1" "core:AbstractCityObject" : parent
+"grp:Role" o-- "1" "core:AbstractCityObject" : groupMember
+
+' ADE hook classes are removed from rendering by default;
+' remove the next line to show them.
+remove $adeOf
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' ADE hook attributes are marked as package members (~ ) and
+' hidden from rendering by default; remove the next line to show them.
+hide package members
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

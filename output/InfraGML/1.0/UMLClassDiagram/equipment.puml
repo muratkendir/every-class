@@ -1,0 +1,251 @@
+@startuml
+title
+  Part6 - 1.0 - Equipment - Only XSD based
+  http://www.opengis.net/infragml/equipment/1.0
+end title
+
+package lise {
+class "lise:AngularCorrection" <<ObjectType>> {
+  # rotation : gml:Angle
+}
+class "lise:AngularCorrectionProperty" $property {
+  AngularCorrection : lise:AngularCorrection
+}
+class "lise:Antenna" <<FeatureType>> {
+  # antennaID : anonymous
+  # iGSName : xs:string [0..1]
+  # horizzontalOffset : gml:Length [0..1]
+  # verticallOffset : gml:Length [0..1]
+  # l1phaseOffset : gml:Length [0..1]
+  # l2phaseOffset : gml:Length [0..1]
+}
+class "lise:AntennaProperty" $property {
+  Antenna : lise:Antenna
+}
+class "lise:Camera" <<FeatureType>> {
+  # autoFocus : xs:boolean [0..1]
+  # offsetAndOrientation : anonymous [0..1]
+  # crs : gml:CRS [0..1]
+}
+class "lise:CameraProperty" $property {
+  Camera : lise:Camera
+}
+class "lise:Correction" <<ObjectType>> {
+  # correctionID : anonymous
+  # type : gml:Reference [0..1]
+}
+class "lise:CorrectionProperty" $property {
+  Correction : lise:Correction
+}
+class "lise:DetectorArray" <<ObjectType>> {
+  # numberOfDimensions : xs:integer
+  # arrayDimensionsValue : xs:integer [1..2]
+  # arrayDimensionsName : xs:string [1..2]
+  # detectorSize : xs:integer [1..2]
+  # offsetVector : gml:Vector [1..2]
+}
+class "lise:DetectorArrayProperty" $property {
+  DetectorArray : lise:DetectorArray
+}
+class "lise:DistanceCorrection" <<ObjectType>> {
+  # projectionDistortion : gml:Scale [0..1]
+  # heightReduction : gml:Scale [0..1]
+  # atmosphericalCorrection : gml:Scale [0..1]
+  # individualScale : gml:Scale [0..1]
+  # absolutePrismConstant : gml:Length [0..1]
+}
+class "lise:DistanceCorrectionProperty" $property {
+  DistanceCorrection : lise:DistanceCorrection
+}
+class "lise:Distortion" <<ObjectType>> {
+  # princPoint : gml:Geometry
+  # crs : gml:CRS [0..1]
+  # distortionK1 : xs:double
+  # distortionK2 : xs:double
+}
+class "lise:DistortionProperty" $property {
+  Distortion : lise:Distortion
+}
+class "lise:EDM" <<FeatureType>> {
+  # carrierWavelength : gml:Length [0..1]
+}
+class "lise:EDMProperty" $property {
+  EDM : lise:EDM
+}
+class "lise:Equipment" <<FeatureType>> {
+  # serialID : xs:string [0..1]
+  # dataCollector : xs:string [0..1]
+  # controlSoftware : xs:string [0..1]
+  # softwareVersion : xs:string [0..1]
+}
+class "lise:EquipmentProperty" $property {
+  Equipment : lise:Equipment
+}
+class "lise:GNSS" <<FeatureType>> {
+  # posAccuracy : gml:Length [0..1]
+  # hgtAccuracy : gml:Length [0..1]
+}
+class "lise:GNSSProperty" $property {
+  GNSS : lise:GNSS
+}
+class "lise:GenericAngle" <<FeatureType>> {
+  # accuracy : gml:Angle [0..1]
+}
+class "lise:GenericAngleProperty" $property {
+  GenericAngle : lise:GenericAngle
+}
+class "lise:GenericDistance" <<FeatureType>> {
+  # accuracy : gml:Length [0..1]
+}
+class "lise:GenericDistanceProperty" $property {
+  GenericDistance : lise:GenericDistance
+}
+class "lise:InteriorOrientation" <<ObjectType>> {
+  # principalPointX : gml:GridLength
+  # principalPointY : gml:GridLength
+  # focalLength : gml:Length
+  # crossHairPosX : gml:GridLength
+  # crossHairPosY : gml:GridLength
+  # virtualCameraConstant : xs:double
+}
+class "lise:InteriorOrientationProperty" $property {
+  InteriorOrientation : lise:InteriorOrientation
+}
+class "lise:LaserScanner" <<FeatureType>>
+class "lise:LaserScannerProperty" $property {
+  LaserScanner : lise:LaserScanner
+}
+class "lise:Level" <<FeatureType>> {
+  # accuracy : gml:Length [0..1]
+  # staff1 : xs:string [0..1]
+  # staff2 : xs:string [0..1]
+}
+class "lise:LevelProperty" $property {
+  Level : lise:Level
+}
+class "lise:ObservationCorrections" <<ObjectType>>
+class "lise:ObservationCorrectionsProperty" $property {
+  ObservationCorrections : lise:ObservationCorrections
+}
+class "lise:Offset" <<ObjectType>> {
+  # crossOffset : gml:Length
+  # lengthOffset : gml:Length
+}
+class "lise:OffsetProperty" $property {
+  Offset : lise:Offset
+}
+class "lise:SensorSystem" <<ObjectType>> {
+  # calibratedFocalLength : gml:Length
+  # princPoint : gml:Geometry
+  # crs : gml:CRS [0..1]
+  # instFieldOfView : gml:Angle
+  # swathFieldOfView : gml:Angle
+}
+class "lise:SensorSystemProperty" $property {
+  SensorSystem : lise:SensorSystem
+}
+class "lise:SurveyProcess" <<ObjectType>> {
+  # surveyProcessID : anonymous
+}
+class "lise:SurveyProcessProperty" $property {
+  SurveyProcess : lise:SurveyProcess
+}
+class "lise:SurveySensor" <<FeatureType>> {
+  # surveySensorID : anonymous
+  # type : gml:Reference [0..1]
+  # manufacture : xs:string [0..1]
+  # model : xs:string [0..1]
+  # serialID : xs:string [0..1]
+  # softwareVersion : xs:string [0..1]
+}
+class "lise:SurveySensorProperty" $property {
+  SurveySensor : lise:SurveySensor
+}
+class "lise:Tps" <<FeatureType>> {
+  # compLongitudinal : gml:Length [0..1]
+  # compTransversal : gml:Length [0..1]
+  # verticalIndexErrorl : gml:Length [0..1]
+  # collimHzErrorl : gml:Length [0..1]
+  # tiltAxisError : gml:Length [0..1]
+  # aTRHzError : gml:Length [0..1]
+  # aTRVError : gml:Length [0..1]
+}
+class "lise:TpsProperty" $property {
+  Tps : lise:Tps
+}
+class "lise:Transformation" <<ObjectType>> {
+  # deltaX : gml:Length
+  # deltaY : gml:Length
+  # deltaZ : gml:Length
+  # scaleX : gml:Scale
+  # scaleY : gml:Scale
+  # scaleZ : gml:Scale
+  # rotX : gml:Angle
+  # rotY : gml:Angle
+  # rotZ : gml:Angle
+}
+class "lise:TransformationProperty" $property {
+  Transformation : lise:Transformation
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+class "gml:ProcedureProperty"
+class "li:Feature"
+
+"lise:Correction" <|-- "lise:AngularCorrection"
+"li:Feature" <|-- "lise:Antenna"
+"lise:SurveySensor" <|-- "lise:Camera"
+"gml:AbstractGML" <|-- "lise:Correction"
+"gml:AbstractGML" <|-- "lise:DetectorArray"
+"lise:Correction" <|-- "lise:DistanceCorrection"
+"gml:AbstractGML" <|-- "lise:Distortion"
+"lise:GenericDistance" <|-- "lise:EDM"
+"li:Feature" <|-- "lise:Equipment"
+"lise:SurveySensor" <|-- "lise:GNSS"
+"lise:SurveySensor" <|-- "lise:GenericAngle"
+"lise:SurveySensor" <|-- "lise:GenericDistance"
+"gml:AbstractGML" <|-- "lise:InteriorOrientation"
+"lise:SurveySensor" <|-- "lise:LaserScanner"
+"lise:SurveySensor" <|-- "lise:Level"
+"lise:SurveyProcess" <|-- "lise:ObservationCorrections"
+"lise:Correction" <|-- "lise:Offset"
+"gml:AbstractGML" <|-- "lise:SensorSystem"
+"gml:ProcedureProperty" <|-- "lise:SurveyProcess"
+"li:Feature" <|-- "lise:SurveySensor"
+"lise:SurveySensor" <|-- "lise:Tps"
+"lise:Correction" <|-- "lise:Transformation"
+
+' Class relations (promoted from property wrappers)
+"lise:Camera" ..> "0..1" "lise:DetectorArray" : detector
+"lise:Camera" ..> "0..*" "lise:InteriorOrientation" : interiorOrientation
+"lise:Camera" o-- "0..1" "lise:GNSS" : gNSS
+"lise:Camera" ..> "0..1" "lise:SensorSystem" : system
+"lise:Equipment" o-- "1..*" "lise:SurveySensor" : surveySensor
+"lise:GNSS" o-- "0..*" "lise:Camera" : camera
+"lise:GNSS" o-- "0..1" "lise:Antenna" : antenna
+"lise:GNSS" o-- "0..1" "lise:GNSS" : reference
+"lise:LaserScanner" o-- "0..1" "lise:GenericAngle" : horizontalAngle
+"lise:LaserScanner" o-- "0..1" "lise:GenericAngle" : verticalAngle
+"lise:LaserScanner" o-- "0..1" "lise:EDM" : eDM
+"lise:LaserScanner" o-- "0..*" "lise:Camera" : camera
+"lise:Level" o-- "0..*" "lise:Camera" : camera
+"lise:ObservationCorrections" ..> "1..*" "lise:Correction" : correction
+"lise:SensorSystem" ..> "0..1" "lise:Distortion" : opticalDistortion
+"lise:SurveyProcess" o-- "0..*" "lise:SurveySensor" : surveySensor
+"lise:Tps" o-- "0..1" "lise:GenericAngle" : horizontalAngle
+"lise:Tps" o-- "0..1" "lise:GenericAngle" : vericalAngle
+"lise:Tps" o-- "0..1" "lise:EDM" : eDM
+"lise:Tps" o-- "0..*" "lise:Camera" : camera
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

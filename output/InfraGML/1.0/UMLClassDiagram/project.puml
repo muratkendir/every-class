@@ -1,0 +1,46 @@
+@startuml
+title
+  Part2 - 1.0 - Project - Only XSD based
+  http://www.opengis.net/infragml/project/1.0
+end title
+
+package lip {
+class "lip:Project" <<FeatureType>> {
+  # projectID : anonymous
+  # projectStatus : gml:Reference
+  # statusDate : xs:date
+}
+class "lip:ProjectProperty" $property {
+  Project : lip:Project
+}
+class "lip:ProjectPart" <<FeatureType>> {
+  # projectPartID : anonymous
+  # alternative : xs:string [0..1]
+  # status : gml:Reference
+  # statusDate : xs:date
+  # facilityPart : lif:FacilityPart [1..*]
+}
+class "lip:ProjectPartProperty" $property {
+  ProjectPart : lip:ProjectPart
+}
+}
+
+' External types (unresolved namespaces)
+class "li:Feature"
+
+"li:Feature" <|-- "lip:Project"
+"li:Feature" <|-- "lip:ProjectPart"
+
+' Class relations (promoted from property wrappers)
+"lip:Project" o-- "1..*" "lip:ProjectPart" : projectPart
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

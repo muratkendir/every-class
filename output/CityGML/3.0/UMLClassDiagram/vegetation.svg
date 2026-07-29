@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="468px" preserveAspectRatio="none" style="width:567px;height:468px;" version="1.1" viewBox="0 0 567 468" width="567px" zoomAndPan="magnify"><defs><filter height="300%" id="f5s6h24oarywf" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="399" x="90" y="16.708">CityGML - 3.0 - Vegetation - Only XSD based</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="417" x="81" y="37.6611">http://www.opengis.net/citygml/vegetation/3.0</text><!--MD5=[14959b65d021bb1560ce5c7d1f316e2f]
+cluster veg--><polygon fill="#FFFFFF" filter="url(#f5s6h24oarywf)" points="22,122.9063,57,122.9063,64,145.2031,545,145.2031,545,456.9063,22,456.9063,22,122.9063" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="22" x2="64" y1="145.2031" y2="145.2031"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="29" x="26" y="137.9014">veg</text><!--MD5=[55a87eed9a43b3ee4f95078d090defef]
+class veg:AbstractVegetationObject--><rect fill="#FEFECE" filter="url(#f5s6h24oarywf)" height="53.9375" id="veg:AbstractVegetationObject" style="stroke: #A80036; stroke-width: 1.5;" width="218" x="169" y="157.9063"/><ellipse cx="184" cy="176.875" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M184.1094,172.2188 L182.9531,177.2969 L185.2813,177.2969 L184.1094,172.2188 Z M182.625,169.9844 L185.6094,169.9844 L188.9688,182.375 L186.5156,182.375 L185.75,179.3125 L182.4688,179.3125 L181.7188,182.375 L179.2813,182.375 L182.625,169.9844 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="93" x="244.5" y="174.0449">«FeatureType»</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="186" x="198" y="188.0137">veg:AbstractVegetationObject</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="170" x2="386" y1="195.8438" y2="195.8438"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="170" x2="386" y1="203.8438" y2="203.8438"/><!--MD5=[8eb1e01bd7eae976968456c03338ca95]
+class veg:PlantCover--><rect fill="#FEFECE" filter="url(#f5s6h24oarywf)" height="130.7656" id="veg:PlantCover" style="stroke: #A80036; stroke-width: 1.5;" width="217" x="38.5" y="290.9063"/><ellipse cx="96.25" cy="309.875" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M99.2188,315.5156 Q98.6406,315.8125 98,315.9531 Q97.3594,316.1094 96.6563,316.1094 Q94.1563,316.1094 92.8281,314.4688 Q91.5156,312.8125 91.5156,309.6875 Q91.5156,306.5625 92.8281,304.9063 Q94.1563,303.25 96.6563,303.25 Q97.3594,303.25 98,303.4063 Q98.6563,303.5625 99.2188,303.8594 L99.2188,306.5781 Q98.5938,306 98,305.7344 Q97.4063,305.4531 96.7813,305.4531 Q95.4375,305.4531 94.75,306.5313 Q94.0625,307.5938 94.0625,309.6875 Q94.0625,311.7813 94.75,312.8594 Q95.4375,313.9219 96.7813,313.9219 Q97.4063,313.9219 98,313.6563 Q98.5938,313.375 99.2188,312.7969 L99.2188,315.5156 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="93" x="116.75" y="307.0449">«FeatureType»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="93" x="116.75" y="321.0137">veg:PlantCover</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="39.5" x2="254.5" y1="328.8438" y2="328.8438"/><polygon fill="none" points="49.5,334.8438,53.5,338.8438,49.5,342.8438,45.5,338.8438" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130" x="58.5" y="343.0542">class : gml:Code [0..1]</text><polygon fill="none" points="49.5,347.6484,53.5,351.6484,49.5,355.6484,45.5,351.6484" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="144" x="58.5" y="355.8589">function : gml:Code [0..*]</text><polygon fill="none" points="49.5,360.4531,53.5,364.4531,49.5,368.4531,45.5,364.4531" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="134" x="58.5" y="368.6636">usage : gml:Code [0..*]</text><polygon fill="none" points="49.5,373.2578,53.5,377.2578,49.5,381.2578,45.5,377.2578" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="58.5" y="381.4683">averageHeight : gml:Length [0..1]</text><polygon fill="none" points="49.5,386.0625,53.5,390.0625,49.5,394.0625,45.5,390.0625" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="166" x="58.5" y="394.2729">minHeight : gml:Length [0..1]</text><polygon fill="none" points="49.5,398.8672,53.5,402.8672,49.5,406.8672,45.5,402.8672" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="169" x="58.5" y="407.0776">maxHeight : gml:Length [0..1]</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="39.5" x2="254.5" y1="413.6719" y2="413.6719"/><!--MD5=[24632adfa5cffbb577f4c6227db6e84d]
+class veg:SolitaryVegetationObject--><rect fill="#FEFECE" filter="url(#f5s6h24oarywf)" height="169.1797" id="veg:SolitaryVegetationObject" style="stroke: #A80036; stroke-width: 1.5;" width="238" x="291" y="271.9063"/><ellipse cx="317.25" cy="290.875" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M320.2188,296.5156 Q319.6406,296.8125 319,296.9531 Q318.3594,297.1094 317.6563,297.1094 Q315.1563,297.1094 313.8281,295.4688 Q312.5156,293.8125 312.5156,290.6875 Q312.5156,287.5625 313.8281,285.9063 Q315.1563,284.25 317.6563,284.25 Q318.3594,284.25 319,284.4063 Q319.6563,284.5625 320.2188,284.8594 L320.2188,287.5781 Q319.5938,287 319,286.7344 Q318.4063,286.4531 317.7813,286.4531 Q316.4375,286.4531 315.75,287.5313 Q315.0625,288.5938 315.0625,290.6875 Q315.0625,292.7813 315.75,293.8594 Q316.4375,294.9219 317.7813,294.9219 Q318.4063,294.9219 319,294.6563 Q319.5938,294.375 320.2188,293.7969 L320.2188,296.5156 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="93" x="377.75" y="288.0449">«FeatureType»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="181" x="333.75" y="302.0137">veg:SolitaryVegetationObject</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="292" x2="528" y1="309.8438" y2="309.8438"/><polygon fill="none" points="302,315.8438,306,319.8438,302,323.8438,298,319.8438" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130" x="311" y="324.0542">class : gml:Code [0..1]</text><polygon fill="none" points="302,328.6484,306,332.6484,302,336.6484,298,332.6484" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="144" x="311" y="336.8589">function : gml:Code [0..*]</text><polygon fill="none" points="302,341.4531,306,345.4531,302,349.4531,298,345.4531" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="134" x="311" y="349.6636">usage : gml:Code [0..*]</text><polygon fill="none" points="302,354.2578,306,358.2578,302,362.2578,298,358.2578" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="144" x="311" y="362.4683">species : gml:Code [0..1]</text><polygon fill="none" points="302,367.0625,306,371.0625,302,375.0625,298,371.0625" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="144" x="311" y="375.2729">height : gml:Length [0..1]</text><polygon fill="none" points="302,379.8672,306,383.8672,302,387.8672,298,383.8672" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="190" x="311" y="388.0776">trunkDiameter : gml:Length [0..1]</text><polygon fill="none" points="302,392.6719,306,396.6719,302,400.6719,298,396.6719" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="311" y="400.8823">crownDiameter : gml:Length [0..1]</text><polygon fill="none" points="302,405.4766,306,409.4766,302,413.4766,298,409.4766" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="205" x="311" y="413.687">rootBallDiameter : gml:Length [0..1]</text><polygon fill="none" points="302,418.2813,306,422.2813,302,426.2813,298,422.2813" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="212" x="311" y="426.4917">maxRootBallDepth : gml:Length [0..1]</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="292" x2="528" y1="433.0859" y2="433.0859"/><!--MD5=[523ec45f16367e9985ff248de34395fb]
+class core:AbstractOccupiedSpace--><rect fill="#FEFECE" filter="url(#f5s6h24oarywf)" height="48" id="core:AbstractOccupiedSpace" style="stroke: #A80036; stroke-width: 1.5;" width="212" x="172" y="49.9063"/><ellipse cx="187" cy="65.9063" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M187.1094,61.25 L185.9531,66.3281 L188.2813,66.3281 L187.1094,61.25 Z M185.625,59.0156 L188.6094,59.0156 L191.9688,71.4063 L189.5156,71.4063 L188.75,68.3438 L185.4688,68.3438 L184.7188,71.4063 L182.2813,71.4063 L185.625,59.0156 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="180" x="201" y="70.0605">core:AbstractOccupiedSpace</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="173" x2="383" y1="81.9063" y2="81.9063"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="173" x2="383" y1="89.9063" y2="89.9063"/><!--MD5=[a8df919f481ff956e6969750cfc7841b]
+reverse link core:AbstractOccupiedSpace to veg:AbstractVegetationObject--><path d="M278,118.3662 C278,131.7063 278,145.9663 278,157.7663 " fill="none" id="core:AbstractOccupiedSpace&lt;-veg:AbstractVegetationObject" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="271,118.0263,278,98.0263,285,118.0263,271,118.0263" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[fdb2c5df1704914a5eac7627400a756c]
+reverse link veg:AbstractVegetationObject to veg:PlantCover--><path d="M245.56,227.8763 C230.89,246.8563 213.22,269.7163 196.92,290.8162 " fill="none" id="veg:AbstractVegetationObject&lt;-veg:PlantCover" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="240.05,223.5663,257.82,212.0163,251.13,232.1263,240.05,223.5663" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[4ed1171aded3c434432d073123a5b78a]
+reverse link veg:AbstractVegetationObject to veg:SolitaryVegetationObject--><path d="M310.92,228.1863 C321.23,241.4163 332.98,256.5163 344.71,271.5662 " fill="none" id="veg:AbstractVegetationObject&lt;-veg:SolitaryVegetationObject" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="305.1,232.0963,298.34,212.0163,316.15,223.4963,305.1,232.0963" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[d438a8887323821b78b50d56d365f339]
+@startuml
+title
+  CityGML - 3.0 - Vegetation - Only XSD based
+  http://www.opengis.net/citygml/vegetation/3.0
+end title
+
+package veg {
+abstract class "veg:ADEOfAbstractVegetationObject" $adeOf
+class "veg:ADEOfAbstractVegetationObjectProperty" $property $adeOf {
+  ADEOfAbstractVegetationObject : veg:ADEOfAbstractVegetationObject
+}
+abstract class "veg:ADEOfPlantCover" $adeOf
+class "veg:ADEOfPlantCoverProperty" $property $adeOf {
+  ADEOfPlantCover : veg:ADEOfPlantCover
+}
+abstract class "veg:ADEOfSolitaryVegetationObject" $adeOf
+class "veg:ADEOfSolitaryVegetationObjectProperty" $property $adeOf {
+  ADEOfSolitaryVegetationObject : veg:ADEOfSolitaryVegetationObject
+}
+abstract class "veg:AbstractVegetationObject" <<FeatureType>> {
+  ~ adeOfAbstractVegetationObject : veg:ADEOfAbstractVegetationObject [0..*]
+}
+class "veg:AbstractVegetationObjectProperty" $property {
+  AbstractVegetationObject : veg:AbstractVegetationObject
+}
+class "veg:PlantCover" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # averageHeight : gml:Length [0..1]
+  # minHeight : gml:Length [0..1]
+  # maxHeight : gml:Length [0..1]
+  ~ adeOfPlantCover : veg:ADEOfPlantCover [0..*]
+}
+class "veg:PlantCoverProperty" $property {
+  PlantCover : veg:PlantCover
+}
+class "veg:SolitaryVegetationObject" <<FeatureType>> {
+  # class : gml:Code [0..1]
+  # function : gml:Code [0..*]
+  # usage : gml:Code [0..*]
+  # species : gml:Code [0..1]
+  # height : gml:Length [0..1]
+  # trunkDiameter : gml:Length [0..1]
+  # crownDiameter : gml:Length [0..1]
+  # rootBallDiameter : gml:Length [0..1]
+  # maxRootBallDepth : gml:Length [0..1]
+  ~ adeOfSolitaryVegetationObject : veg:ADEOfSolitaryVegetationObject [0..*]
+}
+class "veg:SolitaryVegetationObjectProperty" $property {
+  SolitaryVegetationObject : veg:SolitaryVegetationObject
+}
+}
+
+abstract class "core:AbstractOccupiedSpace"
+
+"core:AbstractOccupiedSpace" <|- - "veg:AbstractVegetationObject"
+"veg:AbstractVegetationObject" <|- - "veg:PlantCover"
+"veg:AbstractVegetationObject" <|- - "veg:SolitaryVegetationObject"
+
+remove $adeOf
+
+remove $property
+
+hide package members
+
+
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 21.0.11+10-1-24.04.2-Ubuntu
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

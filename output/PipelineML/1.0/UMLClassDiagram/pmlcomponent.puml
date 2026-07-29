@@ -1,0 +1,487 @@
+@startuml
+title
+  PipelineML - 1.0 - Pmlcomponent - Only XSD based
+  http://www.opengis.net/pipelineml/1.0
+end title
+
+package pml {
+abstract class "pml:AppurtenantComponent" <<FeatureType>> {
+  # startComponentID : gml:Code [0..1]
+  # startPipeConnectorID : gml:Code [0..1]
+  # startPosition : gml:Measure [0..1]
+  # endComponentID : gml:Code [0..1]
+  # endPipeConnectorID : gml:Code [0..1]
+  # endPosition : gml:Measure [0..1]
+}
+class "pml:AppurtenantComponentProperty" $property {
+  AppurtenantComponent : pml:AppurtenantComponent
+}
+class "pml:Assembly" <<FeatureType>> {
+  # assemblyID : gml:Code
+  # code : xs:string [0..1]
+  # name : xs:string [0..1]
+  # comment : xs:string [0..1]
+  # length : gml:Length [0..1]
+  # startEngineeringStation : gml:Measure [0..1]
+  # endEngineeringStation : gml:Measure [0..1]
+  # assemblyBoundType : gml:Reference [0..1]
+  # assemblyClassification : gml:Reference [0..1]
+  # assemblyType : gml:Reference [0..1]
+  # assemblySubType : gml:Reference [0..1]
+}
+class "pml:AssemblyProperty" $property {
+  Assembly : pml:Assembly
+}
+class "pml:Cap" <<FeatureType>> {
+  # capManufacturer : gml:Reference [0..1]
+  # capType : gml:Reference [0..1]
+  # capMaterial : gml:Reference [0..1]
+  # capBoundSpecification : gml:Reference [0..1]
+  # capSpecification : gml:Reference [0..1]
+  # capWeight : gml:Reference [0..1]
+  # capBoundDimension : gml:Reference [0..1]
+  # capNominalPipeSize : gml:Reference [0..1]
+  # capOutsideDiameter : gml:Reference [0..1]
+  # capWallThickness : gml:Reference [0..1]
+}
+class "pml:CapProperty" $property {
+  Cap : pml:Cap
+}
+class "pml:Casing" <<FeatureType>> {
+  # casingManufacturer : gml:Reference [0..1]
+  # casingCrossingType : gml:Reference [0..1]
+  # casingMaterial : gml:Reference [0..1]
+  # casingBoundSpecification : gml:Reference [0..1]
+  # casingSpecification : gml:Reference [0..1]
+  # casingGrade : gml:Reference [0..1]
+  # casingYieldStrength : gml:Reference [0..1]
+  # casingBoundDimension : gml:Reference [0..1]
+  # casingNominalPipeSize : gml:Reference [0..1]
+  # casingOutsideDiameter : gml:Reference [0..1]
+  # casingWallThickness : gml:Reference [0..1]
+  # casingAnnulusType : gml:Reference [0..1]
+  # casingInsulatorType : gml:Reference [0..1]
+  # casingSealType : gml:Reference [0..1]
+  # casingVentCount : xs:integer [0..1]
+}
+class "pml:CasingProperty" $property {
+  Casing : pml:Casing
+}
+class "pml:Coating" <<FeatureType>> {
+  # coatingManufacturer : gml:Reference [0..1]
+  # coatingType : gml:Reference [0..1]
+  # coatingMaterial : gml:Reference [0..1]
+  # coatingBoundManufacturer : gml:Reference [0..1]
+  # coatingProductName : gml:Reference [0..1]
+  # coatingModelNumber : gml:Reference [0..1]
+  # coatingLayerNumber : xs:integer [0..1]
+  # coatingThickness : gml:Reference [0..1]
+  # coatingMultiLayerDescription : xs:string [0..1]
+  # coatingApplicationLocation : gml:Reference [0..1]
+}
+class "pml:CoatingProperty" $property {
+  Coating : pml:Coating
+}
+class "pml:Collection" <<FeatureType>> {
+  # collectionID : gml:Code
+  # code : xs:string [0..1]
+  # name : xs:string [0..1]
+  # comment : xs:string [0..1]
+  # collectionBoundType : gml:Reference [0..1]
+  # collectionClassification : gml:Reference [0..1]
+  # collectionType : gml:Reference [0..1]
+  # collectionSubType : gml:Reference [0..1]
+}
+class "pml:CollectionProperty" $property {
+  Collection : pml:Collection
+}
+class "pml:CollectionMember" <<FeatureType>> {
+  # componentID : gml:Code
+}
+class "pml:CollectionMemberProperty" $property {
+  CollectionMember : pml:CollectionMember
+}
+abstract class "pml:Component" <<FeatureType>> {
+  # abandonDate : xs:dateTime [0..1]
+  # code : xs:string [0..1]
+  # comment : xs:string [0..1]
+  # manufactureDate : xs:dateTime [0..1]
+  # installDate : xs:dateTime [0..1]
+  # removeDate : xs:dateTime [0..1]
+  # length : gml:Length [0..1]
+  # location : gml:Geometry [0..1]
+  # startEngineeringStation : gml:Measure [0..1]
+  # endEngineeringStation : gml:Measure [0..1]
+}
+class "pml:ComponentProperty" $property {
+  Component : pml:Component
+}
+class "pml:Compressor" <<FeatureType>> {
+  # compressorManufacturer : gml:Reference [0..1]
+  # compressorType : gml:Reference [0..1]
+  # compressorBoundType : gml:Reference [0..1]
+  # compressorStage : gml:Reference [0..1]
+  # compressorThrow : gml:Reference [0..1]
+  # compressorStroke : gml:Reference [0..1]
+  # compressorNominalPipeSize : gml:Reference [0..1]
+  # compressorBoundManufacturer : gml:Reference [0..1]
+  # compressorProductName : gml:Reference [0..1]
+  # compressorModelNumber : gml:Reference [0..1]
+  # compressorSerialNumber : xs:string [0..1]
+  # compressorFuelType : gml:Reference [0..1]
+  # compressorPowerRating : gml:Measure [0..1]
+  # compressorRatedFlow : gml:Measure [0..1]
+  # compressorPressureSuction : gml:Measure [0..1]
+  # compressorPressureDischarge : gml:Measure [0..1]
+}
+class "pml:CompressorProperty" $property {
+  Compressor : pml:Compressor
+}
+abstract class "pml:ConnectorComponent" <<FeatureType>> {
+  # componentID1 : gml:Code
+  # componentID2 : gml:Code [0..1]
+}
+class "pml:ConnectorComponentProperty" $property {
+  ConnectorComponent : pml:ConnectorComponent
+}
+abstract class "pml:CoterminousComponent" <<FeatureType>> {
+  # assemblyID : gml:Code [0..1]
+  # pressureRating : gml:Measure [0..1]
+}
+class "pml:CoterminousComponentProperty" $property {
+  CoterminousComponent : pml:CoterminousComponent
+}
+class "pml:DataType1" <<ObjectType>>
+class "pml:DataType1Property" $property {
+  DataType1 : pml:DataType1
+}
+class "pml:DateTime" <<DataType>> {
+  # DateTime : xs:dateTime
+  # UTC : xs:string [0..1]
+}
+class "pml:DateTimeProperty" $property {
+  DateTime : pml:DateTime
+}
+class "pml:Elbow" <<FeatureType>> {
+  # elbowManufacturer : gml:Reference [0..1]
+  # elbowType : gml:Reference [0..1]
+  # elbowMaterial : gml:Reference [0..1]
+  # elbowBoundSpecification : gml:Reference [0..1]
+  # elbowSpecification : gml:Reference [0..1]
+  # elbowWeight : gml:Reference [0..1]
+  # elbowBoundDimension : gml:Reference [0..1]
+  # elbowAngle : gml:Reference [0..1]
+  # elbowNominalPipeSize : gml:Reference [0..1]
+  # elbowOutsideDiameter : gml:Reference [0..1]
+  # elbowWallThickness : gml:Reference [0..1]
+}
+class "pml:ElbowProperty" $property {
+  Elbow : pml:Elbow
+}
+class "pml:Flange" <<FeatureType>> {
+  # flangeManufacturer : gml:Reference [0..1]
+  # flangeType : gml:Reference [0..1]
+  # flangeMaterial : gml:Reference [0..1]
+  # flangeBoundSpecification : gml:Reference [0..1]
+  # flangeSpecification : gml:Reference [0..1]
+  # flangeClass : gml:Reference [0..1]
+  # flangeNominalPipeSize : gml:Reference [0..1]
+  # flangeInsulationType : gml:Reference [0..1]
+}
+class "pml:FlangeProperty" $property {
+  Flange : pml:Flange
+}
+class "pml:ISO-19103-CoreDataTypes" <<ObjectType>>
+class "pml:ISO-19103-CoreDataTypesProperty" $property {
+  ISO-19103-CoreDataTypes : pml:ISO-19103-CoreDataTypes
+}
+class "pml:Launcherreceiver" <<FeatureType>> {
+  # launcherreceiverManufacturer : gml:Reference [0..1]
+  # launcherreceiverType : gml:Reference [0..1]
+  # launcherreceiverBoundManufacturer : gml:Reference [0..1]
+  # launcherreceiverProductName : gml:Reference [0..1]
+  # launcherreceiverModelNumber : gml:Reference [0..1]
+  # launcherreceiverNominalPipeSize : gml:Reference [0..1]
+  # launcherreceiverSerialNumber : xs:string [0..1]
+  # launcherreceiverName : xs:string [0..1]
+  # launcherreceiverClass : gml:Reference [0..1]
+}
+class "pml:LauncherreceiverProperty" $property {
+  Launcherreceiver : pml:Launcherreceiver
+}
+class "pml:Linepipe" <<FeatureType>> {
+  # linepipeManufacturer : gml:Reference [0..1]
+  # linepipeType : gml:Reference [0..1]
+  # linepipeMaterial : gml:Reference [0..1]
+  # linepipeBoundSpecification : gml:Reference [0..1]
+  # linepipeSpecification : gml:Reference [0..1]
+  # linepipeYieldStrength : gml:Reference [0..1]
+  # linepipeGrade : gml:Reference [0..1]
+  # linepipeBoundDimension : gml:Reference [0..1]
+  # linepipeNominalPipeSize : gml:Reference [0..1]
+  # linepipeOutsideDiameter : gml:Reference [0..1]
+  # linepipeWallThickness : gml:Reference [0..1]
+  # linepipeBendType : gml:Reference [0..1]
+  # linepipeSeamWeldType : gml:Reference [0..1]
+  linepipeSeamWeldOrientation : pml:LinepipeSeamWeldOrientationType [0..1]
+  # linepipePositionVertical : gml:Reference [0..1]
+  # linepipeCoverDepthMinimum : gml:Measure [0..1]
+}
+class "pml:LinepipeProperty" $property {
+  Linepipe : pml:Linepipe
+}
+class "pml:LinepipeSeamWeldOrientationType" <<DataType>> {
+  # OrientationAngle : gml:Reference
+  # ComponentMeasuredFrom : gml:Code
+}
+class "pml:LinepipeSeamWeldOrientationTypeProperty" $property {
+  LinepipeSeamWeldOrientationType : pml:LinepipeSeamWeldOrientation
+}
+class "pml:ManufacturerType" <<DataType>> {
+  # id : gml:Code
+  # other : xs:string [0..1]
+}
+class "pml:ManufacturerTypeProperty" $property {
+  ManufacturerType : pml:Manufacturer
+}
+class "pml:Meter" <<FeatureType>> {
+  # meterManufacturer : gml:Reference [0..1]
+  # meterType : gml:Reference [0..1]
+  # meterNumber : xs:string [0..1]
+  # meterBoundManufacturer : gml:Reference [0..1]
+  # meterProductName : gml:Reference [0..1]
+  # meterModelNumber : gml:Reference [0..1]
+  # meterNominalPipeSize : gml:Reference [0..1]
+  # meterSerialNumber : xs:string [0..1]
+  # meterFlowRateMinimum : gml:Measure [0..1]
+  # meterFlowRateMaximum : gml:Measure [0..1]
+}
+class "pml:MeterProperty" $property {
+  Meter : pml:Meter
+}
+class "pml:ModelNumberType" <<DataType>> {
+  # id : gml:Code
+  # other : xs:string [0..1]
+}
+class "pml:ModelNumberTypeProperty" $property {
+  ModelNumberType : pml:ModelNumber
+}
+class "pml:PMLDataset" <<ObjectType>> {
+  # datasetID : gml:Code
+  # code : xs:string [0..1]
+  # name : xs:string [0..1]
+  # comment : xs:string [0..1]
+  # dateTime : xs:dateTime
+  # datasetVersion : xs:string [0..1]
+  # application : xs:string [0..1]
+  # author : xs:string [0..1]
+  # PMLVersion : xs:string
+  # language : xs:language [0..1]
+  # defaultCRS : xs:string
+}
+class "pml:PMLDatasetProperty" $property {
+  PMLDataset : pml:PMLDataset
+}
+class "pml:Pipeconnector" <<FeatureType>> {
+  # pipeconnectorManufacturer : gml:Reference [0..1]
+  # pipeconnectorType : gml:Reference [0..1]
+  # pipeconnectorMaterial : gml:Reference [0..1]
+  # pipeconnectorNumber : xs:integer [0..1]
+  # pipeconnectorBoundType : gml:Reference [0..1]
+  # pipeconnectorSubType : gml:Reference [0..1]
+}
+class "pml:PipeconnectorProperty" $property {
+  Pipeconnector : pml:Pipeconnector
+}
+class "pml:Pipeline" <<FeatureType>> {
+  # pipelineID : gml:Code
+  # code : xs:string [0..1]
+  # name : xs:string [0..1]
+  # comment : xs:string [0..1]
+  # number : xs:string [0..1]
+  # operator : xs:string [0..1]
+  # pipelineBoundType : gml:Reference [0..1]
+  # pipelineClassification : gml:Reference [0..1]
+  # pipelineType : gml:Reference [0..1]
+  # pipelineSubType : gml:Reference [0..1]
+}
+class "pml:PipelineProperty" $property {
+  Pipeline : pml:Pipeline
+}
+class "pml:ProductNameType" <<DataType>> {
+  # id : gml:Code
+  # other : xs:string [0..1]
+}
+class "pml:ProductNameTypeProperty" $property {
+  ProductNameType : pml:ProductName
+}
+class "pml:Pump" <<FeatureType>> {
+  # pumpManufacturer : gml:Reference [0..1]
+  # pumpType : gml:Reference [0..1]
+  # pumpBoundDimension : gml:Reference [0..1]
+  # pumpDiameterOutlet : gml:Reference [0..1]
+  # pumpDiameterInlet : gml:Reference [0..1]
+  # pumpDiameterImpeller : gml:Reference [0..1]
+  # pumpBoundManufacturer : gml:Reference [0..1]
+  # pumpProductName : gml:Reference [0..1]
+  # pumpModelNumber : gml:Reference [0..1]
+  # pumpSerialNumber : xs:string [0..1]
+  # pumpFuelType : gml:Reference [0..1]
+  # pumpPowerRating : gml:Measure [0..1]
+  # pumpRatedFlow : gml:Measure [0..1]
+  # pumpPressureSuction : gml:Measure [0..1]
+  # pumpPressureDischarge : gml:Measure [0..1]
+}
+class "pml:PumpProperty" $property {
+  Pump : pml:Pump
+}
+class "pml:Reducer" <<FeatureType>> {
+  # reducerManufacturer : gml:Reference [0..1]
+  # reducerType : gml:Reference [0..1]
+  # reducerMaterial : gml:Reference [0..1]
+  # reducerBoundSpecification : gml:Reference [0..1]
+  # reducerSpecification : gml:Reference [0..1]
+  # reducerWeight : gml:Reference [0..1]
+  # reducerBoundDimension : gml:Reference [0..1]
+  # reducerNominalPipeSizeInlet : gml:Reference [0..1]
+  # reducerNominalPipeSizeOutlet : gml:Reference [0..1]
+  # reducerOutsideDiameterInlet : gml:Reference [0..1]
+  # reducerOutsideDiameterOutlet : gml:Reference [0..1]
+  # reducerWallThicknessInlet : gml:Reference [0..1]
+  # reducerWallThicknessOutlet : gml:Reference [0..1]
+}
+class "pml:ReducerProperty" $property {
+  Reducer : pml:Reducer
+}
+class "pml:Sleeve" <<FeatureType>> {
+  # sleeveManufacturer : gml:Reference [0..1]
+  # sleeveType : gml:Reference [0..1]
+  # sleeveMaterial : gml:Reference [0..1]
+  # sleeveBoundDimension : gml:Reference [0..1]
+  # sleeveNominalPipeSize : gml:Reference [0..1]
+  # sleeveWallThickness : gml:Reference [0..1]
+  # sleeveBoundManufacturer : gml:Reference [0..1]
+  # sleeveProductName : gml:Reference [0..1]
+  # sleeveModelNumber : gml:Reference [0..1]
+  # sleevePressureRating : gml:Measure [0..1]
+}
+class "pml:SleeveProperty" $property {
+  Sleeve : pml:Sleeve
+}
+class "pml:SpatialRepresentation" <<DataType>> {
+  # name : xs:string [0..1]
+  # description : xs:string [0..1]
+}
+class "pml:SpatialRepresentationProperty" $property {
+  SpatialRepresentation : pml:SpatialRepresentation
+}
+class "pml:Tap" <<FeatureType>> {
+  # tapManufacturer : gml:Reference [0..1]
+  # tapType : gml:Reference [0..1]
+  # tapMaterial : gml:Reference [0..1]
+  # tapBoundDimension : gml:Reference [0..1]
+  # tapNominalPipeSize : gml:Reference [0..1]
+  # tapOutsideDiameterInlet : gml:Reference [0..1]
+  # tapOutsideDiameterOutlet : gml:Reference [0..1]
+  # tapFunction : gml:Reference [0..1]
+  # tapInstallMethod : gml:Reference [0..1]
+}
+class "pml:TapProperty" $property {
+  Tap : pml:Tap
+}
+class "pml:Tee" <<FeatureType>> {
+  # teeManufacturer : gml:Reference [0..1]
+  # teeType : gml:Reference [0..1]
+  # teeMaterial : gml:Reference [0..1]
+  # teeBoundSpecification : gml:Reference [0..1]
+  # teeSpecification : gml:Reference [0..1]
+  # teeWeight : gml:Reference [0..1]
+  # teeBoundDimension : gml:Reference [0..1]
+  # teeNominalPipeSize : gml:Reference [0..1]
+  # teeOutsideDiameterRun : gml:Reference [0..1]
+  # teeOutsideDiameterOutlet : gml:Reference [0..1]
+  # teeCenterToEndRun : gml:Measure [0..1]
+  # teeCenterToEndOutlet : gml:Measure [0..1]
+  # teeWallThicknessRun : gml:Reference [0..1]
+  # teeWallThicknessOutlet : gml:Reference [0..1]
+}
+class "pml:TeeProperty" $property {
+  Tee : pml:Tee
+}
+class "pml:Valve" <<FeatureType>> {
+  # valveManufacturer : gml:Reference [0..1]
+  # valveType : gml:Reference [0..1]
+  # valveBoundSpecification : gml:Reference [0..1]
+  # valveSpecification : gml:Reference [0..1]
+  # valveClass : gml:Reference [0..1]
+  # valveNominalPipeSize : gml:Reference [0..1]
+  # valveOperability : gml:Reference [0..1]
+  # valveActuationTime : gml:Measure [0..1]
+  # valveFunctionType : gml:Reference [0..1]
+  # valveNumber : xs:string [0..1]
+  # valveModelNumber : xs:string [0..1]
+  # valveSerialNumber : xs:string [0..1]
+}
+class "pml:ValveProperty" $property {
+  Valve : pml:Valve
+}
+class "pml:Virtualconnector" <<FeatureType>> {
+  # virtualconnectorType : gml:Reference [0..1]
+}
+class "pml:VirtualconnectorProperty" $property {
+  Virtualconnector : pml:Virtualconnector
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractGML"
+
+"pml:Component" <|-- "pml:AppurtenantComponent"
+"gml:AbstractFeature" <|-- "pml:Assembly"
+"pml:CoterminousComponent" <|-- "pml:Cap"
+"pml:AppurtenantComponent" <|-- "pml:Casing"
+"pml:AppurtenantComponent" <|-- "pml:Coating"
+"gml:AbstractFeature" <|-- "pml:Collection"
+"gml:AbstractFeature" <|-- "pml:CollectionMember"
+"gml:AbstractFeature" <|-- "pml:Component"
+"pml:CoterminousComponent" <|-- "pml:Compressor"
+"pml:Component" <|-- "pml:ConnectorComponent"
+"pml:Component" <|-- "pml:CoterminousComponent"
+"gml:AbstractGML" <|-- "pml:DataType1"
+"pml:CoterminousComponent" <|-- "pml:Elbow"
+"pml:CoterminousComponent" <|-- "pml:Flange"
+"gml:AbstractGML" <|-- "pml:ISO-19103-CoreDataTypes"
+"pml:CoterminousComponent" <|-- "pml:Launcherreceiver"
+"pml:CoterminousComponent" <|-- "pml:Linepipe"
+"pml:CoterminousComponent" <|-- "pml:Meter"
+"gml:AbstractGML" <|-- "pml:PMLDataset"
+"pml:ConnectorComponent" <|-- "pml:Pipeconnector"
+"gml:AbstractFeature" <|-- "pml:Pipeline"
+"pml:CoterminousComponent" <|-- "pml:Pump"
+"pml:CoterminousComponent" <|-- "pml:Reducer"
+"pml:AppurtenantComponent" <|-- "pml:Sleeve"
+"pml:CoterminousComponent" <|-- "pml:Tap"
+"pml:CoterminousComponent" <|-- "pml:Tee"
+"pml:CoterminousComponent" <|-- "pml:Valve"
+"pml:ConnectorComponent" <|-- "pml:Virtualconnector"
+
+' Class relations (promoted from property wrappers)
+"pml:Assembly" o-- "0..*" "pml:Component" : component
+"pml:Collection" "1" *-- "0..*" "pml:CollectionMember" : collectionMember
+"pml:PMLDataset" o-- "0..*" "pml:Component" : component
+"pml:PMLDataset" o-- "0..*" "pml:Collection" : collection
+"pml:PMLDataset" o-- "0..*" "pml:Assembly" : assembly
+"pml:PMLDataset" "1" *-- "0..*" "pml:Pipeline" : pipeline
+"pml:Pipeline" "1" *-- "1..*" "pml:Assembly" : assembly
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

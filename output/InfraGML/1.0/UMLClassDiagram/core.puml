@@ -1,0 +1,205 @@
+@startuml
+title
+  Part0 - 1.0 - Core - Only XSD based
+  http://www.opengis.net/infragml/core/1.0
+end title
+
+package li {
+class "li:AbstractData" <<ObjectType>>
+class "li:AbstractDataProperty" $property {
+  AbstractData : li:AbstractData
+}
+class "li:Document" <<FeatureType>> {
+  # documentID : anonymous
+  # documentType : xs:string
+  # documentContent : xs:anyURI [0..1]
+}
+class "li:DocumentProperty" $property {
+  Document : li:Document
+}
+class "li:Feature" <<FeatureType>> {
+  # spatialRepresentation : anonymous [0..*]
+  # linearlyReferencedLocation : anonymous [0..*]
+}
+class "li:FeatureProperty" $property {
+  Feature : li:Feature
+}
+class "li:FeatureAssociation" <<ObjectType>> {
+  # fromRole : xs:string
+  # toRole : xs:string
+}
+class "li:FeatureAssociationProperty" $property {
+  FeatureAssociation : li:FeatureAssociation
+}
+class "li:ID" <<DataType>> {
+  # identifier : xs:string
+  # scope : xs:string [0..1]
+}
+class "li:IndexedPoint" <<DataType>> {
+  # index : xs:integer
+  # coordinates : gml:doubleList
+}
+class "li:LandInfraDataset" <<ObjectType>> {
+  # datasetID : anonymous
+  # name : xs:string [0..1]
+  # description : xs:string [0..1]
+  # dateTime : xs:dateTime
+  # datasetVersion : xs:string
+  # application : xs:string
+  # author : xs:string
+  # infraVersion : xs:string
+  # language : xs:string
+  # defaultCRS : gml:CRS
+  # linearElement : gmllr:LinearElement
+}
+class "li:LandInfraDatasetProperty" $property {
+  LandInfraDataset : li:LandInfraDataset
+}
+class "li:LinearAtLocation" <<DataType>> {
+  # atPosition : gmllr:PositionExpression
+}
+class "li:LinearElement" <<DataType>> {
+  # referent : gmllr:Referent [0..*]
+}
+class "li:LinearElementProperty" $property {
+  LinearElement : li:LinearElement
+}
+class "li:LinearFromToLocation" <<DataType>> {
+  # fromPosition : gmllr:PositionExpression
+  # toPosition : gmllr:PositionExpression
+}
+class "li:LinearlyReferencedLocation" <<DataType>> {
+  # name : xs:string [0..1]
+  # description : xs:string [0..1]
+  # linearAtLocation : anonymous
+  # linearFromToLocation : anonymous
+}
+class "li:OffsetsDistanceExpression" <<DataType>> {
+  # longitudinalOffsetExpression : xs:double [0..1]
+}
+class "li:Percentage" <<ObjectType>> {
+  # percentage : xs:double
+}
+class "li:PercentageProperty" $property {
+  Percentage : li:Percentage
+}
+class "li:PolyfaceMesh" <<ObjectType>>
+class "li:PolyfaceMeshProperty" $property {
+  PolyfaceMesh : li:PolyfaceMesh
+}
+class "li:Professional" <<ObjectType>> {
+  # fullName : xs:string
+  # type : gml:Reference
+  # company : xs:string [0..1]
+  # registration : xs:string [0..1]
+  # licensingCountry : xs:string [0..1]
+}
+class "li:ProfessionalProperty" $property {
+  Professional : li:Professional
+}
+class "li:Property" $property {
+  # valueType : xs:string
+  # value : xs:anyType [1..*]
+  # units : xs:string [0..1]
+  # cardinality : xs:string [0..1]
+}
+class "li:PropertyProperty" $property {
+  Property : li:
+}
+class "li:PropertySet" <<ObjectType>>
+class "li:PropertySetProperty" $property {
+  PropertySet : li:PropertySet
+}
+class "li:RestartReferent" <<DataType>> {
+  # restartValue : gmllr:StartValue [0..*]
+}
+class "li:RestartReferentProperty" $property {
+  RestartReferent : li:RestartReferent
+}
+class "li:Set" <<ObjectType>> {
+  # authority : xs:string [0..1]
+}
+class "li:SetProperty" $property {
+  Set : li:Set
+}
+class "li:SimpleIndexedPolygon" <<ObjectType>> {
+  # pointIndex : gml:integerList
+}
+class "li:SpatialRepresentation" <<DataType>> {
+  # name : xs:string [0..1]
+  # description : xs:string [0..1]
+  # geometry : gml:Geometry
+  # crs : gml:CRS [0..1]
+}
+class "li:SurveyMark" <<FeatureType>> {
+  # identification : xs:string [0..1]
+}
+class "li:SurveyMarkProperty" $property {
+  SurveyMark : li:SurveyMark
+}
+
+' Simple types (from <simpleType> declarations)
+class "li:Side" <<Enumeration>> {
+  left
+  right
+  neither
+  both
+}
+class "li:State" <<Union>>
+class "li:StateEnumeration" <<Enumeration>> {
+  existing
+  proposed
+}
+class "li:StateOther" <<BasicType>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractGML"
+abstract class "gml:AbstractGeometry"
+abstract class "gml:AbstractSurface"
+class "gmllr:LinearElement"
+class "gmllr:Referent"
+class "gmllro:LateralOffsetDistanceExpression"
+
+"gml:AbstractGML" <|-- "li:AbstractData"
+"li:Feature" <|-- "li:Document"
+"gml:AbstractFeature" <|-- "li:Feature"
+"gml:AbstractGML" <|-- "li:FeatureAssociation"
+"gml:AbstractGML" <|-- "li:LandInfraDataset"
+"gmllr:LinearElement" <|-- "li:LinearElement"
+"gmllro:LateralOffsetDistanceExpression" <|-- "li:OffsetsDistanceExpression"
+"gml:AbstractGML" <|-- "li:Percentage"
+"gml:AbstractGeometry" <|-- "li:PolyfaceMesh"
+"gml:AbstractGML" <|-- "li:Professional"
+"gml:AbstractGML" <|-- "li:Property"
+"li:Set" <|-- "li:PropertySet"
+"gmllr:Referent" <|-- "li:RestartReferent"
+"li:AbstractData" <|-- "li:Set"
+"gml:AbstractSurface" <|-- "li:SimpleIndexedPolygon"
+"li:Feature" <|-- "li:SurveyMark"
+
+' Class relations (promoted from property wrappers)
+"li:AbstractData" ..> "0..*" "li:PropertySet" : propertySet
+"li:AbstractData" ..> "0..*" "li:Property" : property
+"li:Feature" ..> "0..*" "li:PropertySet" : propertySet
+"li:Feature" ..> "0..*" "li:Property" : property
+"li:FeatureAssociation" o-- "1" "li:Feature" : fromFeature
+"li:FeatureAssociation" o-- "1" "li:Feature" : toFeature
+"li:LandInfraDataset" o-- "1" "li:Feature" : feature
+"li:LandInfraDataset" ..> "1" "li:FeatureAssociation" : featureAssociation
+"li:LandInfraDataset" ..> "1" "li:AbstractData" : abstractData
+"li:PolyfaceMesh" "1" *-- "1" "li:IndexedPoint" : indexedPointList
+"li:PolyfaceMesh" "1" *-- "1" "li:SimpleIndexedPolygon" : simpleIndexedPolygonList
+"li:PropertySet" ..> "0..*" "li:Property" : propertyMember
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+title
+  Part6 - 1.0 - Sampling - Only XSD based
+  http://www.opengis.net/infragml/sampling/1.0
+end title
+
+package liss {
+class "liss:SamplingFeature" <<FeatureType>> {
+  # type : gml:Reference [0..1]
+  # sampledFeature : li:Feature [1..*]
+  # lineage : gmd:LI_Lineage_ [0..1]
+  # relatedObservation : liso:SurveyObservation [0..*]
+  - relatedSamplingFeature : liss:SamplingFeatureComplex [0..*]
+}
+class "liss:SamplingFeatureProperty" $property {
+  SamplingFeature : liss:SamplingFeature
+}
+class "liss:SamplingFeatureComplex" <<DataType>> {
+  # role : gml:Reference
+}
+class "liss:SamplingFeatureComplexProperty" $property {
+  SamplingFeatureComplex : liss:SamplingFeatureComplex
+}
+class "liss:SamplingFeatureCollection" <<FeatureType>>
+class "liss:SamplingFeatureCollectionProperty" $property {
+  SamplingFeatureCollection : liss:SamplingFeatureCollection
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+class "li:Feature"
+
+"li:Feature" <|-- "liss:SamplingFeature"
+"gml:AbstractFeature" <|-- "liss:SamplingFeatureCollection"
+
+' Class relations (promoted from property wrappers)
+"liss:SamplingFeatureComplex" o-- "1" "liss:SamplingFeature" : relatedSamplingFeature
+"liss:SamplingFeatureCollection" o-- "1..*" "liss:SamplingFeature" : member
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+@enduml
