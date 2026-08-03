@@ -1,0 +1,38 @@
+@startuml
+title
+  GML - 3.2.1 - Grids - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:Grid" <<ObjectType>> {
+  limits : gml:GridLimits
+  axisLabels : gml:NCNameList
+  # axisName : xs:string [1..*]
+}
+class "gml:GridLimits" <<DataType>> {
+  GridEnvelope : gml:GridEnvelope
+}
+class "gml:GridEnvelope" <<DataType>> {
+  low : gml:integerList
+  high : gml:integerList
+}
+class "gml:RectifiedGrid" <<ObjectType>> {
+  origin : gml:Point
+  offsetVector : gml:Vector [1..*]
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGeometry"
+
+"gml:AbstractGeometry" <|-- "gml:Grid"
+"gml:Grid" <|-- "gml:RectifiedGrid"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

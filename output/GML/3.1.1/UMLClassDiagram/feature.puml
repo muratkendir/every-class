@@ -1,0 +1,59 @@
+@startuml
+title
+  Base - 3.1.1 - Feature - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractFeature" <<ObjectType>> {
+  boundedBy : gml:boundedBy [0..1]
+  location : gml:location [0..1]
+}
+class "gml:BoundingShape" <<DataType>> {
+  Envelope : gml:Envelope
+  Null : gml:Null
+}
+class "gml:EnvelopeWithTimePeriod" <<ObjectType>> {
+  timePosition : gml:timePosition [2]
+}
+class "gml:FeatureProperty" $property {
+  _Feature : gml:_Feature
+}
+class "gml:FeatureArrayProperty" $property {
+  _Feature : gml:_Feature [0..*]
+}
+abstract class "gml:AbstractFeatureCollection" <<FeatureType>> {
+  featureMember : gml:featureMember [0..*]
+  featureMembers : gml:featureMembers [0..1]
+}
+class "gml:FeatureCollection" <<FeatureType>>
+abstract class "gml:BoundedFeature" <<FeatureType>> {
+  boundedBy : gml:boundedBy
+  location : gml:location [0..1]
+}
+class "gml:LocationProperty" $property {
+  _Geometry : gml:_Geometry
+  LocationKeyWord : gml:LocationKeyWord
+  LocationString : gml:LocationString
+  Null : gml:Null
+}
+class "gml:PriorityLocationProperty" $property
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+class "gml:Envelope"
+
+"gml:AbstractGML" <|-- "gml:AbstractFeature"
+"gml:Envelope" <|-- "gml:EnvelopeWithTimePeriod"
+"gml:AbstractFeature" <|-- "gml:AbstractFeatureCollection"
+"gml:AbstractFeatureCollection" <|-- "gml:FeatureCollection"
+"gml:AbstractFeature" <|-- "gml:BoundedFeature"
+"gml:LocationProperty" <|-- "gml:PriorityLocationProperty"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

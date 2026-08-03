@@ -1,0 +1,41 @@
+@startuml
+title
+  Base - 3.1.1 - Gmlbase - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractGML" <<DataType>>
+class "gml:Bag" <<ObjectType>> {
+  member : gml:member [0..*]
+  members : gml:members [0..1]
+}
+class "gml:Array" <<ObjectType>> {
+  members : gml:members [0..1]
+}
+abstract class "gml:AbstractMetaData" <<DataType>>
+class "gml:GenericMetaData" <<ObjectType>>
+class "gml:Association" <<DataType>> {
+  _Object : gml:_Object
+}
+class "gml:Reference" <<DataType>>
+class "gml:ArrayAssociation" <<DataType>> {
+  _Object : gml:_Object [0..*]
+}
+class "gml:MetaDataProperty" $property
+class "gml:StringOrRef" <<DataType>>
+
+' Model groups (from <group> declarations)
+class "gml:StandardObjectProperties" <<Union>>
+}
+
+"gml:AbstractGML" <|-- "gml:Bag"
+"gml:AbstractGML" <|-- "gml:Array"
+"gml:AbstractMetaData" <|-- "gml:GenericMetaData"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

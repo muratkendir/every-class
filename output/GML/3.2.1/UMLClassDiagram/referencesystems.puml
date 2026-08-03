@@ -1,0 +1,29 @@
+@startuml
+title
+  GML - 3.2.1 - Referencesystems - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+abstract class "gml:IdentifiedObject" <<ObjectType>>
+abstract class "gml:AbstractCRS" <<ObjectType>> {
+  domainOfValidity : gml:domainOfValidity [0..*]
+  scope : gml:scope [1..*]
+}
+class "gml:CRSProperty" $property {
+  AbstractCRS : gml:AbstractCRS
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:Definition"
+
+"gml:Definition" <|-- "gml:IdentifiedObject"
+"gml:IdentifiedObject" <|-- "gml:AbstractCRS"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

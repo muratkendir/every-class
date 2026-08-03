@@ -1,0 +1,150 @@
+@startuml
+title
+  GML - 3.2.1 - Coordinateoperations - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+abstract class "gml:AbstractCoordinateOperation" <<ObjectType>> {
+  domainOfValidity : gml:domainOfValidity [0..1]
+  scope : gml:scope [1..*]
+  operationVersion : gml:operationVersion [0..1]
+  coordinateOperationAccuracy : gml:coordinateOperationAccuracy [0..*]
+  sourceCRS : gml:sourceCRS [0..1]
+  targetCRS : gml:targetCRS [0..1]
+}
+class "gml:CoordinateOperationProperty" $property {
+  AbstractCoordinateOperation : gml:AbstractCoordinateOperation
+}
+class "gml:SingleOperationProperty" $property {
+  AbstractSingleOperation : gml:AbstractSingleOperation
+}
+abstract class "gml:AbstractGeneralConversion" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  description : gml:description [0..1]
+  descriptionReference : gml:descriptionReference [0..1]
+  identifier : gml:identifier
+  name : gml:name [0..*]
+  remarks : gml:remarks [0..1]
+  domainOfValidity : gml:domainOfValidity [0..1]
+  scope : gml:scope [1..*]
+  coordinateOperationAccuracy : gml:coordinateOperationAccuracy [0..*]
+}
+class "gml:GeneralConversionProperty" $property {
+  AbstractGeneralConversion : gml:AbstractGeneralConversion
+}
+abstract class "gml:AbstractGeneralTransformation" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  description : gml:description [0..1]
+  descriptionReference : gml:descriptionReference [0..1]
+  identifier : gml:identifier
+  name : gml:name [0..*]
+  remarks : gml:remarks [0..1]
+  domainOfValidity : gml:domainOfValidity [0..1]
+  scope : gml:scope [1..*]
+  operationVersion : gml:operationVersion
+  coordinateOperationAccuracy : gml:coordinateOperationAccuracy [0..*]
+  sourceCRS : gml:sourceCRS
+  targetCRS : gml:targetCRS
+}
+class "gml:GeneralTransformationProperty" $property {
+  AbstractGeneralTransformation : gml:AbstractGeneralTransformation
+}
+class "gml:ConcatenatedOperation" <<ObjectType>> {
+  coordOperation : gml:coordOperation [2..*]
+}
+class "gml:ConcatenatedOperationProperty" $property {
+  ConcatenatedOperation : gml:ConcatenatedOperation
+}
+class "gml:PassThroughOperation" <<ObjectType>> {
+  modifiedCoordinate : gml:modifiedCoordinate [1..*]
+  coordOperation : gml:coordOperation
+}
+class "gml:PassThroughOperationProperty" $property {
+  PassThroughOperation : gml:PassThroughOperation
+}
+class "gml:Conversion" <<ObjectType>> {
+  method : gml:method
+  parameterValue : gml:parameterValue [0..*]
+}
+class "gml:ConversionProperty" $property {
+  Conversion : gml:Conversion
+}
+class "gml:Transformation" <<ObjectType>> {
+  method : gml:method
+  parameterValue : gml:parameterValue [0..*]
+}
+class "gml:TransformationProperty" $property {
+  Transformation : gml:Transformation
+}
+abstract class "gml:AbstractGeneralParameterValue" <<DataType>>
+class "gml:AbstractGeneralParameterValueProperty" $property {
+  AbstractGeneralParameterValue : gml:AbstractGeneralParameterValue
+}
+class "gml:ParameterValue" <<ObjectType>> {
+  value : gml:value
+  dmsAngleValue : gml:dmsAngleValue
+  stringValue : gml:stringValue
+  integerValue : gml:integerValue
+  booleanValue : gml:booleanValue
+  valueList : gml:valueList
+  integerValueList : gml:integerValueList
+  valueFile : gml:valueFile
+  operationParameter : gml:operationParameter
+}
+class "gml:ParameterValueGroup" <<ObjectType>> {
+  parameterValue : gml:parameterValue [2..*]
+  group : gml:group
+}
+class "gml:OperationMethod" <<ObjectType>> {
+  formulaCitation : gml:formulaCitation
+  formula : gml:formula
+  sourceDimensions : gml:sourceDimensions [0..1]
+  targetDimensions : gml:targetDimensions [0..1]
+  parameter : gml:parameter [0..*]
+}
+class "gml:OperationMethodProperty" $property {
+  OperationMethod : gml:OperationMethod
+}
+abstract class "gml:AbstractGeneralOperationParameter" <<ObjectType>> {
+  minimumOccurs : gml:minimumOccurs [0..1]
+}
+class "gml:AbstractGeneralOperationParameterProperty" $property {
+  AbstractGeneralOperationParameter : gml:AbstractGeneralOperationParameter
+}
+class "gml:OperationParameter" <<ObjectType>>
+class "gml:OperationParameterProperty" $property {
+  OperationParameter : gml:OperationParameter
+}
+class "gml:OperationParameterGroup" <<ObjectType>> {
+  maximumOccurs : gml:maximumOccurs [0..1]
+  parameter : gml:parameter [2..*]
+}
+class "gml:OperationParameterGroupProperty" $property {
+  OperationParameterGroup : gml:OperationParameterGroup
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:IdentifiedObject"
+
+"gml:IdentifiedObject" <|-- "gml:AbstractCoordinateOperation"
+"gml:AbstractCoordinateOperation" <|-- "gml:AbstractGeneralConversion"
+"gml:AbstractCoordinateOperation" <|-- "gml:AbstractGeneralTransformation"
+"gml:AbstractCoordinateOperation" <|-- "gml:ConcatenatedOperation"
+"gml:AbstractCoordinateOperation" <|-- "gml:PassThroughOperation"
+"gml:AbstractGeneralConversion" <|-- "gml:Conversion"
+"gml:AbstractGeneralTransformation" <|-- "gml:Transformation"
+"gml:AbstractGeneralParameterValue" <|-- "gml:ParameterValue"
+"gml:AbstractGeneralParameterValue" <|-- "gml:ParameterValueGroup"
+"gml:IdentifiedObject" <|-- "gml:OperationMethod"
+"gml:IdentifiedObject" <|-- "gml:AbstractGeneralOperationParameter"
+"gml:AbstractGeneralOperationParameter" <|-- "gml:OperationParameter"
+"gml:AbstractGeneralOperationParameter" <|-- "gml:OperationParameterGroup"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

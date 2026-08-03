@@ -1,0 +1,153 @@
+@startuml
+title
+  Base - 3.1.1 - Coverage - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractCoverage" <<FeatureType>> {
+  domainSet : gml:domainSet
+  rangeSet : gml:rangeSet
+}
+abstract class "gml:AbstractContinuousCoverage" <<FeatureType>> {
+  coverageFunction : gml:coverageFunction [0..1]
+}
+abstract class "gml:AbstractDiscreteCoverage" <<FeatureType>> {
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:DomainSet" <<DataType>> {
+  _Geometry : gml:_Geometry
+  _TimeObject : gml:_TimeObject
+}
+class "gml:RangeSet" <<DataType>> {
+  ValueArray : gml:ValueArray [1..*]
+  DataBlock : gml:DataBlock
+  File : gml:File
+}
+class "gml:CoverageFunction" <<DataType>> {
+  MappingRule : gml:MappingRule
+  GridFunction : gml:GridFunction
+}
+class "gml:DataBlock" <<DataType>> {
+  rangeParameters : gml:rangeParameters
+  tupleList : gml:tupleList
+  doubleOrNullTupleList : gml:doubleOrNullTupleList
+}
+class "gml:File" <<DataType>> {
+  rangeParameters : gml:rangeParameters
+  # fileName : xs:anyURI
+  fileStructure : gml:FileValueModel
+  # mimeType : xs:anyURI [0..1]
+  # compression : xs:anyURI [0..1]
+}
+class "gml:RangeParameters" <<DataType>>
+class "gml:GridFunction" <<DataType>> {
+  sequenceRule : gml:SequenceRule [0..1]
+  startPoint : gml:integerList [0..1]
+}
+class "gml:IndexMap" <<ObjectType>> {
+  lookUpTable : gml:integerList
+}
+class "gml:SequenceRule" <<DataType>>
+class "gml:MultiPointCoverage" <<FeatureType>> {
+  boundedBy : gml:boundedBy [0..1]
+  multiPointDomain : gml:multiPointDomain
+  rangeSet : gml:rangeSet
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:MultiPointDomain" <<ObjectType>> {
+  MultiPoint : gml:MultiPoint
+}
+class "gml:MultiCurveCoverage" <<FeatureType>> {
+  boundedBy : gml:boundedBy [0..1]
+  multiCurveDomain : gml:multiCurveDomain
+  rangeSet : gml:rangeSet
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:MultiCurveDomain" <<ObjectType>> {
+  MultiCurve : gml:MultiCurve
+}
+class "gml:MultiSurfaceCoverage" <<FeatureType>> {
+  boundedBy : gml:boundedBy [0..1]
+  multiSurfaceDomain : gml:multiSurfaceDomain
+  rangeSet : gml:rangeSet
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:MultiSurfaceDomain" <<ObjectType>> {
+  MultiSurface : gml:MultiSurface
+}
+class "gml:MultiSolidCoverage" <<FeatureType>> {
+  boundedBy : gml:boundedBy [0..1]
+  multiSolidDomain : gml:multiSolidDomain
+  rangeSet : gml:rangeSet
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:MultiSolidDomain" <<ObjectType>> {
+  MultiSolid : gml:MultiSolid
+}
+class "gml:GridCoverage" <<FeatureType>> {
+  boundedBy : gml:boundedBy [0..1]
+  gridDomain : gml:gridDomain
+  rangeSet : gml:rangeSet
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:GridDomain" <<ObjectType>> {
+  Grid : gml:Grid
+}
+class "gml:RectifiedGridCoverage" <<FeatureType>> {
+  boundedBy : gml:boundedBy [0..1]
+  rectifiedGridDomain : gml:rectifiedGridDomain
+  rangeSet : gml:rangeSet
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:RectifiedGridDomain" <<ObjectType>> {
+  RectifiedGrid : gml:RectifiedGrid
+}
+
+' Simple types (from <simpleType> declarations)
+class "gml:FileValueModel" <<Enumeration>> {
+  Record Interleaved
+}
+class "gml:SequenceRuleNames" <<Enumeration>> {
+  Linear
+  Boustrophedonic
+  Cantor-diagonal
+  Spiral
+  Morton
+  Hilbert
+}
+class "gml:IncrementOrder" <<Enumeration>> {
+  +x+y
+  +y+x
+  +x-y
+  -x-y
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+
+"gml:AbstractFeature" <|-- "gml:AbstractCoverage"
+"gml:AbstractCoverage" <|-- "gml:AbstractContinuousCoverage"
+"gml:AbstractCoverage" <|-- "gml:AbstractDiscreteCoverage"
+"gml:GridFunction" <|-- "gml:IndexMap"
+"gml:AbstractDiscreteCoverage" <|-- "gml:MultiPointCoverage"
+"gml:DomainSet" <|-- "gml:MultiPointDomain"
+"gml:AbstractDiscreteCoverage" <|-- "gml:MultiCurveCoverage"
+"gml:DomainSet" <|-- "gml:MultiCurveDomain"
+"gml:AbstractDiscreteCoverage" <|-- "gml:MultiSurfaceCoverage"
+"gml:DomainSet" <|-- "gml:MultiSurfaceDomain"
+"gml:AbstractDiscreteCoverage" <|-- "gml:MultiSolidCoverage"
+"gml:DomainSet" <|-- "gml:MultiSolidDomain"
+"gml:AbstractDiscreteCoverage" <|-- "gml:GridCoverage"
+"gml:DomainSet" <|-- "gml:GridDomain"
+"gml:AbstractDiscreteCoverage" <|-- "gml:RectifiedGridCoverage"
+"gml:DomainSet" <|-- "gml:RectifiedGridDomain"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

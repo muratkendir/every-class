@@ -1,0 +1,53 @@
+@startuml
+title
+  Base - 3.1.1 - Units - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:UnitOfMeasure" <<DataType>>
+class "gml:UnitDefinition" <<ObjectType>> {
+  quantityType : gml:quantity
+  catalogSymbol : gml:catalogSymbol [0..1]
+}
+class "gml:BaseUnit" <<ObjectType>> {
+  unitsSystem : gml:Reference
+}
+class "gml:DerivedUnit" <<ObjectType>> {
+  derivationUnitTerm : gml:derivationUnitTerm [1..*]
+}
+class "gml:ConventionalUnit" <<ObjectType>> {
+  conversionToPreferredUnit : gml:conversionToPreferredUnit
+  roughConversionToPreferredUnit : gml:roughConversionToPreferredUnit
+  derivationUnitTerm : gml:derivationUnitTerm [0..*]
+}
+class "gml:DerivationUnitTerm" <<ObjectType>>
+class "gml:ConversionToPreferredUnit" <<ObjectType>> {
+  # factor : xs:double
+  formula : gml:Formula
+}
+class "gml:Formula" <<DataType>> {
+  # a : xs:double [0..1]
+  # b : xs:double
+  # c : xs:double
+  # d : xs:double [0..1]
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:Definition"
+
+"gml:Definition" <|-- "gml:UnitDefinition"
+"gml:UnitDefinition" <|-- "gml:BaseUnit"
+"gml:UnitDefinition" <|-- "gml:DerivedUnit"
+"gml:UnitDefinition" <|-- "gml:ConventionalUnit"
+"gml:UnitOfMeasure" <|-- "gml:DerivationUnitTerm"
+"gml:UnitOfMeasure" <|-- "gml:ConversionToPreferredUnit"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+title
+  GML - 3.2.1 - Basictypes - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:Code" <<DataType>>
+class "gml:CodeWithAuthority" <<DataType>>
+class "gml:Measure" <<DataType>>
+class "gml:Coordinates" <<DataType>>
+class "gml:CodeList" <<DataType>>
+class "gml:CodeOrNilReasonList" <<DataType>>
+class "gml:MeasureList" <<DataType>>
+class "gml:MeasureOrNilReasonList" <<DataType>>
+
+' Simple types (from <simpleType> declarations)
+class "gml:NilReason" <<Union>>
+class "gml:NilReasonEnumeration" <<Union>> {
+  inapplicable
+  missing
+  template
+  unknown
+  withheld
+}
+class "gml:Sign" <<Enumeration>> {
+  -
+  +
+}
+class "gml:booleanOrNilReason" <<Union>>
+class "gml:doubleOrNilReason" <<Union>>
+class "gml:integerOrNilReason" <<Union>>
+class "gml:NameOrNilReason" <<Union>>
+class "gml:stringOrNilReason" <<Union>>
+class "gml:UomIdentifier" <<Union>>
+class "gml:UomSymbol" <<BasicType>>
+class "gml:UomURI" <<BasicType>>
+class "gml:booleanList" <<BasicType>>
+class "gml:doubleList" <<BasicType>>
+class "gml:integerList" <<BasicType>>
+class "gml:NameList" <<BasicType>>
+class "gml:NCNameList" <<BasicType>>
+class "gml:QNameList" <<BasicType>>
+class "gml:booleanOrNilReasonList" <<BasicType>>
+class "gml:NameOrNilReasonList" <<BasicType>>
+class "gml:doubleOrNilReasonList" <<BasicType>>
+class "gml:integerOrNilReasonList" <<BasicType>>
+}
+
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

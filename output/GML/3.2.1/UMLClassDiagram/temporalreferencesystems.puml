@@ -1,0 +1,77 @@
+@startuml
+title
+  GML - 3.2.1 - Temporalreferencesystems - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:TimeReferenceSystem" <<ObjectType>> {
+  # domainOfValidity : xs:string
+}
+class "gml:TimeCoordinateSystem" <<ObjectType>> {
+  originPosition : gml:TimePosition
+  origin : gml:TimeInstant
+  interval : gml:TimeIntervalLength
+}
+class "gml:TimeCalendar" <<ObjectType>>
+class "gml:TimeCalendarEra" <<ObjectType>> {
+  referenceEvent : gml:StringOrRef
+  referenceDate : gml:CalDate
+  # julianReference : xs:decimal
+  epochOfUse : gml:TimePeriod
+}
+class "gml:TimeCalendarProperty" $property {
+  TimeCalendar : gml:TimeCalendar
+}
+class "gml:TimeCalendarEraProperty" $property {
+  TimeCalendarEra : gml:TimeCalendarEra
+}
+class "gml:TimeClock" <<ObjectType>> {
+  referenceEvent : gml:StringOrRef
+  # referenceTime : xs:time
+  # utcReference : xs:time
+}
+class "gml:TimeClockProperty" $property {
+  TimeClock : gml:TimeClock
+}
+class "gml:TimeOrdinalReferenceSystem" <<ObjectType>>
+class "gml:TimeOrdinalEra" <<ObjectType>> {
+  relatedTime : gml:RelatedTime [0..*]
+  start : gml:TimeNode [0..1]
+  end : gml:TimeNode [0..1]
+  extent : gml:TimePeriod [0..1]
+  group : gml:Reference [0..1]
+}
+class "gml:TimeOrdinalEraProperty" $property {
+  TimeOrdinalEra : gml:TimeOrdinalEra
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:Definition"
+
+"gml:Definition" <|-- "gml:TimeReferenceSystem"
+"gml:TimeReferenceSystem" <|-- "gml:TimeCoordinateSystem"
+"gml:TimeReferenceSystem" <|-- "gml:TimeCalendar"
+"gml:Definition" <|-- "gml:TimeCalendarEra"
+"gml:TimeReferenceSystem" <|-- "gml:TimeClock"
+"gml:TimeReferenceSystem" <|-- "gml:TimeOrdinalReferenceSystem"
+"gml:Definition" <|-- "gml:TimeOrdinalEra"
+
+' Class relations (promoted from property wrappers)
+"gml:TimeCalendar" ..> "1..*" "gml:TimeCalendarEra" : referenceFrame
+"gml:TimeClock" ..> "0..*" "gml:TimeCalendar" : dateBasis
+"gml:TimeOrdinalReferenceSystem" ..> "1..*" "gml:TimeOrdinalEra" : component
+"gml:TimeOrdinalEra" ..> "0..*" "gml:TimeOrdinalEra" : member
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

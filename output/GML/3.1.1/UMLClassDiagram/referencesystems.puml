@@ -1,0 +1,45 @@
+@startuml
+title
+  Base - 3.1.1 - Referencesystems - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractReferenceSystemBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  srsName : gml:srsName
+}
+abstract class "gml:AbstractReferenceSystem" <<ObjectType>> {
+  srsID : gml:srsID [0..*]
+  remarks : gml:remarks [0..1]
+  validArea : gml:validArea [0..1]
+  scope : gml:scope [0..1]
+}
+class "gml:ReferenceSystemRef" <<DataType>> {
+  _ReferenceSystem : gml:_ReferenceSystem
+}
+class "gml:CRSRef" <<DataType>> {
+  _CRS : gml:_CRS
+}
+class "gml:Identifier" <<DataType>> {
+  name : gml:name
+  version : gml:version [0..1]
+  remarks : gml:remarks [0..1]
+}
+class "gml:Extent" <<DataType>> {
+  description : gml:description [0..1]
+  boundingBox : gml:boundingBox [0..*]
+  boundingPolygon : gml:boundingPolygon [0..*]
+  verticalExtent : gml:verticalExtent [0..*]
+  temporalExtent : gml:temporalExtent [0..*]
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:Definition"
+
+"gml:Definition" <|-- "gml:AbstractReferenceSystemBase"
+"gml:AbstractReferenceSystemBase" <|-- "gml:AbstractReferenceSystem"
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

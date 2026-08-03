@@ -1,0 +1,33 @@
+@startuml
+title
+  Base - 3.1.1 - Dataquality - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractPositionalAccuracy" <<DataType>> {
+  measureDescription : gml:measureDescription [0..1]
+}
+class "gml:AbsoluteExternalPositionalAccuracy" <<ObjectType>> {
+  result : gml:result
+}
+class "gml:RelativeInternalPositionalAccuracy" <<ObjectType>> {
+  result : gml:result
+}
+class "gml:CovarianceMatrix" <<ObjectType>> {
+  unitOfMeasure : gml:unitOfMeasure [1..*]
+  includesElement : gml:includesElement [1..*]
+}
+class "gml:CovarianceElement" <<DataType>> {
+  rowIndex : gml:rowIndex
+  columnIndex : gml:columnIndex
+  covariance : gml:covariance
+}
+}
+
+"gml:AbstractPositionalAccuracy" <|-- "gml:AbsoluteExternalPositionalAccuracy"
+"gml:AbstractPositionalAccuracy" <|-- "gml:RelativeInternalPositionalAccuracy"
+"gml:AbstractPositionalAccuracy" <|-- "gml:CovarianceMatrix"
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

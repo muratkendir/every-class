@@ -1,0 +1,20 @@
+@startuml
+title
+  GML - 3.2.1 - Measures - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:Length" <<DataType>>
+class "gml:Scale" <<DataType>>
+class "gml:Time" <<DataType>>
+class "gml:GridLength" <<DataType>>
+class "gml:Area" <<DataType>>
+class "gml:Volume" <<DataType>>
+class "gml:Speed" <<DataType>>
+class "gml:Angle" <<DataType>>
+}
+
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

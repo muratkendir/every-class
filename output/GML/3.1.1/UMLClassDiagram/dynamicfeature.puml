@@ -1,0 +1,49 @@
+@startuml
+title
+  Base - 3.1.1 - Dynamicfeature - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractTimeSlice" <<ObjectType>> {
+  validTime : gml:validTime
+  dataSource : gml:dataSource [0..1]
+}
+class "gml:MovingObjectStatus" <<ObjectType>> {
+  location : gml:location
+  speed : gml:Measure [0..1]
+  bearing : gml:Direction [0..1]
+  acceleration : gml:Measure [0..1]
+  elevation : gml:Measure [0..1]
+  status : gml:status [0..1]
+}
+class "gml:HistoryProperty" $property {
+  _TimeSlice : gml:_TimeSlice
+}
+class "gml:Track" <<ObjectType>> {
+  MovingObjectStatus : gml:MovingObjectStatus
+}
+class "gml:DynamicFeature" <<FeatureType>>
+class "gml:DynamicFeatureCollection" <<ObjectType>>
+
+' Model groups (from <group> declarations)
+class "gml:dynamicProperties" <<Union>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractGML"
+class "gml:FeatureCollection"
+
+"gml:AbstractGML" <|-- "gml:AbstractTimeSlice"
+"gml:AbstractTimeSlice" <|-- "gml:MovingObjectStatus"
+"gml:HistoryProperty" <|-- "gml:Track"
+"gml:AbstractFeature" <|-- "gml:DynamicFeature"
+"gml:FeatureCollection" <|-- "gml:DynamicFeatureCollection"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

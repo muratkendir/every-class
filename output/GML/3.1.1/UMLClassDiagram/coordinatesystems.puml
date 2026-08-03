@@ -1,0 +1,94 @@
+@startuml
+title
+  Base - 3.1.1 - Coordinatesystems - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:CoordinateSystemAxisBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  name : gml:name
+}
+class "gml:CoordinateSystemAxis" <<ObjectType>> {
+  axisID : gml:axisID [0..*]
+  remarks : gml:remarks [0..1]
+  axisAbbrev : gml:axisAbbrev
+  axisDirection : gml:axisDirection
+}
+class "gml:CoordinateSystemAxisRef" <<DataType>> {
+  CoordinateSystemAxis : gml:CoordinateSystemAxis
+}
+abstract class "gml:AbstractCoordinateSystemBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  csName : gml:csName
+}
+abstract class "gml:AbstractCoordinateSystem" <<ObjectType>> {
+  csID : gml:csID [0..*]
+  remarks : gml:remarks [0..1]
+  usesAxis : gml:usesAxis [1..*]
+}
+class "gml:CoordinateSystemRef" <<DataType>> {
+  _CoordinateSystem : gml:_CoordinateSystem
+}
+class "gml:EllipsoidalCS" <<ObjectType>>
+class "gml:EllipsoidalCSRef" <<DataType>> {
+  EllipsoidalCS : gml:EllipsoidalCS
+}
+class "gml:CartesianCS" <<ObjectType>>
+class "gml:CartesianCSRef" <<DataType>> {
+  CartesianCS : gml:CartesianCS
+}
+class "gml:VerticalCS" <<ObjectType>>
+class "gml:VerticalCSRef" <<DataType>> {
+  VerticalCS : gml:VerticalCS
+}
+class "gml:TemporalCS" <<ObjectType>>
+class "gml:TemporalCSRef" <<DataType>> {
+  TemporalCS : gml:TemporalCS
+}
+class "gml:LinearCS" <<ObjectType>>
+class "gml:LinearCSRef" <<DataType>> {
+  LinearCS : gml:LinearCS
+}
+class "gml:UserDefinedCS" <<ObjectType>>
+class "gml:UserDefinedCSRef" <<DataType>> {
+  UserDefinedCS : gml:UserDefinedCS
+}
+class "gml:SphericalCS" <<ObjectType>>
+class "gml:SphericalCSRef" <<DataType>> {
+  SphericalCS : gml:SphericalCS
+}
+class "gml:PolarCS" <<ObjectType>>
+class "gml:PolarCSRef" <<DataType>> {
+  PolarCS : gml:PolarCS
+}
+class "gml:CylindricalCS" <<ObjectType>>
+class "gml:CylindricalCSRef" <<DataType>> {
+  CylindricalCS : gml:CylindricalCS
+}
+class "gml:ObliqueCartesianCS" <<ObjectType>>
+class "gml:ObliqueCartesianCSRef" <<DataType>> {
+  ObliqueCartesianCS : gml:ObliqueCartesianCS
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:Definition"
+
+"gml:Definition" <|-- "gml:CoordinateSystemAxisBase"
+"gml:CoordinateSystemAxisBase" <|-- "gml:CoordinateSystemAxis"
+"gml:Definition" <|-- "gml:AbstractCoordinateSystemBase"
+"gml:AbstractCoordinateSystemBase" <|-- "gml:AbstractCoordinateSystem"
+"gml:AbstractCoordinateSystem" <|-- "gml:EllipsoidalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:CartesianCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:VerticalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:TemporalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:LinearCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:UserDefinedCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:SphericalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:PolarCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:CylindricalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:ObliqueCartesianCS"
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

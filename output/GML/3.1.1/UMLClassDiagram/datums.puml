@@ -1,0 +1,110 @@
+@startuml
+title
+  Base - 3.1.1 - Datums - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractDatumBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  datumName : gml:datumName
+}
+abstract class "gml:AbstractDatum" <<ObjectType>> {
+  datumID : gml:datumID [0..*]
+  remarks : gml:remarks [0..1]
+  anchorPoint : gml:anchorPoint [0..1]
+  realizationEpoch : gml:realizationEpoch [0..1]
+  validArea : gml:validArea [0..1]
+  scope : gml:scope [0..1]
+}
+class "gml:DatumRef" <<DataType>> {
+  _Datum : gml:_Datum
+}
+class "gml:EngineeringDatum" <<ObjectType>>
+class "gml:EngineeringDatumRef" <<DataType>> {
+  EngineeringDatum : gml:EngineeringDatum
+}
+class "gml:ImageDatum" <<ObjectType>> {
+  pixelInCell : gml:pixelInCell
+}
+class "gml:PixelInCell" <<DataType>>
+class "gml:ImageDatumRef" <<DataType>> {
+  ImageDatum : gml:ImageDatum
+}
+class "gml:VerticalDatum" <<ObjectType>> {
+  verticalDatumType : gml:verticalDatum [0..1]
+}
+class "gml:VerticalDatumType" <<DataType>>
+class "gml:VerticalDatumRef" <<DataType>> {
+  VerticalDatum : gml:VerticalDatum
+}
+abstract class "gml:TemporalDatumBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  datumName : gml:datumName
+  datumID : gml:datumID [0..*]
+  validArea : gml:validArea [0..1]
+  scope : gml:scope [0..1]
+}
+class "gml:TemporalDatum" <<ObjectType>> {
+  origin : gml:origin
+}
+class "gml:TemporalDatumRef" <<DataType>> {
+  TemporalDatum : gml:TemporalDatum
+}
+class "gml:GeodeticDatum" <<ObjectType>> {
+  usesPrimeMeridian : gml:usesPrimeMeridian
+  usesEllipsoid : gml:usesEllipsoid
+}
+class "gml:GeodeticDatumRef" <<DataType>> {
+  GeodeticDatum : gml:GeodeticDatum
+}
+abstract class "gml:PrimeMeridianBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  meridianName : gml:meridianName
+}
+class "gml:PrimeMeridian" <<ObjectType>> {
+  meridianID : gml:meridianID [0..*]
+  remarks : gml:remarks [0..1]
+  greenwichLongitude : gml:greenwichLongitude
+}
+class "gml:PrimeMeridianRef" <<DataType>> {
+  PrimeMeridian : gml:PrimeMeridian
+}
+abstract class "gml:EllipsoidBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  ellipsoidName : gml:ellipsoidName
+}
+class "gml:Ellipsoid" <<ObjectType>> {
+  ellipsoidID : gml:ellipsoidID [0..*]
+  remarks : gml:remarks [0..1]
+  semiMajorAxis : gml:semiMajorAxis
+  secondDefiningParameter : gml:secondDefiningParameter
+}
+class "gml:EllipsoidRef" <<DataType>> {
+  Ellipsoid : gml:Ellipsoid
+}
+class "gml:SecondDefiningParameter" <<DataType>> {
+  inverseFlattening : gml:inverseFlattening
+  semiMinorAxis : gml:semiMinorAxis
+  isSphere : gml:isSphere
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:Definition"
+
+"gml:Definition" <|-- "gml:AbstractDatumBase"
+"gml:AbstractDatumBase" <|-- "gml:AbstractDatum"
+"gml:AbstractDatum" <|-- "gml:EngineeringDatum"
+"gml:AbstractDatum" <|-- "gml:ImageDatum"
+"gml:AbstractDatum" <|-- "gml:VerticalDatum"
+"gml:AbstractDatum" <|-- "gml:TemporalDatumBase"
+"gml:TemporalDatumBase" <|-- "gml:TemporalDatum"
+"gml:AbstractDatum" <|-- "gml:GeodeticDatum"
+"gml:Definition" <|-- "gml:PrimeMeridianBase"
+"gml:PrimeMeridianBase" <|-- "gml:PrimeMeridian"
+"gml:Definition" <|-- "gml:EllipsoidBase"
+"gml:EllipsoidBase" <|-- "gml:Ellipsoid"
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

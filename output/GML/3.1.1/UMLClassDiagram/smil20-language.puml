@@ -1,0 +1,26 @@
+@startuml
+title
+  Smil - 3.1.1 - Smil20-language - Only XSD based
+  http://www.w3.org/2001/SMIL20/Language
+end title
+
+package smil20lang {
+class "smil20lang:animate" <<DataType>>
+class "smil20lang:animateMotion" <<DataType>>
+class "smil20lang:animateColor" <<DataType>>
+class "smil20lang:set" <<DataType>>
+}
+
+' External types (unresolved namespaces)
+class "smil20:animateColorPrototype"
+class "smil20:animateMotionPrototype"
+class "smil20:animatePrototype"
+class "smil20:setPrototype"
+
+"smil20:animatePrototype" <|-- "smil20lang:animate"
+"smil20:animateMotionPrototype" <|-- "smil20lang:animateMotion"
+"smil20:animateColorPrototype" <|-- "smil20lang:animateColor"
+"smil20:setPrototype" <|-- "smil20lang:set"
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

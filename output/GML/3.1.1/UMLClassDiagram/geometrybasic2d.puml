@@ -1,0 +1,53 @@
+@startuml
+title
+  Base - 3.1.1 - Geometrybasic2d - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:AbstractSurface" <<ObjectType>>
+class "gml:SurfaceProperty" $property {
+  _Surface : gml:_Surface
+}
+class "gml:SurfaceArrayProperty" $property {
+  _Surface : gml:_Surface [0..*]
+}
+class "gml:Polygon" <<ObjectType>> {
+  exterior : gml:exterior [0..1]
+  interior : gml:interior [0..*]
+}
+abstract class "gml:AbstractRing" <<ObjectType>>
+class "gml:AbstractRingProperty" $property {
+  _Ring : gml:_Ring
+}
+class "gml:LinearRing" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+  coord : gml:coord [4..*]
+}
+class "gml:LinearRingProperty" $property {
+  LinearRing : gml:LinearRing
+}
+class "gml:PolygonProperty" $property {
+  Polygon : gml:Polygon
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGeometricPrimitive"
+abstract class "gml:AbstractGeometry"
+
+"gml:AbstractGeometricPrimitive" <|-- "gml:AbstractSurface"
+"gml:AbstractSurface" <|-- "gml:Polygon"
+"gml:AbstractGeometry" <|-- "gml:AbstractRing"
+"gml:AbstractRing" <|-- "gml:LinearRing"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

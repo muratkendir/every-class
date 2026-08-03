@@ -1,0 +1,172 @@
+@startuml
+title
+  Base - 3.1.1 - Coordinateoperations - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractCoordinateOperationBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  coordinateOperationName : gml:coordinateOperationName
+}
+abstract class "gml:AbstractCoordinateOperation" <<ObjectType>> {
+  coordinateOperationID : gml:coordinateOperationID [0..*]
+  remarks : gml:remarks [0..1]
+  operationVersion : gml:operationVersion [0..1]
+  validArea : gml:validArea [0..1]
+  scope : gml:scope [0..1]
+  _positionalAccuracy : gml:_positionalAccuracy [0..*]
+  sourceCRS : gml:sourceCRS [0..1]
+  targetCRS : gml:targetCRS [0..1]
+}
+class "gml:CoordinateOperationRef" <<DataType>> {
+  _CoordinateOperation : gml:_CoordinateOperation
+}
+class "gml:ConcatenatedOperation" <<ObjectType>> {
+  usesSingleOperation : gml:usesSingleOperation [2..*]
+}
+class "gml:ConcatenatedOperationRef" <<DataType>> {
+  ConcatenatedOperation : gml:ConcatenatedOperation
+}
+class "gml:SingleOperationRef" <<DataType>> {
+  _SingleOperation : gml:_SingleOperation
+}
+class "gml:PassThroughOperation" <<ObjectType>> {
+  modifiedCoordinate : gml:modifiedCoordinate [1..*]
+  usesOperation : gml:usesOperation
+}
+class "gml:PassThroughOperationRef" <<DataType>> {
+  PassThroughOperation : gml:PassThroughOperation
+}
+class "gml:OperationRef" <<DataType>> {
+  _Operation : gml:_Operation
+}
+abstract class "gml:AbstractGeneralConversion" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  coordinateOperationName : gml:coordinateOperationName
+  coordinateOperationID : gml:coordinateOperationID [0..*]
+  remarks : gml:remarks [0..1]
+  validArea : gml:validArea [0..1]
+  scope : gml:scope [0..1]
+  _positionalAccuracy : gml:_positionalAccuracy [0..*]
+}
+class "gml:GeneralConversionRef" <<DataType>> {
+  _GeneralConversion : gml:_GeneralConversion
+}
+class "gml:Conversion" <<ObjectType>> {
+  usesMethod : gml:usesMethod
+  usesValue : gml:usesValue [0..*]
+}
+class "gml:ConversionRef" <<DataType>> {
+  Conversion : gml:Conversion
+}
+abstract class "gml:AbstractGeneralTransformation" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  coordinateOperationName : gml:coordinateOperationName
+  coordinateOperationID : gml:coordinateOperationID [0..*]
+  remarks : gml:remarks [0..1]
+  operationVersion : gml:operationVersion
+  validArea : gml:validArea [0..1]
+  scope : gml:scope [0..1]
+  _positionalAccuracy : gml:_positionalAccuracy [0..*]
+  sourceCRS : gml:sourceCRS
+  targetCRS : gml:targetCRS
+}
+class "gml:GeneralTransformationRef" <<DataType>> {
+  _GeneralTransformation : gml:_GeneralTransformation
+}
+class "gml:Transformation" <<ObjectType>> {
+  usesMethod : gml:usesMethod
+  usesValue : gml:usesValue [0..*]
+}
+class "gml:TransformationRef" <<DataType>> {
+  Transformation : gml:Transformation
+}
+abstract class "gml:AbstractGeneralParameterValue" <<DataType>>
+class "gml:ParameterValue" <<ObjectType>> {
+  value : gml:value
+  dmsAngleValue : gml:dmsAngleValue
+  stringValue : gml:stringValue
+  integerValue : gml:integerValue
+  booleanValue : gml:booleanValue
+  valueList : gml:valueList
+  integerValueList : gml:integerValueList
+  valueFile : gml:valueFile
+  valueOfParameter : gml:valueOfParameter
+}
+class "gml:ParameterValueGroup" <<ObjectType>> {
+  includesValue : gml:includesValue [2..*]
+  valuesOfGroup : gml:valuesOfGroup
+}
+abstract class "gml:OperationMethodBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  methodName : gml:methodName
+}
+class "gml:OperationMethod" <<ObjectType>> {
+  methodID : gml:methodID [0..*]
+  remarks : gml:remarks [0..1]
+  methodFormula : gml:methodFormula
+  sourceDimensions : gml:sourceDimensions
+  targetDimensions : gml:targetDimensions
+  usesParameter : gml:usesParameter [0..*]
+}
+class "gml:OperationMethodRef" <<DataType>> {
+  OperationMethod : gml:OperationMethod
+}
+abstract class "gml:AbstractGeneralOperationParameter" <<ObjectType>> {
+  minimumOccurs : gml:minimumOccurs [0..1]
+}
+class "gml:AbstractGeneralOperationParameterRef" <<DataType>> {
+  _GeneralOperationParameter : gml:_GeneralOperationParameter
+}
+abstract class "gml:OperationParameterBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  parameterName : gml:parameterName
+  minimumOccurs : gml:minimumOccurs [0..1]
+}
+class "gml:OperationParameter" <<ObjectType>> {
+  parameterID : gml:parameterID [0..*]
+  remarks : gml:remarks [0..1]
+}
+class "gml:OperationParameterRef" <<DataType>> {
+  OperationParameter : gml:OperationParameter
+}
+abstract class "gml:OperationParameterGroupBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  groupName : gml:groupName
+  minimumOccurs : gml:minimumOccurs [0..1]
+}
+class "gml:OperationParameterGroup" <<ObjectType>> {
+  groupID : gml:groupID [0..*]
+  remarks : gml:remarks [0..1]
+  maximumOccurs : gml:maximumOccurs [0..1]
+  includesParameter : gml:includesParameter [2..*]
+}
+class "gml:OperationParameterGroupRef" <<DataType>> {
+  OperationParameterGroup : gml:OperationParameterGroup
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:Definition"
+
+"gml:Definition" <|-- "gml:AbstractCoordinateOperationBase"
+"gml:AbstractCoordinateOperationBase" <|-- "gml:AbstractCoordinateOperation"
+"gml:AbstractCoordinateOperation" <|-- "gml:ConcatenatedOperation"
+"gml:AbstractCoordinateOperation" <|-- "gml:PassThroughOperation"
+"gml:AbstractCoordinateOperation" <|-- "gml:AbstractGeneralConversion"
+"gml:AbstractGeneralConversion" <|-- "gml:Conversion"
+"gml:AbstractCoordinateOperation" <|-- "gml:AbstractGeneralTransformation"
+"gml:AbstractGeneralTransformation" <|-- "gml:Transformation"
+"gml:AbstractGeneralParameterValue" <|-- "gml:ParameterValue"
+"gml:AbstractGeneralParameterValue" <|-- "gml:ParameterValueGroup"
+"gml:Definition" <|-- "gml:OperationMethodBase"
+"gml:OperationMethodBase" <|-- "gml:OperationMethod"
+"gml:Definition" <|-- "gml:AbstractGeneralOperationParameter"
+"gml:AbstractGeneralOperationParameter" <|-- "gml:OperationParameterBase"
+"gml:OperationParameterBase" <|-- "gml:OperationParameter"
+"gml:AbstractGeneralOperationParameter" <|-- "gml:OperationParameterGroupBase"
+"gml:OperationParameterGroupBase" <|-- "gml:OperationParameterGroup"
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

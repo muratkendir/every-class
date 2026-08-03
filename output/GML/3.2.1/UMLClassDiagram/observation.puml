@@ -1,0 +1,42 @@
+@startuml
+title
+  GML - 3.2.1 - Observation - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:Observation" <<FeatureType>> {
+  validTime : gml:validTime
+  using : gml:using [0..1]
+  target : gml:target [0..1]
+  resultOf : gml:resultOf
+}
+class "gml:ProcedureProperty" $property {
+  AbstractFeature : gml:AbstractFeature
+}
+class "gml:TargetProperty" $property {
+  AbstractFeature : gml:AbstractFeature
+  AbstractGeometry : gml:AbstractGeometry
+}
+class "gml:Result" <<DataType>>
+class "gml:DirectedObservation" <<FeatureType>> {
+  direction : gml:direction
+}
+class "gml:DirectedObservationAtDistance" <<FeatureType>> {
+  distance : gml:Measure
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+
+"gml:AbstractFeature" <|-- "gml:Observation"
+"gml:Observation" <|-- "gml:DirectedObservation"
+"gml:DirectedObservation" <|-- "gml:DirectedObservationAtDistance"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

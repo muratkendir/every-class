@@ -1,0 +1,35 @@
+@startuml
+title
+  GML - 3.2.1 - Gmlbase - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+abstract class "gml:AbstractGML" <<DataType>>
+class "gml:AssociationRole" <<DataType>>
+class "gml:Reference" <<DataType>>
+class "gml:InlineProperty" $property
+abstract class "gml:AbstractMember" <<DataType>>
+abstract class "gml:AbstractMetadataProperty" $property
+
+' Simple types (from <simpleType> declarations)
+class "gml:Aggregation" <<Enumeration>> {
+  set
+  bag
+  sequence
+  array
+  record
+  table
+}
+
+' Model groups (from <group> declarations)
+class "gml:StandardObjectProperties" <<Union>>
+}
+
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

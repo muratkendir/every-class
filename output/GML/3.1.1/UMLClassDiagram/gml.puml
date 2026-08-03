@@ -1,0 +1,12 @@
+@startuml
+title
+  Base - 3.1.1 - GML - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+}
+
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

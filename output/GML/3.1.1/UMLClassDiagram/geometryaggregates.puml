@@ -1,0 +1,75 @@
+@startuml
+title
+  Base - 3.1.1 - Geometryaggregates - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractGeometricAggregate" <<ObjectType>>
+class "gml:MultiGeometry" <<ObjectType>> {
+  geometryMember : gml:geometryMember [0..*]
+  geometryMembers : gml:geometryMembers [0..1]
+}
+class "gml:MultiGeometryProperty" $property {
+  _GeometricAggregate : gml:_GeometricAggregate
+}
+class "gml:MultiPoint" <<ObjectType>> {
+  pointMember : gml:pointMember [0..*]
+  pointMembers : gml:pointMembers [0..1]
+}
+class "gml:MultiPointProperty" $property {
+  MultiPoint : gml:MultiPoint
+}
+class "gml:MultiCurve" <<ObjectType>> {
+  curveMember : gml:curveMember [0..*]
+  curveMembers : gml:curveMembers [0..1]
+}
+class "gml:MultiCurveProperty" $property {
+  MultiCurve : gml:MultiCurve
+}
+class "gml:MultiSurface" <<ObjectType>> {
+  surfaceMember : gml:surfaceMember [0..*]
+  surfaceMembers : gml:surfaceMembers [0..1]
+}
+class "gml:MultiSurfaceProperty" $property {
+  MultiSurface : gml:MultiSurface
+}
+class "gml:MultiSolid" <<ObjectType>> {
+  solidMember : gml:solidMember [0..*]
+  solidMembers : gml:solidMembers [0..1]
+}
+class "gml:MultiSolidProperty" $property {
+  MultiSolid : gml:MultiSolid
+}
+class "gml:MultiLineString" <<ObjectType>> {
+  lineStringMember : gml:lineStringMember [0..*]
+}
+class "gml:MultiLineStringProperty" $property {
+  MultiLineString : gml:MultiLineString
+}
+class "gml:MultiPolygon" <<ObjectType>> {
+  polygonMember : gml:polygonMember [0..*]
+}
+class "gml:MultiPolygonProperty" $property {
+  MultiPolygon : gml:MultiPolygon
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGeometry"
+
+"gml:AbstractGeometry" <|-- "gml:AbstractGeometricAggregate"
+"gml:AbstractGeometricAggregate" <|-- "gml:MultiGeometry"
+"gml:AbstractGeometricAggregate" <|-- "gml:MultiPoint"
+"gml:AbstractGeometricAggregate" <|-- "gml:MultiCurve"
+"gml:AbstractGeometricAggregate" <|-- "gml:MultiSurface"
+"gml:AbstractGeometricAggregate" <|-- "gml:MultiSolid"
+"gml:AbstractGeometricAggregate" <|-- "gml:MultiLineString"
+"gml:AbstractGeometricAggregate" <|-- "gml:MultiPolygon"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

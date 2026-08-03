@@ -1,0 +1,103 @@
+@startuml
+title
+  GML - 3.2.1 - Coordinatereferencesystems - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:SingleCRSProperty" $property {
+  AbstractSingleCRS : gml:AbstractSingleCRS
+}
+abstract class "gml:AbstractGeneralDerivedCRS" <<ObjectType>> {
+  conversion : gml:conversion
+}
+class "gml:CompoundCRS" <<ObjectType>> {
+  componentReferenceSystem : gml:componentReferenceSystem [2..*]
+}
+class "gml:CompoundCRSProperty" $property {
+  CompoundCRS : gml:CompoundCRS
+}
+class "gml:GeodeticCRS" <<ObjectType>> {
+  ellipsoidalCS : gml:ellipsoidalCS
+  cartesianCS : gml:cartesianCS
+  sphericalCS : gml:sphericalCS
+  geodeticDatum : gml:geodeticDatum
+}
+class "gml:GeodeticCRSProperty" $property {
+  GeodeticCRS : gml:GeodeticCRS
+}
+class "gml:VerticalCRS" <<ObjectType>> {
+  verticalCS : gml:verticalCS
+  verticalDatum : gml:verticalDatum
+}
+class "gml:VerticalCRSProperty" $property {
+  VerticalCRS : gml:VerticalCRS
+}
+class "gml:ProjectedCRS" <<ObjectType>> {
+  baseGeodeticCRS : gml:baseGeodeticCRS
+  baseGeographicCRS : gml:baseGeographicCRS
+  cartesianCS : gml:cartesianCS
+}
+class "gml:ProjectedCRSProperty" $property {
+  ProjectedCRS : gml:ProjectedCRS
+}
+class "gml:DerivedCRS" <<ObjectType>> {
+  baseCRS : gml:baseCRS
+  derivedCRSType : gml:derivedCRS
+  coordinateSystem : gml:coordinateSystem
+}
+class "gml:DerivedCRSProperty" $property {
+  DerivedCRS : gml:DerivedCRS
+}
+class "gml:EngineeringCRS" <<ObjectType>> {
+  affineCS : gml:affineCS
+  cartesianCS : gml:cartesianCS
+  cylindricalCS : gml:cylindricalCS
+  linearCS : gml:linearCS
+  polarCS : gml:polarCS
+  sphericalCS : gml:sphericalCS
+  userDefinedCS : gml:userDefinedCS
+  coordinateSystem : gml:coordinateSystem
+  engineeringDatum : gml:engineeringDatum
+}
+class "gml:EngineeringCRSProperty" $property {
+  EngineeringCRS : gml:EngineeringCRS
+}
+class "gml:ImageCRS" <<ObjectType>> {
+  cartesianCS : gml:cartesianCS
+  affineCS : gml:affineCS
+  usesObliqueCartesianCS : gml:usesObliqueCartesianCS
+  imageDatum : gml:imageDatum
+}
+class "gml:ImageCRSProperty" $property {
+  ImageCRS : gml:ImageCRS
+}
+class "gml:TemporalCRS" <<ObjectType>> {
+  timeCS : gml:timeCS
+  usesTemporalCS : gml:usesTemporalCS
+  temporalDatum : gml:temporalDatum
+}
+class "gml:TemporalCRSProperty" $property {
+  TemporalCRS : gml:TemporalCRS
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractCRS"
+
+"gml:AbstractCRS" <|-- "gml:AbstractGeneralDerivedCRS"
+"gml:AbstractCRS" <|-- "gml:CompoundCRS"
+"gml:AbstractCRS" <|-- "gml:GeodeticCRS"
+"gml:AbstractCRS" <|-- "gml:VerticalCRS"
+"gml:AbstractGeneralDerivedCRS" <|-- "gml:ProjectedCRS"
+"gml:AbstractGeneralDerivedCRS" <|-- "gml:DerivedCRS"
+"gml:AbstractCRS" <|-- "gml:EngineeringCRS"
+"gml:AbstractCRS" <|-- "gml:ImageCRS"
+"gml:AbstractCRS" <|-- "gml:TemporalCRS"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

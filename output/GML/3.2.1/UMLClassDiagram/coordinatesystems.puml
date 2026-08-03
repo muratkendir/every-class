@@ -1,0 +1,87 @@
+@startuml
+title
+  GML - 3.2.1 - Coordinatesystems - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:CoordinateSystemAxis" <<ObjectType>> {
+  axisAbbrev : gml:axisAbbrev
+  axisDirection : gml:axisDirection
+  minimumValue : gml:minimumValue [0..1]
+  maximumValue : gml:maximumValue [0..1]
+  rangeMeaning : gml:rangeMeaning [0..1]
+}
+class "gml:CoordinateSystemAxisProperty" $property {
+  CoordinateSystemAxis : gml:CoordinateSystemAxis
+}
+abstract class "gml:AbstractCoordinateSystem" <<ObjectType>> {
+  axis : gml:axis [1..*]
+}
+class "gml:CoordinateSystemProperty" $property {
+  AbstractCoordinateSystem : gml:AbstractCoordinateSystem
+}
+class "gml:EllipsoidalCS" <<ObjectType>>
+class "gml:EllipsoidalCSProperty" $property {
+  EllipsoidalCS : gml:EllipsoidalCS
+}
+class "gml:CartesianCS" <<ObjectType>>
+class "gml:CartesianCSProperty" $property {
+  CartesianCS : gml:CartesianCS
+}
+class "gml:VerticalCS" <<ObjectType>>
+class "gml:VerticalCSProperty" $property {
+  VerticalCS : gml:VerticalCS
+}
+class "gml:TimeCS" <<ObjectType>>
+class "gml:TimeCSProperty" $property {
+  TimeCS : gml:TimeCS
+}
+class "gml:LinearCS" <<ObjectType>>
+class "gml:LinearCSProperty" $property {
+  LinearCS : gml:LinearCS
+}
+class "gml:UserDefinedCS" <<ObjectType>>
+class "gml:UserDefinedCSProperty" $property {
+  UserDefinedCS : gml:UserDefinedCS
+}
+class "gml:SphericalCS" <<ObjectType>>
+class "gml:SphericalCSProperty" $property {
+  SphericalCS : gml:SphericalCS
+}
+class "gml:PolarCS" <<ObjectType>>
+class "gml:PolarCSProperty" $property {
+  PolarCS : gml:PolarCS
+}
+class "gml:CylindricalCS" <<ObjectType>>
+class "gml:CylindricalCSProperty" $property {
+  CylindricalCS : gml:CylindricalCS
+}
+class "gml:AffineCS" <<ObjectType>>
+class "gml:AffineCSProperty" $property {
+  AffineCS : gml:AffineCS
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:IdentifiedObject"
+
+"gml:IdentifiedObject" <|-- "gml:CoordinateSystemAxis"
+"gml:IdentifiedObject" <|-- "gml:AbstractCoordinateSystem"
+"gml:AbstractCoordinateSystem" <|-- "gml:EllipsoidalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:CartesianCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:VerticalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:TimeCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:LinearCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:UserDefinedCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:SphericalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:PolarCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:CylindricalCS"
+"gml:AbstractCoordinateSystem" <|-- "gml:AffineCS"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml
