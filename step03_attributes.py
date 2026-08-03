@@ -13,7 +13,7 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from step01_list_classes import XSD_NS, default_output, diagram_title, parse_classes, qualify, schema_prefix, strip_property_suffix, strip_type_suffix, target_namespace
+from step01_list_classes import XSD_NS, default_output, diagram_title, generation_footer, parse_classes, qualify, schema_prefix, strip_property_suffix, strip_type_suffix, target_namespace
 from step02_inheritance import parse_inheritance
 
 DEFAULT_XSD = Path("schemas/xsds/citygml/3.0/core.xsd")
@@ -160,7 +160,7 @@ def to_plantuml(classes, relations, attributes, title, prefix, subtitle=None):
         lines += ["", "' Attributes with value types from other namespaces are marked as",
                   "' protected members (# ) and shown by default; uncomment the next",
                   "' line to hide them.", "' hide protected members"]
-    lines += ["", "@enduml", ""]
+    lines += ["", generation_footer(), "@enduml", ""]
     return "\n".join(lines)
 
 

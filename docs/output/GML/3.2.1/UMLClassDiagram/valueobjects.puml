@@ -1,0 +1,48 @@
+@startuml
+title
+  GML - 3.2.1 - Valueobjects - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:ValueProperty" $property
+class "gml:ValueArrayProperty" $property
+class "gml:CompositeValue" <<ObjectType>> {
+  valueComponent : gml:valueComponent [0..*]
+  valueComponents : gml:valueComponents [0..1]
+}
+class "gml:ValueArray" <<ObjectType>>
+class "gml:CategoryExtent" <<DataType>>
+class "gml:QuantityExtent" <<DataType>>
+class "gml:BooleanProperty" $property {
+  Boolean : gml:Boolean
+}
+class "gml:CategoryProperty" $property {
+  Category : gml:Category
+}
+class "gml:QuantityProperty" $property {
+  Quantity : gml:Quantity
+}
+class "gml:CountProperty" $property {
+  Count : gml:Count
+}
+
+' Simple types (from <simpleType> declarations)
+class "gml:CountExtent" <<BasicType>>
+
+' Model groups (from <group> declarations)
+class "gml:Value" <<Union>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+
+"gml:AbstractGML" <|-- "gml:CompositeValue"
+"gml:CompositeValue" <|-- "gml:ValueArray"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

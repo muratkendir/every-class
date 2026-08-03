@@ -1,0 +1,96 @@
+@startuml
+title
+  Base - 3.1.1 - Coordinatereferencesystems - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:CoordinateReferenceSystemRef" <<DataType>> {
+  _CoordinateReferenceSystem : gml:_CoordinateReferenceSystem
+}
+class "gml:CompoundCRS" <<ObjectType>> {
+  includesCRS : gml:includesCRS [2..*]
+}
+class "gml:CompoundCRSRef" <<DataType>> {
+  CompoundCRS : gml:CompoundCRS
+}
+class "gml:GeographicCRS" <<ObjectType>> {
+  usesEllipsoidalCS : gml:usesEllipsoidalCS
+  usesGeodeticDatum : gml:usesGeodeticDatum
+}
+class "gml:GeographicCRSRef" <<DataType>> {
+  GeographicCRS : gml:GeographicCRS
+}
+class "gml:VerticalCRS" <<ObjectType>> {
+  usesVerticalCS : gml:usesVerticalCS
+  usesVerticalDatum : gml:usesVerticalDatum
+}
+class "gml:VerticalCRSRef" <<DataType>> {
+  VerticalCRS : gml:VerticalCRS
+}
+class "gml:GeocentricCRS" <<ObjectType>> {
+  usesCartesianCS : gml:usesCartesianCS
+  usesSphericalCS : gml:usesSphericalCS
+  usesGeodeticDatum : gml:usesGeodeticDatum
+}
+class "gml:GeocentricCRSRef" <<DataType>> {
+  GeocentricCRS : gml:GeocentricCRS
+}
+abstract class "gml:AbstractGeneralDerivedCRS" <<ObjectType>> {
+  baseCRS : gml:baseCRS
+  definedByConversion : gml:definedByConversion
+}
+class "gml:ProjectedCRS" <<ObjectType>> {
+  usesCartesianCS : gml:usesCartesianCS
+}
+class "gml:ProjectedCRSRef" <<DataType>> {
+  ProjectedCRS : gml:ProjectedCRS
+}
+class "gml:DerivedCRS" <<ObjectType>> {
+  derivedCRSType : gml:derivedCRS
+  usesCS : gml:usesCS
+}
+class "gml:DerivedCRSType" <<DataType>>
+class "gml:DerivedCRSRef" <<DataType>> {
+  DerivedCRS : gml:DerivedCRS
+}
+class "gml:EngineeringCRS" <<ObjectType>> {
+  usesCS : gml:usesCS
+  usesEngineeringDatum : gml:usesEngineeringDatum
+}
+class "gml:EngineeringCRSRef" <<DataType>> {
+  EngineeringCRS : gml:EngineeringCRS
+}
+class "gml:ImageCRS" <<ObjectType>> {
+  usesCartesianCS : gml:usesCartesianCS
+  usesObliqueCartesianCS : gml:usesObliqueCartesianCS
+  usesImageDatum : gml:usesImageDatum
+}
+class "gml:ImageCRSRef" <<DataType>> {
+  ImageCRS : gml:ImageCRS
+}
+class "gml:TemporalCRS" <<ObjectType>> {
+  usesTemporalCS : gml:usesTemporalCS
+  usesTemporalDatum : gml:usesTemporalDatum
+}
+class "gml:TemporalCRSRef" <<DataType>> {
+  TemporalCRS : gml:TemporalCRS
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractReferenceSystem"
+
+"gml:AbstractReferenceSystem" <|-- "gml:CompoundCRS"
+"gml:AbstractReferenceSystem" <|-- "gml:GeographicCRS"
+"gml:AbstractReferenceSystem" <|-- "gml:VerticalCRS"
+"gml:AbstractReferenceSystem" <|-- "gml:GeocentricCRS"
+"gml:AbstractReferenceSystem" <|-- "gml:AbstractGeneralDerivedCRS"
+"gml:AbstractGeneralDerivedCRS" <|-- "gml:ProjectedCRS"
+"gml:AbstractGeneralDerivedCRS" <|-- "gml:DerivedCRS"
+"gml:AbstractReferenceSystem" <|-- "gml:EngineeringCRS"
+"gml:AbstractReferenceSystem" <|-- "gml:ImageCRS"
+"gml:AbstractReferenceSystem" <|-- "gml:TemporalCRS"
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

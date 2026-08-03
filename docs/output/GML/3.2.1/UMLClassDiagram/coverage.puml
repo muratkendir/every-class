@@ -1,0 +1,82 @@
+@startuml
+title
+  GML - 3.2.1 - Coverage - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+abstract class "gml:AbstractCoverage" <<FeatureType>> {
+  domainSet : gml:domainSet
+  rangeSet : gml:rangeSet
+}
+class "gml:DiscreteCoverage" <<FeatureType>> {
+  coverageFunction : gml:coverageFunction [0..1]
+}
+abstract class "gml:AbstractContinuousCoverage" <<FeatureType>> {
+  coverageFunction : gml:coverageFunction [0..1]
+}
+class "gml:DomainSet" <<DataType>> {
+  AbstractGeometry : gml:AbstractGeometry
+  AbstractTimeObject : gml:AbstractTimeObject
+}
+class "gml:RangeSet" <<DataType>> {
+  ValueArray : gml:ValueArray [1..*]
+  AbstractScalarValueList : gml:AbstractScalarValueList [1..*]
+  DataBlock : gml:DataBlock
+  File : gml:File
+}
+class "gml:DataBlock" <<DataType>> {
+  rangeParameters : gml:rangeParameters
+  tupleList : gml:tupleList
+  doubleOrNilReasonTupleList : gml:doubleOrNilReasonTupleList
+}
+class "gml:File" <<DataType>> {
+  rangeParameters : gml:rangeParameters
+  # fileName : xs:anyURI
+  # fileReference : xs:anyURI
+  fileStructure : gml:Code
+  # mimeType : xs:anyURI [0..1]
+  # compression : xs:anyURI [0..1]
+}
+class "gml:CoverageFunction" <<DataType>> {
+  MappingRule : gml:MappingRule
+  CoverageMappingRule : gml:CoverageMappingRule
+  GridFunction : gml:GridFunction
+}
+class "gml:MappingRule" <<DataType>> {
+  # ruleDefinition : xs:string
+  ruleReference : gml:Reference
+}
+class "gml:GridFunction" <<DataType>> {
+  sequenceRule : gml:SequenceRule [0..1]
+  startPoint : gml:integerList [0..1]
+}
+class "gml:SequenceRule" <<DataType>>
+
+' Simple types (from <simpleType> declarations)
+class "gml:SequenceRuleEnumeration" <<Enumeration>> {
+  Linear
+  Boustrophedonic
+  Cantor-diagonal
+  Spiral
+  Morton
+  Hilbert
+}
+class "gml:AxisDirectionList" <<BasicType>>
+class "gml:AxisDirection" <<BasicType>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+
+"gml:AbstractFeature" <|-- "gml:AbstractCoverage"
+"gml:AbstractCoverage" <|-- "gml:DiscreteCoverage"
+"gml:AbstractCoverage" <|-- "gml:AbstractContinuousCoverage"
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

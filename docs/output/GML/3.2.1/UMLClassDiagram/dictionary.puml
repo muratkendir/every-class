@@ -1,0 +1,37 @@
+@startuml
+title
+  GML - 3.2.1 - Dictionary - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:DefinitionBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  description : gml:description [0..1]
+  descriptionReference : gml:descriptionReference [0..1]
+  identifier : gml:identifier
+  name : gml:name [0..*]
+}
+class "gml:Definition" <<ObjectType>> {
+  remarks : gml:remarks [0..1]
+}
+class "gml:Dictionary" <<ObjectType>> {
+  dictionaryEntry : gml:dictionaryEntry
+  indirectEntry : gml:indirectEntry
+}
+class "gml:DictionaryEntry" <<ObjectType>> {
+  Definition : gml:Definition
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+abstract class "gml:AbstractMember"
+
+"gml:AbstractGML" <|-- "gml:DefinitionBase"
+"gml:DefinitionBase" <|-- "gml:Definition"
+"gml:Definition" <|-- "gml:Dictionary"
+"gml:AbstractMember" <|-- "gml:DictionaryEntry"
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

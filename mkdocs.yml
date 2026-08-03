@@ -24,18 +24,9 @@ plugins:
         - gen_pages.py
   - literate-nav:
       nav_file: SUMMARY.md
-  - build_plantuml:
-      render: local
-      bin_path: /usr/bin/plantuml
-      output_format: svg
-      allow_multiple_roots: true
-      diagram_root: UMLClassDiagram
-      input_folder: ""
-      input_extensions: .puml
-      output_folder: out
-      exclude_dirs:
-        - .git
-        - .env
+  - plantuml:
+      puml_url: http://127.0.0.1:8080/
+      verbose: true
   - search
 
 markdown_extensions:

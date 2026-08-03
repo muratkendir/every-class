@@ -1,0 +1,282 @@
+@startuml
+title
+  Base - 3.1.1 - Geometryprimitives - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:Curve" <<ObjectType>> {
+  segments : gml:segments
+}
+class "gml:OrientableCurve" <<ObjectType>> {
+  baseCurve : gml:baseCurve
+}
+abstract class "gml:AbstractCurveSegment" <<DataType>>
+class "gml:CurveSegmentArrayProperty" $property {
+  _CurveSegment : gml:_CurveSegment [0..*]
+}
+class "gml:LineStringSegment" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+}
+class "gml:ArcString" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+}
+class "gml:Arc" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+}
+class "gml:Circle" <<ObjectType>>
+class "gml:ArcStringByBulge" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+  # bulge : xs:double [1..*]
+  normal : gml:Vector [1..*]
+}
+class "gml:ArcByBulge" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+  # bulge : xs:double
+  normal : gml:Vector
+}
+class "gml:ArcByCenterPoint" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+  radius : gml:Length
+  startAngle : gml:Angle [0..1]
+  endAngle : gml:Angle [0..1]
+}
+class "gml:CircleByCenterPoint" <<ObjectType>>
+class "gml:OffsetCurve" <<ObjectType>> {
+  offsetBase : gml:Curve
+  distance : gml:Length
+  refDirection : gml:Vector [0..1]
+}
+class "gml:AffinePlacement" <<DataType>> {
+  location : gml:DirectPosition
+  refDirection : gml:Vector [1..*]
+  # inDimension : xs:positiveInteger
+  # outDimension : xs:positiveInteger
+}
+class "gml:Clothoid" <<ObjectType>> {
+  # scaleFactor : xs:decimal
+  # startParameter : xs:double
+  # endParameter : xs:double
+}
+class "gml:GeodesicString" <<ObjectType>> {
+  posList : gml:posList
+}
+class "gml:Geodesic" <<ObjectType>>
+class "gml:CubicSpline" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+  vectorAtStart : gml:Vector
+  vectorAtEnd : gml:Vector
+}
+class "gml:Knot" <<DataType>> {
+  # value : xs:double
+  # multiplicity : xs:nonNegativeInteger
+  # weight : xs:double
+}
+class "gml:KnotProperty" $property {
+  Knot : gml:Knot
+}
+class "gml:BSpline" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+  # degree : xs:nonNegativeInteger
+  knot : gml:Knot [2..*]
+}
+class "gml:Bezier" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  posList : gml:posList
+  coordinates : gml:coordinates
+  # degree : xs:nonNegativeInteger
+  knot : gml:Knot [2]
+}
+class "gml:Surface" <<ObjectType>> {
+  patches : gml:patches
+}
+class "gml:OrientableSurface" <<ObjectType>> {
+  baseSurface : gml:baseSurface
+}
+abstract class "gml:AbstractSurfacePatch" <<DataType>>
+class "gml:SurfacePatchArrayProperty" $property {
+  _SurfacePatch : gml:_SurfacePatch
+}
+class "gml:PolygonPatch" <<ObjectType>> {
+  exterior : gml:exterior [0..1]
+  interior : gml:interior [0..*]
+}
+class "gml:Triangle" <<ObjectType>> {
+  exterior : gml:exterior
+}
+class "gml:Rectangle" <<ObjectType>> {
+  exterior : gml:exterior
+}
+class "gml:Ring" <<ObjectType>> {
+  curveMember : gml:curveMember [1..*]
+}
+class "gml:RingProperty" $property {
+  Ring : gml:Ring
+}
+class "gml:AbstractParametricCurveSurface" <<ObjectType>>
+class "gml:AbstractGriddedSurface" <<ObjectType>> {
+  # rows : xs:integer [0..1]
+  # columns : xs:integer [0..1]
+}
+class "gml:Cone" <<ObjectType>>
+class "gml:Cylinder" <<ObjectType>>
+class "gml:Sphere" <<ObjectType>>
+class "gml:PolyhedralSurface" <<ObjectType>> {
+  polygonPatches : gml:polygonPatches
+}
+class "gml:PolygonPatchArrayProperty" $property {
+  PolygonPatch : gml:PolygonPatch
+}
+class "gml:TrianglePatchArrayProperty" $property {
+  Triangle : gml:Triangle
+}
+class "gml:TriangulatedSurface" <<ObjectType>> {
+  trianglePatches : gml:trianglePatches
+}
+class "gml:Tin" <<ObjectType>> {
+  maxLength : gml:Length
+  controlPoint : gml:posList
+}
+class "gml:LineStringSegmentArrayProperty" $property {
+  LineStringSegment : gml:LineStringSegment [0..*]
+}
+class "gml:AbstractSolid" <<ObjectType>>
+class "gml:SolidProperty" $property {
+  _Solid : gml:_Solid
+}
+class "gml:SolidArrayProperty" $property {
+  _Solid : gml:_Solid
+}
+class "gml:Solid" <<ObjectType>> {
+  exterior : gml:Surface [0..1]
+  interior : gml:Surface [0..*]
+}
+
+' Simple types (from <simpleType> declarations)
+class "gml:CurveInterpolation" <<Enumeration>> {
+  linear
+  geodesic
+  circularArc3Points
+  circularArc2PointWithBulge
+  circularArcCenterPointWithRadius
+  elliptical
+  clothoid
+  conic
+  polynomialSpline
+  cubicSpline
+  rationalSpline
+}
+class "gml:SurfaceInterpolation" <<Enumeration>> {
+  none
+  planar
+  spherical
+  elliptical
+  conic
+  tin
+  parametricCurve
+  polynomialSpline
+  rationalSpline
+  triangulatedSpline
+}
+class "gml:KnotTypes" <<Enumeration>> {
+  uniform
+  quasiUniform
+  piecewiseBezier
+}
+
+' Model groups (from <group> declarations)
+class "gml:PointGrid" <<Union>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractCurve"
+abstract class "gml:AbstractGeometricPrimitive"
+abstract class "gml:AbstractRing"
+abstract class "gml:AbstractSurface"
+
+"gml:AbstractCurve" <|-- "gml:Curve"
+"gml:AbstractCurve" <|-- "gml:OrientableCurve"
+"gml:AbstractCurveSegment" <|-- "gml:LineStringSegment"
+"gml:AbstractCurveSegment" <|-- "gml:ArcString"
+"gml:ArcString" <|-- "gml:Arc"
+"gml:Arc" <|-- "gml:Circle"
+"gml:AbstractCurveSegment" <|-- "gml:ArcStringByBulge"
+"gml:ArcStringByBulge" <|-- "gml:ArcByBulge"
+"gml:AbstractCurveSegment" <|-- "gml:ArcByCenterPoint"
+"gml:ArcByCenterPoint" <|-- "gml:CircleByCenterPoint"
+"gml:AbstractCurveSegment" <|-- "gml:OffsetCurve"
+"gml:AbstractCurveSegment" <|-- "gml:Clothoid"
+"gml:AbstractCurveSegment" <|-- "gml:GeodesicString"
+"gml:GeodesicString" <|-- "gml:Geodesic"
+"gml:AbstractCurveSegment" <|-- "gml:CubicSpline"
+"gml:AbstractCurveSegment" <|-- "gml:BSpline"
+"gml:BSpline" <|-- "gml:Bezier"
+"gml:AbstractSurface" <|-- "gml:Surface"
+"gml:AbstractSurface" <|-- "gml:OrientableSurface"
+"gml:AbstractSurfacePatch" <|-- "gml:PolygonPatch"
+"gml:AbstractSurfacePatch" <|-- "gml:Triangle"
+"gml:AbstractSurfacePatch" <|-- "gml:Rectangle"
+"gml:AbstractRing" <|-- "gml:Ring"
+"gml:AbstractSurfacePatch" <|-- "gml:AbstractParametricCurveSurface"
+"gml:AbstractParametricCurveSurface" <|-- "gml:AbstractGriddedSurface"
+"gml:AbstractGriddedSurface" <|-- "gml:Cone"
+"gml:AbstractGriddedSurface" <|-- "gml:Cylinder"
+"gml:AbstractGriddedSurface" <|-- "gml:Sphere"
+"gml:Surface" <|-- "gml:PolyhedralSurface"
+"gml:SurfacePatchArrayProperty" <|-- "gml:PolygonPatchArrayProperty"
+"gml:SurfacePatchArrayProperty" <|-- "gml:TrianglePatchArrayProperty"
+"gml:Surface" <|-- "gml:TriangulatedSurface"
+"gml:TriangulatedSurface" <|-- "gml:Tin"
+"gml:AbstractGeometricPrimitive" <|-- "gml:AbstractSolid"
+"gml:AbstractSolid" <|-- "gml:Solid"
+
+' Class relations (promoted from property wrappers)
+"gml:Clothoid" "1" *-- "1" "gml:AffinePlacement" : refLocation
+"gml:Tin" "1" *-- "0..*" "gml:LineStringSegment" : stopLines
+"gml:Tin" "1" *-- "0..*" "gml:LineStringSegment" : breakLines
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

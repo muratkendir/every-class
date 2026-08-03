@@ -1,0 +1,87 @@
+@startuml
+title
+  GML - 3.2.1 - Datums - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+abstract class "gml:AbstractDatum" <<ObjectType>> {
+  domainOfValidity : gml:domainOfValidity [0..1]
+  scope : gml:scope [1..*]
+  anchorDefinition : gml:anchorDefinition [0..1]
+  realizationEpoch : gml:realizationEpoch [0..1]
+}
+class "gml:DatumProperty" $property {
+  AbstractDatum : gml:AbstractDatum
+}
+class "gml:GeodeticDatum" <<ObjectType>> {
+  primeMeridian : gml:primeMeridian
+  ellipsoid : gml:ellipsoid
+}
+class "gml:GeodeticDatumProperty" $property {
+  GeodeticDatum : gml:GeodeticDatum
+}
+class "gml:Ellipsoid" <<ObjectType>> {
+  semiMajorAxis : gml:semiMajorAxis
+  secondDefiningParameter : gml:secondDefiningParameter
+}
+class "gml:EllipsoidProperty" $property {
+  Ellipsoid : gml:Ellipsoid
+}
+class "gml:PrimeMeridian" <<ObjectType>> {
+  greenwichLongitude : gml:greenwichLongitude
+}
+class "gml:PrimeMeridianProperty" $property {
+  PrimeMeridian : gml:PrimeMeridian
+}
+class "gml:EngineeringDatum" <<ObjectType>>
+class "gml:EngineeringDatumProperty" $property {
+  EngineeringDatum : gml:EngineeringDatum
+}
+class "gml:ImageDatum" <<ObjectType>> {
+  pixelInCell : gml:pixelInCell
+}
+class "gml:ImageDatumProperty" $property {
+  ImageDatum : gml:ImageDatum
+}
+class "gml:VerticalDatum" <<ObjectType>>
+class "gml:VerticalDatumProperty" $property {
+  VerticalDatum : gml:VerticalDatum
+}
+class "gml:TemporalDatum" <<ObjectType>> {
+  origin : gml:origin
+}
+abstract class "gml:TemporalDatumBase" <<ObjectType>> {
+  metaDataProperty : gml:metaData [0..*]
+  description : gml:description [0..1]
+  descriptionReference : gml:descriptionReference [0..1]
+  identifier : gml:identifier
+  name : gml:name [0..*]
+  remarks : gml:remarks [0..1]
+  domainOfValidity : gml:domainOfValidity [0..1]
+  scope : gml:scope [1..*]
+}
+class "gml:TemporalDatumProperty" $property {
+  TemporalDatum : gml:TemporalDatum
+}
+}
+
+' External types (unresolved namespaces)
+class "gml:IdentifiedObject"
+
+"gml:IdentifiedObject" <|-- "gml:AbstractDatum"
+"gml:AbstractDatum" <|-- "gml:GeodeticDatum"
+"gml:IdentifiedObject" <|-- "gml:Ellipsoid"
+"gml:IdentifiedObject" <|-- "gml:PrimeMeridian"
+"gml:AbstractDatum" <|-- "gml:EngineeringDatum"
+"gml:AbstractDatum" <|-- "gml:ImageDatum"
+"gml:AbstractDatum" <|-- "gml:VerticalDatum"
+"gml:TemporalDatumBase" <|-- "gml:TemporalDatum"
+"gml:AbstractDatum" <|-- "gml:TemporalDatumBase"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+title
+  Base - 3.1.1 - Basictypes - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:Code" <<DataType>>
+class "gml:CodeList" <<DataType>>
+class "gml:CodeOrNullList" <<DataType>>
+class "gml:Measure" <<DataType>>
+class "gml:MeasureList" <<DataType>>
+class "gml:MeasureOrNullList" <<DataType>>
+class "gml:Coordinates" <<DataType>>
+
+' Simple types (from <simpleType> declarations)
+class "gml:NullEnumeration" <<Union>> {
+  inapplicable
+  missing
+  template
+  unknown
+  withheld
+}
+class "gml:Null" <<Union>>
+class "gml:Sign" <<Enumeration>> {
+  -
+  +
+}
+class "gml:booleanOrNull" <<Union>>
+class "gml:booleanOrNullList" <<BasicType>>
+class "gml:booleanList" <<BasicType>>
+class "gml:stringOrNull" <<Union>>
+class "gml:NameOrNull" <<Union>>
+class "gml:NameOrNullList" <<BasicType>>
+class "gml:NameList" <<BasicType>>
+class "gml:doubleOrNull" <<Union>>
+class "gml:doubleOrNullList" <<BasicType>>
+class "gml:doubleList" <<BasicType>>
+class "gml:integerOrNull" <<Union>>
+class "gml:integerOrNullList" <<BasicType>>
+class "gml:integerList" <<BasicType>>
+class "gml:NCNameList" <<BasicType>>
+class "gml:QNameList" <<BasicType>>
+}
+
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

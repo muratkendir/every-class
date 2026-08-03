@@ -1,0 +1,62 @@
+@startuml
+title
+  Base - 3.1.1 - Temporaltopology - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:TimeTopologyComplex" <<ObjectType>> {
+  primitive : gml:TimeTopologyPrimitive [1..*]
+}
+class "gml:TimeTopologyComplexProperty" $property {
+  TimeTopologyComplex : gml:TimeTopologyComplex
+}
+abstract class "gml:AbstractTimeTopologyPrimitive" <<ObjectType>> {
+  complex : gml:Reference [0..1]
+}
+class "gml:TimeTopologyPrimitiveProperty" $property {
+  _TimeTopologyPrimitive : gml:_TimeTopologyPrimitive
+}
+class "gml:TimeNode" <<ObjectType>> {
+  position : gml:TimeInstant [0..1]
+}
+class "gml:TimeNodeProperty" $property {
+  TimeNode : gml:TimeNode
+}
+class "gml:TimeEdge" <<ObjectType>> {
+  extent : gml:TimePeriod [0..1]
+}
+class "gml:TimeEdgeProperty" $property {
+  TimeEdge : gml:TimeEdge
+}
+
+' Simple types (from <simpleType> declarations)
+class "gml:Succession" <<Enumeration>> {
+  substitution
+  division
+  fusion
+  initiation
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractTimeComplex"
+abstract class "gml:AbstractTimePrimitive"
+
+"gml:AbstractTimeComplex" <|-- "gml:TimeTopologyComplex"
+"gml:AbstractTimePrimitive" <|-- "gml:AbstractTimeTopologyPrimitive"
+"gml:AbstractTimeTopologyPrimitive" <|-- "gml:TimeNode"
+"gml:AbstractTimeTopologyPrimitive" <|-- "gml:TimeEdge"
+
+' Class relations (promoted from property wrappers)
+"gml:TimeNode" ..> "0..*" "gml:TimeEdge" : previousEdge
+"gml:TimeNode" ..> "0..*" "gml:TimeEdge" : nextEdge
+"gml:TimeEdge" ..> "1" "gml:TimeNode" : start
+"gml:TimeEdge" ..> "1" "gml:TimeNode" : end
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

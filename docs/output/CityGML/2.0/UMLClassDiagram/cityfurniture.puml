@@ -33,4 +33,5 @@ abstract class "core:AbstractCityObject"
 ' line to hide them.
 ' hide protected members
 
+footer Generated on 2026-08-03 13:10:54
 @enduml

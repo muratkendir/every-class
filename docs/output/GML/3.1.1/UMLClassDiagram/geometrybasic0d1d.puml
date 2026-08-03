@@ -1,0 +1,88 @@
+@startuml
+title
+  Base - 3.1.1 - Geometrybasic0d1d - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:GeometryProperty" $property {
+  _Geometry : gml:_Geometry
+}
+class "gml:GeometryArrayProperty" $property {
+  _Geometry : gml:_Geometry [0..*]
+}
+abstract class "gml:AbstractGeometry" <<ObjectType>>
+abstract class "gml:AbstractGeometricPrimitive" <<ObjectType>>
+class "gml:GeometricPrimitiveProperty" $property {
+  _GeometricPrimitive : gml:_GeometricPrimitive
+}
+class "gml:Point" <<ObjectType>> {
+  pos : gml:pos
+  coordinates : gml:coordinates
+  coord : gml:coord
+}
+class "gml:PointProperty" $property {
+  Point : gml:Point
+}
+class "gml:PointArrayProperty" $property {
+  Point : gml:Point [0..*]
+}
+abstract class "gml:AbstractCurve" <<ObjectType>>
+class "gml:CurveProperty" $property {
+  _Curve : gml:_Curve
+}
+class "gml:CurveArrayProperty" $property {
+  _Curve : gml:_Curve [0..*]
+}
+class "gml:LineString" <<ObjectType>> {
+  pos : gml:pos
+  pointProperty : gml:point
+  pointRep : gml:pointRep
+  coord : gml:coord
+  posList : gml:posList
+  coordinates : gml:coordinates
+}
+class "gml:DirectPosition" <<DataType>>
+class "gml:DirectPositionList" <<DataType>>
+class "gml:Vector" <<DataType>>
+class "gml:Envelope" <<DataType>> {
+  lowerCorner : gml:DirectPosition
+  upperCorner : gml:DirectPosition
+  coord : gml:coord [2]
+  pos : gml:pos [2]
+  coordinates : gml:coordinates
+}
+class "gml:Coord" <<DataType>> {
+  # X : xs:decimal
+  # Y : xs:decimal [0..1]
+  # Z : xs:decimal [0..1]
+}
+class "gml:LineStringProperty" $property {
+  LineString : gml:LineString
+}
+
+' Model groups (from <group> declarations)
+class "gml:geometricPosition" <<Union>>
+class "gml:geometricPositionList" <<Union>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+
+"gml:AbstractGML" <|-- "gml:AbstractGeometry"
+"gml:AbstractGeometry" <|-- "gml:AbstractGeometricPrimitive"
+"gml:AbstractGeometricPrimitive" <|-- "gml:Point"
+"gml:AbstractGeometricPrimitive" <|-- "gml:AbstractCurve"
+"gml:AbstractCurve" <|-- "gml:LineString"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

@@ -51,6 +51,7 @@ Usage:
 import math
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 DEFAULT_DIR = Path("docs/output/CityGML/3.0/UMLClassDiagram")
@@ -178,7 +179,8 @@ def main() -> None:
                       for p in pkgs]
 
     lines += ["", "title", f"  {title}", "end title"]
-    lines += ["", "@enduml", ""]
+    lines += ["", f"footer Generated on {datetime.now():%Y-%m-%d %H:%M:%S}",
+              "@enduml", ""]
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text("\n".join(lines), encoding="utf-8")

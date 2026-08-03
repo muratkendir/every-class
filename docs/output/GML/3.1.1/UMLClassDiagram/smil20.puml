@@ -1,0 +1,59 @@
+@startuml
+title
+  Smil - 3.1.1 - Smil20 - Only XSD based
+  http://www.w3.org/2001/SMIL20/
+end title
+
+package smil20 {
+class "smil20:animatePrototype" <<DataType>>
+class "smil20:animateMotionPrototype" <<DataType>>
+class "smil20:animateColorPrototype" <<DataType>>
+class "smil20:setPrototype" <<DataType>>
+
+' Simple types (from <simpleType> declarations)
+class "smil20:nonNegativeDecimal" <<BasicType>>
+class "smil20:syncBehavior" <<Enumeration>> {
+  canSlip
+  locked
+  independent
+  default
+}
+class "smil20:syncBehaviorDefault" <<Enumeration>> {
+  canSlip
+  locked
+  independent
+  inherit
+}
+class "smil20:restartTiming" <<Enumeration>> {
+  never
+  always
+  whenNotActive
+  default
+}
+class "smil20:restartDefault" <<Enumeration>> {
+  never
+  always
+  whenNotActive
+  inherit
+}
+class "smil20:fillTimingAttrs" <<Enumeration>> {
+  remove
+  freeze
+  hold
+  auto
+  default
+  transition
+}
+class "smil20:fillDefault" <<Enumeration>> {
+  remove
+  freeze
+  hold
+  auto
+  inherit
+  transition
+}
+}
+
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

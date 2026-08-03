@@ -1,0 +1,37 @@
+@startuml
+title
+  Base - 3.1.1 - Measures - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:Length" <<DataType>>
+class "gml:Scale" <<DataType>>
+class "gml:Time" <<DataType>>
+class "gml:GridLength" <<DataType>>
+class "gml:Area" <<DataType>>
+class "gml:Volume" <<DataType>>
+class "gml:Speed" <<DataType>>
+class "gml:AngleChoice" <<DataType>> {
+  angle : gml:angle
+  dmsAngle : gml:dmsAngle
+}
+class "gml:Angle" <<DataType>>
+class "gml:DMSAngle" <<DataType>> {
+  degrees : gml:degrees
+  decimalMinutes : gml:decimalMinutes
+  minutes : gml:minutes
+  seconds : gml:seconds [0..1]
+}
+class "gml:Degrees" <<DataType>>
+
+' Simple types (from <simpleType> declarations)
+class "gml:DegreeValue" <<BasicType>>
+class "gml:DecimalMinutes" <<BasicType>>
+class "gml:ArcMinutes" <<BasicType>>
+class "gml:ArcSeconds" <<BasicType>>
+}
+
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

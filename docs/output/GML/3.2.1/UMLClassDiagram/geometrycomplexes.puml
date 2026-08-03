@@ -1,0 +1,44 @@
+@startuml
+title
+  GML - 3.2.1 - Geometrycomplexes - Only XSD based
+  http://www.opengis.net/gml/3.2
+end title
+
+package gml {
+class "gml:GeometricComplex" <<ObjectType>> {
+  element : gml:GeometricPrimitive [1..*]
+}
+class "gml:GeometricComplexProperty" $property {
+  GeometricComplex : gml:GeometricComplex
+  CompositeCurve : gml:CompositeCurve
+  CompositeSurface : gml:CompositeSurface
+  CompositeSolid : gml:CompositeSolid
+}
+class "gml:CompositeCurve" <<ObjectType>> {
+  curveMember : gml:curveMember [1..*]
+}
+class "gml:CompositeSurface" <<ObjectType>> {
+  surfaceMember : gml:surfaceMember [1..*]
+}
+class "gml:CompositeSolid" <<ObjectType>> {
+  solidMember : gml:solidMember [1..*]
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractCurve"
+abstract class "gml:AbstractGeometry"
+abstract class "gml:AbstractSolid"
+abstract class "gml:AbstractSurface"
+
+"gml:AbstractGeometry" <|-- "gml:GeometricComplex"
+"gml:AbstractCurve" <|-- "gml:CompositeCurve"
+"gml:AbstractSurface" <|-- "gml:CompositeSurface"
+"gml:AbstractSolid" <|-- "gml:CompositeSolid"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:11:00
+@enduml

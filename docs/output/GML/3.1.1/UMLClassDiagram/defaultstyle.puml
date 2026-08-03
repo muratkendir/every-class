@@ -1,0 +1,137 @@
+@startuml
+title
+  Base - 3.1.1 - Defaultstyle - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:DefaultStyleProperty" $property {
+  _Style : gml:_Style [0..1]
+}
+abstract class "gml:AbstractStyle" <<ObjectType>>
+class "gml:Style" <<ObjectType>> {
+  featureStyle : gml:featureStyle [1..*]
+  graphStyle : gml:graphStyle [0..1]
+}
+class "gml:FeatureStyleProperty" $property {
+  FeatureStyle : gml:FeatureStyle [0..1]
+}
+class "gml:FeatureStyle" <<ObjectType>> {
+  # featureConstraint : xs:string [0..1]
+  geometryStyle : gml:geometryStyle [0..*]
+  topologyStyle : gml:topologyStyle [0..*]
+  labelStyle : gml:labelStyle [0..1]
+}
+class "gml:BaseStyleDescriptor" <<ObjectType>> {
+  spatialResolution : gml:Scale [0..1]
+  styleVariation : gml:StyleVariation [0..*]
+  # animate : smil20:animate [0..*]
+  # animateMotion : smil20:animateMotion [0..*]
+  # animateColor : smil20:animateColor [0..*]
+  # set : smil20:set [0..*]
+}
+class "gml:GeometryStyleProperty" $property {
+  GeometryStyle : gml:GeometryStyle [0..1]
+}
+class "gml:GeometryStyle" <<ObjectType>> {
+  symbol : gml:symbol
+  # style : xs:string
+  labelStyle : gml:labelStyle [0..1]
+}
+class "gml:TopologyStyleProperty" $property {
+  TopologyStyle : gml:TopologyStyle [0..1]
+}
+class "gml:TopologyStyle" <<ObjectType>> {
+  symbol : gml:symbol
+  # style : xs:string
+  labelStyle : gml:labelStyle [0..1]
+}
+class "gml:LabelStyleProperty" $property {
+  LabelStyle : gml:LabelStyle [0..1]
+}
+class "gml:LabelStyle" <<ObjectType>> {
+  # style : xs:string
+  label : gml:Label
+}
+class "gml:GraphStyleProperty" $property {
+  GraphStyle : gml:GraphStyle [0..1]
+}
+class "gml:GraphStyle" <<ObjectType>> {
+  # planar : xs:boolean [0..1]
+  # directed : xs:boolean [0..1]
+  # grid : xs:boolean [0..1]
+  # minDistance : xs:double [0..1]
+  # minAngle : xs:double [0..1]
+  graphType : gml:GraphType [0..1]
+  drawingType : gml:DrawingType [0..1]
+  lineType : gml:LineType [0..1]
+  aestheticCriteria : gml:AesheticCriteria [0..*]
+}
+class "gml:Symbol" <<DataType>>
+class "gml:Label" <<DataType>> {
+  # LabelExpression : xs:string [0..*]
+}
+class "gml:StyleVariation" <<DataType>>
+
+' Simple types (from <simpleType> declarations)
+class "gml:QueryGrammarEnumeration" <<Enumeration>> {
+  xpath
+  xquery
+  other
+}
+class "gml:SymbolTypeEnumeration" <<Enumeration>> {
+  svg
+  xpath
+  other
+}
+class "gml:GraphType" <<Enumeration>> {
+  TREE
+  BICONNECTED
+}
+class "gml:DrawingType" <<Enumeration>> {
+  POLYLINE
+  ORTHOGONAL
+}
+class "gml:LineType" <<Enumeration>> {
+  STRAIGHT
+  BENT
+}
+class "gml:AesheticCriteria" <<Enumeration>> {
+  MIN_CROSSINGS
+  MIN_AREA
+  MIN_BENDS
+  MAX_BENDS
+  UNIFORM_BENDS
+  MIN_SLOPES
+  MIN_EDGE_LENGTH
+  MAX_EDGE_LENGTH
+  UNIFORM_EDGE_LENGTH
+  MAX_ANGULAR_RESOLUTION
+  MIN_ASPECT_RATIO
+  MAX_SYMMETRIES
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+
+"gml:AbstractGML" <|-- "gml:AbstractStyle"
+"gml:AbstractStyle" <|-- "gml:Style"
+"gml:AbstractGML" <|-- "gml:FeatureStyle"
+"gml:AbstractGML" <|-- "gml:BaseStyleDescriptor"
+"gml:BaseStyleDescriptor" <|-- "gml:GeometryStyle"
+"gml:BaseStyleDescriptor" <|-- "gml:TopologyStyle"
+"gml:BaseStyleDescriptor" <|-- "gml:LabelStyle"
+"gml:BaseStyleDescriptor" <|-- "gml:GraphStyle"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

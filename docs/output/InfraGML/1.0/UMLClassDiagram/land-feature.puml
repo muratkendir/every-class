@@ -103,4 +103,5 @@ remove $property
 ' line to hide them.
 ' hide protected members
 
+footer Generated on 2026-08-03 13:11:00
 @enduml

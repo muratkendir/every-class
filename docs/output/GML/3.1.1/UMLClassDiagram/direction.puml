@@ -1,0 +1,47 @@
+@startuml
+title
+  Base - 3.1.1 - Direction - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:DirectionProperty" $property {
+  DirectionVector : gml:DirectionVector
+  CompassPoint : gml:CompassPoint
+  DirectionKeyword : gml:Code
+  DirectionString : gml:StringOrRef
+}
+class "gml:DirectionVector" <<DataType>> {
+  vector : gml:vector
+  horizontalAngle : gml:Angle
+  verticalAngle : gml:Angle
+}
+
+' Simple types (from <simpleType> declarations)
+class "gml:CompassPointEnumeration" <<Enumeration>> {
+  N
+  NNE
+  NE
+  ENE
+  E
+  ESE
+  SE
+  SSE
+  S
+  SSW
+  SW
+  WSW
+  W
+  WNW
+  NW
+  NNW
+}
+}
+
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:58
+@enduml

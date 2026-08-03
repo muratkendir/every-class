@@ -15,6 +15,7 @@ Usage:
 import re
 import sys
 import xml.etree.ElementTree as ET
+from datetime import datetime
 from pathlib import Path
 
 XSD_NS = "{http://www.w3.org/2001/XMLSchema}"
@@ -117,6 +118,11 @@ def target_namespace(xsd_path: Path) -> str | None:
     return ET.parse(xsd_path).getroot().get("targetNamespace")
 
 
+def generation_footer() -> str:
+    """PlantUML footer line recording when the diagram was generated."""
+    return f"footer Generated on {datetime.now():%Y-%m-%d %H:%M:%S}"
+
+
 def to_plantuml(classes: list[dict], title: str, prefix: str | None,
                 subtitle: str | None = None) -> str:
     lines = ["@startuml", "title", f"  {title}"]
@@ -141,7 +147,7 @@ def to_plantuml(classes: list[dict], title: str, prefix: str | None,
     if any(c["name"].endswith("Property") for c in classes):
         lines += ["", "' Property pseudo-classes are removed from rendering by default;",
                   "' remove the next line to show them.", "remove $property"]
-    lines += ["", "@enduml", ""]
+    lines += ["", generation_footer(), "@enduml", ""]
     return "\n".join(lines)
 
 

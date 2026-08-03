@@ -1,0 +1,78 @@
+@startuml
+title
+  Base - 3.1.1 - Temporal - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+abstract class "gml:AbstractTimeObject" <<ObjectType>>
+abstract class "gml:AbstractTimePrimitive" <<ObjectType>> {
+  relatedTime : gml:RelatedTime [0..*]
+}
+class "gml:TimePrimitiveProperty" $property {
+  _TimePrimitive : gml:_TimePrimitive
+}
+class "gml:RelatedTime" <<ObjectType>>
+abstract class "gml:AbstractTimeComplex" <<ObjectType>>
+abstract class "gml:AbstractTimeGeometricPrimitive" <<ObjectType>>
+class "gml:TimeGeometricPrimitiveProperty" $property {
+  _TimeGeometricPrimitive : gml:_TimeGeometricPrimitive
+}
+class "gml:TimeInstant" <<ObjectType>> {
+  timePosition : gml:timePosition
+}
+class "gml:TimeInstantProperty" $property {
+  TimeInstant : gml:TimeInstant
+}
+class "gml:TimePeriod" <<ObjectType>> {
+  beginPosition : gml:TimePosition
+  endPosition : gml:TimePosition
+}
+class "gml:TimePeriodProperty" $property {
+  TimePeriod : gml:TimePeriod
+}
+class "gml:TimeIntervalLength" <<DataType>>
+class "gml:TimePosition" <<DataType>>
+
+' Simple types (from <simpleType> declarations)
+class "gml:TimeUnit" <<Union>> {
+  year
+  day
+  hour
+  minute
+  second
+}
+class "gml:TimePositionUnion" <<Union>>
+class "gml:CalDate" <<Union>>
+class "gml:TimeIndeterminateValue" <<Enumeration>> {
+  after
+  before
+  now
+  unknown
+}
+
+' Model groups (from <group> declarations)
+class "gml:timeLength" <<Union>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+
+"gml:AbstractGML" <|-- "gml:AbstractTimeObject"
+"gml:AbstractTimeObject" <|-- "gml:AbstractTimePrimitive"
+"gml:TimePrimitiveProperty" <|-- "gml:RelatedTime"
+"gml:AbstractTimeObject" <|-- "gml:AbstractTimeComplex"
+"gml:AbstractTimePrimitive" <|-- "gml:AbstractTimeGeometricPrimitive"
+"gml:AbstractTimeGeometricPrimitive" <|-- "gml:TimeInstant"
+"gml:AbstractTimeGeometricPrimitive" <|-- "gml:TimePeriod"
+
+' Class relations (promoted from property wrappers)
+"gml:TimePeriod" ..> "1" "gml:TimeInstant" : begin
+"gml:TimePeriod" ..> "1" "gml:TimeInstant" : end
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml

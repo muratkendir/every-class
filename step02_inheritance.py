@@ -13,14 +13,18 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from step01_list_classes import XSD_NS, default_output, diagram_title, parse_classes, qualify, schema_prefix, strip_type_suffix, target_namespace
+from step01_list_classes import XSD_NS, default_output, diagram_title, generation_footer, parse_classes, qualify, schema_prefix, strip_type_suffix, target_namespace
 
 DEFAULT_XSD = Path("schemas/xsds/citygml/3.0/core.xsd")
 
 
 def parse_inheritance(xsd_path: Path) -> list[tuple[str, str]]:
-    """Return (child, parent) pairs from extension/restriction elements."""
-    local = schema_prefix(xsd_path)
+    """Return (child, parent) pairs from extension/restriction elements.
+
+    Parents keep the prefix exactly as written: a same-prefix base is not
+    necessarily declared in this XSD (several schema files can share one
+    namespace, e.g. the GML modules), so stripping it would produce
+    unprefixed stubs for cross-module bases."""
     root = ET.parse(xsd_path).getroot()
     relations = []
     for ct in root.findall(f"{XSD_NS}complexType"):
@@ -33,9 +37,7 @@ def parse_inheritance(xsd_path: Path) -> list[tuple[str, str]]:
                     base = ext.get("base")
                     if not base:
                         continue
-                    prefix, _, localname = base.partition(":")
-                    parent = localname if prefix == local else base
-                    relations.append((child, parent))
+                    relations.append((child, base))
     return relations
 
 
@@ -131,7 +133,7 @@ def to_plantuml(classes, relations, title, prefix, subtitle=None):
     if any(c["name"].endswith("Property") for c in classes):
         lines += ["", "' Property pseudo-classes are removed from rendering by default;",
                   "' remove the next line to show them.", "remove $property"]
-    lines += ["", "@enduml", ""]
+    lines += ["", generation_footer(), "@enduml", ""]
     return "\n".join(lines)
 
 

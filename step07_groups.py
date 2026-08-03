@@ -14,7 +14,7 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from step01_list_classes import XSD_NS, default_output, diagram_title, parse_classes, qualify, schema_prefix, strip_type_suffix, target_namespace
+from step01_list_classes import XSD_NS, default_output, diagram_title, generation_footer, parse_classes, qualify, schema_prefix, strip_type_suffix, target_namespace
 from step02_inheritance import parse_inheritance
 from step03_attributes import parse_attributes
 from step04_cardinality import multiplicity
@@ -150,7 +150,7 @@ def to_plantuml(classes, inheritance, attributes, relations, promoted,
         lines += ["", "' Attributes with value types from other namespaces are marked as",
                   "' protected members (# ) and shown by default; uncomment the next",
                   "' line to hide them.", "' hide protected members"]
-    lines += ["", "@enduml", ""]
+    lines += ["", generation_footer(), "@enduml", ""]
     return "\n".join(lines)
 
 

@@ -1,0 +1,58 @@
+@startuml
+title
+  Base - 3.1.1 - Valueobjects - Only XSD based
+  http://www.opengis.net/gml
+end title
+
+package gml {
+class "gml:CompositeValue" <<ObjectType>> {
+  valueComponent : gml:valueComponent [0..*]
+  valueComponents : gml:valueComponents [0..1]
+}
+class "gml:ValueArray" <<ObjectType>>
+class "gml:QuantityExtent" <<DataType>>
+class "gml:CategoryExtent" <<DataType>>
+class "gml:ValueProperty" $property
+class "gml:ValueArrayProperty" $property
+class "gml:ScalarValueProperty" $property
+class "gml:BooleanProperty" $property {
+  Boolean : gml:Boolean
+}
+class "gml:CategoryProperty" $property {
+  Category : gml:Category
+}
+class "gml:QuantityProperty" $property {
+  Quantity : gml:Quantity
+}
+class "gml:CountProperty" $property {
+  Count : gml:Count
+}
+
+' Simple types (from <simpleType> declarations)
+class "gml:CountExtent" <<BasicType>>
+
+' Model groups (from <group> declarations)
+class "gml:Value" <<Union>>
+class "gml:ValueObject" <<Union>>
+class "gml:ScalarValue" <<Union>>
+class "gml:ScalarValueList" <<Union>>
+class "gml:ValueExtent" <<Union>>
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractGML"
+
+"gml:AbstractGML" <|-- "gml:CompositeValue"
+"gml:CompositeValue" <|-- "gml:ValueArray"
+"gml:ValueProperty" <|-- "gml:ScalarValueProperty"
+"gml:ValueProperty" <|-- "gml:BooleanProperty"
+"gml:ValueProperty" <|-- "gml:CategoryProperty"
+"gml:ValueProperty" <|-- "gml:QuantityProperty"
+"gml:ValueProperty" <|-- "gml:CountProperty"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-03 13:10:59
+@enduml
