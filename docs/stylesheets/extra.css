@@ -1,0 +1,77 @@
+/* Custom dark (slate) palette — background #334155 is fixed, all other
+   colors pass WCAG AA (>= 4.5:1) against it. */
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #334155;          /* page background (fixed) */
+  --md-default-fg-color: #f6f1eb;          /* main text          9.2:1 */
+  --md-default-fg-color--light: #a1b4cf;   /* muted / secondary text   */
+  --md-default-fg-color--lighter: #a1b4cf; /* subtle text, icons       */
+  --md-typeset-a-color: #c1d1c4;           /* links              6.5:1 */
+  --md-accent-fg-color: #d3dfd6;           /* link hover / accents     */
+  --md-code-bg-color: #2b3748;             /* code blocks (bg -15%)    */
+  --md-code-fg-color: #f6f1eb;             /* code text                */
+  --md-footer-bg-color: #2b3748;           /* footer (bg -15%)         */
+  --md-footer-bg-color--dark: #232d3b;     /* footer lower band        */
+  --md-primary-fg-color: #232d3b;          /* top header bar           */
+}
+
+/* Headings: main headers vs. sub-titles */
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  color: #a1bde6;                          /* headers            5.4:1 */
+}
+
+[data-md-color-scheme="slate"] .md-typeset h3,
+[data-md-color-scheme="slate"] .md-typeset h4,
+[data-md-color-scheme="slate"] .md-typeset h5,
+[data-md-color-scheme="slate"] .md-typeset h6 {
+  color: #a1b4cf;                          /* sub-titles         4.9:1 */
+}
+
+/* Custom light (default) palette — background #f6f1eb is fixed.
+   The requested link color #8daa91 fails contrast (2.3:1), so it is
+   darkened to #5c6e5e (same hue, 65% brightness -> 4.9:1). */
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #f6f1eb;          /* page background (fixed)  */
+  --md-default-fg-color: #334155;          /* main text          9.2:1 */
+  --md-default-fg-color--light: #344d72;   /* muted / secondary  7.6:1 */
+  --md-default-fg-color--lighter: #344d72; /* subtle text, icons       */
+  --md-typeset-a-color: #5c6e5e;           /* links (darkened)   4.9:1 */
+  --md-accent-fg-color: #4e5e50;           /* link hover / accents     */
+  --md-code-bg-color: #eae5df;             /* code blocks (bg -5%)     */
+  --md-code-fg-color: #334155;             /* code text                */
+  --md-primary-fg-color: #344d72;          /* top header bar           */
+  --md-footer-bg-color: #344d72;           /* footer                   */
+  --md-footer-bg-color--dark: #2b405f;     /* footer lower band        */
+}
+
+/* Headings use the secondary text color */
+[data-md-color-scheme="default"] .md-typeset h1,
+[data-md-color-scheme="default"] .md-typeset h2,
+[data-md-color-scheme="default"] .md-typeset h3,
+[data-md-color-scheme="default"] .md-typeset h4,
+[data-md-color-scheme="default"] .md-typeset h5,
+[data-md-color-scheme="default"] .md-typeset h6 {
+  color: #344d72;                          /* headings           7.6:1 */
+}
+
+/* Fullscreen diagram viewing (button added by javascripts/fullscreen.js).
+   Diagrams are transparent, so the fullscreen container needs the page
+   background; the svg fits the screen via preserveAspectRatio="meet".
+   Specificity must beat mkdocs_puml's puml.css, which loads after this
+   file. */
+body .puml:fullscreen {
+  background: var(--md-default-bg-color);
+}
+
+body .puml:fullscreen .diagram {
+  width: 100% !important;
+  height: 100vh !important;
+}
+
+/* Hide the site-name/logo block above the sidebar nav (user decision:
+   redundant with the header title) */
+.md-nav--primary label.md-nav__title[for="__drawer"] {
+  display: none;
+}

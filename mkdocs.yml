@@ -1,5 +1,7 @@
 site_name: every-class
 site_description: UML class diagrams generated from XSD schemas
+repo_url: https://github.com/muratkendir/every-class
+repo_name: muratkendir/every-class
 
 theme:
   name: material
@@ -31,3 +33,9 @@ plugins:
 
 markdown_extensions:
   - pymdownx.superfences
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/fullscreen.js
