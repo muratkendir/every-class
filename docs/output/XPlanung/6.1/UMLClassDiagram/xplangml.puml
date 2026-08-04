@@ -1,0 +1,12 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplangml - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+}
+
+
+footer Generated on 2026-08-04 10:25:27
+@enduml

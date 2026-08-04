@@ -1,0 +1,809 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplangml_basisschema - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+abstract class "xplan:XP_AbstraktesPraesentationsobjekt" <<FeatureType>> {
+  # stylesheetId : gml:Code [0..1]
+  # darstellungsprioritaet : xs:integer [0..1]
+  # art : xs:string [0..*]
+  # massstabFaktor : xs:double [0..1]
+}
+class "xplan:XP_BegruendungAbschnitt" <<FeatureType>> {
+  # schluessel : xs:string [0..1]
+  # text : xs:string [0..1]
+  - refText : xplan:XP_ExterneReferenz [0..1]
+}
+abstract class "xplan:XP_Bereich" <<FeatureType>> {
+  # nummer : xs:integer
+  # name : xs:string [0..1]
+  bedeutung : xplan:XP_BedeutungenBereich [0..1]
+  # detaillierteBedeutung : xs:string [0..1]
+  # erstellungsMassstab : xs:integer [0..1]
+  # geltungsbereich : gml:Geometry [0..1]
+  - refScan : xplan:XP_ExterneReferenz [0..*]
+  - refPlangrundlage : xplan:XP_ExterneReferenz [0..*]
+  - aendertPlan : xplan:XP_VerbundenerPlan [0..*]
+  - wurdeGeaendertVonPlan : xplan:XP_VerbundenerPlan [0..*]
+  - aendertPlanBereich : xplan:XP_VerbundenerPlanBereich [0..*]
+  - wurdeGeaendertVonPlanBereich : xplan:XP_VerbundenerPlanBereich [0..*]
+}
+class "xplan:XP_DatumAttribut" <<DataType>> {
+  # wert : xs:date
+}
+class "xplan:XP_DatumAttributProperty" $property {
+  XP_DatumAttribut : xplan:XP_DatumAttribut
+}
+class "xplan:XP_DoubleAttribut" <<DataType>> {
+  # wert : xs:double
+}
+class "xplan:XP_DoubleAttributProperty" $property {
+  XP_DoubleAttribut : xplan:XP_DoubleAttribut
+}
+class "xplan:XP_ExterneReferenz" <<DataType>> {
+  # georefURL : xs:anyURI [0..1]
+  art : xplan:XP_ExterneReferenzArt [0..1]
+  # referenzName : xs:string
+  # nummer : xs:string [0..1]
+  # seitenangabe : xs:integer [0..1]
+  # referenzURL : xs:anyURI
+  # referenzMimeType : gml:Code [0..1]
+  # beschreibung : xs:string [0..1]
+  # datum : xs:date [0..1]
+}
+class "xplan:XP_ExterneReferenzProperty" $property {
+  XP_ExterneReferenz : xplan:XP_ExterneReferenz
+}
+class "xplan:XP_FPO" <<FeatureType>> {
+  # position : gml:Geometry
+}
+class "xplan:XP_Gemeinde" <<DataType>> {
+  # ags : xs:string [0..1]
+  # rs : xs:string [0..1]
+  # gemeindeName : xs:string [0..1]
+  # ortsteilName : xs:string [0..1]
+}
+class "xplan:XP_GemeindeProperty" $property {
+  XP_Gemeinde : xplan:XP_Gemeinde
+}
+abstract class "xplan:XP_GenerAttribut" <<DataType>> {
+  # name : xs:string
+}
+class "xplan:XP_GenerAttributProperty" $property {
+  XP_GenerAttribut : xplan:XP_GenerAttribut
+}
+class "xplan:XP_GesetzlicheGrundlage" <<DataType>> {
+  # name : xs:string [0..1]
+  # datum : xs:date [0..1]
+  # detail : xs:string [0..1]
+}
+class "xplan:XP_GesetzlicheGrundlageProperty" $property {
+  XP_GesetzlicheGrundlage : xplan:XP_GesetzlicheGrundlage
+}
+class "xplan:XP_Hoehenangabe" <<DataType>> {
+  # abweichenderHoehenbezug : xs:string [0..1]
+  hoehenbezug : xplan:XP_ArtHoehenbezug [0..1]
+  # abweichenderBezugspunkt : xs:string [0..1]
+  bezugspunkt : xplan:XP_ArtHoehenbezugspunkt [0..1]
+  # bezugspunktText : xs:string [0..1]
+  # hMin : gml:Length [0..1]
+  # hMax : gml:Length [0..1]
+  # hZwingend : gml:Length [0..1]
+  # h : gml:Length [0..1]
+}
+class "xplan:XP_HoehenangabeProperty" $property {
+  XP_Hoehenangabe : xplan:XP_Hoehenangabe
+}
+class "xplan:XP_IntegerAttribut" <<DataType>> {
+  # wert : xs:integer
+}
+class "xplan:XP_IntegerAttributProperty" $property {
+  XP_IntegerAttribut : xplan:XP_IntegerAttribut
+}
+class "xplan:XP_LPO" <<FeatureType>> {
+  # position : gml:Geometry
+}
+class "xplan:XP_LTO" <<FeatureType>> {
+  # position : gml:Geometry
+}
+class "xplan:XP_Nutzungsschablone" <<FeatureType>> {
+  # spaltenAnz : xs:integer
+  # zeilenAnz : xs:integer
+}
+abstract class "xplan:XP_Objekt" <<FeatureType>> {
+  # uuid : xs:string [0..1]
+  # text : xs:string [0..1]
+  rechtsstand : xplan:XP_Rechtsstand [0..1]
+  # gliederung1 : xs:string [0..1]
+  # gliederung2 : xs:string [0..1]
+  # ebene : xs:integer [0..1]
+  vertikaleLage : xplan:XP_VertikaleLage [0..1]
+  # aufschrift : xs:string [0..1]
+  rechtscharakter : xplan:XP_Rechtscharakter
+  # massstabFaktor : xs:double [0..1]
+  # skalierung : xs:double [0..1]
+  - gesetzlicheGrundlage : xplan:XP_GesetzlicheGrundlage [0..1]
+  - hoehenangabe : xplan:XP_Hoehenangabe [0..*]
+  - externeReferenz : xplan:XP_SpezExterneReferenz [0..*]
+  - startBedingung : xplan:XP_WirksamkeitBedingung [0..1]
+  - endeBedingung : xplan:XP_WirksamkeitBedingung [0..1]
+}
+class "xplan:XP_PPO" <<FeatureType>> {
+  # position : gml:Geometry
+  # drehwinkel : gml:Angle [0..1]
+  # skalierung : xs:double [0..1]
+}
+class "xplan:XP_PTO" <<FeatureType>> {
+  # position : gml:Geometry
+  # drehwinkel : gml:Angle [0..1]
+}
+abstract class "xplan:XP_Plan" <<FeatureType>> {
+  # name : xs:string
+  # nameBasis : xs:string [0..1]
+  # fassungsbezeichnung : xs:string [0..1]
+  # nummer : xs:string [0..1]
+  # internalId : xs:string [0..1]
+  # beschreibung : xs:string [0..1]
+  # kommentar : xs:string [0..1]
+  # technHerstellDatum : xs:date [0..1]
+  # genehmigungsDatum : xs:date [0..1]
+  # untergangsDatum : xs:date [0..1]
+  # zusammenzeichnung : xs:boolean [0..1]
+  # erstellungsMassstab : xs:integer [0..1]
+  # bezugshoehe : gml:Length [0..1]
+  # hoehenbezug : xs:string [0..1]
+  # technischerPlanersteller : xs:string [0..1]
+  # raeumlicherGeltungsbereich : gml:Geometry
+  - aendertPlan : xplan:XP_VerbundenerPlan [0..*]
+  - wurdeGeaendertVonPlan : xplan:XP_VerbundenerPlan [0..*]
+  - aendertPlanBereich : xplan:XP_VerbundenerPlanBereich [0..*]
+  - wurdeGeaendertVonPlanBereich : xplan:XP_VerbundenerPlanBereich [0..*]
+  - verfahrensMerkmale : xplan:XP_VerfahrensMerkmal [0..*]
+  - externeReferenz : xplan:XP_SpezExterneReferenz [0..*]
+}
+class "xplan:XP_Plangeber" <<DataType>> {
+  # name : xs:string
+  # kennziffer : xs:string [0..1]
+}
+class "xplan:XP_PlangeberProperty" $property {
+  XP_Plangeber : xplan:XP_Plangeber
+}
+class "xplan:XP_Praesentationsobjekt" <<FeatureType>>
+class "xplan:XP_SPEMassnahmenDaten" <<DataType>> {
+  klassifizMassnahme : xplan:XP_SPEMassnahmenTypen [0..1]
+  # massnahmeText : xs:string [0..1]
+  # massnahmeKuerzel : xs:string [0..1]
+}
+class "xplan:XP_SPEMassnahmenDatenProperty" $property {
+  XP_SPEMassnahmenDaten : xplan:XP_SPEMassnahmenDaten
+}
+class "xplan:XP_SpezExterneReferenz" <<DataType>> {
+  typ : xplan:XP_ExterneReferenzTyp
+}
+class "xplan:XP_SpezExterneReferenzProperty" $property {
+  XP_SpezExterneReferenz : xplan:XP_SpezExterneReferenz
+}
+class "xplan:XP_StringAttribut" <<DataType>> {
+  # wert : xs:string
+}
+class "xplan:XP_StringAttributProperty" $property {
+  XP_StringAttribut : xplan:XP_StringAttribut
+}
+abstract class "xplan:XP_TPO" <<FeatureType>> {
+  # schriftinhalt : xs:string [0..1]
+  # fontSperrung : xs:double [0..1]
+  # skalierung : xs:double [0..1]
+  horizontaleAusrichtung : xplan:XP_HorizontaleAusrichtung [0..1]
+  vertikaleAusrichtung : xplan:XP_VertikaleAusrichtung [0..1]
+}
+class "xplan:XP_TextAbschnitt" <<FeatureType>> {
+  # schluessel : xs:string [0..1]
+  # gesetzlicheGrundlage : xs:string [0..1]
+  # text : xs:string [0..1]
+  rechtscharakter : xplan:XP_Rechtscharakter
+  - refText : xplan:XP_ExterneReferenz [0..1]
+}
+class "xplan:XP_URLAttribut" <<DataType>> {
+  # wert : xs:anyURI
+}
+class "xplan:XP_URLAttributProperty" $property {
+  XP_URLAttribut : xplan:XP_URLAttribut
+}
+class "xplan:XP_VerbundenerPlan" <<DataType>> {
+  # planName : xs:string [0..1]
+  aenderungsArt : xplan:XP_Aenderungsarten
+  # nummer : xs:string [0..1]
+  # aenderungsdatum : xs:date [0..1]
+}
+class "xplan:XP_VerbundenerPlanProperty" $property {
+  XP_VerbundenerPlan : xplan:XP_VerbundenerPlan
+}
+class "xplan:XP_VerbundenerPlanBereich" <<DataType>> {
+  # bereichNummer : xs:integer [0..1]
+}
+class "xplan:XP_VerbundenerPlanBereichProperty" $property {
+  XP_VerbundenerPlanBereich : xplan:XP_VerbundenerPlanBereich
+}
+class "xplan:XP_VerfahrensMerkmal" <<DataType>> {
+  # vermerk : xs:string
+  # datum : xs:date
+  # signatur : xs:string
+  # signiert : xs:boolean
+}
+class "xplan:XP_VerfahrensMerkmalProperty" $property {
+  XP_VerfahrensMerkmal : xplan:XP_VerfahrensMerkmal
+}
+class "xplan:XP_WirksamkeitBedingung" <<DataType>> {
+  # bedingung : xs:string [0..1]
+  # datumAbsolut : xs:date [0..1]
+  # datumRelativ : xs:duration [0..1]
+}
+class "xplan:XP_WirksamkeitBedingungProperty" $property {
+  XP_WirksamkeitBedingung : xplan:XP_WirksamkeitBedingung
+}
+
+' Simple types (from <simpleType> declarations)
+class "xplan:XP_ABEMassnahmenTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:XP_AbweichungBauNVOTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9999
+}
+class "xplan:XP_Aenderungsarten" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  2000
+  3000
+}
+class "xplan:XP_AllgArtDerBaulNutzung" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:XP_AnpflanzungBindungErhaltungsGegenstand" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  2000
+  2050
+  2100
+  2200
+  3000
+  4000
+  5000
+  6000
+  9999
+}
+class "xplan:XP_ArtHoehenbezug" <<Enumeration>> {
+  1000
+  1100
+  1200
+  2000
+  2500
+  3000
+  3500
+  4000
+}
+class "xplan:XP_ArtHoehenbezugspunkt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  3500
+  4000
+  4500
+  5000
+  5500
+  6000
+  6500
+  6600
+}
+class "xplan:XP_BedeutungenBereich" <<Enumeration>> {
+  1600
+  1800
+  2000
+  3000
+  9999
+}
+class "xplan:XP_BesondereArtDerBaulNutzung" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1450
+  1500
+  1550
+  1600
+  1700
+  1800
+  2000
+  2100
+  3000
+  4000
+  9999
+}
+class "xplan:XP_Bundeslaender" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  1900
+  2000
+  2100
+  2200
+  2300
+  2400
+  2500
+  3000
+}
+class "xplan:XP_ERFlaechenArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:XP_EigentumsartWald" <<Enumeration>> {
+  1000
+  1100
+  1200
+  12000
+  12001
+  2000
+  20000
+  20001
+  3000
+  9999
+}
+class "xplan:XP_ExterneReferenzArt" <<Enumeration>> {
+  Dokument
+  PlanMitGeoreferenz
+}
+class "xplan:XP_ExterneReferenzTyp" <<Enumeration>> {
+  1000
+  1010
+  1020
+  1030
+  1040
+  1050
+  1060
+  1065
+  1070
+  1080
+  1090
+  2000
+  2100
+  2200
+  2300
+  2400
+  2500
+  2600
+  2700
+  2800
+  2850
+  2900
+  3000
+  3100
+  4000
+  5000
+  6000
+  9998
+  9999
+}
+class "xplan:XP_GrenzeTypen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1250
+  1300
+  1400
+  1450
+  1500
+  1510
+  1550
+  1600
+  2000
+  2100
+  9999
+}
+class "xplan:XP_HandlungsfeldNatuerlicherKlimaschutz" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+}
+class "xplan:XP_HorizontaleAusrichtung" <<Enumeration>> {
+  linksbündig
+  rechtsbündig
+  zentrisch
+}
+class "xplan:XP_ImmissionsschutzTypen" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:XP_Nutzungsform" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:XP_Rechtscharakter" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  4100
+  4200
+  4300
+  4400
+  4500
+  4600
+  4700
+  5000
+  5100
+  5200
+  5300
+  6000
+  7000
+  8000
+  9998
+  9999
+}
+class "xplan:XP_Rechtsstand" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+}
+class "xplan:XP_SPEMassnahmenTypen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  1900
+  2000
+  2100
+  2200
+  2300
+  2400
+  9999
+}
+class "xplan:XP_SPEZiele" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:XP_Sondernutzungen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  16000
+  16001
+  16002
+  1650
+  1700
+  1800
+  1900
+  2000
+  2100
+  2200
+  2300
+  23000
+  2400
+  2500
+  2600
+  2700
+  2720
+  2800
+  2900
+  3000
+  9999
+}
+class "xplan:XP_TechnVorkehrungenImmissionsschutz" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  9999
+}
+class "xplan:XP_Traegerschaft" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+}
+class "xplan:XP_VertikaleAusrichtung" <<Enumeration>> {
+  Basis
+  Mitte
+  Oben
+}
+class "xplan:XP_VertikaleLage" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:XP_WaldbetretungTyp" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+}
+class "xplan:XP_ZweckbestimmungGemeinbedarf" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  1200
+  12000
+  12001
+  12002
+  12003
+  1400
+  14000
+  14001
+  14002
+  1600
+  16000
+  16001
+  16002
+  16003
+  16005
+  1800
+  18000
+  2000
+  20000
+  20001
+  2200
+  22000
+  22001
+  2400
+  24000
+  24001
+  24002
+  2600
+  26000
+  9999
+}
+class "xplan:XP_ZweckbestimmungGruen" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  10003
+  1200
+  12000
+  1400
+  14000
+  14001
+  14002
+  14003
+  14004
+  14005
+  14006
+  1600
+  16000
+  16001
+  1800
+  18000
+  2000
+  2200
+  22000
+  22001
+  2400
+  24000
+  24001
+  24003
+  24004
+  24005
+  24006
+  2600
+  2700
+  9999
+  99990
+}
+class "xplan:XP_ZweckbestimmungKennzeichnung" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9999
+}
+class "xplan:XP_ZweckbestimmungLandwirtschaft" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  9999
+}
+class "xplan:XP_ZweckbestimmungSpielSportanlage" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9999
+}
+class "xplan:XP_ZweckbestimmungVerEntsorgung" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  10003
+  10004
+  10005
+  10006
+  10007
+  10008
+  10009
+  100010
+  100011
+  100012
+  100013
+  1200
+  12000
+  12001
+  12002
+  12003
+  12004
+  12005
+  1300
+  13000
+  13001
+  13002
+  13003
+  1400
+  14000
+  14001
+  14002
+  1600
+  16000
+  16001
+  16002
+  16003
+  16004
+  16005
+  1800
+  18000
+  18001
+  18002
+  18003
+  18004
+  18006
+  2000
+  20000
+  20001
+  2200
+  22000
+  22001
+  22002
+  22003
+  2400
+  24000
+  24001
+  24002
+  24003
+  24004
+  24005
+  2600
+  26000
+  26001
+  26002
+  2800
+  3000
+  9999
+  99990
+}
+class "xplan:XP_ZweckbestimmungWald" <<Enumeration>> {
+  1000
+  10000
+  1200
+  1400
+  1600
+  16000
+  16001
+  16002
+  16003
+  16004
+  1700
+  1800
+  1900
+  9999
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeature"
+
+"gml:AbstractFeature" <|-- "xplan:XP_AbstraktesPraesentationsobjekt"
+"gml:AbstractFeature" <|-- "xplan:XP_BegruendungAbschnitt"
+"gml:AbstractFeature" <|-- "xplan:XP_Bereich"
+"xplan:XP_GenerAttribut" <|-- "xplan:XP_DatumAttribut"
+"xplan:XP_GenerAttribut" <|-- "xplan:XP_DoubleAttribut"
+"xplan:XP_AbstraktesPraesentationsobjekt" <|-- "xplan:XP_FPO"
+"xplan:XP_GenerAttribut" <|-- "xplan:XP_IntegerAttribut"
+"xplan:XP_AbstraktesPraesentationsobjekt" <|-- "xplan:XP_LPO"
+"xplan:XP_TPO" <|-- "xplan:XP_LTO"
+"xplan:XP_PTO" <|-- "xplan:XP_Nutzungsschablone"
+"gml:AbstractFeature" <|-- "xplan:XP_Objekt"
+"xplan:XP_AbstraktesPraesentationsobjekt" <|-- "xplan:XP_PPO"
+"xplan:XP_TPO" <|-- "xplan:XP_PTO"
+"gml:AbstractFeature" <|-- "xplan:XP_Plan"
+"xplan:XP_AbstraktesPraesentationsobjekt" <|-- "xplan:XP_Praesentationsobjekt"
+"xplan:XP_ExterneReferenz" <|-- "xplan:XP_SpezExterneReferenz"
+"xplan:XP_GenerAttribut" <|-- "xplan:XP_StringAttribut"
+"xplan:XP_AbstraktesPraesentationsobjekt" <|-- "xplan:XP_TPO"
+"gml:AbstractFeature" <|-- "xplan:XP_TextAbschnitt"
+"xplan:XP_GenerAttribut" <|-- "xplan:XP_URLAttribut"
+"xplan:XP_VerbundenerPlan" <|-- "xplan:XP_VerbundenerPlanBereich"
+
+' Class relations (promoted from property wrappers)
+"xplan:XP_AbstraktesPraesentationsobjekt" ..> "0..1" "xplan:XP_Bereich" : gehoertZuBereich
+"xplan:XP_AbstraktesPraesentationsobjekt" ..> "0..*" "xplan:XP_Objekt" : dientZurDarstellungVon
+"xplan:XP_BegruendungAbschnitt" ..> "0..*" "xplan:XP_Objekt" : gehoertZuObjekt
+"xplan:XP_BegruendungAbschnitt" ..> "0..1" "xplan:XP_Plan" : gehoertZuPlan
+"xplan:XP_Bereich" ..> "0..*" "xplan:XP_Objekt" : planinhalt
+"xplan:XP_Bereich" ..> "0..*" "xplan:XP_AbstraktesPraesentationsobjekt" : praesentationsobjekt
+"xplan:XP_Bereich" ..> "0..*" "xplan:XP_TextAbschnitt" : texte
+"xplan:XP_Objekt" "1" *-- "0..*" "xplan:XP_GenerAttribut" : hatGenerAttribut
+"xplan:XP_Objekt" ..> "1" "xplan:XP_Bereich" : gehoertZuBereich
+"xplan:XP_Objekt" ..> "0..*" "xplan:XP_AbstraktesPraesentationsobjekt" : wirdDargestelltDurch
+"xplan:XP_Objekt" ..> "0..*" "xplan:XP_BegruendungAbschnitt" : refBegruendungInhalt
+"xplan:XP_Objekt" ..> "0..*" "xplan:XP_TextAbschnitt" : refTextInhalt
+"xplan:XP_PPO" ..> "0..1" "xplan:XP_LPO" : hat
+"xplan:XP_Plan" ..> "0..*" "xplan:XP_BegruendungAbschnitt" : begruendungsTexte
+"xplan:XP_Plan" "1" *-- "0..*" "xplan:XP_GenerAttribut" : hatGenerAttribut
+"xplan:XP_Plan" ..> "0..*" "xplan:XP_TextAbschnitt" : texte
+"xplan:XP_TPO" ..> "0..1" "xplan:XP_LPO" : hat
+"xplan:XP_TextAbschnitt" ..> "0..1" "xplan:XP_Plan" : gehoertZuPlan
+"xplan:XP_TextAbschnitt" ..> "0..*" "xplan:XP_Bereich" : gehoertZuBereich
+"xplan:XP_TextAbschnitt" ..> "0..*" "xplan:XP_Objekt" : gehoertZuObjekt
+"xplan:XP_VerbundenerPlan" ..> "0..1" "xplan:XP_Plan" : verbundenerPlan
+"xplan:XP_VerbundenerPlanBereich" ..> "0..1" "xplan:XP_Bereich" : verbundenerPlanBereich
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-04 10:25:28
+@enduml

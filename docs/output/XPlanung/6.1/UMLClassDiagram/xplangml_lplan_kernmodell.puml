@@ -1,0 +1,693 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplangml_lplan_kernmodell - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+class "xplan:LP_AdressatKomplex" <<DataType>> {
+  adressatArt : xplan:LP_AdressatArt
+  # adressatText : xs:string [0..1]
+}
+class "xplan:LP_AdressatKomplexProperty" $property {
+  LP_AdressatKomplex : xplan:LP_AdressatKomplex
+}
+class "xplan:LP_Bereich" <<DataType>>
+class "xplan:LP_BioVfBiotoptypKomplex" <<DataType>> {
+  # bioVfBiotoptyp_BKompV : gml:Code [0..1]
+  # bioVfBiotoptyp_LandesKS : gml:Code [0..1]
+  # bioVf_FFH_LRT : gml:Code [0..1]
+  # bioVfBiotoptyp_Text : xs:string [0..1]
+}
+class "xplan:LP_BioVfBiotoptypKomplexProperty" $property {
+  LP_BioVfBiotoptypKomplex : xplan:LP_BioVfBiotoptypKomplex
+}
+class "xplan:LP_BioVfPflanzenArtKomplex" <<DataType>> {
+  # bioVfPflanzenArtName : xs:string [0..1]
+  bioVfPflanzenSystematik : xplan:LP_BioVfPflanzenArtSystematik
+  # bioVfPflanzenSystematikText : xs:string [0..1]
+  bioVfPflanzenRechtlicherSchutz : xplan:LP_BioVfPflanzenArtRechtlicherSchutz [0..*]
+  # bioVfPflanzenRechtlicherSchutzText : xs:string [0..1]
+}
+class "xplan:LP_BioVfPflanzenArtKomplexProperty" $property {
+  LP_BioVfPflanzenArtKomplex : xplan:LP_BioVfPflanzenArtKomplex
+}
+class "xplan:LP_BioVfTiereArtKomplex" <<DataType>> {
+  # bioVfTierArtName : xs:string [0..1]
+  bioVfTiereSystematik : xplan:LP_BioVfTiereArtSystematik
+  # bioVfTiereSystematikText : xs:string [0..1]
+  bioVfTierArtRechtlicherSchutz : xplan:LP_BioVfTierArtRechtlicherSchutz [0..*]
+  # bioVfTierArtRechtlicherSchutzText : xs:string [0..1]
+  bioVfTierArtHabitatanforderung : xplan:LP_BioVfTierArtHabitatanforderung [0..1]
+  # bioVfTierArtHabitatanforderungText : xs:string [0..1]
+}
+class "xplan:LP_BioVfTiereArtKomplexProperty" $property {
+  LP_BioVfTiereArtKomplex : xplan:LP_BioVfTiereArtKomplex
+}
+class "xplan:LP_BiologischeVielfaltKomplex" <<DataType>> {
+  # bioVfArtFFHAnhangII : xs:boolean
+}
+class "xplan:LP_BiologischeVielfaltKomplexProperty" $property {
+  LP_BiologischeVielfaltKomplex : xplan:LP_BiologischeVielfaltKomplex
+}
+class "xplan:LP_BiologischeVielfaltTypKomplex" <<DataType>> {
+  bioVielfaltTyp : xplan:LP_BioVfBestandteil
+  # bioVielfaltTypText : xs:string [0..1]
+}
+class "xplan:LP_BiologischeVielfaltTypKomplexProperty" $property {
+  LP_BiologischeVielfaltTypKomplex : xplan:LP_BiologischeVielfaltTypKomplex
+}
+class "xplan:LP_BiotopverbundBiotopvernetzung" <<DataType>> {
+  planungsEbene : xplan:LP_PlanungsEbene [0..*]
+  rechtlicheSicherung : xplan:LP_RechtlicheSicherung [0..1]
+  # rechtlicheSicherungText : xs:string [0..1]
+  bioVerbundsystemArt : xplan:LP_BioVerbundsystemArt
+  bioVStandortFeuchte : xplan:LP_BioVStandortFeuchte [0..1]
+  # bioVerbundsystemText : xs:string [0..1]
+  # foerdermoeglichkeit : xs:string [0..*]
+}
+class "xplan:LP_BodenKomplex" <<DataType>> {
+  bodenAuspraegung : xplan:LP_BodenAuspraegung
+  # bodenText : xs:string [0..1]
+}
+class "xplan:LP_BodenKomplexProperty" $property {
+  LP_BodenKomplex : xplan:LP_BodenKomplex
+}
+class "xplan:LP_Eingriffsregelung" <<DataType>> {
+  umsetzungsstand : xplan:LP_Umsetzungsstand
+  massnahmentyp : xplan:LP_MassnahmenTyp [1..*]
+  # kompensationText : xs:string [0..1]
+}
+class "xplan:LP_EingriffsregelungKomplex" <<DataType>> {
+  eRFlaechenArt : xplan:XP_ERFlaechenArt
+  # eRFlaechenArtText : xs:string [0..1]
+}
+class "xplan:LP_EingriffsregelungKomplexProperty" $property {
+  LP_EingriffsregelungKomplex : xplan:LP_EingriffsregelungKomplex
+}
+class "xplan:LP_ErholungKomplex" <<DataType>> {
+  erholungFunktionArt : xplan:LP_ErholungFunktionen
+  # erholungFunktionText : xs:string [0..1]
+}
+class "xplan:LP_ErholungKomplexProperty" $property {
+  LP_ErholungKomplex : xplan:LP_ErholungKomplex
+}
+class "xplan:LP_GenerischesObjekt" <<DataType>> {
+  # zweckbestimmung : gml:Code [0..*]
+}
+abstract class "xplan:LP_Geometrieobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean [0..1]
+  # flussrichtung : xs:boolean [0..1]
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:LP_KlimaKomplex" <<DataType>> {
+  klimaArt : xplan:LP_KlimaArt
+  # klimaText : xs:string [0..1]
+}
+class "xplan:LP_KlimaKomplexProperty" $property {
+  LP_KlimaKomplex : xplan:LP_KlimaKomplex
+}
+class "xplan:LP_LandschaftsbildKomplex" <<DataType>> {
+  landschaftsbildArt : xplan:LP_LandschaftsbildArt
+  # landschaftsbildText : xs:string [0..1]
+}
+class "xplan:LP_LandschaftsbildKomplexProperty" $property {
+  LP_LandschaftsbildKomplex : xplan:LP_LandschaftsbildKomplex
+}
+class "xplan:LP_LuftKomplex" <<DataType>> {
+  luftArt : xplan:LP_LuftArt
+  # luftText : xs:string [0..1]
+}
+class "xplan:LP_LuftKomplexProperty" $property {
+  LP_LuftKomplex : xplan:LP_LuftKomplex
+}
+class "xplan:LP_NutzungseinschraenkungKomplex" <<DataType>> {
+  # hatNutzungseinschraenkung : xs:boolean
+  # nutzungseinschraenkungText : xs:string
+}
+class "xplan:LP_NutzungseinschraenkungKomplexProperty" $property {
+  LP_NutzungseinschraenkungKomplex : xplan:LP_NutzungseinschraenkungKomplex
+}
+abstract class "xplan:LP_Objekt" <<DataType>> {
+  raumkonkretisierung : xplan:LP_Raumkonkretisierung
+  # rechtsCharText : xs:string [0..1]
+}
+class "xplan:LP_Plan" <<DataType>> {
+  bundesland : xplan:XP_Bundeslaender
+  # rechtlicheAussenwirkung : xs:boolean
+  planArt : xplan:LP_PlanArt [1..*]
+  # sonstPlanArt : gml:Code [0..1]
+  gemeinde : xplan:XP_Gemeinde [0..*]
+  planaufstellendeGemeinde : xplan:XP_Gemeinde [0..*]
+  plangeber : xplan:XP_Plangeber [0..1]
+  rechtsstand : xplan:LP_Rechtsstand [0..1]
+  # aufstellungsbeschlussDatum : xs:date [0..1]
+  # auslegungsStartDatum : xs:date [0..*]
+  # auslegungsEndDatum : xs:date [0..*]
+  # tOeBbeteiligungsStartDatum : xs:date [0..*]
+  # tOeBbeteiligungsEndDatum : xs:date [0..*]
+  # oeffentlichkeitsBetStartDatum : xs:date [0..*]
+  # oeffentlichkeitsBetEndDatum : xs:date [0..*]
+  # aenderungenBisDatum : xs:date [0..1]
+  # entwurfsbeschlussDatum : xs:date [0..1]
+  # planbeschlussDatum : xs:date [0..1]
+  # inkrafttretenDatum : xs:date [0..1]
+  # veroeffentlichungsDatum : xs:date [0..1]
+  # sonstVerfahrensDatum : xs:date [0..1]
+  # sonstVerfahrensText : xs:string [0..1]
+  # startBedingungen : xs:string [0..1]
+  # endeBedingungen : xs:string [0..1]
+}
+class "xplan:LP_ReferenzLPObjekt" <<DataType>> {
+  # beschreibung : xs:string [0..1]
+}
+class "xplan:LP_ReferenzLPObjektProperty" $property {
+  LP_ReferenzLPObjekt : xplan:LP_ReferenzLPObjekt
+}
+class "xplan:LP_SPEKomplex" <<DataType>> {
+  schutzPflegeEntwicklungTyp : xplan:LP_SchutzPflegeEntwicklung [1..*]
+  # schutzPflegeEntwicklungText : xs:string [0..1]
+}
+class "xplan:LP_SPEKomplexProperty" $property {
+  LP_SPEKomplex : xplan:LP_SPEKomplex
+}
+class "xplan:LP_SchutzBestimmterTeileVonNaturUndLandschaft" <<DataType>> {
+  artDerFestlegung : xplan:LP_KlassifizierungNaturschutzrecht
+  # artDerFestlegungText : xs:string [0..1]
+  rechtsstandSchG : xplan:LP_RechtsstandSchutzGeb
+  # rechtsstandSchGText : xs:string [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+  gesetzlGeschBiotop : xplan:LP_GesGeschBiotopTyp [0..1]
+  # gesetzlGeschBiotopText : xs:string [0..1]
+  # detailGesetzlGeschBiotopLR : gml:Code [0..1]
+  schutzzone : xplan:LP_SchutzzonenNaturschutzrecht [0..1]
+  # schutzzonenText : xs:string [0..1]
+}
+class "xplan:LP_SchutzgutKomplex" <<DataType>> {
+  schutzgutArt : xplan:LP_SchutzgutArt
+  # schutzgutText : xs:string [0..1]
+}
+class "xplan:LP_SchutzgutKomplexProperty" $property {
+  LP_SchutzgutKomplex : xplan:LP_SchutzgutKomplex
+}
+class "xplan:LP_TextAbschnittObjekt" <<DataType>>
+class "xplan:LP_TypBioVerbundKomplex" <<DataType>> {
+  flaechenTypBV : xplan:LP_FlaechenTypBV
+  flaechentypBVSpeziell : xplan:LP_FlaechenTypBVSpeziell [0..1]
+  # flaechentypSpeziellText : xs:string [0..1]
+}
+class "xplan:LP_TypBioVerbundKomplexProperty" $property {
+  LP_TypBioVerbundKomplex : xplan:LP_TypBioVerbundKomplex
+}
+class "xplan:LP_VorschlagIntegrationBLP" <<DataType>> {
+  # begruendung : xs:string
+  refObjektBLP : xplan:XP_Objekt
+}
+class "xplan:LP_VorschlagIntegrationBLPProperty" $property {
+  LP_VorschlagIntegrationBLP : xplan:LP_VorschlagIntegrationBLP
+}
+class "xplan:LP_VorschlagIntegrationBauleitplanung" <<DataType>> {
+  # begruendung : xs:string
+}
+class "xplan:LP_VorschlagIntegrationBauleitplanungProperty" $property {
+  LP_VorschlagIntegrationBauleitplanung : xplan:LP_VorschlagIntegrationBauleitplanung
+}
+class "xplan:LP_VorschlagIntegrationRO" <<DataType>> {
+  # begruendung : xs:string
+  refObjektRO : xplan:XP_Objekt
+}
+class "xplan:LP_VorschlagIntegrationROProperty" $property {
+  LP_VorschlagIntegrationRO : xplan:LP_VorschlagIntegrationRO
+}
+class "xplan:LP_VorschlagIntegrationRaumordnung" <<DataType>> {
+  # begruendung : xs:string [0..1]
+}
+class "xplan:LP_VorschlagIntegrationRaumordnungProperty" $property {
+  LP_VorschlagIntegrationRaumordnung : xplan:LP_VorschlagIntegrationRaumordnung
+}
+class "xplan:LP_WasserKomplex" <<DataType>> {
+  wasserAuspraegung : xplan:LP_WasserAuspraegung
+  # wasserText : xs:string [0..1]
+}
+class "xplan:LP_WasserKomplexProperty" $property {
+  LP_WasserKomplex : xplan:LP_WasserKomplex
+}
+class "xplan:LP_ZielDimNatSchLaPflKomplex" <<DataType>> {
+  zielDimensionTyp : xplan:LP_ZielDimensionTyp
+  # zielDimensionText : xs:string [0..1]
+}
+class "xplan:LP_ZielDimNatSchLaPflKomplexProperty" $property {
+  LP_ZielDimNatSchLaPflKomplex : xplan:LP_ZielDimNatSchLaPflKomplex
+}
+class "xplan:LP_ZieleErfordernisseMassnahmen" <<DataType>> {
+  zieleErfordernisseMassnahmen : xplan:LP_ZEMTyp [1..*]
+  # freiraeume : xs:string [0..*]
+  # foerdermoeglichkeit : xs:string [0..*]
+}
+
+' Simple types (from <simpleType> declarations)
+class "xplan:LP_AdressatArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5100
+  5200
+  5300
+  5400
+  5500
+  6100
+  6200
+  6300
+  6400
+  6500
+  7000
+  8100
+  8200
+  8300
+  9998
+  9999
+}
+class "xplan:LP_BioVStandortFeuchte" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:LP_BioVerbundsystemArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+}
+class "xplan:LP_BioVfBestandteil" <<Enumeration>> {
+  1000
+  2000
+  4000
+  9999
+}
+class "xplan:LP_BioVfPflanzenArtRechtlicherSchutz" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9999
+}
+class "xplan:LP_BioVfPflanzenArtSystematik" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9999
+}
+class "xplan:LP_BioVfTierArtHabitatanforderung" <<Enumeration>> {
+  1000
+  2000
+  9999
+}
+class "xplan:LP_BioVfTierArtRechtlicherSchutz" <<Enumeration>> {
+  1000
+  2000
+  3000
+  5000
+  9999
+}
+class "xplan:LP_BioVfTiereArtSystematik" <<Enumeration>> {
+  1100
+  1120
+  1110
+  1200
+  1210
+  1220
+  1230
+  1240
+  1300
+  1310
+  1311
+  1312
+  1320
+  1330
+  1331
+  1340
+  1400
+  2100
+  2110
+  2120
+  2200
+  2300
+  2400
+  3000
+  3110
+  3120
+  3130
+  3140
+  3150
+  3200
+  4100
+  9999
+}
+class "xplan:LP_BodenAuspraegung" <<Enumeration>> {
+  1110
+  1120
+  1130
+  2110
+  2120
+  2130
+  2210
+  2220
+  2230
+  2240
+  3100
+  4100
+  4110
+  4120
+  5110
+  5120
+  5210
+  6100
+  6200
+  9999
+}
+class "xplan:LP_ErholungFunktionen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  2000
+  2100
+  2110
+  2120
+  2130
+  2200
+  2210
+  2300
+  2400
+  2410
+  2500
+  2600
+  2700
+  2750
+  2900
+  3000
+  3100
+  3200
+  3300
+  3400
+  4000
+  4100
+  4200
+  4300
+  5000
+  5100
+  5200
+  5300
+  5310
+  6000
+  6100
+  6200
+  7000
+  7100
+  7200
+  9999
+}
+class "xplan:LP_FlaechenTypBV" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:LP_FlaechenTypBVSpeziell" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  9999
+}
+class "xplan:LP_GesGeschBiotopTyp" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  9998
+  9999
+}
+class "xplan:LP_KlassifizierungNaturschutzrecht" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  18000
+  18001
+  2000
+  9999
+}
+class "xplan:LP_KlimaArt" <<Enumeration>> {
+  1000
+  2000
+  3100
+  3200
+  4100
+  4200
+  5000
+  6000
+  9999
+}
+class "xplan:LP_LandschaftsbildArt" <<Enumeration>> {
+  1100
+  1200
+  1300
+  1500
+  1400
+  1600
+  2100
+  2200
+  3100
+  3200
+  4100
+  4200
+  5100
+  5200
+  6100
+  6200
+  7000
+  7100
+  7200
+  7300
+  8000
+  9999
+}
+class "xplan:LP_LuftArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:LP_MassnahmenTyp" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9998
+}
+class "xplan:LP_PlanArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:LP_PlanungsEbene" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:LP_Raumkonkretisierung" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  9998
+}
+class "xplan:LP_RechtlicheSicherung" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9999
+}
+class "xplan:LP_Rechtsstand" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+}
+class "xplan:LP_RechtsstandSchutzGeb" <<Enumeration>> {
+  1000
+  2000
+  3000
+  3100
+  3200
+  4000
+  5000
+  6000
+  9998
+  9999
+}
+class "xplan:LP_SchutzPflegeEntwicklung" <<Enumeration>> {
+  1100
+  1200
+  2000
+  3000
+  3500
+  5100
+  5200
+  5300
+  9999
+}
+class "xplan:LP_SchutzgutArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9000
+  9998
+  9999
+}
+class "xplan:LP_SchutzzonenNaturschutzrecht" <<Enumeration>> {
+  1000
+  1100
+  1200
+  2000
+  2100
+  2200
+  2300
+  9999
+}
+class "xplan:LP_Umsetzungsstand" <<Enumeration>> {
+  1000
+  2000
+  9998
+}
+class "xplan:LP_WasserAuspraegung" <<Enumeration>> {
+  1100
+  1200
+  1300
+  1310
+  1320
+  1400
+  1500
+  1600
+  1700
+  2100
+  2200
+  2300
+  2400
+  3100
+  3200
+  3300
+  3400
+  3500
+  3600
+  3700
+  5100
+  5200
+  5300
+  5400
+  6100
+  6200
+  6300
+  6400
+  7100
+  7200
+  7300
+  8100
+  8200
+  9999
+}
+class "xplan:LP_ZEMTyp" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:LP_ZielDimensionTyp" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9998
+  9999
+}
+}
+
+' External types (unresolved namespaces)
+class "xplan:XP_Bereich"
+class "xplan:XP_Objekt"
+class "xplan:XP_Plan"
+
+"xplan:XP_Bereich" <|-- "xplan:LP_Bereich"
+"xplan:LP_Geometrieobjekt" <|-- "xplan:LP_BiotopverbundBiotopvernetzung"
+"xplan:LP_Geometrieobjekt" <|-- "xplan:LP_Eingriffsregelung"
+"xplan:LP_Geometrieobjekt" <|-- "xplan:LP_GenerischesObjekt"
+"xplan:LP_Objekt" <|-- "xplan:LP_Geometrieobjekt"
+"xplan:XP_Objekt" <|-- "xplan:LP_Objekt"
+"xplan:XP_Plan" <|-- "xplan:LP_Plan"
+"xplan:LP_Geometrieobjekt" <|-- "xplan:LP_SchutzBestimmterTeileVonNaturUndLandschaft"
+"xplan:LP_Geometrieobjekt" <|-- "xplan:LP_TextAbschnittObjekt"
+"xplan:LP_Geometrieobjekt" <|-- "xplan:LP_ZieleErfordernisseMassnahmen"
+
+' Class relations (promoted from property wrappers)
+"xplan:LP_Bereich" ..> "1" "xplan:LP_Plan" : gehoertZuPlan
+"xplan:LP_BiologischeVielfaltKomplex" "1" *-- "1" "xplan:LP_BiologischeVielfaltTypKomplex" : bioVielfaltTypus
+"xplan:LP_BiologischeVielfaltKomplex" "1" *-- "0..*" "xplan:LP_BioVfPflanzenArtKomplex" : bioVfPflanzenArt
+"xplan:LP_BiologischeVielfaltKomplex" "1" *-- "0..*" "xplan:LP_BioVfTiereArtKomplex" : bioVfTierArt
+"xplan:LP_BiologischeVielfaltKomplex" "1" *-- "0..*" "xplan:LP_BioVfBiotoptypKomplex" : bioVfBiotoptyp
+"xplan:LP_BiotopverbundBiotopvernetzung" "1" *-- "0..*" "xplan:LP_TypBioVerbundKomplex" : typBioVerbund
+"xplan:LP_Eingriffsregelung" "1" *-- "1..*" "xplan:LP_EingriffsregelungKomplex" : eingriffsregelungFlaechenTyp
+"xplan:LP_Objekt" "1" *-- "0..*" "xplan:LP_VorschlagIntegrationBauleitplanung" : vorschlagIntegrationBLP
+"xplan:LP_Objekt" "1" *-- "0..*" "xplan:LP_VorschlagIntegrationRaumordnung" : vorschlagIntegrationRO
+"xplan:LP_Objekt" "1" *-- "0..*" "xplan:LP_ReferenzLPObjekt" : referenziertLPObjekt
+"xplan:LP_Objekt" "1" *-- "0..*" "xplan:LP_ReferenzLPObjekt" : wirdReferenziertVon
+"xplan:LP_Plan" ..> "0..*" "xplan:LP_Bereich" : bereich
+"xplan:LP_ReferenzLPObjekt" ..> "1" "xplan:LP_Objekt" : verbundenesLPObjekt
+"xplan:LP_VorschlagIntegrationBauleitplanung" ..> "1" "xplan:XP_Objekt" : refObjektBauleitplanung
+"xplan:LP_VorschlagIntegrationRaumordnung" ..> "1" "xplan:XP_Objekt" : refObjektRaumordnung
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "1..*" "xplan:LP_SchutzgutKomplex" : schutzgut
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "1..*" "xplan:LP_ZielDimNatSchLaPflKomplex" : zielDimNatSchLaPfl
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "1..*" "xplan:LP_AdressatKomplex" : adressat
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "1..*" "xplan:LP_SPEKomplex" : schutzPflegeEntwicklung
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_BiologischeVielfaltKomplex" : biologischeVielfalt
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_BodenKomplex" : boden
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_WasserKomplex" : wasser
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_KlimaKomplex" : klima
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_LuftKomplex" : luft
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_LandschaftsbildKomplex" : landschaftsbild
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_ErholungKomplex" : erholung
+"xplan:LP_ZieleErfordernisseMassnahmen" "1" *-- "0..*" "xplan:LP_NutzungseinschraenkungKomplex" : nutzungseinschraenkung
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-04 10:25:28
+@enduml

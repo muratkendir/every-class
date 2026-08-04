@@ -1,0 +1,348 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplangml_fplan - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+class "xplan:FP_Abgrabung" <<DataType>> {
+  # abbaugut : xs:string [0..1]
+}
+class "xplan:FP_AnpassungKlimawandel" <<DataType>> {
+  massnahme : xplan:FP_MassnahmeKlimawandelTypen [0..1]
+  # detailMassnahme : gml:Code [0..1]
+}
+class "xplan:FP_Aufschuettung" <<DataType>> {
+  # aufschuettungsmaterial : xs:string [0..1]
+}
+class "xplan:FP_AusgleichsFlaeche" <<DataType>> {
+  ziel : xplan:XP_SPEZiele [0..1]
+  # sonstZiel : xs:string [0..1]
+  massnahme : xplan:XP_SPEMassnahmenDaten [0..*]
+  refMassnahmenText : xplan:XP_ExterneReferenz [0..1]
+  refLandschaftsplan : xplan:XP_ExterneReferenz [0..1]
+}
+class "xplan:FP_BebauungsFlaeche" <<DataType>> {
+  # GFZ : xs:double [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZdurchschnittlich : xs:double [0..1]
+  # BMZ : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  allgArtDerBaulNutzung : xplan:XP_AllgArtDerBaulNutzung [0..1]
+  besondereArtDerBaulNutzung : xplan:XP_BesondereArtDerBaulNutzung [0..1]
+  # detaillierteArtDerBaulNutzung : gml:Code [0..1]
+  abweichungBauNVO : xplan:XP_AbweichungBauNVOTypen [0..1]
+}
+class "xplan:FP_Bereich" <<DataType>>
+class "xplan:FP_DarstellungNachLandesrecht" <<DataType>> {
+  # detailZweckbestimmung : gml:Code [0..*]
+  # kurzbeschreibung : xs:string [0..1]
+}
+class "xplan:FP_FlaecheOhneDarstellung" <<DataType>>
+abstract class "xplan:FP_Flaechenobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean
+}
+abstract class "xplan:FP_Flaechenschlussobjekt" <<DataType>>
+class "xplan:FP_Gemeinbedarf" <<DataType>> {
+  traeger : xplan:XP_Traegerschaft [0..1]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:FP_GenerischesObjekt" <<DataType>> {
+  # zweckbestimmung : gml:Code [0..*]
+}
+abstract class "xplan:FP_Geometrieobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean [0..1]
+  # flussrichtung : xs:boolean [0..1]
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:FP_Gruen" <<DataType>> {
+  nutzungsform : xplan:XP_Nutzungsform [0..1]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:FP_KeineZentrAbwasserBeseitigungFlaeche" <<DataType>>
+class "xplan:FP_Kennzeichnung" <<DataType>> {
+  zweckbestimmung : xplan:XP_ZweckbestimmungKennzeichnung [0..*]
+  # istVerdachtsflaeche : xs:boolean [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:FP_KomplexeSondernutzung" <<DataType>> {
+  allgemein : xplan:XP_Sondernutzungen
+  # detail : gml:Code [0..*]
+  # nutzungText : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:FP_KomplexeSondernutzungProperty" $property {
+  FP_KomplexeSondernutzung : xplan:FP_KomplexeSondernutzung
+}
+class "xplan:FP_KomplexeZweckbestGemeinbedarf" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungGemeinbedarf
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:FP_KomplexeZweckbestGemeinbedarfProperty" $property {
+  FP_KomplexeZweckbestGemeinbedarf : xplan:FP_KomplexeZweckbestGemeinbedarf
+}
+class "xplan:FP_KomplexeZweckbestGruen" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungGruen
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:FP_KomplexeZweckbestGruenProperty" $property {
+  FP_KomplexeZweckbestGruen : xplan:FP_KomplexeZweckbestGruen
+}
+class "xplan:FP_KomplexeZweckbestLandwirtschaft" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungLandwirtschaft
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:FP_KomplexeZweckbestLandwirtschaftProperty" $property {
+  FP_KomplexeZweckbestLandwirtschaft : xplan:FP_KomplexeZweckbestLandwirtschaft
+}
+class "xplan:FP_KomplexeZweckbestSpielSportanlage" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungSpielSportanlage
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:FP_KomplexeZweckbestSpielSportanlageProperty" $property {
+  FP_KomplexeZweckbestSpielSportanlage : xplan:FP_KomplexeZweckbestSpielSportanlage
+}
+class "xplan:FP_KomplexeZweckbestVerEntsorgung" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungVerEntsorgung
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:FP_KomplexeZweckbestVerEntsorgungProperty" $property {
+  FP_KomplexeZweckbestVerEntsorgung : xplan:FP_KomplexeZweckbestVerEntsorgung
+}
+class "xplan:FP_KomplexeZweckbestWald" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungWald
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:FP_KomplexeZweckbestWaldProperty" $property {
+  FP_KomplexeZweckbestWald : xplan:FP_KomplexeZweckbestWald
+}
+class "xplan:FP_Landwirtschaft" <<DataType>>
+abstract class "xplan:FP_Linienobjekt" <<DataType>> {
+  # position : gml:Geometry
+}
+class "xplan:FP_NatuerlicherKlimaschutz" <<DataType>> {
+  handlungsfeld : xplan:XP_HandlungsfeldNatuerlicherKlimaschutz
+  # massnahmen : xs:string [0..1]
+}
+class "xplan:FP_Nutzungsbeschraenkung" <<DataType>> {
+  # nutzung : xs:string [0..1]
+  typ : xplan:XP_ImmissionsschutzTypen [0..1]
+  technVorkehrung : xplan:XP_TechnVorkehrungenImmissionsschutz [0..1]
+  # detaillierteTechnVorkehrung : gml:Code [0..1]
+}
+abstract class "xplan:FP_Objekt" <<DataType>> {
+  # spezifischePraegung : gml:Code [0..1]
+  # vonGenehmigungAusgenommen : xs:boolean [0..1]
+}
+class "xplan:FP_Plan" <<DataType>> {
+  gemeinde : xplan:XP_Gemeinde [1..*]
+  planaufstellendeGemeinde : xplan:XP_Gemeinde [0..*]
+  plangeber : xplan:XP_Plangeber [0..1]
+  planArt : xplan:FP_PlanArt
+  # sonstPlanArt : gml:Code [0..1]
+  # sachgebiet : xs:string [0..1]
+  verfahren : xplan:FP_Verfahren [0..1]
+  rechtsstand : xplan:FP_Rechtsstand [0..1]
+  # status : gml:Code [0..1]
+  # aufstellungsbeschlussDatum : xs:date [0..1]
+  # fruehzeitigeOeffentlichkeitsbeteiligungsStartDatum : xs:date [0..1]
+  # fruehzeitigeOeffentlichkeitsbeteiligungsEndDatum : xs:date [0..1]
+  # fruehzeitigeTraegerbeteiligungsStartDatum : xs:date [0..1]
+  # fruehzeitigeTraegerbeteiligungsEndDatum : xs:date [0..1]
+  # auslegungsStartDatum : xs:date [0..*]
+  # auslegungsEndDatum : xs:date [0..*]
+  # traegerbeteiligungsStartDatum : xs:date [0..*]
+  # traegerbeteiligungsEndDatum : xs:date [0..*]
+  # aenderungenBisDatum : xs:date [0..1]
+  # entwurfsbeschlussDatum : xs:date [0..1]
+  # planbeschlussDatum : xs:date [0..1]
+  # wirksamkeitsDatum : xs:date [0..1]
+  versionBauNVO : xplan:XP_GesetzlicheGrundlage [0..1]
+  versionBauGB : xplan:XP_GesetzlicheGrundlage [0..1]
+  versionSonstRechtsgrundlage : xplan:XP_GesetzlicheGrundlage [0..*]
+}
+class "xplan:FP_PrivilegiertesVorhaben" <<DataType>> {
+  zweckbestimmung : xplan:FP_ZweckbestimmungPrivilegiertesVorhaben [0..*]
+  # vorhaben : xs:string [0..1]
+}
+abstract class "xplan:FP_Punktobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:FP_SchutzPflegeEntwicklung" <<DataType>> {
+  ziel : xplan:XP_SPEZiele [0..1]
+  # sonstZiel : xs:string [0..1]
+  massnahme : xplan:XP_SPEMassnahmenDaten [0..*]
+  # istAusgleich : xs:boolean [0..1]
+  refMassnahmenText : xplan:XP_ExterneReferenz [0..1]
+  refLandschaftsplan : xplan:XP_ExterneReferenz [0..1]
+  eRFlaechenArt : xplan:XP_ERFlaechenArt [0..1]
+}
+class "xplan:FP_SpielSportanlage" <<DataType>> {
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:FP_TextAbschnittFlaeche" <<DataType>>
+abstract class "xplan:FP_Ueberlagerungsobjekt" <<DataType>>
+class "xplan:FP_UnverbindlicheVormerkung" <<DataType>> {
+  # vormerkung : xs:string [0..1]
+  # istSuchraum : xs:boolean [0..1]
+}
+class "xplan:FP_VerEntsorgung" <<DataType>> {
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:FP_VorbehalteFlaeche" <<DataType>> {
+  # vorbehalt : xs:string [0..1]
+}
+class "xplan:FP_WaldFlaeche" <<DataType>> {
+  eigentumsart : xplan:XP_EigentumsartWald [0..1]
+  betreten : xplan:XP_WaldbetretungTyp [0..*]
+}
+class "xplan:FP_ZentralerVersorgungsbereich" <<DataType>> {
+  # auspraegung : gml:Code [0..1]
+}
+
+' Simple types (from <simpleType> declarations)
+class "xplan:FP_MassnahmeKlimawandelTypen" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  9999
+}
+class "xplan:FP_PlanArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  9999
+}
+class "xplan:FP_Rechtsstand" <<Enumeration>> {
+  1000
+  2000
+  2100
+  2200
+  2250
+  2300
+  2400
+  3000
+  4000
+  5000
+  50000
+  50001
+}
+class "xplan:FP_Verfahren" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:FP_ZweckbestimmungPrivilegiertesVorhaben" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  10003
+  10004
+  1200
+  12000
+  12001
+  12002
+  12003
+  12004
+  12005
+  1400
+  1600
+  16000
+  16001
+  16002
+  1800
+  18000
+  18001
+  18002
+  18003
+  2000
+  20000
+  20001
+  9999
+  99990
+  99991
+}
+}
+
+' External types (unresolved namespaces)
+class "xplan:XP_Bereich"
+class "xplan:XP_Objekt"
+class "xplan:XP_Plan"
+
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_Abgrabung"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_AnpassungKlimawandel"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_Aufschuettung"
+"xplan:FP_Flaechenobjekt" <|-- "xplan:FP_AusgleichsFlaeche"
+"xplan:FP_Flaechenschlussobjekt" <|-- "xplan:FP_BebauungsFlaeche"
+"xplan:XP_Bereich" <|-- "xplan:FP_Bereich"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_DarstellungNachLandesrecht"
+"xplan:FP_Flaechenschlussobjekt" <|-- "xplan:FP_FlaecheOhneDarstellung"
+"xplan:FP_Objekt" <|-- "xplan:FP_Flaechenobjekt"
+"xplan:FP_Flaechenobjekt" <|-- "xplan:FP_Flaechenschlussobjekt"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_Gemeinbedarf"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_GenerischesObjekt"
+"xplan:FP_Objekt" <|-- "xplan:FP_Geometrieobjekt"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_Gruen"
+"xplan:FP_Flaechenobjekt" <|-- "xplan:FP_KeineZentrAbwasserBeseitigungFlaeche"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_Kennzeichnung"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_Landwirtschaft"
+"xplan:FP_Objekt" <|-- "xplan:FP_Linienobjekt"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_NatuerlicherKlimaschutz"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_Nutzungsbeschraenkung"
+"xplan:XP_Objekt" <|-- "xplan:FP_Objekt"
+"xplan:XP_Plan" <|-- "xplan:FP_Plan"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_PrivilegiertesVorhaben"
+"xplan:FP_Objekt" <|-- "xplan:FP_Punktobjekt"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_SchutzPflegeEntwicklung"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_SpielSportanlage"
+"xplan:FP_Ueberlagerungsobjekt" <|-- "xplan:FP_TextAbschnittFlaeche"
+"xplan:FP_Flaechenobjekt" <|-- "xplan:FP_Ueberlagerungsobjekt"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_UnverbindlicheVormerkung"
+"xplan:FP_Geometrieobjekt" <|-- "xplan:FP_VerEntsorgung"
+"xplan:FP_Flaechenobjekt" <|-- "xplan:FP_VorbehalteFlaeche"
+"xplan:FP_Flaechenschlussobjekt" <|-- "xplan:FP_WaldFlaeche"
+"xplan:FP_Ueberlagerungsobjekt" <|-- "xplan:FP_ZentralerVersorgungsbereich"
+
+' Class relations (promoted from property wrappers)
+"xplan:FP_BebauungsFlaeche" "1" *-- "0..*" "xplan:FP_KomplexeSondernutzung" : sondernutzung
+"xplan:FP_Bereich" ..> "1" "xplan:FP_Plan" : gehoertZuPlan
+"xplan:FP_Gemeinbedarf" "1" *-- "0..*" "xplan:FP_KomplexeZweckbestGemeinbedarf" : zweckbestimmung
+"xplan:FP_Gruen" "1" *-- "0..*" "xplan:FP_KomplexeZweckbestGruen" : zweckbestimmung
+"xplan:FP_Landwirtschaft" "1" *-- "0..*" "xplan:FP_KomplexeZweckbestLandwirtschaft" : zweckbestimmung
+"xplan:FP_Objekt" ..> "0..*" "xplan:FP_AusgleichsFlaeche" : wirdAusgeglichenDurchFlaeche
+"xplan:FP_Objekt" ..> "0..*" "xplan:FP_SchutzPflegeEntwicklung" : wirdAusgeglichenDurchSPE
+"xplan:FP_Plan" ..> "0..*" "xplan:FP_Bereich" : bereich
+"xplan:FP_SpielSportanlage" "1" *-- "0..*" "xplan:FP_KomplexeZweckbestSpielSportanlage" : zweckbestimmung
+"xplan:FP_VerEntsorgung" "1" *-- "0..*" "xplan:FP_KomplexeZweckbestVerEntsorgung" : zweckbestimmung
+"xplan:FP_WaldFlaeche" "1" *-- "0..*" "xplan:FP_KomplexeZweckbestWald" : zweckbestimmung
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-04 10:25:28
+@enduml

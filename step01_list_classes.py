@@ -71,7 +71,8 @@ def qualify(name: str, prefix: str | None) -> str:
 
 NAME_MAP = {"citygml": "CityGML", "gml": "GML", "indoorgml": "IndoorGML",
             "infragml": "InfraGML", "kml": "KML", "pipelineml": "PipelineML",
-            "xlink": "XLink", "filter": "Filter", "georss": "GeoRSS"}
+            "xlink": "XLink", "filter": "Filter", "georss": "GeoRSS",
+            "xplanung": "XPlanung"}
 
 
 def model_version(xsd_path: Path) -> tuple[str | None, str | None]:

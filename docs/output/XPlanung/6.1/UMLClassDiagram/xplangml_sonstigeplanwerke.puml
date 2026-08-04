@@ -1,0 +1,511 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplangml_sonstigeplanwerke - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+class "xplan:SO_Baubeschraenkung" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizBaubeschraenkung [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  rechtlicheGrundlage : xplan:SO_RechtlicheGrundlageBaubeschraenkung [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_Bereich" <<DataType>>
+class "xplan:SO_Bodenschutzrecht" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizNachBodenschutzrecht [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # istVerdachtsflaeche : xs:boolean [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_Denkmalschutzrecht" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizNachDenkmalschutzrecht [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # weltkulturerbe : xs:boolean [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_Festpunkt" <<DataType>> {
+  typ : xplan:SO_FestpunktTyp
+  # bezeichnung : xs:string
+  # messzeitpunkt : xs:date [0..1]
+}
+abstract class "xplan:SO_Flaechenobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean
+}
+class "xplan:SO_Forstrecht" <<DataType>> {
+  artDerFestlegung : xplan:XP_EigentumsartWald [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  funktion : xplan:XP_ZweckbestimmungWald [0..*]
+  betreten : xplan:XP_WaldbetretungTyp [0..*]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_Gebiet" <<DataType>> {
+  gemeinde : xplan:XP_Gemeinde [0..1]
+  gebietsArt : xplan:SO_GebietsArt [0..1]
+  # sonstGebietsArt : gml:Code [0..1]
+  rechtsstandGebiet : xplan:SO_RechtsstandGebietTyp [0..1]
+  # sonstRechtsstandGebiet : gml:Code [0..1]
+  # aufstellungsbeschhlussDatum : xs:date [0..1]
+  # durchfuehrungStartDatum : xs:date [0..1]
+  # durchfuehrungEndDatum : xs:date [0..1]
+  # traegerMassnahme : xs:string [0..1]
+}
+class "xplan:SO_Gelaendemorphologie" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizGelaendemorphologie [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+abstract class "xplan:SO_Geometrieobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean [0..1]
+  # flussrichtung : xs:boolean [0..1]
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:SO_Gewaesser" <<DataType>> {
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_Grenze" <<DataType>> {
+  typ : xplan:XP_GrenzeTypen [0..1]
+  # sonstTyp : gml:Code [0..1]
+}
+class "xplan:SO_KomplexeFestlegungGewaesser" <<DataType>> {
+  allgemein : xplan:SO_KlassifizGewaesser
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:SO_KomplexeFestlegungGewaesserProperty" $property {
+  SO_KomplexeFestlegungGewaesser : xplan:SO_KomplexeFestlegungGewaesser
+}
+class "xplan:SO_KomplexeZweckbestStrassenverkehr" <<DataType>> {
+  allgemein : xplan:SO_ZweckbestimmungStrassenverkehr
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:SO_KomplexeZweckbestStrassenverkehrProperty" $property {
+  SO_KomplexeZweckbestStrassenverkehr : xplan:SO_KomplexeZweckbestStrassenverkehr
+}
+class "xplan:SO_Linienobjekt" <<DataType>> {
+  # position : gml:Geometry
+}
+class "xplan:SO_Luftverkehrsrecht" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizNachLuftverkehrsrecht [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+  laermschutzzone : xplan:SO_LaermschutzzoneTypen [0..1]
+}
+class "xplan:SO_Objekt" <<DataType>> {
+  # sonstRechtscharakter : gml:Code [0..1]
+  # vonGenehmigungAusgenommen : xs:boolean [0..1]
+  laermkontingent : xplan:BP_EmissionskontingentLaerm [0..1]
+  laermkontingentGebiet : xplan:BP_EmissionskontingentLaermGebiet [0..*]
+}
+class "xplan:SO_Plan" <<DataType>> {
+  gemeinde : xplan:XP_Gemeinde [0..*]
+  planaufstellendeGemeinde : xplan:XP_Gemeinde [0..*]
+  # planArt : gml:Code
+  plangeber : xplan:XP_Plangeber [0..1]
+  # versionBauGBDatum : xs:date [0..1]
+  # versionBauGBText : xs:string [0..1]
+  # versionSonstRechtsgrundlageDatum : xs:date [0..1]
+  # versionSonstRechtsgrundlageText : xs:string [0..1]
+  versionBauGB : xplan:XP_GesetzlicheGrundlage [0..1]
+  versionSonstRechtsgrundlage : xplan:XP_GesetzlicheGrundlage [0..*]
+}
+abstract class "xplan:SO_Punktobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:SO_Schienenverkehrsrecht" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizNachSchienenverkehrsrecht [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_SchutzgebietWasserrecht" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizSchutzgebietWasserrecht [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  zone : xplan:SO_SchutzzonenWasserrecht [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_Sichtflaeche" <<DataType>> {
+  art : xplan:SO_SichtflaecheArt [0..1]
+  knotenpunkt : xplan:SO_SichtflaecheKnotenpunktTypen [0..1]
+  # geschwindigkeit : gml:Speed [0..1]
+  # schenkellaenge : gml:Length [0..1]
+}
+class "xplan:SO_SonstigesRecht" <<DataType>> {
+  # nummer : xs:string [0..1]
+  artDerFestlegung : xplan:SO_KlassifizNachSonstigemRecht [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # name : xs:string [0..1]
+}
+class "xplan:SO_Strassenverkehr" <<DataType>> {
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  einteilung : xplan:SO_StrassenEinteilung [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+  # istOrtsdurchfahrt : xs:boolean [0..1]
+  nutzungsform : xplan:XP_Nutzungsform [0..1]
+  # zugunstenVon : xs:string [0..1]
+  # hatDarstellungMitBesondZweckbest : xs:boolean
+}
+class "xplan:SO_TextAbschnittFlaeche" <<DataType>>
+class "xplan:SO_TextAbschnittFlaecheProperty" $property {
+  SO_TextAbschnittFlaeche : xplan:SO_TextAbschnittFlaeche
+}
+class "xplan:SO_Wasserrecht" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizNachWasserrecht [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # istNatuerlichesUberschwemmungsgebiet : xs:boolean [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:SO_Wasserwirtschaft" <<DataType>> {
+  artDerFestlegung : xplan:SO_KlassifizWasserwirtschaft [0..1]
+  # detailArtDerFestlegung : gml:Code [0..1]
+  # name : xs:string [0..1]
+  # nummer : xs:string [0..1]
+}
+
+' Simple types (from <simpleType> declarations)
+class "xplan:SO_FestpunktTyp" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:SO_GebietsArt" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  17000
+  17001
+  17002
+  2300
+  2400
+  2500
+  9999
+}
+class "xplan:SO_KlassifizBaubeschraenkung" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9999
+}
+class "xplan:SO_KlassifizGelaendemorphologie" <<Enumeration>> {
+  1000
+  1100
+  1200
+  9999
+}
+class "xplan:SO_KlassifizGewaesser" <<Enumeration>> {
+  1000
+  2000
+  20000
+  20001
+  20002
+  3000
+  4000
+  40000
+  5000
+  6000
+  9999
+}
+class "xplan:SO_KlassifizNachBodenschutzrecht" <<Enumeration>> {
+  1000
+  2000
+  20000
+  20001
+  20002
+  3000
+}
+class "xplan:SO_KlassifizNachDenkmalschutzrecht" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  9999
+}
+class "xplan:SO_KlassifizNachLuftverkehrsrecht" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  4500
+  5000
+  5200
+  5400
+  6000
+  9999
+}
+class "xplan:SO_KlassifizNachSchienenverkehrsrecht" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  10003
+  1100
+  1200
+  12000
+  12001
+  12002
+  12003
+  12004
+  12005
+  1400
+  14000
+  14001
+  14002
+  14003
+  9999
+}
+class "xplan:SO_KlassifizNachSonstigemRecht" <<Enumeration>> {
+  1100
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  9999
+}
+class "xplan:SO_KlassifizNachWasserrecht" <<Enumeration>> {
+  2000
+  20000
+  20001
+  20002
+  3000
+  4000
+  5000
+  9999
+}
+class "xplan:SO_KlassifizSchutzgebietWasserrecht" <<Enumeration>> {
+  1000
+  10000
+  10001
+  2000
+  9999
+}
+class "xplan:SO_KlassifizWasserwirtschaft" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1450
+  1500
+  9999
+}
+class "xplan:SO_LaermschutzzoneTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:SO_RechtlicheGrundlageBaubeschraenkung" <<Enumeration>> {
+  1000
+  2000
+  9999
+}
+class "xplan:SO_RechtsstandGebietTyp" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  9999
+}
+class "xplan:SO_SchutzzonenWasserrecht" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+}
+class "xplan:SO_SichtflaecheArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:SO_SichtflaecheKnotenpunktTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  9999
+}
+class "xplan:SO_StrassenEinteilung" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  9999
+}
+class "xplan:SO_ZweckbestimmungStrassenverkehr" <<Enumeration>> {
+  1000
+  1200
+  1400
+  14000
+  14001
+  14002
+  14003
+  14004
+  14005
+  14006
+  14007
+  14008
+  14009
+  140010
+  140011
+  140012
+  140013
+  14014
+  14015
+  1600
+  16000
+  16001
+  16002
+  16003
+  16004
+  16005
+  16006
+  3400
+  3500
+  9999
+}
+}
+
+' External types (unresolved namespaces)
+class "xplan:BP_AnpflanzungBindungErhaltung"
+class "xplan:BP_AusgleichsFlaeche"
+class "xplan:BP_AusgleichsMassnahme"
+class "xplan:BP_RichtungssektorGrenze"
+class "xplan:BP_SchutzPflegeEntwicklungsFlaeche"
+class "xplan:BP_SchutzPflegeEntwicklungsMassnahme"
+class "xplan:BP_StrassenbegrenzungsLinie"
+class "xplan:BP_ZusatzkontingentLaerm"
+class "xplan:BP_ZusatzkontingentLaermFlaeche"
+class "xplan:FP_AusgleichsFlaeche"
+class "xplan:FP_SchutzPflegeEntwicklung"
+class "xplan:XP_Bereich"
+class "xplan:XP_Objekt"
+class "xplan:XP_Plan"
+
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Baubeschraenkung"
+"xplan:XP_Bereich" <|-- "xplan:SO_Bereich"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Bodenschutzrecht"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Denkmalschutzrecht"
+"xplan:SO_Punktobjekt" <|-- "xplan:SO_Festpunkt"
+"xplan:SO_Objekt" <|-- "xplan:SO_Flaechenobjekt"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Forstrecht"
+"xplan:SO_Flaechenobjekt" <|-- "xplan:SO_Gebiet"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Gelaendemorphologie"
+"xplan:SO_Objekt" <|-- "xplan:SO_Geometrieobjekt"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Gewaesser"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Grenze"
+"xplan:SO_Objekt" <|-- "xplan:SO_Linienobjekt"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Luftverkehrsrecht"
+"xplan:XP_Objekt" <|-- "xplan:SO_Objekt"
+"xplan:XP_Plan" <|-- "xplan:SO_Plan"
+"xplan:SO_Objekt" <|-- "xplan:SO_Punktobjekt"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Schienenverkehrsrecht"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_SchutzgebietWasserrecht"
+"xplan:SO_Flaechenobjekt" <|-- "xplan:SO_Sichtflaeche"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_SonstigesRecht"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Strassenverkehr"
+"xplan:SO_Flaechenobjekt" <|-- "xplan:SO_TextAbschnittFlaeche"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Wasserrecht"
+"xplan:SO_Geometrieobjekt" <|-- "xplan:SO_Wasserwirtschaft"
+
+' Class relations (promoted from property wrappers)
+"xplan:SO_Bereich" ..> "1" "xplan:SO_Plan" : gehoertZuPlan
+"xplan:SO_Gewaesser" "1" *-- "0..*" "xplan:SO_KomplexeFestlegungGewaesser" : artDerFestlegung
+"xplan:SO_Objekt" ..> "0..*" "xplan:FP_AusgleichsFlaeche" : wirdAusgeglichenDurchFPFlaeche
+"xplan:SO_Objekt" ..> "0..*" "xplan:FP_SchutzPflegeEntwicklung" : wirdAusgeglichenDurchFPSPE
+"xplan:SO_Objekt" ..> "0..*" "xplan:BP_AusgleichsFlaeche" : wirdAusgeglichenDurchBPFlaeche
+"xplan:SO_Objekt" ..> "0..*" "xplan:BP_AnpflanzungBindungErhaltung" : wirdAusgeglichenDurchBPABE
+"xplan:SO_Objekt" ..> "0..*" "xplan:BP_SchutzPflegeEntwicklungsMassnahme" : wirdAusgeglichenDurchBPSPEMassnahme
+"xplan:SO_Objekt" ..> "0..*" "xplan:BP_SchutzPflegeEntwicklungsFlaeche" : wirdAusgeglichenDurchBPSPEFlaeche
+"xplan:SO_Objekt" ..> "0..*" "xplan:BP_AusgleichsMassnahme" : wirdAusgeglichenDurchBPMassnahme
+"xplan:SO_Objekt" ..> "0..1" "xplan:BP_ZusatzkontingentLaerm" : zusatzkontingent
+"xplan:SO_Objekt" ..> "0..*" "xplan:BP_ZusatzkontingentLaermFlaeche" : zusatzkontingentFlaeche
+"xplan:SO_Objekt" ..> "0..*" "xplan:BP_RichtungssektorGrenze" : richtungssektorGrenze
+"xplan:SO_Plan" ..> "0..*" "xplan:SO_Bereich" : bereich
+"xplan:SO_Strassenverkehr" "1" *-- "0..*" "xplan:SO_KomplexeZweckbestStrassenverkehr" : artDerFestlegung
+"xplan:SO_Strassenverkehr" ..> "0..*" "xplan:BP_StrassenbegrenzungsLinie" : begrenzungslinie
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-04 10:25:28
+@enduml
