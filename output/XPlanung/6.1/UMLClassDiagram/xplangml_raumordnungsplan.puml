@@ -1,0 +1,996 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplangml_raumordnungsplan - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+class "xplan:RP_Achse" <<DataType>> {
+  typ : xplan:RP_AchsenTypen [0..*]
+}
+class "xplan:RP_Bereich" <<DataType>> {
+  # versionBROG : xs:date [0..1]
+  # versionBROGText : xs:string [0..1]
+  # versionLPLG : xs:date [0..1]
+  # versionLPLGText : xs:string [0..1]
+  # geltungsmassstab : xs:integer [0..1]
+}
+class "xplan:RP_Bodenschutz" <<DataType>> {
+  typ : xplan:RP_BodenschutzTypen [0..1]
+}
+class "xplan:RP_Einzelhandel" <<DataType>> {
+  typ : xplan:RP_EinzelhandelTypen [0..*]
+}
+class "xplan:RP_Energieversorgung" <<DataType>> {
+  typ : xplan:RP_EnergieversorgungTypen [0..*]
+  primaerenergieTyp : xplan:RP_PrimaerenergieTypen [0..*]
+  spannung : xplan:RP_SpannungTypen [0..1]
+}
+class "xplan:RP_Entsorgung" <<DataType>> {
+  typAE : xplan:RP_AbfallentsorgungTypen [0..*]
+  abfallTyp : xplan:RP_AbfallTypen [0..*]
+  typAW : xplan:RP_AbwasserTypen [0..*]
+  # istAufschuettungAblagerung : xs:boolean [0..1]
+}
+class "xplan:RP_Erholung" <<DataType>> {
+  typErholung : xplan:RP_ErholungTypen [0..*]
+  typTourismus : xplan:RP_TourismusTypen [0..*]
+  besondererTyp : xplan:RP_BesondereTourismusErholungTypen [0..1]
+}
+class "xplan:RP_ErneuerbareEnergie" <<DataType>> {
+  typ : xplan:RP_ErneuerbareEnergieTypen [0..1]
+}
+class "xplan:RP_Forstwirtschaft" <<DataType>> {
+  typ : xplan:RP_ForstwirtschaftTypen [0..1]
+}
+class "xplan:RP_Freiraum" <<DataType>> {
+  # istAusgleichsgebiet : xs:boolean [0..1]
+  # imVerbund : xs:boolean [0..1]
+}
+class "xplan:RP_Funktionszuweisung" <<DataType>> {
+  typ : xplan:RP_FunktionszuweisungTypen [1..*]
+  # bezeichnung : xs:string [0..1]
+}
+class "xplan:RP_GenerischesObjekt" <<DataType>> {
+  # typ : gml:Code [0..*]
+}
+abstract class "xplan:RP_Geometrieobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean [0..1]
+  # flussrichtung : xs:boolean [0..1]
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:RP_Gewaesser" <<DataType>> {
+  # gewaesserTyp : xs:string [0..1]
+}
+class "xplan:RP_Grenze" <<DataType>> {
+  typ : xplan:XP_GrenzeTypen [0..*]
+  spezifischerTyp : xplan:RP_SpezifischeGrenzeTypen [0..1]
+  # sonstTyp : gml:Code [0..1]
+}
+class "xplan:RP_GruenzugGruenzaesur" <<DataType>> {
+  typ : xplan:RP_ZaesurTypen [0..*]
+}
+class "xplan:RP_Hochwasserschutz" <<DataType>> {
+  typ : xplan:RP_HochwasserschutzTypen [0..*]
+}
+class "xplan:RP_IndustrieGewerbe" <<DataType>> {
+  typ : xplan:RP_IndustrieGewerbeTypen [0..*]
+}
+class "xplan:RP_Klimaschutz" <<DataType>> {
+  typ : xplan:RP_KlimaschutzTypen [0..*]
+}
+class "xplan:RP_Kommunikation" <<DataType>> {
+  typ : xplan:RP_KommunikationTypen [0..1]
+}
+class "xplan:RP_Kulturlandschaft" <<DataType>> {
+  typ : xplan:RP_KulturlandschaftTypen [0..1]
+}
+class "xplan:RP_LaermschutzBauschutz" <<DataType>> {
+  typ : xplan:RP_LaermschutzTypen [0..1]
+}
+class "xplan:RP_Landwirtschaft" <<DataType>> {
+  typ : xplan:RP_LandwirtschaftTypen [0..1]
+}
+class "xplan:RP_Luftverkehr" <<DataType>> {
+  typ : xplan:RP_LuftverkehrTypen [0..*]
+}
+class "xplan:RP_NaturLandschaft" <<DataType>> {
+  typ : xplan:RP_NaturLandschaftTypen [0..*]
+}
+class "xplan:RP_NaturschutzrechtlichesSchutzgebiet" <<DataType>> {
+  typ : xplan:LP_KlassifizierungNaturschutzrecht [0..*]
+  # istKernzone : xs:boolean [0..1]
+}
+abstract class "xplan:RP_Objekt" <<DataType>> {
+  # konkretisierung : xs:string [0..1]
+  gebietsTyp : xplan:RP_GebietsTyp [0..*]
+  # kuestenmeer : xs:boolean [0..1]
+  bedeutsamkeit : xplan:RP_Bedeutsamkeit [0..*]
+  # istZweckbindung : xs:boolean [0..1]
+  # gebietskategorie : gml:Code [0..1]
+}
+class "xplan:RP_Plan" <<DataType>> {
+  bundesland : xplan:XP_Bundeslaender [1..*]
+  planArt : xplan:RP_Art
+  # sonstPlanArt : gml:Code [0..1]
+  # planungsregion : xs:integer [0..1]
+  # teilabschnitt : xs:integer [0..1]
+  rechtsstand : xplan:RP_Rechtsstand [0..1]
+  # status : gml:Code [0..1]
+  # aufstellungsbeschlussDatum : xs:date [0..1]
+  # auslegungStartDatum : xs:date [0..*]
+  # auslegungEndDatum : xs:date [0..*]
+  # traegerbeteiligungsStartDatum : xs:date [0..*]
+  # traegerbeteiligungsEndDatum : xs:date [0..*]
+  # aenderungenBisDatum : xs:date [0..1]
+  # entwurfsbeschlussDatum : xs:date [0..1]
+  # planbeschlussDatum : xs:date [0..1]
+  # datumDesInkrafttretens : xs:date [0..1]
+  verfahren : xplan:RP_Verfahren [0..1]
+  # amtlicherSchluessel : xs:string [0..1]
+  # genehmigungsbehoerde : xs:string [0..1]
+}
+class "xplan:RP_Planungsraum" <<DataType>> {
+  # planungsraumBeschreibung : xs:string [0..1]
+}
+class "xplan:RP_RadwegWanderweg" <<DataType>> {
+  typ : xplan:RP_RadwegWanderwegTypen [0..*]
+}
+class "xplan:RP_Raumkategorie" <<DataType>> {
+  besondererTyp : xplan:RP_BesondereRaumkategorieTypen [0..1]
+  typ : xplan:RP_RaumkategorieTypen [0..*]
+}
+class "xplan:RP_Rohstoff" <<DataType>> {
+  rohstoffTyp : xplan:RP_RohstoffTypen [0..*]
+  # detaillierterRohstoffTyp : xs:string [0..*]
+  folgenutzung : xplan:RP_BergbauFolgenutzung [0..*]
+  # folgenutzungText : xs:string [0..1]
+  zeitstufe : xplan:RP_Zeitstufen [0..1]
+  # zeitstufeText : xs:string [0..1]
+  tiefe : xplan:RP_BodenschatzTiefen [0..1]
+  bergbauplanungTyp : xplan:RP_BergbauplanungTypen [0..*]
+  # istAufschuettungAblagerung : xs:boolean [0..1]
+}
+class "xplan:RP_Schienenverkehr" <<DataType>> {
+  typ : xplan:RP_SchienenverkehrTypen [0..*]
+  besondererTyp : xplan:RP_BesondererSchienenverkehrTypen [0..*]
+}
+class "xplan:RP_Siedlung" <<DataType>> {
+  # bauhoehenbeschraenkung : xs:integer [0..1]
+  # istSiedlungsbeschraenkung : xs:boolean [0..1]
+}
+class "xplan:RP_SonstVerkehr" <<DataType>> {
+  typ : xplan:RP_SonstVerkehrTypen [0..*]
+}
+class "xplan:RP_SonstigeInfrastruktur" <<DataType>>
+class "xplan:RP_SonstigerFreiraumschutz" <<DataType>>
+class "xplan:RP_SonstigerSiedlungsbereich" <<DataType>>
+class "xplan:RP_SozialeInfrastruktur" <<DataType>> {
+  typ : xplan:RP_SozialeInfrastrukturTypen [0..*]
+}
+class "xplan:RP_Sperrgebiet" <<DataType>> {
+  typ : xplan:RP_SperrgebietTypen [0..1]
+}
+class "xplan:RP_Sportanlage" <<DataType>> {
+  typ : xplan:RP_SportanlageTypen [0..1]
+}
+class "xplan:RP_Strassenverkehr" <<DataType>> {
+  typ : xplan:RP_StrassenverkehrTypen [0..*]
+  besondererTyp : xplan:RP_BesondererStrassenverkehrTypen [0..*]
+}
+class "xplan:RP_TextAbschnittObjekt" <<DataType>>
+class "xplan:RP_Verkehr" <<DataType>> {
+  allgemeinerTyp : xplan:RP_VerkehrTypen [0..*]
+  status : xplan:RP_VerkehrStatus [0..*]
+  # bezeichnung : xs:string [0..1]
+}
+class "xplan:RP_Wasserschutz" <<DataType>> {
+  typ : xplan:RP_WasserschutzTypen [0..1]
+  zone : xplan:RP_WasserschutzZonen [0..*]
+}
+class "xplan:RP_Wasserverkehr" <<DataType>> {
+  typ : xplan:RP_WasserverkehrTypen [0..*]
+}
+class "xplan:RP_Wasserwirtschaft" <<DataType>> {
+  typ : xplan:RP_WasserwirtschaftTypen [0..*]
+}
+class "xplan:RP_WohnenSiedlung" <<DataType>> {
+  typ : xplan:RP_WohnenSiedlungTypen [0..*]
+}
+class "xplan:RP_ZentralerOrt" <<DataType>> {
+  typ : xplan:RP_ZentralerOrtTypen [1..*]
+  sonstigerTyp : xplan:RP_ZentralerOrtSonstigeTypen [0..*]
+}
+
+' Simple types (from <simpleType> declarations)
+class "xplan:RP_AbfallTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  9999
+}
+class "xplan:RP_AbfallentsorgungTypen" <<Enumeration>> {
+  1000
+  1100
+  1101
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  9999
+}
+class "xplan:RP_AbwasserTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:RP_AchsenTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  3001
+  3002
+  3003
+  4000
+  5000
+  6000
+  9999
+}
+class "xplan:RP_Art" <<Enumeration>> {
+  1000
+  2000
+  2001
+  3000
+  4000
+  5000
+  5001
+  6000
+  9999
+}
+class "xplan:RP_Bedeutsamkeit" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9000
+}
+class "xplan:RP_BergbauFolgenutzung" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9000
+  9999
+}
+class "xplan:RP_BergbauplanungTypen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  1900
+  9999
+}
+class "xplan:RP_BesondereRaumkategorieTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:RP_BesondereTourismusErholungTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:RP_BesondererSchienenverkehrTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  2000
+  3000
+  3001
+  4000
+  4001
+  5000
+  6000
+  6001
+  7000
+  7001
+  8000
+  8001
+}
+class "xplan:RP_BesondererStrassenverkehrTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  1003
+  2000
+  3000
+}
+class "xplan:RP_BodenschatzTiefen" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:RP_BodenschutzTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:RP_EinzelhandelTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9000
+  9999
+}
+class "xplan:RP_EnergieversorgungTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  2000
+  2001
+  3000
+  3001
+  3002
+  4000
+  4001
+  4002
+  5000
+  6000
+  7000
+  8000
+  9999
+}
+class "xplan:RP_ErholungTypen" <<Enumeration>> {
+  1000
+  2000
+  2001
+  3000
+  3001
+  4000
+  5000
+  5001
+  6000
+  7000
+  9999
+}
+class "xplan:RP_ErneuerbareEnergieTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  9999
+}
+class "xplan:RP_ForstwirtschaftTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  1100
+  2000
+  2001
+  2002
+  3000
+  3001
+  4000
+  9999
+}
+class "xplan:RP_FunktionszuweisungTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9000
+  9999
+}
+class "xplan:RP_GebietsTyp" <<Enumeration>> {
+  1000
+  1001
+  1100
+  1101
+  1200
+  1300
+  1310
+  1400
+  1500
+  1501
+  1600
+  1700
+  1800
+  9999
+}
+class "xplan:RP_HochwasserschutzTypen" <<Enumeration>> {
+  1000
+  1001
+  1100
+  1101
+  1102
+  1200
+  1300
+  1301
+  1302
+  1303
+  1400
+  1500
+  1600
+  1700
+  1800
+  1801
+  9999
+}
+class "xplan:RP_IndustrieGewerbeTypen" <<Enumeration>> {
+  1000
+  1001
+  2000
+  2001
+  2002
+  2003
+  3000
+  3001
+  4000
+  5000
+  6000
+  7000
+  8000
+  9000
+  9999
+}
+class "xplan:RP_KlimaschutzTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  9999
+}
+class "xplan:RP_KommunikationTypen" <<Enumeration>> {
+  1000
+  2000
+  2001
+  2002
+  9999
+}
+class "xplan:RP_KulturlandschaftTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:RP_LaermschutzTypen" <<Enumeration>> {
+  1000
+  1001
+  2000
+  3000
+  4000
+  5000
+  9999
+}
+class "xplan:RP_LandwirtschaftTypen" <<Enumeration>> {
+  1000
+  1001
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9999
+}
+class "xplan:RP_LuftverkehrTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  1003
+  1004
+  1005
+  2000
+  2001
+  2002
+  2003
+  3000
+  4000
+  5000
+  5001
+  5002
+  5003
+  9999
+}
+class "xplan:RP_NaturLandschaftTypen" <<Enumeration>> {
+  1000
+  1100
+  1101
+  1200
+  1300
+  1301
+  1400
+  1500
+  1501
+  1600
+  1700
+  1701
+  1702
+  1703
+  1704
+  1705
+  1706
+  1707
+  1708
+  1800
+  1900
+  2000
+  2100
+  2200
+  2300
+  2400
+  2500
+  2600
+  9999
+}
+class "xplan:RP_PrimaerenergieTypen" <<Enumeration>> {
+  1000
+  2000
+  2001
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9000
+  9001
+  9999
+}
+class "xplan:RP_RadwegWanderwegTypen" <<Enumeration>> {
+  1000
+  1001
+  2000
+  2001
+  3000
+  4000
+  9999
+}
+class "xplan:RP_RaumkategorieTypen" <<Enumeration>> {
+  1000
+  1001
+  1100
+  1101
+  1102
+  1103
+  1104
+  1105
+  1106
+  1200
+  1201
+  1202
+  1203
+  1300
+  1301
+  1400
+  1500
+  1600
+  1700
+  1800
+  1900
+  2000
+  2100
+  2200
+  2300
+  2400
+  2500
+  9999
+}
+class "xplan:RP_Rechtsstand" <<Enumeration>> {
+  1000
+  2000
+  2001
+  2002
+  2003
+  2004
+  3000
+  4000
+  5000
+  5500
+  6000
+  7000
+}
+class "xplan:RP_RohstoffTypen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  1900
+  2000
+  2100
+  2200
+  2300
+  2400
+  2500
+  2600
+  2700
+  2800
+  2900
+  3000
+  3100
+  3200
+  3300
+  3400
+  3500
+  3600
+  3700
+  3800
+  3900
+  4000
+  4100
+  4200
+  4300
+  4400
+  4500
+  4600
+  4700
+  4800
+  4900
+  5000
+  5100
+  5200
+  5300
+  5400
+  5500
+  5600
+  5700
+  5800
+  5900
+  6000
+  6100
+  6200
+  6300
+  6400
+  6500
+  6600
+  6700
+  6800
+  6900
+  7000
+  7100
+  7200
+  7300
+  7400
+  7500
+  9999
+}
+class "xplan:RP_SchienenverkehrTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  1100
+  1200
+  1300
+  1301
+  1302
+  1303
+  1400
+  1500
+  1600
+  1700
+  1800
+  1801
+  9999
+}
+class "xplan:RP_SonstVerkehrTypen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  1900
+  2000
+  2001
+  9999
+}
+class "xplan:RP_SozialeInfrastrukturTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  3001
+  4000
+  4001
+  5000
+  9999
+}
+class "xplan:RP_SpannungTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+}
+class "xplan:RP_SperrgebietTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  4001
+  5000
+  6000
+  9999
+}
+class "xplan:RP_SpezifischeGrenzeTypen" <<Enumeration>> {
+  1000
+  1001
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+}
+class "xplan:RP_SportanlageTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  9999
+}
+class "xplan:RP_StrassenverkehrTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  1003
+  1004
+  1005
+  1006
+  1007
+  2000
+  3000
+  4000
+  5000
+  6000
+  9999
+}
+class "xplan:RP_TourismusTypen" <<Enumeration>> {
+  1000
+  2000
+  9999
+}
+class "xplan:RP_Verfahren" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+}
+class "xplan:RP_VerkehrStatus" <<Enumeration>> {
+  1000
+  1001
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  9999
+}
+class "xplan:RP_VerkehrTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  9999
+}
+class "xplan:RP_WasserschutzTypen" <<Enumeration>> {
+  1000
+  2000
+  2001
+  2002
+  3000
+  4000
+  5000
+  6000
+  7000
+  9999
+}
+class "xplan:RP_WasserschutzZonen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:RP_WasserverkehrTypen" <<Enumeration>> {
+  1000
+  1001
+  1002
+  1003
+  1004
+  2000
+  3000
+  4000
+  4001
+  4002
+  4003
+  5000
+  9999
+}
+class "xplan:RP_WasserwirtschaftTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+  8000
+  8100
+  9999
+}
+class "xplan:RP_WohnenSiedlungTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  3001
+  3002
+  3003
+  3004
+  4000
+  5000
+  9999
+}
+class "xplan:RP_ZaesurTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:RP_Zeitstufen" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:RP_ZentralerOrtSonstigeTypen" <<Enumeration>> {
+  1000
+  1100
+  1101
+  1102
+  1200
+  1300
+  1301
+  1302
+  1400
+  1500
+  1501
+  1600
+  1700
+  1800
+  1900
+  2000
+  2100
+  2101
+  2200
+}
+class "xplan:RP_ZentralerOrtTypen" <<Enumeration>> {
+  1000
+  1001
+  1500
+  2000
+  2500
+  3000
+  3001
+  3500
+  4000
+  5000
+  6000
+  6001
+  7000
+  8000
+  9000
+  9999
+}
+}
+
+' External types (unresolved namespaces)
+class "xplan:XP_Bereich"
+class "xplan:XP_Objekt"
+class "xplan:XP_Plan"
+
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Achse"
+"xplan:XP_Bereich" <|-- "xplan:RP_Bereich"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Bodenschutz"
+"xplan:RP_Siedlung" <|-- "xplan:RP_Einzelhandel"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Energieversorgung"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Entsorgung"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Erholung"
+"xplan:RP_Freiraum" <|-- "xplan:RP_ErneuerbareEnergie"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Forstwirtschaft"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Freiraum"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Funktionszuweisung"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_GenerischesObjekt"
+"xplan:RP_Objekt" <|-- "xplan:RP_Geometrieobjekt"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Gewaesser"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Grenze"
+"xplan:RP_Freiraum" <|-- "xplan:RP_GruenzugGruenzaesur"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Hochwasserschutz"
+"xplan:RP_Siedlung" <|-- "xplan:RP_IndustrieGewerbe"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Klimaschutz"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Kommunikation"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Kulturlandschaft"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_LaermschutzBauschutz"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Landwirtschaft"
+"xplan:RP_Verkehr" <|-- "xplan:RP_Luftverkehr"
+"xplan:RP_Freiraum" <|-- "xplan:RP_NaturLandschaft"
+"xplan:RP_Freiraum" <|-- "xplan:RP_NaturschutzrechtlichesSchutzgebiet"
+"xplan:XP_Objekt" <|-- "xplan:RP_Objekt"
+"xplan:XP_Plan" <|-- "xplan:RP_Plan"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Planungsraum"
+"xplan:RP_Freiraum" <|-- "xplan:RP_RadwegWanderweg"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Raumkategorie"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Rohstoff"
+"xplan:RP_Verkehr" <|-- "xplan:RP_Schienenverkehr"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Siedlung"
+"xplan:RP_Verkehr" <|-- "xplan:RP_SonstVerkehr"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_SonstigeInfrastruktur"
+"xplan:RP_Freiraum" <|-- "xplan:RP_SonstigerFreiraumschutz"
+"xplan:RP_Siedlung" <|-- "xplan:RP_SonstigerSiedlungsbereich"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_SozialeInfrastruktur"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Sperrgebiet"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Sportanlage"
+"xplan:RP_Verkehr" <|-- "xplan:RP_Strassenverkehr"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_TextAbschnittObjekt"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Verkehr"
+"xplan:RP_Freiraum" <|-- "xplan:RP_Wasserschutz"
+"xplan:RP_Verkehr" <|-- "xplan:RP_Wasserverkehr"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_Wasserwirtschaft"
+"xplan:RP_Siedlung" <|-- "xplan:RP_WohnenSiedlung"
+"xplan:RP_Geometrieobjekt" <|-- "xplan:RP_ZentralerOrt"
+
+' Class relations (promoted from property wrappers)
+"xplan:RP_Bereich" ..> "1" "xplan:RP_Plan" : gehoertZuPlan
+"xplan:RP_Plan" ..> "0..*" "xplan:RP_Bereich" : bereich
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-04 10:25:28
+@enduml

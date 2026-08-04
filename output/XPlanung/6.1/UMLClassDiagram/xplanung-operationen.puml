@@ -1,0 +1,24 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplanung-operationen - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+class "xplan:XPlanAuszug" <<ObjectType>>
+class "xplan:XPlanAuszugProperty" $property {
+  XPlanAuszug : xplan:XPlanAuszug
+}
+}
+
+' External types (unresolved namespaces)
+abstract class "gml:AbstractFeatureCollection"
+
+"gml:AbstractFeatureCollection" <|-- "xplan:XPlanAuszug"
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+footer Generated on 2026-08-04 10:25:28
+@enduml

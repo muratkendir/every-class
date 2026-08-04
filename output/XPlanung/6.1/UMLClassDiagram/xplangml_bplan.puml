@@ -1,0 +1,1243 @@
+@startuml
+title
+  XPlanung - 6.1 - Xplangml_bplan - Only XSD based
+  http://www.xplanung.de/xplangml/6/1
+end title
+
+package xplan {
+class "xplan:BP_AbgrabungsFlaeche" <<DataType>> {
+  # abbaugut : xs:string [0..1]
+}
+class "xplan:BP_AbstandsFlaeche" <<DataType>> {
+  # tiefe : gml:Length [0..1]
+}
+class "xplan:BP_AbstandsMass" <<DataType>> {
+  typ : xplan:BP_AbstandsMassTypen [0..1]
+  # wert : gml:Measure [0..1]
+  # startWinkel : gml:Angle [0..1]
+  # endWinkel : gml:Angle [0..1]
+}
+class "xplan:BP_AbweichungVonBaugrenze" <<DataType>>
+class "xplan:BP_AbweichungVonUeberbaubarerGrundstuecksFlaeche" <<DataType>>
+class "xplan:BP_AnpflanzungBindungErhaltung" <<DataType>> {
+  massnahme : xplan:XP_ABEMassnahmenTypen [0..1]
+  gegenstand : xplan:XP_AnpflanzungBindungErhaltungsGegenstand [0..*]
+  # erlaeuterung : xs:string [0..1]
+  # kronendurchmesser : gml:Length [0..1]
+  # stammdurchmesser : gml:Length [0..1]
+  # pflanztiefe : gml:Length [0..1]
+  # istAusgleich : xs:boolean [0..1]
+  # pflanzenArt : xs:string [0..1]
+  # mindesthoehe : gml:Length [0..1]
+  # anzahl : xs:integer [0..1]
+  eRFlaechenArt : xplan:XP_ERFlaechenArt [0..1]
+}
+class "xplan:BP_AufschuettungsFlaeche" <<DataType>> {
+  # aufschuettungsmaterial : xs:string [0..1]
+}
+class "xplan:BP_AusgleichsFlaeche" <<DataType>> {
+  ziel : xplan:XP_SPEZiele [0..1]
+  # sonstZiel : xs:string [0..1]
+  massnahme : xplan:XP_SPEMassnahmenDaten [0..*]
+  refMassnahmenText : xplan:XP_ExterneReferenz [0..1]
+  refLandschaftsplan : xplan:XP_ExterneReferenz [0..1]
+}
+class "xplan:BP_AusgleichsMassnahme" <<DataType>> {
+  ziel : xplan:XP_SPEZiele [0..1]
+  # sonstZiel : xs:string [0..1]
+  massnahme : xplan:XP_SPEMassnahmenDaten [0..*]
+  refMassnahmenText : xplan:XP_ExterneReferenz [0..1]
+  refLandschaftsplan : xplan:XP_ExterneReferenz [0..1]
+}
+class "xplan:BP_BauGrenze" <<DataType>> {
+  # bautiefe : gml:Length [0..1]
+  # geschossMin : xs:integer [0..1]
+  # geschossMax : xs:integer [0..1]
+}
+class "xplan:BP_BauLinie" <<DataType>> {
+  # bautiefe : gml:Length [0..1]
+  # geschossMin : xs:integer [0..1]
+  # geschossMax : xs:integer [0..1]
+}
+class "xplan:BP_BaugebietsTeilFlaeche" <<DataType>> {
+  # FR : gml:Angle [0..1]
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  wohnnutzungEGStrasse : xplan:BP_Zulaessigkeit [0..1]
+  # ZWohn : xs:integer [0..1]
+  # GFAntWohnen : gml:Scale [0..1]
+  # GFWohnen : gml:Area [0..1]
+  # GFAntGewerbe : gml:Scale [0..1]
+  # GFGewerbe : gml:Area [0..1]
+  # VF : gml:Area [0..1]
+  allgArtDerBaulNutzung : xplan:XP_AllgArtDerBaulNutzung [0..1]
+  besondereArtDerBaulNutzung : xplan:XP_BesondereArtDerBaulNutzung [0..1]
+  # detaillierteArtDerBaulNutzung : gml:Code [0..1]
+  abweichungBauNVO : xplan:XP_AbweichungBauNVOTypen [0..1]
+  bauweise : xplan:BP_Bauweise [0..1]
+  # bauweiseText : xs:string [0..1]
+  # abweichendeBauweise : gml:Code [0..1]
+  # vertikaleDifferenzierung : xs:boolean [0..1]
+  bebauungsArt : xplan:BP_BebauungsArt [0..1]
+  bebauungVordereGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungRueckwaertigeGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungSeitlicheGrenze : xplan:BP_GrenzBebauung [0..1]
+  refGebaeudequerschnitt : xplan:XP_ExterneReferenz [0..*]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:BP_Bereich" <<DataType>> {
+  verfahren : xplan:BP_Verfahren [0..1]
+}
+class "xplan:BP_BereichOhneEinAusfahrtLinie" <<DataType>> {
+  typ : xplan:BP_BereichOhneEinAusfahrtTypen [0..1]
+}
+class "xplan:BP_BesondererNutzungszweckFlaeche" <<DataType>> {
+  # FR : gml:Angle [0..1]
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  # zweckbestimmung : xs:string [0..1]
+  bauweise : xplan:BP_Bauweise [0..1]
+  # bauweiseText : xs:string [0..1]
+  # abweichendeBauweise : gml:Code [0..1]
+  bebauungsArt : xplan:BP_BebauungsArt [0..1]
+}
+class "xplan:BP_Dachgestaltung" <<DataType>> {
+  # DNmin : gml:Angle [0..1]
+  # DNmax : gml:Angle [0..1]
+  # DN : gml:Angle [0..1]
+  # DNzwingend : gml:Angle [0..1]
+  dachform : xplan:BP_Dachform [0..*]
+  # detaillierteDachform : gml:Code [0..*]
+  ausschlussDachform : xplan:BP_Dachform [0..1]
+  hoehenangabe : xplan:XP_Hoehenangabe [0..*]
+}
+class "xplan:BP_DachgestaltungProperty" $property {
+  BP_Dachgestaltung : xplan:BP_Dachgestaltung
+}
+class "xplan:BP_EinfahrtPunkt" <<DataType>> {
+  typ : xplan:BP_EinfahrtTypen [0..1]
+}
+class "xplan:BP_EinfahrtsbereichLinie" <<DataType>> {
+  typ : xplan:BP_EinfahrtTypen [0..1]
+}
+class "xplan:BP_EingriffsBereich" <<DataType>>
+class "xplan:BP_EmissionskontingentLaerm" <<DataType>> {
+  pegelTyp : xplan:BP_SchallleistungspegelTypen
+  berechnungsgrundlage : xplan:BP_SchallleistungspegelBerechnungsgrundlage
+  # berechnungsgrundlageDatum : xs:date [0..1]
+  # ekwertTag : gml:Measure
+  # ekwertNacht : gml:Measure
+  # erlaeuterung : xs:string [0..1]
+}
+class "xplan:BP_EmissionskontingentLaermProperty" $property {
+  BP_EmissionskontingentLaerm : xplan:BP_EmissionskontingentLaerm
+}
+class "xplan:BP_EmissionskontingentLaermGebiet" <<DataType>> {
+  # gebietsbezeichnung : xs:string
+}
+class "xplan:BP_EmissionskontingentLaermGebietProperty" $property {
+  BP_EmissionskontingentLaermGebiet : xplan:BP_EmissionskontingentLaermGebiet
+}
+class "xplan:BP_FestsetzungNachLandesrecht" <<DataType>> {
+  # kurzbeschreibung : xs:string [0..1]
+  # nutzung : gml:Code [0..1]
+}
+class "xplan:BP_FlaecheOhneFestsetzung" <<DataType>>
+abstract class "xplan:BP_Flaechenobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean
+}
+abstract class "xplan:BP_Flaechenschlussobjekt" <<DataType>>
+class "xplan:BP_FoerderungsFlaeche" <<DataType>>
+class "xplan:BP_FreiFlaeche" <<DataType>> {
+  # nutzung : xs:string [0..1]
+}
+class "xplan:BP_GebaeudeFlaeche" <<DataType>>
+class "xplan:BP_GebaeudeStellung" <<DataType>> {
+  typ : xplan:BP_GebaeudeStellungTypen
+}
+class "xplan:BP_GebaeudeTyp" <<DataType>> {
+  # FR : gml:Angle [0..1]
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  wohnnutzungEGStrasse : xplan:BP_Zulaessigkeit [0..1]
+  # ZWohn : xs:integer [0..1]
+  # GFAntWohnen : gml:Scale [0..1]
+  # GFWohnen : gml:Area [0..1]
+  # GFAntGewerbe : gml:Scale [0..1]
+  # GFGewerbe : gml:Area [0..1]
+  # VF : gml:Area [0..1]
+  # bezeichnung : xs:string [0..1]
+  bauweise : xplan:BP_Bauweise [0..1]
+  # bauweiseText : xs:string [0..1]
+  # abweichendeBauweise : gml:Code [0..1]
+  # vertikaleDifferenzierung : xs:boolean [0..1]
+  bebauungsArt : xplan:BP_BebauungsArt [0..1]
+  bebauungVordereGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungRueckwaertigeGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungSeitlicheGrenze : xplan:BP_GrenzBebauung [0..1]
+  refGebaeudequerschnitt : xplan:XP_ExterneReferenz [0..*]
+}
+class "xplan:BP_GemeinbedarfsFlaeche" <<DataType>> {
+  # FR : gml:Angle [0..1]
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  bauweise : xplan:BP_Bauweise [0..1]
+  # bauweiseText : xs:string [0..1]
+  # abweichendeBauweise : gml:Code [0..1]
+  bebauungsArt : xplan:BP_BebauungsArt [0..1]
+  traeger : xplan:XP_Traegerschaft [0..1]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:BP_GemeinschaftsanlagenFlaeche" <<DataType>> {
+  # Zmax : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+}
+class "xplan:BP_GemeinschaftsanlagenZuordnung" <<DataType>>
+class "xplan:BP_GenerischesObjekt" <<DataType>> {
+  # zweckbestimmung : gml:Code [0..*]
+}
+abstract class "xplan:BP_Geometrieobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # flaechenschluss : xs:boolean [0..1]
+  # flussrichtung : xs:boolean [0..1]
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:BP_GruenFlaeche" <<DataType>> {
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  nutzungsform : xplan:XP_Nutzungsform [0..1]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:BP_HoehenFestsetzung" <<DataType>>
+class "xplan:BP_HoehenMass" <<DataType>> {
+  # datum : xs:date [0..1]
+  quelle : xplan:BP_HoehenmassQuelle [0..1]
+}
+class "xplan:BP_ImmissionsortLaerm" <<DataType>> {
+  # bezeichnung : xs:string [0..1]
+}
+class "xplan:BP_Immissionsschutz" <<DataType>> {
+  # nutzung : xs:string [0..1]
+  laermpegelbereich : xplan:BP_Laermpegelbereich [0..1]
+  # sonstLaermpegelbereich : gml:Code [0..1]
+  # massgeblAussenLaermpegelTag : gml:Measure [0..1]
+  # massgeblAussenLaermpegelNacht : gml:Measure [0..1]
+  typ : xplan:XP_ImmissionsschutzTypen [0..1]
+  technVorkehrung : xplan:XP_TechnVorkehrungenImmissionsschutz [0..1]
+  # detaillierteTechnVorkehrung : gml:Code [0..1]
+}
+class "xplan:BP_KennzeichnungsFlaeche" <<DataType>> {
+  zweckbestimmung : xplan:XP_ZweckbestimmungKennzeichnung [0..*]
+  # istVerdachtsflaeche : xs:boolean [0..1]
+  # nummer : xs:string [0..1]
+}
+class "xplan:BP_KleintierhaltungFlaeche" <<DataType>>
+class "xplan:BP_KomplexeSondernutzung" <<DataType>> {
+  allgemein : xplan:XP_Sondernutzungen
+  # detail : gml:Code [0..*]
+  # nutzungText : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeSondernutzungProperty" $property {
+  BP_KomplexeSondernutzung : xplan:BP_KomplexeSondernutzung
+}
+class "xplan:BP_KomplexeZweckbestGemeinbedarf" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungGemeinbedarf
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestGemeinbedarfProperty" $property {
+  BP_KomplexeZweckbestGemeinbedarf : xplan:BP_KomplexeZweckbestGemeinbedarf
+}
+class "xplan:BP_KomplexeZweckbestGemeinschaftsanlagen" <<DataType>> {
+  allgemein : xplan:BP_ZweckbestimmungGemeinschaftsanlagen
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestGemeinschaftsanlagenProperty" $property {
+  BP_KomplexeZweckbestGemeinschaftsanlagen : xplan:BP_KomplexeZweckbestGemeinschaftsanlagen
+}
+class "xplan:BP_KomplexeZweckbestGruen" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungGruen
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestGruenProperty" $property {
+  BP_KomplexeZweckbestGruen : xplan:BP_KomplexeZweckbestGruen
+}
+class "xplan:BP_KomplexeZweckbestLandwirtschaft" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungLandwirtschaft
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestLandwirtschaftProperty" $property {
+  BP_KomplexeZweckbestLandwirtschaft : xplan:BP_KomplexeZweckbestLandwirtschaft
+}
+class "xplan:BP_KomplexeZweckbestNebenanlagen" <<DataType>> {
+  allgemein : xplan:BP_ZweckbestimmungNebenanlagen
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestNebenanlagenProperty" $property {
+  BP_KomplexeZweckbestNebenanlagen : xplan:BP_KomplexeZweckbestNebenanlagen
+}
+class "xplan:BP_KomplexeZweckbestSpielSportanlage" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungSpielSportanlage
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestSpielSportanlageProperty" $property {
+  BP_KomplexeZweckbestSpielSportanlage : xplan:BP_KomplexeZweckbestSpielSportanlage
+}
+class "xplan:BP_KomplexeZweckbestVerEntsorgung" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungVerEntsorgung
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestVerEntsorgungProperty" $property {
+  BP_KomplexeZweckbestVerEntsorgung : xplan:BP_KomplexeZweckbestVerEntsorgung
+}
+class "xplan:BP_KomplexeZweckbestWald" <<DataType>> {
+  allgemein : xplan:XP_ZweckbestimmungWald
+  # detail : gml:Code [0..*]
+  # textlicheErgaenzung : xs:string [0..1]
+  # aufschrift : xs:string [0..1]
+}
+class "xplan:BP_KomplexeZweckbestWaldProperty" $property {
+  BP_KomplexeZweckbestWald : xplan:BP_KomplexeZweckbestWald
+}
+class "xplan:BP_LandwirtschaftsFlaeche" <<DataType>>
+abstract class "xplan:BP_Linienobjekt" <<DataType>> {
+  # position : gml:Geometry
+}
+class "xplan:BP_NatuerlicherKlimaschutz" <<DataType>> {
+  handlungsfeld : xplan:XP_HandlungsfeldNatuerlicherKlimaschutz
+  # massnahmen : xs:string [0..1]
+}
+class "xplan:BP_NebenanlagenAusschlussFlaeche" <<DataType>> {
+  typ : xplan:BP_NebenanlagenAusschlussTyp [0..1]
+}
+class "xplan:BP_NebenanlagenFlaeche" <<DataType>> {
+  # Zmax : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+}
+class "xplan:BP_NichtUeberbaubareGrundstuecksflaeche" <<DataType>> {
+  # nutzung : gml:Code [0..1]
+}
+class "xplan:BP_NutzungsartenGrenze" <<DataType>> {
+  typ : xplan:BP_AbgrenzungenTypen [0..1]
+  # detailTyp : gml:Code [0..1]
+}
+abstract class "xplan:BP_Objekt" <<DataType>>
+class "xplan:BP_PersGruppenBestimmteFlaeche" <<DataType>>
+class "xplan:BP_Plan" <<DataType>> {
+  gemeinde : xplan:XP_Gemeinde [1..*]
+  planaufstellendeGemeinde : xplan:XP_Gemeinde [0..*]
+  plangeber : xplan:XP_Plangeber [0..1]
+  planArt : xplan:BP_PlanArt [1..*]
+  # sonstPlanArt : gml:Code [0..1]
+  rechtsstand : xplan:BP_Rechtsstand [0..1]
+  # status : gml:Code [0..1]
+  # aenderungenBisDatum : xs:date [0..1]
+  # aufstellungsbeschlussDatum : xs:date [0..1]
+  # fruehzeitigeOeffentlichkeitsbeteiligungsStartDatum : xs:date [0..1]
+  # fruehzeitigeOeffentlichkeitsbeteiligungsEndDatum : xs:date [0..1]
+  # fruehzeitigeTraegerbeteiligungsStartDatum : xs:date [0..1]
+  # fruehzeitigeTraegerbeteiligungsEndDatum : xs:date [0..1]
+  # auslegungsStartDatum : xs:date [0..*]
+  # auslegungsEndDatum : xs:date [0..*]
+  # traegerbeteiligungsStartDatum : xs:date [0..*]
+  # traegerbeteiligungsEndDatum : xs:date [0..*]
+  # satzungsbeschlussDatum : xs:date [0..1]
+  # rechtsverordnungsDatum : xs:date [0..1]
+  # inkrafttretensDatum : xs:date [0..1]
+  # ausfertigungsDatum : xs:date [0..1]
+  # staedtebaulicherVertrag : xs:boolean [0..1]
+  # erschliessungsVertrag : xs:boolean [0..1]
+  # durchfuehrungsVertrag : xs:boolean [0..1]
+  # gruenordnungsplan : xs:boolean [0..1]
+  versionBauNVO : xplan:XP_GesetzlicheGrundlage [0..1]
+  versionBauGB : xplan:XP_GesetzlicheGrundlage [0..1]
+  versionSonstRechtsgrundlage : xplan:XP_GesetzlicheGrundlage [0..*]
+}
+abstract class "xplan:BP_Punktobjekt" <<DataType>> {
+  # position : gml:Geometry
+  # nordwinkel : gml:Angle [0..1]
+}
+class "xplan:BP_RegelungVergnuegungsstaetten" <<DataType>> {
+  zulaessigkeit : xplan:BP_Zulaessigkeit [0..1]
+}
+class "xplan:BP_Richtungssektor" <<DataType>> {
+  # winkelAnfang : gml:Angle
+  # winkelEnde : gml:Angle
+  # zkWertTag : gml:Measure
+  # zkWertNacht : gml:Measure
+}
+class "xplan:BP_RichtungssektorProperty" $property {
+  BP_Richtungssektor : xplan:BP_Richtungssektor
+}
+class "xplan:BP_RichtungssektorGrenze" <<DataType>> {
+  # winkel : gml:Angle [0..1]
+}
+class "xplan:BP_SchutzPflegeEntwicklungsFlaeche" <<DataType>> {
+  ziel : xplan:XP_SPEZiele [0..1]
+  # sonstZiel : xs:string [0..1]
+  massnahme : xplan:XP_SPEMassnahmenDaten [0..*]
+  # istAusgleich : xs:boolean [0..1]
+  refMassnahmenText : xplan:XP_ExterneReferenz [0..1]
+  refLandschaftsplan : xplan:XP_ExterneReferenz [0..1]
+  nutzungsform : xplan:XP_Nutzungsform [0..1]
+  eRFlaechenArt : xplan:XP_ERFlaechenArt [0..1]
+}
+class "xplan:BP_SchutzPflegeEntwicklungsMassnahme" <<DataType>> {
+  ziel : xplan:XP_SPEZiele [0..1]
+  # sonstZiel : xs:string [0..1]
+  massnahme : xplan:XP_SPEMassnahmenDaten [0..*]
+  # istAusgleich : xs:boolean [0..1]
+  refMassnahmenText : xplan:XP_ExterneReferenz [0..1]
+  refLandschaftsplan : xplan:XP_ExterneReferenz [0..1]
+  nutzungsform : xplan:XP_Nutzungsform [0..1]
+  eRFlaechenArt : xplan:XP_ERFlaechenArt [0..1]
+}
+class "xplan:BP_SpezielleBauweise" <<DataType>> {
+  typ : xplan:BP_SpezielleBauweiseTypen [0..1]
+  # sonstTyp : gml:Code [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # geschossMin : xs:integer [0..1]
+  # geschossMax : xs:integer [0..1]
+}
+class "xplan:BP_SpielSportanlagenFlaeche" <<DataType>> {
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:BP_StrassenbegrenzungsLinie" <<DataType>> {
+  # bautiefe : gml:Length [0..1]
+}
+class "xplan:BP_Strassenkoerper" <<DataType>> {
+  typ : xplan:BP_StrassenkoerperHerstellung
+}
+class "xplan:BP_TechnischeMassnahmenFlaeche" <<DataType>> {
+  zweckbestimmung : xplan:BP_ZweckbestimmungenTMF
+  # technischeMassnahme : xs:string [0..1]
+}
+class "xplan:BP_TechnischeMassnahmenFlaecheProperty" $property {
+  BP_TechnischeMassnahmenFlaeche : xplan:BP_TechnischeMassnahmenFlaeche
+}
+class "xplan:BP_TextAbschnittFlaeche" <<DataType>>
+class "xplan:BP_UeberbaubareGrundstuecksFlaeche" <<DataType>> {
+  # FR : gml:Angle [0..1]
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  wohnnutzungEGStrasse : xplan:BP_Zulaessigkeit [0..1]
+  # ZWohn : xs:integer [0..1]
+  # GFAntWohnen : gml:Scale [0..1]
+  # GFWohnen : gml:Area [0..1]
+  # GFAntGewerbe : gml:Scale [0..1]
+  # GFGewerbe : gml:Area [0..1]
+  # VF : gml:Area [0..1]
+  bauweise : xplan:BP_Bauweise [0..1]
+  # bauweiseText : xs:string [0..1]
+  # abweichendeBauweise : gml:Code [0..1]
+  # vertikaleDifferenzierung : xs:boolean [0..1]
+  bebauungsArt : xplan:BP_BebauungsArt [0..1]
+  bebauungVordereGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungRueckwaertigeGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungSeitlicheGrenze : xplan:BP_GrenzBebauung [0..1]
+  refGebaeudequerschnitt : xplan:XP_ExterneReferenz [0..*]
+  # geschossMin : xs:integer [0..1]
+  # geschossMax : xs:integer [0..1]
+}
+abstract class "xplan:BP_Ueberlagerungsobjekt" <<DataType>>
+class "xplan:BP_UnverbindlicheVormerkung" <<DataType>> {
+  # vormerkung : xs:string [0..1]
+  typ : xplan:BP_UnverbindlicheVormerkungTypen [0..1]
+}
+class "xplan:BP_VerEntsorgung" <<DataType>> {
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:BP_Veraenderungssperre" <<DataType>>
+class "xplan:BP_VeraenderungssperreDaten" <<DataType>> {
+  # startDatum : xs:date
+  # endDatum : xs:date
+  verlaengerung : xplan:BP_VerlaengerungVeraenderungssperre
+  # beschlussDatum : xs:date [0..1]
+  refBeschluss : xplan:XP_ExterneReferenz [0..1]
+}
+class "xplan:BP_VeraenderungssperreDatenProperty" $property {
+  BP_VeraenderungssperreDaten : xplan:BP_VeraenderungssperreDaten
+}
+class "xplan:BP_WaldFlaeche" <<DataType>> {
+  eigentumsart : xplan:XP_EigentumsartWald [0..1]
+  betreten : xplan:XP_WaldbetretungTyp [0..*]
+}
+class "xplan:BP_Wegerecht" <<DataType>> {
+  typ : xplan:BP_WegerechtTypen [0..*]
+  # zugunstenVon : xs:string [0..1]
+  # thema : xs:string [0..1]
+  # breite : gml:Length [0..1]
+  # istSchmal : xs:boolean [0..1]
+}
+class "xplan:BP_WohngebaeudeFlaeche" <<DataType>> {
+  # FR : gml:Angle [0..1]
+  # MaxZahlWohnungen : xs:integer [0..1]
+  # MinGRWohneinheit : gml:Area [0..1]
+  # Fmin : gml:Area [0..1]
+  # Fmax : gml:Area [0..1]
+  # Bmin : gml:Length [0..1]
+  # Bmax : gml:Length [0..1]
+  # Tmin : gml:Length [0..1]
+  # Tmax : gml:Length [0..1]
+  # GFZmin : xs:double [0..1]
+  # GFZmax : xs:double [0..1]
+  # GFZ : xs:double [0..1]
+  # GFZ_Ausn : xs:double [0..1]
+  # GFmin : gml:Area [0..1]
+  # GFmax : gml:Area [0..1]
+  # GF : gml:Area [0..1]
+  # GF_Ausn : gml:Area [0..1]
+  # BMZ : xs:double [0..1]
+  # BMZ_Ausn : xs:double [0..1]
+  # BM : gml:Volume [0..1]
+  # BM_Ausn : gml:Volume [0..1]
+  # GRZmin : xs:double [0..1]
+  # GRZmax : xs:double [0..1]
+  # GRZ : xs:double [0..1]
+  # GRZ_Ausn : xs:double [0..1]
+  # GRZ_Abw : xs:double [0..1]
+  # GRmin : gml:Area [0..1]
+  # GRmax : gml:Area [0..1]
+  # GR : gml:Area [0..1]
+  # GR_Ausn : gml:Area [0..1]
+  # GR_Abw : xs:double [0..1]
+  # Zmin : xs:integer [0..1]
+  # Zmax : xs:integer [0..1]
+  # Zzwingend : xs:integer [0..1]
+  # Z : xs:integer [0..1]
+  # Z_Ausn : xs:integer [0..1]
+  # Z_Staffel : xs:integer [0..1]
+  # Z_Dach : xs:integer [0..1]
+  # ZUmin : xs:integer [0..1]
+  # ZUmax : xs:integer [0..1]
+  # ZUzwingend : xs:integer [0..1]
+  # ZU : xs:integer [0..1]
+  # ZU_Ausn : xs:integer [0..1]
+  # MZspezial : xs:string [0..*]
+  wohnnutzungEGStrasse : xplan:BP_Zulaessigkeit [0..1]
+  # ZWohn : xs:integer [0..1]
+  # GFAntWohnen : gml:Scale [0..1]
+  # GFWohnen : gml:Area [0..1]
+  # GFAntGewerbe : gml:Scale [0..1]
+  # GFGewerbe : gml:Area [0..1]
+  # VF : gml:Area [0..1]
+  typ : xplan:BP_TypWohngebaeudeFlaeche
+  abweichungBauNVO : xplan:XP_AbweichungBauNVOTypen [0..1]
+  bauweise : xplan:BP_Bauweise [0..1]
+  # bauweiseText : xs:string [0..1]
+  # abweichendeBauweise : gml:Code [0..1]
+  # vertikaleDifferenzierung : xs:boolean [0..1]
+  bebauungsArt : xplan:BP_BebauungsArt [0..1]
+  bebauungVordereGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungRueckwaertigeGrenze : xplan:BP_GrenzBebauung [0..1]
+  bebauungSeitlicheGrenze : xplan:BP_GrenzBebauung [0..1]
+  refGebaeudequerschnitt : xplan:XP_ExterneReferenz [0..*]
+  # zugunstenVon : xs:string [0..1]
+}
+class "xplan:BP_ZentralerVersorgungsbereich" <<DataType>>
+class "xplan:BP_ZusatzkontingentLaerm" <<DataType>> {
+  # bezeichnung : xs:string [0..1]
+}
+class "xplan:BP_ZusatzkontingentLaermFlaeche" <<DataType>> {
+  # bezeichnung : xs:string [0..1]
+}
+
+' Simple types (from <simpleType> declarations)
+class "xplan:BP_AbgrenzungenTypen" <<Enumeration>> {
+  1000
+  2000
+  9999
+}
+class "xplan:BP_AbstandsMassTypen" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:BP_Bauweise" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_BebauungsArt" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+  5000
+  6000
+  7000
+}
+class "xplan:BP_BereichOhneEinAusfahrtTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_Dachform" <<Enumeration>> {
+  1000
+  2100
+  2200
+  3000
+  3100
+  3200
+  3300
+  3400
+  3500
+  3600
+  3700
+  3800
+  3900
+  4000
+  4100
+  5000
+  9999
+}
+class "xplan:BP_EinfahrtTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_GebaeudeStellungTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_GrenzBebauung" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_HoehenmassQuelle" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:BP_Laermpegelbereich" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+}
+class "xplan:BP_NebenanlagenAusschlussTyp" <<Enumeration>> {
+  1000
+  2000
+}
+class "xplan:BP_PlanArt" <<Enumeration>> {
+  1000
+  10000
+  10001
+  10002
+  3000
+  3100
+  4000
+  40000
+  40001
+  40002
+  5000
+  7000
+  9999
+}
+class "xplan:BP_Rechtsstand" <<Enumeration>> {
+  1000
+  1500
+  2000
+  2050
+  2100
+  2200
+  2250
+  2260
+  2300
+  2400
+  3000
+  4000
+  4500
+  45000
+  45001
+  5000
+  50000
+  50001
+}
+class "xplan:BP_SchallleistungspegelBerechnungsgrundlage" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+}
+class "xplan:BP_SchallleistungspegelTypen" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_SpezielleBauweiseTypen" <<Enumeration>> {
+  1000
+  1100
+  1200
+  1300
+  1400
+  1500
+  1600
+  1700
+  1800
+  9999
+}
+class "xplan:BP_StrassenkoerperHerstellung" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_TypWohngebaeudeFlaeche" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_UnverbindlicheVormerkungTypen" <<Enumeration>> {
+  1000
+  9999
+}
+class "xplan:BP_Verfahren" <<Enumeration>> {
+  1000
+  2000
+  3000
+  4000
+}
+class "xplan:BP_VerlaengerungVeraenderungssperre" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_WegerechtTypen" <<Enumeration>> {
+  1000
+  2000
+  2500
+  4000
+  9999
+}
+class "xplan:BP_Zulaessigkeit" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+class "xplan:BP_ZweckbestimmungGemeinschaftsanlagen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  3100
+  3200
+  3300
+  3400
+  3500
+  3600
+  3700
+  3800
+  3900
+  4000
+  4100
+  4200
+  4300
+  9999
+}
+class "xplan:BP_ZweckbestimmungNebenanlagen" <<Enumeration>> {
+  1000
+  2000
+  3000
+  3100
+  3200
+  3300
+  3400
+  3500
+  3600
+  3700
+  9999
+}
+class "xplan:BP_ZweckbestimmungenTMF" <<Enumeration>> {
+  1000
+  2000
+  3000
+}
+}
+
+' External types (unresolved namespaces)
+class "xplan:XP_Bereich"
+class "xplan:XP_Objekt"
+class "xplan:XP_Plan"
+class "xplan:XP_TextAbschnitt"
+
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_AbgrabungsFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_AbstandsFlaeche"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_AbstandsMass"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_AbweichungVonBaugrenze"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_AbweichungVonUeberbaubarerGrundstuecksFlaeche"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_AnpflanzungBindungErhaltung"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_AufschuettungsFlaeche"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_AusgleichsFlaeche"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_AusgleichsMassnahme"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_BauGrenze"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_BauLinie"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_BaugebietsTeilFlaeche"
+"xplan:XP_Bereich" <|-- "xplan:BP_Bereich"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_BereichOhneEinAusfahrtLinie"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_BesondererNutzungszweckFlaeche"
+"xplan:BP_Punktobjekt" <|-- "xplan:BP_EinfahrtPunkt"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_EinfahrtsbereichLinie"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_EingriffsBereich"
+"xplan:BP_EmissionskontingentLaerm" <|-- "xplan:BP_EmissionskontingentLaermGebiet"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_FestsetzungNachLandesrecht"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_FlaecheOhneFestsetzung"
+"xplan:BP_Objekt" <|-- "xplan:BP_Flaechenobjekt"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_Flaechenschlussobjekt"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_FoerderungsFlaeche"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_FreiFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_GebaeudeFlaeche"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_GebaeudeStellung"
+"xplan:BP_Objekt" <|-- "xplan:BP_GebaeudeTyp"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_GemeinbedarfsFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_GemeinschaftsanlagenFlaeche"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_GemeinschaftsanlagenZuordnung"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_GenerischesObjekt"
+"xplan:BP_Objekt" <|-- "xplan:BP_Geometrieobjekt"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_GruenFlaeche"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_HoehenFestsetzung"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_HoehenMass"
+"xplan:BP_Punktobjekt" <|-- "xplan:BP_ImmissionsortLaerm"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_Immissionsschutz"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_KennzeichnungsFlaeche"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_KleintierhaltungFlaeche"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_LandwirtschaftsFlaeche"
+"xplan:BP_Objekt" <|-- "xplan:BP_Linienobjekt"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_NatuerlicherKlimaschutz"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_NebenanlagenAusschlussFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_NebenanlagenFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_NichtUeberbaubareGrundstuecksflaeche"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_NutzungsartenGrenze"
+"xplan:XP_Objekt" <|-- "xplan:BP_Objekt"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_PersGruppenBestimmteFlaeche"
+"xplan:XP_Plan" <|-- "xplan:BP_Plan"
+"xplan:BP_Objekt" <|-- "xplan:BP_Punktobjekt"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_RegelungVergnuegungsstaetten"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_RichtungssektorGrenze"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_SchutzPflegeEntwicklungsFlaeche"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_SchutzPflegeEntwicklungsMassnahme"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_SpezielleBauweise"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_SpielSportanlagenFlaeche"
+"xplan:BP_Linienobjekt" <|-- "xplan:BP_StrassenbegrenzungsLinie"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_Strassenkoerper"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_TechnischeMassnahmenFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_TextAbschnittFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_UeberbaubareGrundstuecksFlaeche"
+"xplan:BP_Flaechenobjekt" <|-- "xplan:BP_Ueberlagerungsobjekt"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_UnverbindlicheVormerkung"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_VerEntsorgung"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_Veraenderungssperre"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_WaldFlaeche"
+"xplan:BP_Geometrieobjekt" <|-- "xplan:BP_Wegerecht"
+"xplan:BP_Flaechenschlussobjekt" <|-- "xplan:BP_WohngebaeudeFlaeche"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_ZentralerVersorgungsbereich"
+"xplan:BP_Punktobjekt" <|-- "xplan:BP_ZusatzkontingentLaerm"
+"xplan:BP_Ueberlagerungsobjekt" <|-- "xplan:BP_ZusatzkontingentLaermFlaeche"
+
+' Class relations (promoted from property wrappers)
+"xplan:BP_BaugebietsTeilFlaeche" "1" *-- "0..*" "xplan:BP_Dachgestaltung" : dachgestaltung
+"xplan:BP_BaugebietsTeilFlaeche" ..> "0..*" "xplan:XP_TextAbschnitt" : abweichungText
+"xplan:BP_BaugebietsTeilFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeSondernutzung" : sondernutzung
+"xplan:BP_Bereich" ..> "1" "xplan:BP_Plan" : gehoertZuPlan
+"xplan:BP_BesondererNutzungszweckFlaeche" "1" *-- "0..*" "xplan:BP_Dachgestaltung" : dachgestaltung
+"xplan:BP_GebaeudeTyp" "1" *-- "0..*" "xplan:BP_Dachgestaltung" : dachgestaltung
+"xplan:BP_GebaeudeTyp" ..> "1..*" "xplan:BP_UeberbaubareGrundstuecksFlaeche" : ueberbaubareGrundstuecksFlaeche
+"xplan:BP_GemeinbedarfsFlaeche" "1" *-- "0..*" "xplan:BP_Dachgestaltung" : dachgestaltung
+"xplan:BP_GemeinbedarfsFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestGemeinbedarf" : zweckbestimmung
+"xplan:BP_GemeinschaftsanlagenFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestGemeinschaftsanlagen" : zweckbestimmung
+"xplan:BP_GemeinschaftsanlagenFlaeche" ..> "0..*" "xplan:BP_BaugebietsTeilFlaeche" : eigentuemer
+"xplan:BP_GemeinschaftsanlagenZuordnung" ..> "0..*" "xplan:BP_GemeinschaftsanlagenFlaeche" : zuordnung
+"xplan:BP_GruenFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestGruen" : zweckbestimmung
+"xplan:BP_LandwirtschaftsFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestLandwirtschaft" : zweckbestimmung
+"xplan:BP_NebenanlagenAusschlussFlaeche" ..> "0..*" "xplan:XP_TextAbschnitt" : abweichungText
+"xplan:BP_NebenanlagenFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestNebenanlagen" : zweckbestimmung
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_AusgleichsFlaeche" : wirdAusgeglichenDurchFlaeche
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_AnpflanzungBindungErhaltung" : wirdAusgeglichenDurchABE
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_SchutzPflegeEntwicklungsMassnahme" : wirdAusgeglichenDurchSPEMassnahme
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_SchutzPflegeEntwicklungsFlaeche" : wirdAusgeglichenDurchSPEFlaeche
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_AusgleichsMassnahme" : wirdAusgeglichenDurchMassnahme
+"xplan:BP_Objekt" "1" *-- "0..1" "xplan:BP_EmissionskontingentLaerm" : laermkontingent
+"xplan:BP_Objekt" "1" *-- "0..*" "xplan:BP_EmissionskontingentLaermGebiet" : laermkontingentGebiet
+"xplan:BP_Objekt" ..> "0..1" "xplan:BP_ZusatzkontingentLaerm" : zusatzkontingent
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_ZusatzkontingentLaermFlaeche" : zusatzkontingentFlaeche
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_RichtungssektorGrenze" : richtungssektorGrenze
+"xplan:BP_Objekt" ..> "0..*" "xplan:BP_ImmissionsortLaerm" : immissionsort
+"xplan:BP_Plan" "1" *-- "0..1" "xplan:BP_VeraenderungssperreDaten" : veraenderungssperre
+"xplan:BP_Plan" ..> "0..*" "xplan:BP_Bereich" : bereich
+"xplan:BP_SpezielleBauweise" ..> "0..*" "xplan:BP_Wegerecht" : wegerecht
+"xplan:BP_SpielSportanlagenFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestSpielSportanlage" : zweckbestimmung
+"xplan:BP_UeberbaubareGrundstuecksFlaeche" "1" *-- "0..*" "xplan:BP_Dachgestaltung" : dachgestaltung
+"xplan:BP_UeberbaubareGrundstuecksFlaeche" ..> "0..*" "xplan:BP_BauGrenze" : baugrenze
+"xplan:BP_UeberbaubareGrundstuecksFlaeche" ..> "0..*" "xplan:BP_BauLinie" : baulinie
+"xplan:BP_UeberbaubareGrundstuecksFlaeche" ..> "0..*" "xplan:BP_GebaeudeTyp" : gebaeudeTyp
+"xplan:BP_VerEntsorgung" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestVerEntsorgung" : zweckbestimmung
+"xplan:BP_Veraenderungssperre" "1" *-- "1" "xplan:BP_VeraenderungssperreDaten" : daten
+"xplan:BP_WaldFlaeche" "1" *-- "0..*" "xplan:BP_KomplexeZweckbestWald" : zweckbestimmung
+"xplan:BP_WohngebaeudeFlaeche" "1" *-- "0..*" "xplan:BP_Dachgestaltung" : dachgestaltung
+"xplan:BP_WohngebaeudeFlaeche" ..> "0..*" "xplan:XP_TextAbschnitt" : abweichungText
+"xplan:BP_ZusatzkontingentLaerm" "1" *-- "0..*" "xplan:BP_Richtungssektor" : richtungssektor
+"xplan:BP_ZusatzkontingentLaermFlaeche" "1" *-- "1" "xplan:BP_Richtungssektor" : richtungssektor
+
+' Property pseudo-classes are removed from rendering by default;
+' remove the next line to show them.
+remove $property
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-08-04 10:25:27
+@enduml
