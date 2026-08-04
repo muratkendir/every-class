@@ -1,5 +1,4 @@
 # Project-specific ignores
-AGENTS.md
 conversations/
 schemas_for_xsd_diagram/
 print-outs/
