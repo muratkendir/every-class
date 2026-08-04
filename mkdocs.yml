@@ -5,6 +5,8 @@ repo_name: muratkendir/every-class
 
 theme:
   name: material
+  logo: images/logo.png
+  favicon: images/favicon.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
