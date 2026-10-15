@@ -5,25 +5,25 @@ title
 end title
 
 package veg {
-abstract class "veg:ADEOfAbstractVegetationObject" $adeOf
-class "veg:ADEOfAbstractVegetationObjectProperty" $property $adeOf {
+abstract class "veg:ADEOfAbstractVegetationObject" as veg_ADEOfAbstractVegetationObject $adeOf
+class "veg:ADEOfAbstractVegetationObjectProperty" as veg_ADEOfAbstractVegetationObjectProperty $property $adeOf {
   ADEOfAbstractVegetationObject : veg:ADEOfAbstractVegetationObject
 }
-abstract class "veg:ADEOfPlantCover" $adeOf
-class "veg:ADEOfPlantCoverProperty" $property $adeOf {
+abstract class "veg:ADEOfPlantCover" as veg_ADEOfPlantCover $adeOf
+class "veg:ADEOfPlantCoverProperty" as veg_ADEOfPlantCoverProperty $property $adeOf {
   ADEOfPlantCover : veg:ADEOfPlantCover
 }
-abstract class "veg:ADEOfSolitaryVegetationObject" $adeOf
-class "veg:ADEOfSolitaryVegetationObjectProperty" $property $adeOf {
+abstract class "veg:ADEOfSolitaryVegetationObject" as veg_ADEOfSolitaryVegetationObject $adeOf
+class "veg:ADEOfSolitaryVegetationObjectProperty" as veg_ADEOfSolitaryVegetationObjectProperty $property $adeOf {
   ADEOfSolitaryVegetationObject : veg:ADEOfSolitaryVegetationObject
 }
-abstract class "veg:AbstractVegetationObject" <<FeatureType>> {
+abstract class "veg:AbstractVegetationObject" as veg_AbstractVegetationObject <<FeatureType>> {
   ~ adeOfAbstractVegetationObject : veg:ADEOfAbstractVegetationObject [0..*]
 }
-class "veg:AbstractVegetationObjectProperty" $property {
+class "veg:AbstractVegetationObjectProperty" as veg_AbstractVegetationObjectProperty $property {
   AbstractVegetationObject : veg:AbstractVegetationObject
 }
-class "veg:PlantCover" <<FeatureType>> {
+class "veg:PlantCover" as veg_PlantCover <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
@@ -32,10 +32,10 @@ class "veg:PlantCover" <<FeatureType>> {
   # maxHeight : gml:Length [0..1]
   ~ adeOfPlantCover : veg:ADEOfPlantCover [0..*]
 }
-class "veg:PlantCoverProperty" $property {
+class "veg:PlantCoverProperty" as veg_PlantCoverProperty $property {
   PlantCover : veg:PlantCover
 }
-class "veg:SolitaryVegetationObject" <<FeatureType>> {
+class "veg:SolitaryVegetationObject" as veg_SolitaryVegetationObject <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
@@ -47,17 +47,17 @@ class "veg:SolitaryVegetationObject" <<FeatureType>> {
   # maxRootBallDepth : gml:Length [0..1]
   ~ adeOfSolitaryVegetationObject : veg:ADEOfSolitaryVegetationObject [0..*]
 }
-class "veg:SolitaryVegetationObjectProperty" $property {
+class "veg:SolitaryVegetationObjectProperty" as veg_SolitaryVegetationObjectProperty $property {
   SolitaryVegetationObject : veg:SolitaryVegetationObject
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "core:AbstractOccupiedSpace"
+abstract class "core:AbstractOccupiedSpace" as core_AbstractOccupiedSpace
 
-"core:AbstractOccupiedSpace" <|-- "veg:AbstractVegetationObject"
-"veg:AbstractVegetationObject" <|-- "veg:PlantCover"
-"veg:AbstractVegetationObject" <|-- "veg:SolitaryVegetationObject"
+"core_AbstractOccupiedSpace" <|-- "veg_AbstractVegetationObject"
+"veg_AbstractVegetationObject" <|-- "veg_PlantCover"
+"veg_AbstractVegetationObject" <|-- "veg_SolitaryVegetationObject"
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -76,5 +76,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:57
+footer Generated on 2026-10-14 14:37:57
 @enduml

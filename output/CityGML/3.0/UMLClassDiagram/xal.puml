@@ -1,0 +1,43 @@
+@startuml
+title
+  CityGML - 3.0 - Xal - Only XSD based
+  urn:oasis:names:tc:ciq:xal:3
+end title
+
+package xAL {
+class "xAL:Address" as xAL_Address <<DataType>> {
+  # FreeTextAddress : anonymous [0..1]
+  # Country : anonymous [0..1]
+  # AdministrativeArea : anonymous [0..1]
+  # Locality : anonymous [0..1]
+  # Thoroughfare : anonymous [0..1]
+  # Premises : anonymous [0..1]
+  # PostCode : anonymous [0..1]
+  # RuralDelivery : anonymous [0..1]
+  # PostalDeliveryPoint : anonymous [0..1]
+  # PostOffice : anonymous [0..1]
+  # GeoRSS : anonymous [0..1]
+  # LocationByCoordinates : anonymous [0..1]
+}
+class "xAL:Country" as xAL_Country <<DataType>> {
+  # NameElement : anonymous [1..*]
+}
+class "xAL:Identifier" as xAL_Identifier <<DataType>>
+class "xAL:Premises" as xAL_Premises <<DataType>> {
+  # NameElement : anonymous
+  Number : xAL:Identifier
+}
+class "xAL:Thoroughfare" as xAL_Thoroughfare <<DataType>> {
+  # NameElement : anonymous
+  Number : xAL:Identifier
+}
+}
+
+
+' Attributes with value types from other namespaces are marked as
+' protected members (# ) and shown by default; uncomment the next
+' line to hide them.
+' hide protected members
+
+footer Generated on 2026-10-14 14:37:55
+@enduml

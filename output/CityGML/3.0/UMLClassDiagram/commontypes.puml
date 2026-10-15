@@ -1,0 +1,20 @@
+@startuml
+title
+  Xal - 3.0 - Commontypes - Only XSD based
+  urn:oasis:names:tc:ciq:ct:3
+end title
+
+package ct {
+
+' Simple types (from <simpleType> declarations)
+class "ct:String" as ct_String <<BasicType>>
+class "ct:DataQualityTypeList" as ct_DataQualityTypeList <<Enumeration>> {
+  Valid
+  Invalid
+}
+class "ct:StatusList" as ct_StatusList <<BasicType>>
+}
+
+
+footer Generated on 2026-10-14 14:37:54
+@enduml

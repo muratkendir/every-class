@@ -5,60 +5,60 @@ title
 end title
 
 package wtr {
-abstract class "wtr:ADEOfAbstractWaterBoundarySurface" $adeOf
-class "wtr:ADEOfAbstractWaterBoundarySurfaceProperty" $property $adeOf {
+abstract class "wtr:ADEOfAbstractWaterBoundarySurface" as wtr_ADEOfAbstractWaterBoundarySurface $adeOf
+class "wtr:ADEOfAbstractWaterBoundarySurfaceProperty" as wtr_ADEOfAbstractWaterBoundarySurfaceProperty $property $adeOf {
   ADEOfAbstractWaterBoundarySurface : wtr:ADEOfAbstractWaterBoundarySurface
 }
-abstract class "wtr:ADEOfWaterBody" $adeOf
-class "wtr:ADEOfWaterBodyProperty" $property $adeOf {
+abstract class "wtr:ADEOfWaterBody" as wtr_ADEOfWaterBody $adeOf
+class "wtr:ADEOfWaterBodyProperty" as wtr_ADEOfWaterBodyProperty $property $adeOf {
   ADEOfWaterBody : wtr:ADEOfWaterBody
 }
-abstract class "wtr:ADEOfWaterGroundSurface" $adeOf
-class "wtr:ADEOfWaterGroundSurfaceProperty" $property $adeOf {
+abstract class "wtr:ADEOfWaterGroundSurface" as wtr_ADEOfWaterGroundSurface $adeOf
+class "wtr:ADEOfWaterGroundSurfaceProperty" as wtr_ADEOfWaterGroundSurfaceProperty $property $adeOf {
   ADEOfWaterGroundSurface : wtr:ADEOfWaterGroundSurface
 }
-abstract class "wtr:ADEOfWaterSurface" $adeOf
-class "wtr:ADEOfWaterSurfaceProperty" $property $adeOf {
+abstract class "wtr:ADEOfWaterSurface" as wtr_ADEOfWaterSurface $adeOf
+class "wtr:ADEOfWaterSurfaceProperty" as wtr_ADEOfWaterSurfaceProperty $property $adeOf {
   ADEOfWaterSurface : wtr:ADEOfWaterSurface
 }
-abstract class "wtr:AbstractWaterBoundarySurface" <<FeatureType>> {
+abstract class "wtr:AbstractWaterBoundarySurface" as wtr_AbstractWaterBoundarySurface <<FeatureType>> {
   ~ adeOfAbstractWaterBoundarySurface : wtr:ADEOfAbstractWaterBoundarySurface [0..*]
 }
-class "wtr:AbstractWaterBoundarySurfaceProperty" $property {
+class "wtr:AbstractWaterBoundarySurfaceProperty" as wtr_AbstractWaterBoundarySurfaceProperty $property {
   AbstractWaterBoundarySurface : wtr:AbstractWaterBoundarySurface
 }
-class "wtr:WaterBody" <<FeatureType>> {
+class "wtr:WaterBody" as wtr_WaterBody <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfWaterBody : wtr:ADEOfWaterBody [0..*]
 }
-class "wtr:WaterBodyProperty" $property {
+class "wtr:WaterBodyProperty" as wtr_WaterBodyProperty $property {
   WaterBody : wtr:WaterBody
 }
-class "wtr:WaterGroundSurface" <<FeatureType>> {
+class "wtr:WaterGroundSurface" as wtr_WaterGroundSurface <<FeatureType>> {
   ~ adeOfWaterGroundSurface : wtr:ADEOfWaterGroundSurface [0..*]
 }
-class "wtr:WaterGroundSurfaceProperty" $property {
+class "wtr:WaterGroundSurfaceProperty" as wtr_WaterGroundSurfaceProperty $property {
   WaterGroundSurface : wtr:WaterGroundSurface
 }
-class "wtr:WaterSurface" <<FeatureType>> {
+class "wtr:WaterSurface" as wtr_WaterSurface <<FeatureType>> {
   # waterLevel : gml:Code [0..1]
   ~ adeOfWaterSurface : wtr:ADEOfWaterSurface [0..*]
 }
-class "wtr:WaterSurfaceProperty" $property {
+class "wtr:WaterSurfaceProperty" as wtr_WaterSurfaceProperty $property {
   WaterSurface : wtr:WaterSurface
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "core:AbstractOccupiedSpace"
-abstract class "core:AbstractThematicSurface"
+abstract class "core:AbstractOccupiedSpace" as core_AbstractOccupiedSpace
+abstract class "core:AbstractThematicSurface" as core_AbstractThematicSurface
 
-"core:AbstractThematicSurface" <|-- "wtr:AbstractWaterBoundarySurface"
-"core:AbstractOccupiedSpace" <|-- "wtr:WaterBody"
-"wtr:AbstractWaterBoundarySurface" <|-- "wtr:WaterGroundSurface"
-"wtr:AbstractWaterBoundarySurface" <|-- "wtr:WaterSurface"
+"core_AbstractThematicSurface" <|-- "wtr_AbstractWaterBoundarySurface"
+"core_AbstractOccupiedSpace" <|-- "wtr_WaterBody"
+"wtr_AbstractWaterBoundarySurface" <|-- "wtr_WaterGroundSurface"
+"wtr_AbstractWaterBoundarySurface" <|-- "wtr_WaterSurface"
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -77,5 +77,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:58
+footer Generated on 2026-10-14 14:37:57
 @enduml

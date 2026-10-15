@@ -1,0 +1,184 @@
+@startuml
+title
+  Xal - 3.0 - Xal-types - Only XSD based
+  urn:oasis:names:tc:ciq:xal:3
+end title
+
+package xAL {
+
+' Simple types (from <simpleType> declarations)
+class "xAL:AddressTypeList" as xAL_AddressTypeList <<Enumeration>> {
+  Airport
+  Business
+  CaravanPark
+  CommercialPark
+  CommunityDevelopment
+  EducationalInstitution
+  Entertainment
+  Hospital
+  Location
+  Marina
+  MilitaryBase
+  OverseasMilitary
+  Port
+  Primary
+  RecreationalPark
+  Resort
+  RetirementVillage
+  Rural
+  Secondary
+  ShoppingCentre
+  SportingCentre
+  Urban
+}
+class "xAL:AddressIDTypeList" as xAL_AddressIDTypeList <<BasicType>>
+class "xAL:AddressLineTypeList" as xAL_AddressLineTypeList <<BasicType>>
+class "xAL:AddressUsageList" as xAL_AddressUsageList <<Enumeration>> {
+  Business
+  Billing
+  Communication
+  Contact
+  Mailing
+  Personal
+  Postal
+  Residential
+}
+class "xAL:AdministrativeAreaTypeList" as xAL_AdministrativeAreaTypeList <<Enumeration>> {
+  City
+  State
+  Territory
+  Province
+}
+class "xAL:AdministrativeAreaNameTypeList" as xAL_AdministrativeAreaNameTypeList <<Enumeration>> {
+  Name
+  Number
+  ReferenceLocation
+  Type
+}
+class "xAL:AdministrativeAreaNameCodeList" as xAL_AdministrativeAreaNameCodeList <<BasicType>>
+class "xAL:CountryNameTypeList" as xAL_CountryNameTypeList <<Enumeration>> {
+  Name
+  Type
+}
+class "xAL:CountryNameCodeList" as xAL_CountryNameCodeList <<BasicType>>
+class "xAL:DatumCodeList" as xAL_DatumCodeList <<BasicType>>
+class "xAL:DeliveryModeList" as xAL_DeliveryModeList <<BasicType>>
+class "xAL:DirectionTypeList" as xAL_DirectionTypeList <<Enumeration>> {
+  East
+  West
+  North
+  South
+}
+class "xAL:IdentifierElementTypeList" as xAL_IdentifierElementTypeList <<Enumeration>> {
+  Name
+  RangeFrom
+  Range
+  RangeTo
+  Prefix
+  Suffix
+  Number
+  Separator
+  Extension
+}
+class "xAL:LocalityNameTypeList" as xAL_LocalityNameTypeList <<Enumeration>> {
+  Name
+  Number
+  ReferenceLocation
+  Type
+}
+class "xAL:LocalityNameCodeList" as xAL_LocalityNameCodeList <<BasicType>>
+class "xAL:LocalityTypeList" as xAL_LocalityTypeList <<Enumeration>> {
+  Municipality
+  PostTown
+  Place
+  Suburb
+  Town
+  Village
+  Area
+  Zone
+}
+class "xAL:MeridianCodeList" as xAL_MeridianCodeList <<BasicType>>
+class "xAL:PostOfficeTypeList" as xAL_PostOfficeTypeList <<BasicType>>
+class "xAL:PostalDeliveryPointTypeList" as xAL_PostalDeliveryPointTypeList <<Enumeration>> {
+  GPOBox
+  POBox
+  LockedBag
+  MailStop
+  PigeonHole
+  PrivateBag
+}
+class "xAL:ProjectionCodeList" as xAL_ProjectionCodeList <<BasicType>>
+class "xAL:PremisesElementTypeList" as xAL_PremisesElementTypeList <<Enumeration>> {
+  Name
+  Location
+  SubPremisesConnector
+  InternalThoroughfare
+  ReferenceLocation
+  Type
+}
+class "xAL:PremisesTypeList" as xAL_PremisesTypeList <<Enumeration>> {
+  Airport
+  Area
+  Building
+  Farm
+  Hospital
+  House
+  LandMark
+  LargeMailUser
+  Lot
+  RailwayStation
+  ShoppingComplex
+  University
+  Unit
+}
+class "xAL:RuralDeliveryTypeList" as xAL_RuralDeliveryTypeList <<BasicType>>
+class "xAL:SubAdministrativeAreaNameTypeList" as xAL_SubAdministrativeAreaNameTypeList <<Enumeration>> {
+  Name
+  Number
+  ReferenceLocation
+  Type
+}
+class "xAL:SubAdministrativeAreaNameCodeList" as xAL_SubAdministrativeAreaNameCodeList <<BasicType>>
+class "xAL:SubAdministrativeAreaTypeList" as xAL_SubAdministrativeAreaTypeList <<Enumeration>> {
+  County
+  District
+  Province
+  Region
+}
+class "xAL:SubLocalityNameTypeList" as xAL_SubLocalityNameTypeList <<Enumeration>> {
+  Name
+  Number
+  ReferenceLocation
+  Type
+}
+class "xAL:SubLocalityNameCodeList" as xAL_SubLocalityNameCodeList <<BasicType>>
+class "xAL:SubLocalityTypeList" as xAL_SubLocalityTypeList <<Enumeration>> {
+  Municipality
+  Village
+}
+class "xAL:SubPremisesTypeList" as xAL_SubPremisesTypeList <<Enumeration>> {
+  Room
+  Suite
+  Apartment
+  Shop
+  Office
+  Unit
+}
+class "xAL:ThoroughfareNameTypeList" as xAL_ThoroughfareNameTypeList <<Enumeration>> {
+  NameOnly
+  PreDirection
+  PostDirection
+  NameAndNumber
+  NameAndType
+  NameNumberAndType
+  Unstructured
+  SubThoroughfareConnector
+  ReferenceLocation
+  Type
+}
+class "xAL:ThoroughfareTypeList" as xAL_ThoroughfareTypeList <<BasicType>>
+}
+
+
+footer Generated on 2026-10-14 14:37:54
+@enduml

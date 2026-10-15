@@ -5,89 +5,89 @@ title
 end title
 
 package dem {
-abstract class "dem:ADEOfAbstractReliefComponent" $adeOf
-class "dem:ADEOfAbstractReliefComponentProperty" $property $adeOf {
+abstract class "dem:ADEOfAbstractReliefComponent" as dem_ADEOfAbstractReliefComponent $adeOf
+class "dem:ADEOfAbstractReliefComponentProperty" as dem_ADEOfAbstractReliefComponentProperty $property $adeOf {
   ADEOfAbstractReliefComponent : dem:ADEOfAbstractReliefComponent
 }
-abstract class "dem:ADEOfBreaklineRelief" $adeOf
-class "dem:ADEOfBreaklineReliefProperty" $property $adeOf {
+abstract class "dem:ADEOfBreaklineRelief" as dem_ADEOfBreaklineRelief $adeOf
+class "dem:ADEOfBreaklineReliefProperty" as dem_ADEOfBreaklineReliefProperty $property $adeOf {
   ADEOfBreaklineRelief : dem:ADEOfBreaklineRelief
 }
-abstract class "dem:ADEOfMassPointRelief" $adeOf
-class "dem:ADEOfMassPointReliefProperty" $property $adeOf {
+abstract class "dem:ADEOfMassPointRelief" as dem_ADEOfMassPointRelief $adeOf
+class "dem:ADEOfMassPointReliefProperty" as dem_ADEOfMassPointReliefProperty $property $adeOf {
   ADEOfMassPointRelief : dem:ADEOfMassPointRelief
 }
-abstract class "dem:ADEOfRasterRelief" $adeOf
-class "dem:ADEOfRasterReliefProperty" $property $adeOf {
+abstract class "dem:ADEOfRasterRelief" as dem_ADEOfRasterRelief $adeOf
+class "dem:ADEOfRasterReliefProperty" as dem_ADEOfRasterReliefProperty $property $adeOf {
   ADEOfRasterRelief : dem:ADEOfRasterRelief
 }
-abstract class "dem:ADEOfReliefFeature" $adeOf
-class "dem:ADEOfReliefFeatureProperty" $property $adeOf {
+abstract class "dem:ADEOfReliefFeature" as dem_ADEOfReliefFeature $adeOf
+class "dem:ADEOfReliefFeatureProperty" as dem_ADEOfReliefFeatureProperty $property $adeOf {
   ADEOfReliefFeature : dem:ADEOfReliefFeature
 }
-abstract class "dem:ADEOfTINRelief" $adeOf
-class "dem:ADEOfTINReliefProperty" $property $adeOf {
+abstract class "dem:ADEOfTINRelief" as dem_ADEOfTINRelief $adeOf
+class "dem:ADEOfTINReliefProperty" as dem_ADEOfTINReliefProperty $property $adeOf {
   ADEOfTINRelief : dem:ADEOfTINRelief
 }
-abstract class "dem:AbstractReliefComponent" <<FeatureType>> {
+abstract class "dem:AbstractReliefComponent" as dem_AbstractReliefComponent <<FeatureType>> {
   # lod : core:IntegerBetween0and3
   # extent : gml:Surface [0..1]
   ~ adeOfAbstractReliefComponent : dem:ADEOfAbstractReliefComponent [0..*]
 }
-class "dem:AbstractReliefComponentProperty" $property {
+class "dem:AbstractReliefComponentProperty" as dem_AbstractReliefComponentProperty $property {
   AbstractReliefComponent : dem:AbstractReliefComponent
 }
-class "dem:BreaklineRelief" <<FeatureType>> {
+class "dem:BreaklineRelief" as dem_BreaklineRelief <<FeatureType>> {
   # ridgeOrValleyLines : gml:MultiCurve [0..1]
   # breaklines : gml:MultiCurve [0..1]
   ~ adeOfBreaklineRelief : dem:ADEOfBreaklineRelief [0..*]
 }
-class "dem:BreaklineReliefProperty" $property {
+class "dem:BreaklineReliefProperty" as dem_BreaklineReliefProperty $property {
   BreaklineRelief : dem:BreaklineRelief
 }
-class "dem:MassPointRelief" <<FeatureType>> {
+class "dem:MassPointRelief" as dem_MassPointRelief <<FeatureType>> {
   # reliefPoints : gml:MultiPoint [0..1]
   # pointCloud : core:AbstractPointCloud [0..1]
   ~ adeOfMassPointRelief : dem:ADEOfMassPointRelief [0..*]
 }
-class "dem:MassPointReliefProperty" $property {
+class "dem:MassPointReliefProperty" as dem_MassPointReliefProperty $property {
   MassPointRelief : dem:MassPointRelief
 }
-class "dem:RasterRelief" <<FeatureType>> {
+class "dem:RasterRelief" as dem_RasterRelief <<FeatureType>> {
   # grid : gml:RectifiedGridCoverage
   ~ adeOfRasterRelief : dem:ADEOfRasterRelief [0..*]
 }
-class "dem:RasterReliefProperty" $property {
+class "dem:RasterReliefProperty" as dem_RasterReliefProperty $property {
   RasterRelief : dem:RasterRelief
 }
-class "dem:ReliefFeature" <<FeatureType>> {
+class "dem:ReliefFeature" as dem_ReliefFeature <<FeatureType>> {
   # lod : core:IntegerBetween0and3
   ~ adeOfReliefFeature : dem:ADEOfReliefFeature [0..*]
 }
-class "dem:ReliefFeatureProperty" $property {
+class "dem:ReliefFeatureProperty" as dem_ReliefFeatureProperty $property {
   ReliefFeature : dem:ReliefFeature
 }
-class "dem:TINRelief" <<FeatureType>> {
+class "dem:TINRelief" as dem_TINRelief <<FeatureType>> {
   # tin : gml:TriangulatedSurface
   ~ adeOfTINRelief : dem:ADEOfTINRelief [0..*]
 }
-class "dem:TINReliefProperty" $property {
+class "dem:TINReliefProperty" as dem_TINReliefProperty $property {
   TINRelief : dem:TINRelief
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "core:AbstractSpaceBoundary"
+abstract class "core:AbstractSpaceBoundary" as core_AbstractSpaceBoundary
 
-"core:AbstractSpaceBoundary" <|-- "dem:AbstractReliefComponent"
-"dem:AbstractReliefComponent" <|-- "dem:BreaklineRelief"
-"dem:AbstractReliefComponent" <|-- "dem:MassPointRelief"
-"dem:AbstractReliefComponent" <|-- "dem:RasterRelief"
-"core:AbstractSpaceBoundary" <|-- "dem:ReliefFeature"
-"dem:AbstractReliefComponent" <|-- "dem:TINRelief"
+"core_AbstractSpaceBoundary" <|-- "dem_AbstractReliefComponent"
+"dem_AbstractReliefComponent" <|-- "dem_BreaklineRelief"
+"dem_AbstractReliefComponent" <|-- "dem_MassPointRelief"
+"dem_AbstractReliefComponent" <|-- "dem_RasterRelief"
+"core_AbstractSpaceBoundary" <|-- "dem_ReliefFeature"
+"dem_AbstractReliefComponent" <|-- "dem_TINRelief"
 
 ' Class relations (promoted from property wrappers)
-"dem:ReliefFeature" o-- "1..*" "dem:AbstractReliefComponent" : reliefComponent
+"dem_ReliefFeature" o-- "1..*" "dem_AbstractReliefComponent" : reliefComponent
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -106,5 +106,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:57
+footer Generated on 2026-10-14 14:37:56
 @enduml

@@ -5,76 +5,76 @@ title
 end title
 
 package dyn {
-abstract class "dyn:ADEOfAbstractAtomicTimeseries" $adeOf
-class "dyn:ADEOfAbstractAtomicTimeseriesProperty" $property $adeOf {
+abstract class "dyn:ADEOfAbstractAtomicTimeseries" as dyn_ADEOfAbstractAtomicTimeseries $adeOf
+class "dyn:ADEOfAbstractAtomicTimeseriesProperty" as dyn_ADEOfAbstractAtomicTimeseriesProperty $property $adeOf {
   ADEOfAbstractAtomicTimeseries : dyn:ADEOfAbstractAtomicTimeseries
 }
-abstract class "dyn:ADEOfAbstractTimeseries" $adeOf
-class "dyn:ADEOfAbstractTimeseriesProperty" $property $adeOf {
+abstract class "dyn:ADEOfAbstractTimeseries" as dyn_ADEOfAbstractTimeseries $adeOf
+class "dyn:ADEOfAbstractTimeseriesProperty" as dyn_ADEOfAbstractTimeseriesProperty $property $adeOf {
   ADEOfAbstractTimeseries : dyn:ADEOfAbstractTimeseries
 }
-abstract class "dyn:ADEOfCompositeTimeseries" $adeOf
-class "dyn:ADEOfCompositeTimeseriesProperty" $property $adeOf {
+abstract class "dyn:ADEOfCompositeTimeseries" as dyn_ADEOfCompositeTimeseries $adeOf
+class "dyn:ADEOfCompositeTimeseriesProperty" as dyn_ADEOfCompositeTimeseriesProperty $property $adeOf {
   ADEOfCompositeTimeseries : dyn:ADEOfCompositeTimeseries
 }
-abstract class "dyn:ADEOfDynamizer" $adeOf
-class "dyn:ADEOfDynamizerProperty" $property $adeOf {
+abstract class "dyn:ADEOfDynamizer" as dyn_ADEOfDynamizer $adeOf
+class "dyn:ADEOfDynamizerProperty" as dyn_ADEOfDynamizerProperty $property $adeOf {
   ADEOfDynamizer : dyn:ADEOfDynamizer
 }
-abstract class "dyn:ADEOfGenericTimeseries" $adeOf
-class "dyn:ADEOfGenericTimeseriesProperty" $property $adeOf {
+abstract class "dyn:ADEOfGenericTimeseries" as dyn_ADEOfGenericTimeseries $adeOf
+class "dyn:ADEOfGenericTimeseriesProperty" as dyn_ADEOfGenericTimeseriesProperty $property $adeOf {
   ADEOfGenericTimeseries : dyn:ADEOfGenericTimeseries
 }
-abstract class "dyn:ADEOfStandardFileTimeseries" $adeOf
-class "dyn:ADEOfStandardFileTimeseriesProperty" $property $adeOf {
+abstract class "dyn:ADEOfStandardFileTimeseries" as dyn_ADEOfStandardFileTimeseries $adeOf
+class "dyn:ADEOfStandardFileTimeseriesProperty" as dyn_ADEOfStandardFileTimeseriesProperty $property $adeOf {
   ADEOfStandardFileTimeseries : dyn:ADEOfStandardFileTimeseries
 }
-abstract class "dyn:ADEOfTabulatedFileTimeseries" $adeOf
-class "dyn:ADEOfTabulatedFileTimeseriesProperty" $property $adeOf {
+abstract class "dyn:ADEOfTabulatedFileTimeseries" as dyn_ADEOfTabulatedFileTimeseries $adeOf
+class "dyn:ADEOfTabulatedFileTimeseriesProperty" as dyn_ADEOfTabulatedFileTimeseriesProperty $property $adeOf {
   ADEOfTabulatedFileTimeseries : dyn:ADEOfTabulatedFileTimeseries
 }
-abstract class "dyn:AbstractAtomicTimeseries" <<FeatureType>> {
+abstract class "dyn:AbstractAtomicTimeseries" as dyn_AbstractAtomicTimeseries <<FeatureType>> {
   # observationProperty : xs:string
   # uom : xs:string [0..1]
   ~ adeOfAbstractAtomicTimeseries : dyn:ADEOfAbstractAtomicTimeseries [0..*]
 }
-class "dyn:AbstractAtomicTimeseriesProperty" $property {
+class "dyn:AbstractAtomicTimeseriesProperty" as dyn_AbstractAtomicTimeseriesProperty $property {
   AbstractAtomicTimeseries : dyn:AbstractAtomicTimeseries
 }
-abstract class "dyn:AbstractTimeseries" <<FeatureType>> {
+abstract class "dyn:AbstractTimeseries" as dyn_AbstractTimeseries <<FeatureType>> {
   # firstTimestamp : gml:TimePosition [0..1]
   # lastTimestamp : gml:TimePosition [0..1]
   ~ adeOfAbstractTimeseries : dyn:ADEOfAbstractTimeseries [0..*]
 }
-class "dyn:AbstractTimeseriesProperty" $property {
+class "dyn:AbstractTimeseriesProperty" as dyn_AbstractTimeseriesProperty $property {
   AbstractTimeseries : dyn:AbstractTimeseries
 }
-class "dyn:CompositeTimeseries" <<FeatureType>> {
+class "dyn:CompositeTimeseries" as dyn_CompositeTimeseries <<FeatureType>> {
   ~ adeOfCompositeTimeseries : dyn:ADEOfCompositeTimeseries [0..*]
   - component : dyn:TimeseriesComponent [1..*]
 }
-class "dyn:CompositeTimeseriesProperty" $property {
+class "dyn:CompositeTimeseriesProperty" as dyn_CompositeTimeseriesProperty $property {
   CompositeTimeseries : dyn:CompositeTimeseries
 }
-class "dyn:Dynamizer" <<FeatureType>> {
+class "dyn:Dynamizer" as dyn_Dynamizer <<FeatureType>> {
   # attributeRef : xs:string
   # startTime : gml:TimePosition [0..1]
   # endTime : gml:TimePosition [0..1]
   ~ adeOfDynamizer : dyn:ADEOfDynamizer [0..*]
   - sensorConnection : dyn:SensorConnection [0..1]
 }
-class "dyn:DynamizerProperty" $property {
+class "dyn:DynamizerProperty" as dyn_DynamizerProperty $property {
   Dynamizer : dyn:Dynamizer
 }
-class "dyn:GenericTimeseries" <<FeatureType>> {
+class "dyn:GenericTimeseries" as dyn_GenericTimeseries <<FeatureType>> {
   valueType : dyn:TimeseriesTypeValue
   ~ adeOfGenericTimeseries : dyn:ADEOfGenericTimeseries [0..*]
   - timeValuePair : dyn:TimeValuePair [1..*]
 }
-class "dyn:GenericTimeseriesProperty" $property {
+class "dyn:GenericTimeseriesProperty" as dyn_GenericTimeseriesProperty $property {
   GenericTimeseries : dyn:GenericTimeseries
 }
-class "dyn:SensorConnection" <<DataType>> {
+class "dyn:SensorConnection" as dyn_SensorConnection <<DataType>> {
   # connectionType : gml:Code
   # observationProperty : xs:string
   # uom : xs:string [0..1]
@@ -89,19 +89,19 @@ class "dyn:SensorConnection" <<DataType>> {
   # linkToObservation : xs:string [0..1]
   # linkToSensorDescription : xs:string [0..1]
 }
-class "dyn:SensorConnectionProperty" $property {
+class "dyn:SensorConnectionProperty" as dyn_SensorConnectionProperty $property {
   SensorConnection : dyn:SensorConnection
 }
-class "dyn:StandardFileTimeseries" <<FeatureType>> {
+class "dyn:StandardFileTimeseries" as dyn_StandardFileTimeseries <<FeatureType>> {
   # fileLocation : xs:anyURI
   # fileType : gml:Code
   # mimeType : gml:Code [0..1]
   ~ adeOfStandardFileTimeseries : dyn:ADEOfStandardFileTimeseries [0..*]
 }
-class "dyn:StandardFileTimeseriesProperty" $property {
+class "dyn:StandardFileTimeseriesProperty" as dyn_StandardFileTimeseriesProperty $property {
   StandardFileTimeseries : dyn:StandardFileTimeseries
 }
-class "dyn:TabulatedFileTimeseries" <<FeatureType>> {
+class "dyn:TabulatedFileTimeseries" as dyn_TabulatedFileTimeseries <<FeatureType>> {
   # fileLocation : xs:anyURI
   # fileType : gml:Code
   # mimeType : gml:Code [0..1]
@@ -118,10 +118,10 @@ class "dyn:TabulatedFileTimeseries" <<FeatureType>> {
   # valueColumnName : xs:string [0..1]
   ~ adeOfTabulatedFileTimeseries : dyn:ADEOfTabulatedFileTimeseries [0..*]
 }
-class "dyn:TabulatedFileTimeseriesProperty" $property {
+class "dyn:TabulatedFileTimeseriesProperty" as dyn_TabulatedFileTimeseriesProperty $property {
   TabulatedFileTimeseries : dyn:TabulatedFileTimeseries
 }
-class "dyn:TimeValuePair" <<DataType>> {
+class "dyn:TimeValuePair" as dyn_TimeValuePair <<DataType>> {
   # timestamp : gml:TimePosition
   # intValue : xs:integer [0..1]
   # doubleValue : xs:double [0..1]
@@ -132,19 +132,19 @@ class "dyn:TimeValuePair" <<DataType>> {
   # implicitGeometryValue : core:ImplicitGeometry [0..1]
   # appearanceValue : core:AbstractAppearance [0..1]
 }
-class "dyn:TimeValuePairProperty" $property {
+class "dyn:TimeValuePairProperty" as dyn_TimeValuePairProperty $property {
   TimeValuePair : dyn:TimeValuePair
 }
-class "dyn:TimeseriesComponent" <<DataType>> {
+class "dyn:TimeseriesComponent" as dyn_TimeseriesComponent <<DataType>> {
   # repetitions : xs:integer
   # additionalGap : xs:duration [0..1]
 }
-class "dyn:TimeseriesComponentProperty" $property {
+class "dyn:TimeseriesComponentProperty" as dyn_TimeseriesComponentProperty $property {
   TimeseriesComponent : dyn:TimeseriesComponent
 }
 
 ' Simple types (from <simpleType> declarations)
-class "dyn:TimeseriesTypeValue" <<Enumeration>> {
+class "dyn:TimeseriesTypeValue" as dyn_TimeseriesTypeValue <<Enumeration>> {
   int
   double
   string
@@ -157,22 +157,22 @@ class "dyn:TimeseriesTypeValue" <<Enumeration>> {
 }
 
 ' External types (unresolved namespaces)
-abstract class "core:AbstractCityObject"
-abstract class "core:AbstractDynamizer"
-abstract class "core:AbstractFeature"
+abstract class "core:AbstractCityObject" as core_AbstractCityObject
+abstract class "core:AbstractDynamizer" as core_AbstractDynamizer
+abstract class "core:AbstractFeature" as core_AbstractFeature
 
-"dyn:AbstractTimeseries" <|-- "dyn:AbstractAtomicTimeseries"
-"core:AbstractFeature" <|-- "dyn:AbstractTimeseries"
-"dyn:AbstractTimeseries" <|-- "dyn:CompositeTimeseries"
-"core:AbstractDynamizer" <|-- "dyn:Dynamizer"
-"dyn:AbstractAtomicTimeseries" <|-- "dyn:GenericTimeseries"
-"dyn:AbstractAtomicTimeseries" <|-- "dyn:StandardFileTimeseries"
-"dyn:AbstractAtomicTimeseries" <|-- "dyn:TabulatedFileTimeseries"
+"dyn_AbstractTimeseries" <|-- "dyn_AbstractAtomicTimeseries"
+"core_AbstractFeature" <|-- "dyn_AbstractTimeseries"
+"dyn_AbstractTimeseries" <|-- "dyn_CompositeTimeseries"
+"core_AbstractDynamizer" <|-- "dyn_Dynamizer"
+"dyn_AbstractAtomicTimeseries" <|-- "dyn_GenericTimeseries"
+"dyn_AbstractAtomicTimeseries" <|-- "dyn_StandardFileTimeseries"
+"dyn_AbstractAtomicTimeseries" <|-- "dyn_TabulatedFileTimeseries"
 
 ' Class relations (promoted from property wrappers)
-"dyn:Dynamizer" o-- "0..1" "dyn:AbstractTimeseries" : dynamicData
-"dyn:SensorConnection" ..> "0..1" "core:AbstractCityObject" : sensorLocation
-"dyn:TimeseriesComponent" o-- "1" "dyn:AbstractTimeseries" : timeseries
+"dyn_Dynamizer" o-- "0..1" "dyn_AbstractTimeseries" : dynamicData
+"dyn_SensorConnection" ..> "0..1" "core_AbstractCityObject" : sensorLocation
+"dyn_TimeseriesComponent" o-- "1" "dyn_AbstractTimeseries" : timeseries
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -191,5 +191,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:56
+footer Generated on 2026-10-14 14:37:56
 @enduml
