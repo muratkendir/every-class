@@ -5,25 +5,25 @@ title
 end title
 
 package luse {
-abstract class "luse:ADEOfLandUse" $adeOf
-class "luse:ADEOfLandUseProperty" $property $adeOf {
+abstract class "luse:ADEOfLandUse" as luse_ADEOfLandUse $adeOf
+class "luse:ADEOfLandUseProperty" as luse_ADEOfLandUseProperty $property $adeOf {
   ADEOfLandUse : luse:ADEOfLandUse
 }
-class "luse:LandUse" <<FeatureType>> {
+class "luse:LandUse" as luse_LandUse <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfLandUse : luse:ADEOfLandUse [0..*]
 }
-class "luse:LandUseProperty" $property {
+class "luse:LandUseProperty" as luse_LandUseProperty $property {
   LandUse : luse:LandUse
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "core:AbstractThematicSurface"
+abstract class "core:AbstractThematicSurface" as core_AbstractThematicSurface
 
-"core:AbstractThematicSurface" <|-- "luse:LandUse"
+"core_AbstractThematicSurface" <|-- "luse_LandUse"
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -42,5 +42,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:57
+footer Generated on 2026-10-14 14:37:56
 @enduml

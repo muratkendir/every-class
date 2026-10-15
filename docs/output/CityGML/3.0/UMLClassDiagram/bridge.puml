@@ -5,35 +5,35 @@ title
 end title
 
 package brid {
-abstract class "brid:ADEOfAbstractBridge" $adeOf
-class "brid:ADEOfAbstractBridgeProperty" $property $adeOf {
+abstract class "brid:ADEOfAbstractBridge" as brid_ADEOfAbstractBridge $adeOf
+class "brid:ADEOfAbstractBridgeProperty" as brid_ADEOfAbstractBridgeProperty $property $adeOf {
   ADEOfAbstractBridge : brid:ADEOfAbstractBridge
 }
-abstract class "brid:ADEOfBridge" $adeOf
-class "brid:ADEOfBridgeProperty" $property $adeOf {
+abstract class "brid:ADEOfBridge" as brid_ADEOfBridge $adeOf
+class "brid:ADEOfBridgeProperty" as brid_ADEOfBridgeProperty $property $adeOf {
   ADEOfBridge : brid:ADEOfBridge
 }
-abstract class "brid:ADEOfBridgeConstructiveElement" $adeOf
-class "brid:ADEOfBridgeConstructiveElementProperty" $property $adeOf {
+abstract class "brid:ADEOfBridgeConstructiveElement" as brid_ADEOfBridgeConstructiveElement $adeOf
+class "brid:ADEOfBridgeConstructiveElementProperty" as brid_ADEOfBridgeConstructiveElementProperty $property $adeOf {
   ADEOfBridgeConstructiveElement : brid:ADEOfBridgeConstructiveElement
 }
-abstract class "brid:ADEOfBridgeFurniture" $adeOf
-class "brid:ADEOfBridgeFurnitureProperty" $property $adeOf {
+abstract class "brid:ADEOfBridgeFurniture" as brid_ADEOfBridgeFurniture $adeOf
+class "brid:ADEOfBridgeFurnitureProperty" as brid_ADEOfBridgeFurnitureProperty $property $adeOf {
   ADEOfBridgeFurniture : brid:ADEOfBridgeFurniture
 }
-abstract class "brid:ADEOfBridgeInstallation" $adeOf
-class "brid:ADEOfBridgeInstallationProperty" $property $adeOf {
+abstract class "brid:ADEOfBridgeInstallation" as brid_ADEOfBridgeInstallation $adeOf
+class "brid:ADEOfBridgeInstallationProperty" as brid_ADEOfBridgeInstallationProperty $property $adeOf {
   ADEOfBridgeInstallation : brid:ADEOfBridgeInstallation
 }
-abstract class "brid:ADEOfBridgePart" $adeOf
-class "brid:ADEOfBridgePartProperty" $property $adeOf {
+abstract class "brid:ADEOfBridgePart" as brid_ADEOfBridgePart $adeOf
+class "brid:ADEOfBridgePartProperty" as brid_ADEOfBridgePartProperty $property $adeOf {
   ADEOfBridgePart : brid:ADEOfBridgePart
 }
-abstract class "brid:ADEOfBridgeRoom" $adeOf
-class "brid:ADEOfBridgeRoomProperty" $property $adeOf {
+abstract class "brid:ADEOfBridgeRoom" as brid_ADEOfBridgeRoom $adeOf
+class "brid:ADEOfBridgeRoomProperty" as brid_ADEOfBridgeRoomProperty $property $adeOf {
   ADEOfBridgeRoom : brid:ADEOfBridgeRoom
 }
-abstract class "brid:AbstractBridge" <<FeatureType>> {
+abstract class "brid:AbstractBridge" as brid_AbstractBridge <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
@@ -41,82 +41,82 @@ abstract class "brid:AbstractBridge" <<FeatureType>> {
   # address : core:Address [0..*]
   ~ adeOfAbstractBridge : brid:ADEOfAbstractBridge [0..*]
 }
-class "brid:AbstractBridgeProperty" $property {
+class "brid:AbstractBridgeProperty" as brid_AbstractBridgeProperty $property {
   AbstractBridge : brid:AbstractBridge
 }
-class "brid:Bridge" <<FeatureType>> {
+class "brid:Bridge" as brid_Bridge <<FeatureType>> {
   ~ adeOfBridge : brid:ADEOfBridge [0..*]
 }
-class "brid:BridgeProperty" $property {
+class "brid:BridgeProperty" as brid_BridgeProperty $property {
   Bridge : brid:Bridge
 }
-class "brid:BridgeConstructiveElement" <<FeatureType>> {
+class "brid:BridgeConstructiveElement" as brid_BridgeConstructiveElement <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfBridgeConstructiveElement : brid:ADEOfBridgeConstructiveElement [0..*]
 }
-class "brid:BridgeConstructiveElementProperty" $property {
+class "brid:BridgeConstructiveElementProperty" as brid_BridgeConstructiveElementProperty $property {
   BridgeConstructiveElement : brid:BridgeConstructiveElement
 }
-class "brid:BridgeFurniture" <<FeatureType>> {
+class "brid:BridgeFurniture" as brid_BridgeFurniture <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfBridgeFurniture : brid:ADEOfBridgeFurniture [0..*]
 }
-class "brid:BridgeFurnitureProperty" $property {
+class "brid:BridgeFurnitureProperty" as brid_BridgeFurnitureProperty $property {
   BridgeFurniture : brid:BridgeFurniture
 }
-class "brid:BridgeInstallation" <<FeatureType>> {
+class "brid:BridgeInstallation" as brid_BridgeInstallation <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfBridgeInstallation : brid:ADEOfBridgeInstallation [0..*]
 }
-class "brid:BridgeInstallationProperty" $property {
+class "brid:BridgeInstallationProperty" as brid_BridgeInstallationProperty $property {
   BridgeInstallation : brid:BridgeInstallation
 }
-class "brid:BridgePart" <<FeatureType>> {
+class "brid:BridgePart" as brid_BridgePart <<FeatureType>> {
   ~ adeOfBridgePart : brid:ADEOfBridgePart [0..*]
 }
-class "brid:BridgePartProperty" $property {
+class "brid:BridgePartProperty" as brid_BridgePartProperty $property {
   BridgePart : brid:BridgePart
 }
-class "brid:BridgeRoom" <<FeatureType>> {
+class "brid:BridgeRoom" as brid_BridgeRoom <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfBridgeRoom : brid:ADEOfBridgeRoom [0..*]
 }
-class "brid:BridgeRoomProperty" $property {
+class "brid:BridgeRoomProperty" as brid_BridgeRoomProperty $property {
   BridgeRoom : brid:BridgeRoom
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "con:AbstractConstruction"
-abstract class "con:AbstractConstructiveElement"
-abstract class "con:AbstractFurniture"
-abstract class "con:AbstractInstallation"
-abstract class "core:AbstractUnoccupiedSpace"
+abstract class "con:AbstractConstruction" as con_AbstractConstruction
+abstract class "con:AbstractConstructiveElement" as con_AbstractConstructiveElement
+abstract class "con:AbstractFurniture" as con_AbstractFurniture
+abstract class "con:AbstractInstallation" as con_AbstractInstallation
+abstract class "core:AbstractUnoccupiedSpace" as core_AbstractUnoccupiedSpace
 
-"con:AbstractConstruction" <|-- "brid:AbstractBridge"
-"brid:AbstractBridge" <|-- "brid:Bridge"
-"con:AbstractConstructiveElement" <|-- "brid:BridgeConstructiveElement"
-"con:AbstractFurniture" <|-- "brid:BridgeFurniture"
-"con:AbstractInstallation" <|-- "brid:BridgeInstallation"
-"brid:AbstractBridge" <|-- "brid:BridgePart"
-"core:AbstractUnoccupiedSpace" <|-- "brid:BridgeRoom"
+"con_AbstractConstruction" <|-- "brid_AbstractBridge"
+"brid_AbstractBridge" <|-- "brid_Bridge"
+"con_AbstractConstructiveElement" <|-- "brid_BridgeConstructiveElement"
+"con_AbstractFurniture" <|-- "brid_BridgeFurniture"
+"con_AbstractInstallation" <|-- "brid_BridgeInstallation"
+"brid_AbstractBridge" <|-- "brid_BridgePart"
+"core_AbstractUnoccupiedSpace" <|-- "brid_BridgeRoom"
 
 ' Class relations (promoted from property wrappers)
-"brid:AbstractBridge" o-- "0..*" "brid:BridgeConstructiveElement" : bridgeConstructiveElement
-"brid:AbstractBridge" o-- "0..*" "brid:BridgeInstallation" : bridgeInstallation
-"brid:AbstractBridge" o-- "0..*" "brid:BridgeRoom" : bridgeRoom
-"brid:AbstractBridge" o-- "0..*" "brid:BridgeFurniture" : bridgeFurniture
-"brid:Bridge" o-- "0..*" "brid:BridgePart" : bridgePart
-"brid:BridgeRoom" o-- "0..*" "brid:BridgeFurniture" : bridgeFurniture
-"brid:BridgeRoom" o-- "0..*" "brid:BridgeInstallation" : bridgeInstallation
+"brid_AbstractBridge" o-- "0..*" "brid_BridgeConstructiveElement" : bridgeConstructiveElement
+"brid_AbstractBridge" o-- "0..*" "brid_BridgeInstallation" : bridgeInstallation
+"brid_AbstractBridge" o-- "0..*" "brid_BridgeRoom" : bridgeRoom
+"brid_AbstractBridge" o-- "0..*" "brid_BridgeFurniture" : bridgeFurniture
+"brid_Bridge" o-- "0..*" "brid_BridgePart" : bridgePart
+"brid_BridgeRoom" o-- "0..*" "brid_BridgeFurniture" : bridgeFurniture
+"brid_BridgeRoom" o-- "0..*" "brid_BridgeInstallation" : bridgeInstallation
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -135,5 +135,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:58
+footer Generated on 2026-10-14 14:37:57
 @enduml

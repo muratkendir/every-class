@@ -30,6 +30,7 @@ Detection rules (see AGENTS.md):
 
 Usage:
     python3 every_class.py <model_folder> [--core <schema_name>]
+                                      [--version <version>]
 """
 
 import argparse
@@ -159,6 +160,9 @@ def main() -> None:
                              "versions of the same data model")
     parser.add_argument("--core",
                         help="file or stem name of the core/base schema")
+    parser.add_argument("--version", dest="version",
+                        help="process only this version (e.g. 3.0); "
+                             "default: all versions found in the folder")
     args = parser.parse_args()
 
     model_dir = args.model_folder
@@ -183,6 +187,8 @@ def main() -> None:
     print(f"Data model: {model} ({len(xsds)} schemas, versions: {found})")
 
     for version in sorted(groups, key=version_sort_key):
+        if args.version and version != args.version:
+            continue
         paths = groups[version]
         order = topo_order(paths, infos)
         core = pick_core(paths, model_dir.name, args.core)

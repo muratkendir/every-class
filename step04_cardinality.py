@@ -11,7 +11,7 @@ Usage:
 import sys
 from pathlib import Path
 
-from step01_list_classes import default_output, diagram_title, generation_footer, parse_classes, qualify, schema_prefix, strip_type_suffix, target_namespace
+from step01_list_classes import alias, alias_of, default_output, diagram_title, generation_footer, parse_classes, qualify, schema_prefix, strip_type_suffix, target_namespace
 from step02_inheritance import parse_inheritance
 from step03_attributes import parse_attributes
 
@@ -38,6 +38,13 @@ def to_plantuml(classes, relations, attributes, title, prefix, subtitle=None):
         stripped = strip_type_suffix(name)
         return qualify(stripped, prefix) if stripped in known else stripped
 
+    def e(name: str) -> str:
+        """Entity alias for an edge endpoint (see step01.alias_of)."""
+        stripped = strip_type_suffix(name)
+        if stripped in known:
+            return alias(stripped, prefix)
+        return alias_of(stripped) if ":" in stripped else stripped
+
     lines = ["@startuml", "title", f"  {title}"]
     if subtitle:
         lines.append(f"  {subtitle}")
@@ -46,7 +53,7 @@ def to_plantuml(classes, relations, attributes, title, prefix, subtitle=None):
         lines.append(f"package {prefix} {{")
     for cls in classes:
         keyword = "abstract class" if cls["abstract"] else "class"
-        line = f'{keyword} "{qualify(cls["name"], prefix)}"'
+        line = f'{keyword} "{qualify(cls["name"], prefix)}" as {alias(cls["name"], prefix)}'
         if cls["name"].endswith("Property"):
             line += " $property"
         if cls["name"].startswith("ADEOf"):
@@ -76,10 +83,10 @@ def to_plantuml(classes, relations, attributes, title, prefix, subtitle=None):
         lines.append("' External base types (unresolved namespaces)")
         for stub in stubs:
             keyword = "abstract class" if stub.split(":")[-1].startswith("Abstract") else "class"
-            lines.append(f'{keyword} "{stub}"')
+            lines.append(f'{keyword} "{stub}" as {alias_of(stub)}')
     lines.append("")
     for child, parent in relations:
-        lines.append(f'"{q(parent)}" <|-- "{q(child)}"')
+        lines.append(f'"{e(parent)}" <|-- "{e(child)}"')
     if any(c["name"].startswith("ADEOf") for c in classes):
         lines += ["", "' ADE hook classes are removed from rendering by default;",
                   "' remove the next line to show them.", "remove $adeOf"]

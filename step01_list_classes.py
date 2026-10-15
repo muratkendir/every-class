@@ -3,9 +3,10 @@
 Reads an XML Schema file and treats every top-level named <complexType>
 as a UML class. The XSD encoding suffix "Type" is removed from the
 displayed class name (the original name is kept as a backup attribute).
-Every class name is prefixed with the schema's own namespace prefix
-(e.g. "core:") and wrapped in quotes, so that PlantUML files from
-different schemas can be combined without name clashes.
+Every class is declared as `class "prefix:Name" as prefix_Name`: the
+prefixed display name is preserved, while the plain-identifier alias
+keeps the entity immune to namespace splitting in current PlantUML
+(packages are namespaces; ':' in names splits — see alias_of).
 Types from other namespaces (GML, XLink, ...) are not resolved yet.
 
 Usage:
@@ -53,7 +54,12 @@ def parse_classes(xsd_path: Path) -> list[dict]:
 
 
 def schema_prefix(xsd_path: Path) -> str | None:
-    """The namespace prefix mapped to the schema's own target namespace."""
+    """The namespace prefix mapped to the schema's own target namespace.
+
+    Schemas that bind their target namespace as the default xmlns declare
+    no prefix of their own (e.g. xAL, CommonTypes); for them, fall back to
+    the prefix other schemas under the search root use for this namespace.
+    """
     ns_map = {}
     for event, (prefix, uri) in ET.iterparse(xsd_path, events=["start-ns"]):
         ns_map[prefix] = uri
@@ -61,12 +67,44 @@ def schema_prefix(xsd_path: Path) -> str | None:
     for prefix, uri in ns_map.items():
         if prefix and uri == target_ns:
             return prefix
+    step02 = sys.modules.get("step02_inheritance")
+    root = Path(getattr(step02, "SEARCH_ROOT", "schemas")) if step02 \
+        else Path("schemas")
+    for other in sorted(root.rglob("*.xsd")):
+        if other.resolve() == xsd_path.resolve():
+            continue
+        try:
+            for event, (prefix, uri) in ET.iterparse(other, events=["start-ns"]):
+                if prefix and uri == target_ns:
+                    return prefix
+        except ET.ParseError:
+            continue
     return None
 
 
 def qualify(name: str, prefix: str | None) -> str:
     """Add the schema prefix to a local type name."""
     return f"{prefix}:{name}" if prefix else name
+
+
+def alias_of(name: str) -> str:
+    """PlantUML entity alias for a (possibly prefixed) class name.
+
+    Current PlantUML treats packages as namespaces and splits names on
+    ':', so a class "con:X" declared inside `package con` is a DIFFERENT
+    entity from "con:X" declared outside it — cross-module stubs never
+    merge with the real class and arrows end at the stranded stub. The
+    alias is a plain identifier ("con_X"), immune to namespace
+    splitting; the prefixed display name is preserved via
+    `class "con:X" as con_X`.
+    """
+    p, _, local = name.partition(":")
+    return re.sub(r"[^A-Za-z0-9_]", "_", f"{p}_{local}" if p else local)
+
+
+def alias(name: str, prefix: str | None) -> str:
+    """Entity alias for a local class name of the given schema prefix."""
+    return alias_of(qualify(name, prefix))
 
 
 NAME_MAP = {"citygml": "CityGML", "gml": "GML", "indoorgml": "IndoorGML",
@@ -134,7 +172,7 @@ def to_plantuml(classes: list[dict], title: str, prefix: str | None,
         lines.append(f"package {prefix} {{")
     for cls in classes:
         keyword = "abstract class" if cls["abstract"] else "class"
-        line = f'{keyword} "{qualify(cls["name"], prefix)}"'
+        line = f'{keyword} "{qualify(cls["name"], prefix)}" as {alias(cls["name"], prefix)}'
         if cls["name"].endswith("Property"):
             line += " $property"
         if cls["name"].startswith("ADEOf"):

@@ -5,116 +5,116 @@ title
 end title
 
 package tun {
-abstract class "tun:ADEOfAbstractTunnel" $adeOf
-class "tun:ADEOfAbstractTunnelProperty" $property $adeOf {
+abstract class "tun:ADEOfAbstractTunnel" as tun_ADEOfAbstractTunnel $adeOf
+class "tun:ADEOfAbstractTunnelProperty" as tun_ADEOfAbstractTunnelProperty $property $adeOf {
   ADEOfAbstractTunnel : tun:ADEOfAbstractTunnel
 }
-abstract class "tun:ADEOfHollowSpace" $adeOf
-class "tun:ADEOfHollowSpaceProperty" $property $adeOf {
+abstract class "tun:ADEOfHollowSpace" as tun_ADEOfHollowSpace $adeOf
+class "tun:ADEOfHollowSpaceProperty" as tun_ADEOfHollowSpaceProperty $property $adeOf {
   ADEOfHollowSpace : tun:ADEOfHollowSpace
 }
-abstract class "tun:ADEOfTunnel" $adeOf
-class "tun:ADEOfTunnelProperty" $property $adeOf {
+abstract class "tun:ADEOfTunnel" as tun_ADEOfTunnel $adeOf
+class "tun:ADEOfTunnelProperty" as tun_ADEOfTunnelProperty $property $adeOf {
   ADEOfTunnel : tun:ADEOfTunnel
 }
-abstract class "tun:ADEOfTunnelConstructiveElement" $adeOf
-class "tun:ADEOfTunnelConstructiveElementProperty" $property $adeOf {
+abstract class "tun:ADEOfTunnelConstructiveElement" as tun_ADEOfTunnelConstructiveElement $adeOf
+class "tun:ADEOfTunnelConstructiveElementProperty" as tun_ADEOfTunnelConstructiveElementProperty $property $adeOf {
   ADEOfTunnelConstructiveElement : tun:ADEOfTunnelConstructiveElement
 }
-abstract class "tun:ADEOfTunnelFurniture" $adeOf
-class "tun:ADEOfTunnelFurnitureProperty" $property $adeOf {
+abstract class "tun:ADEOfTunnelFurniture" as tun_ADEOfTunnelFurniture $adeOf
+class "tun:ADEOfTunnelFurnitureProperty" as tun_ADEOfTunnelFurnitureProperty $property $adeOf {
   ADEOfTunnelFurniture : tun:ADEOfTunnelFurniture
 }
-abstract class "tun:ADEOfTunnelInstallation" $adeOf
-class "tun:ADEOfTunnelInstallationProperty" $property $adeOf {
+abstract class "tun:ADEOfTunnelInstallation" as tun_ADEOfTunnelInstallation $adeOf
+class "tun:ADEOfTunnelInstallationProperty" as tun_ADEOfTunnelInstallationProperty $property $adeOf {
   ADEOfTunnelInstallation : tun:ADEOfTunnelInstallation
 }
-abstract class "tun:ADEOfTunnelPart" $adeOf
-class "tun:ADEOfTunnelPartProperty" $property $adeOf {
+abstract class "tun:ADEOfTunnelPart" as tun_ADEOfTunnelPart $adeOf
+class "tun:ADEOfTunnelPartProperty" as tun_ADEOfTunnelPartProperty $property $adeOf {
   ADEOfTunnelPart : tun:ADEOfTunnelPart
 }
-abstract class "tun:AbstractTunnel" <<FeatureType>> {
+abstract class "tun:AbstractTunnel" as tun_AbstractTunnel <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfAbstractTunnel : tun:ADEOfAbstractTunnel [0..*]
 }
-class "tun:AbstractTunnelProperty" $property {
+class "tun:AbstractTunnelProperty" as tun_AbstractTunnelProperty $property {
   AbstractTunnel : tun:AbstractTunnel
 }
-class "tun:HollowSpace" <<FeatureType>> {
+class "tun:HollowSpace" as tun_HollowSpace <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfHollowSpace : tun:ADEOfHollowSpace [0..*]
 }
-class "tun:HollowSpaceProperty" $property {
+class "tun:HollowSpaceProperty" as tun_HollowSpaceProperty $property {
   HollowSpace : tun:HollowSpace
 }
-class "tun:Tunnel" <<FeatureType>> {
+class "tun:Tunnel" as tun_Tunnel <<FeatureType>> {
   ~ adeOfTunnel : tun:ADEOfTunnel [0..*]
 }
-class "tun:TunnelProperty" $property {
+class "tun:TunnelProperty" as tun_TunnelProperty $property {
   Tunnel : tun:Tunnel
 }
-class "tun:TunnelConstructiveElement" <<FeatureType>> {
+class "tun:TunnelConstructiveElement" as tun_TunnelConstructiveElement <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfTunnelConstructiveElement : tun:ADEOfTunnelConstructiveElement [0..*]
 }
-class "tun:TunnelConstructiveElementProperty" $property {
+class "tun:TunnelConstructiveElementProperty" as tun_TunnelConstructiveElementProperty $property {
   TunnelConstructiveElement : tun:TunnelConstructiveElement
 }
-class "tun:TunnelFurniture" <<FeatureType>> {
+class "tun:TunnelFurniture" as tun_TunnelFurniture <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfTunnelFurniture : tun:ADEOfTunnelFurniture [0..*]
 }
-class "tun:TunnelFurnitureProperty" $property {
+class "tun:TunnelFurnitureProperty" as tun_TunnelFurnitureProperty $property {
   TunnelFurniture : tun:TunnelFurniture
 }
-class "tun:TunnelInstallation" <<FeatureType>> {
+class "tun:TunnelInstallation" as tun_TunnelInstallation <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfTunnelInstallation : tun:ADEOfTunnelInstallation [0..*]
 }
-class "tun:TunnelInstallationProperty" $property {
+class "tun:TunnelInstallationProperty" as tun_TunnelInstallationProperty $property {
   TunnelInstallation : tun:TunnelInstallation
 }
-class "tun:TunnelPart" <<FeatureType>> {
+class "tun:TunnelPart" as tun_TunnelPart <<FeatureType>> {
   ~ adeOfTunnelPart : tun:ADEOfTunnelPart [0..*]
 }
-class "tun:TunnelPartProperty" $property {
+class "tun:TunnelPartProperty" as tun_TunnelPartProperty $property {
   TunnelPart : tun:TunnelPart
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "con:AbstractConstruction"
-abstract class "con:AbstractConstructiveElement"
-abstract class "con:AbstractFurniture"
-abstract class "con:AbstractInstallation"
-abstract class "core:AbstractUnoccupiedSpace"
+abstract class "con:AbstractConstruction" as con_AbstractConstruction
+abstract class "con:AbstractConstructiveElement" as con_AbstractConstructiveElement
+abstract class "con:AbstractFurniture" as con_AbstractFurniture
+abstract class "con:AbstractInstallation" as con_AbstractInstallation
+abstract class "core:AbstractUnoccupiedSpace" as core_AbstractUnoccupiedSpace
 
-"con:AbstractConstruction" <|-- "tun:AbstractTunnel"
-"core:AbstractUnoccupiedSpace" <|-- "tun:HollowSpace"
-"tun:AbstractTunnel" <|-- "tun:Tunnel"
-"con:AbstractConstructiveElement" <|-- "tun:TunnelConstructiveElement"
-"con:AbstractFurniture" <|-- "tun:TunnelFurniture"
-"con:AbstractInstallation" <|-- "tun:TunnelInstallation"
-"tun:AbstractTunnel" <|-- "tun:TunnelPart"
+"con_AbstractConstruction" <|-- "tun_AbstractTunnel"
+"core_AbstractUnoccupiedSpace" <|-- "tun_HollowSpace"
+"tun_AbstractTunnel" <|-- "tun_Tunnel"
+"con_AbstractConstructiveElement" <|-- "tun_TunnelConstructiveElement"
+"con_AbstractFurniture" <|-- "tun_TunnelFurniture"
+"con_AbstractInstallation" <|-- "tun_TunnelInstallation"
+"tun_AbstractTunnel" <|-- "tun_TunnelPart"
 
 ' Class relations (promoted from property wrappers)
-"tun:AbstractTunnel" o-- "0..*" "tun:TunnelConstructiveElement" : tunnelConstructiveElement
-"tun:AbstractTunnel" o-- "0..*" "tun:TunnelInstallation" : tunnelInstallation
-"tun:AbstractTunnel" o-- "0..*" "tun:HollowSpace" : hollowSpace
-"tun:AbstractTunnel" o-- "0..*" "tun:TunnelFurniture" : tunnelFurniture
-"tun:HollowSpace" o-- "0..*" "tun:TunnelFurniture" : tunnelFurniture
-"tun:HollowSpace" o-- "0..*" "tun:TunnelInstallation" : tunnelInstallation
-"tun:Tunnel" o-- "0..*" "tun:TunnelPart" : tunnelPart
+"tun_AbstractTunnel" o-- "0..*" "tun_TunnelConstructiveElement" : tunnelConstructiveElement
+"tun_AbstractTunnel" o-- "0..*" "tun_TunnelInstallation" : tunnelInstallation
+"tun_AbstractTunnel" o-- "0..*" "tun_HollowSpace" : hollowSpace
+"tun_AbstractTunnel" o-- "0..*" "tun_TunnelFurniture" : tunnelFurniture
+"tun_HollowSpace" o-- "0..*" "tun_TunnelFurniture" : tunnelFurniture
+"tun_HollowSpace" o-- "0..*" "tun_TunnelInstallation" : tunnelInstallation
+"tun_Tunnel" o-- "0..*" "tun_TunnelPart" : tunnelPart
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -133,5 +133,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:58
+footer Generated on 2026-10-14 14:37:58
 @enduml

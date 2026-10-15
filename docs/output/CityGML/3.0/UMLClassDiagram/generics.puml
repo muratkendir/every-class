@@ -5,136 +5,136 @@ title
 end title
 
 package gen {
-abstract class "gen:ADEOfGenericLogicalSpace" $adeOf
-class "gen:ADEOfGenericLogicalSpaceProperty" $property $adeOf {
+abstract class "gen:ADEOfGenericLogicalSpace" as gen_ADEOfGenericLogicalSpace $adeOf
+class "gen:ADEOfGenericLogicalSpaceProperty" as gen_ADEOfGenericLogicalSpaceProperty $property $adeOf {
   ADEOfGenericLogicalSpace : gen:ADEOfGenericLogicalSpace
 }
-abstract class "gen:ADEOfGenericOccupiedSpace" $adeOf
-class "gen:ADEOfGenericOccupiedSpaceProperty" $property $adeOf {
+abstract class "gen:ADEOfGenericOccupiedSpace" as gen_ADEOfGenericOccupiedSpace $adeOf
+class "gen:ADEOfGenericOccupiedSpaceProperty" as gen_ADEOfGenericOccupiedSpaceProperty $property $adeOf {
   ADEOfGenericOccupiedSpace : gen:ADEOfGenericOccupiedSpace
 }
-abstract class "gen:ADEOfGenericThematicSurface" $adeOf
-class "gen:ADEOfGenericThematicSurfaceProperty" $property $adeOf {
+abstract class "gen:ADEOfGenericThematicSurface" as gen_ADEOfGenericThematicSurface $adeOf
+class "gen:ADEOfGenericThematicSurfaceProperty" as gen_ADEOfGenericThematicSurfaceProperty $property $adeOf {
   ADEOfGenericThematicSurface : gen:ADEOfGenericThematicSurface
 }
-abstract class "gen:ADEOfGenericUnoccupiedSpace" $adeOf
-class "gen:ADEOfGenericUnoccupiedSpaceProperty" $property $adeOf {
+abstract class "gen:ADEOfGenericUnoccupiedSpace" as gen_ADEOfGenericUnoccupiedSpace $adeOf
+class "gen:ADEOfGenericUnoccupiedSpaceProperty" as gen_ADEOfGenericUnoccupiedSpaceProperty $property $adeOf {
   ADEOfGenericUnoccupiedSpace : gen:ADEOfGenericUnoccupiedSpace
 }
-class "gen:CodeAttribute" <<DataType>> {
+class "gen:CodeAttribute" as gen_CodeAttribute <<DataType>> {
   # name : xs:string
   # value : gml:Code
 }
-class "gen:CodeAttributeProperty" $property {
+class "gen:CodeAttributeProperty" as gen_CodeAttributeProperty $property {
   CodeAttribute : gen:CodeAttribute
 }
-class "gen:DateAttribute" <<DataType>> {
+class "gen:DateAttribute" as gen_DateAttribute <<DataType>> {
   # name : xs:string
   # value : xs:date
 }
-class "gen:DateAttributeProperty" $property {
+class "gen:DateAttributeProperty" as gen_DateAttributeProperty $property {
   DateAttribute : gen:DateAttribute
 }
-class "gen:DoubleAttribute" <<DataType>> {
+class "gen:DoubleAttribute" as gen_DoubleAttribute <<DataType>> {
   # name : xs:string
   # value : xs:double
 }
-class "gen:DoubleAttributeProperty" $property {
+class "gen:DoubleAttributeProperty" as gen_DoubleAttributeProperty $property {
   DoubleAttribute : gen:DoubleAttribute
 }
-class "gen:GenericAttributeSet" <<DataType>> {
+class "gen:GenericAttributeSet" as gen_GenericAttributeSet <<DataType>> {
   # name : xs:string
   # codeSpace : xs:anyURI [0..1]
   # genericAttribute : core:AbstractGenericAttribute [1..*]
 }
-class "gen:GenericAttributeSetProperty" $property {
+class "gen:GenericAttributeSetProperty" as gen_GenericAttributeSetProperty $property {
   GenericAttributeSet : gen:GenericAttributeSet
 }
-class "gen:GenericLogicalSpace" <<FeatureType>> {
+class "gen:GenericLogicalSpace" as gen_GenericLogicalSpace <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfGenericLogicalSpace : gen:ADEOfGenericLogicalSpace [0..*]
 }
-class "gen:GenericLogicalSpaceProperty" $property {
+class "gen:GenericLogicalSpaceProperty" as gen_GenericLogicalSpaceProperty $property {
   GenericLogicalSpace : gen:GenericLogicalSpace
 }
-class "gen:GenericOccupiedSpace" <<FeatureType>> {
+class "gen:GenericOccupiedSpace" as gen_GenericOccupiedSpace <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfGenericOccupiedSpace : gen:ADEOfGenericOccupiedSpace [0..*]
 }
-class "gen:GenericOccupiedSpaceProperty" $property {
+class "gen:GenericOccupiedSpaceProperty" as gen_GenericOccupiedSpaceProperty $property {
   GenericOccupiedSpace : gen:GenericOccupiedSpace
 }
-class "gen:GenericThematicSurface" <<FeatureType>> {
+class "gen:GenericThematicSurface" as gen_GenericThematicSurface <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfGenericThematicSurface : gen:ADEOfGenericThematicSurface [0..*]
 }
-class "gen:GenericThematicSurfaceProperty" $property {
+class "gen:GenericThematicSurfaceProperty" as gen_GenericThematicSurfaceProperty $property {
   GenericThematicSurface : gen:GenericThematicSurface
 }
-class "gen:GenericUnoccupiedSpace" <<FeatureType>> {
+class "gen:GenericUnoccupiedSpace" as gen_GenericUnoccupiedSpace <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfGenericUnoccupiedSpace : gen:ADEOfGenericUnoccupiedSpace [0..*]
 }
-class "gen:GenericUnoccupiedSpaceProperty" $property {
+class "gen:GenericUnoccupiedSpaceProperty" as gen_GenericUnoccupiedSpaceProperty $property {
   GenericUnoccupiedSpace : gen:GenericUnoccupiedSpace
 }
-class "gen:IntAttribute" <<DataType>> {
+class "gen:IntAttribute" as gen_IntAttribute <<DataType>> {
   # name : xs:string
   # value : xs:integer
 }
-class "gen:IntAttributeProperty" $property {
+class "gen:IntAttributeProperty" as gen_IntAttributeProperty $property {
   IntAttribute : gen:IntAttribute
 }
-class "gen:MeasureAttribute" <<DataType>> {
+class "gen:MeasureAttribute" as gen_MeasureAttribute <<DataType>> {
   # name : xs:string
   # value : gml:Measure
 }
-class "gen:MeasureAttributeProperty" $property {
+class "gen:MeasureAttributeProperty" as gen_MeasureAttributeProperty $property {
   MeasureAttribute : gen:MeasureAttribute
 }
-class "gen:StringAttribute" <<DataType>> {
+class "gen:StringAttribute" as gen_StringAttribute <<DataType>> {
   # name : xs:string
   # value : xs:string
 }
-class "gen:StringAttributeProperty" $property {
+class "gen:StringAttributeProperty" as gen_StringAttributeProperty $property {
   StringAttribute : gen:StringAttribute
 }
-class "gen:UriAttribute" <<DataType>> {
+class "gen:UriAttribute" as gen_UriAttribute <<DataType>> {
   # name : xs:string
   # value : xs:anyURI
 }
-class "gen:UriAttributeProperty" $property {
+class "gen:UriAttributeProperty" as gen_UriAttributeProperty $property {
   UriAttribute : gen:UriAttribute
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "core:AbstractGenericAttribute"
-abstract class "core:AbstractLogicalSpace"
-abstract class "core:AbstractOccupiedSpace"
-abstract class "core:AbstractThematicSurface"
-abstract class "core:AbstractUnoccupiedSpace"
+abstract class "core:AbstractGenericAttribute" as core_AbstractGenericAttribute
+abstract class "core:AbstractLogicalSpace" as core_AbstractLogicalSpace
+abstract class "core:AbstractOccupiedSpace" as core_AbstractOccupiedSpace
+abstract class "core:AbstractThematicSurface" as core_AbstractThematicSurface
+abstract class "core:AbstractUnoccupiedSpace" as core_AbstractUnoccupiedSpace
 
-"core:AbstractGenericAttribute" <|-- "gen:CodeAttribute"
-"core:AbstractGenericAttribute" <|-- "gen:DateAttribute"
-"core:AbstractGenericAttribute" <|-- "gen:DoubleAttribute"
-"core:AbstractGenericAttribute" <|-- "gen:GenericAttributeSet"
-"core:AbstractLogicalSpace" <|-- "gen:GenericLogicalSpace"
-"core:AbstractOccupiedSpace" <|-- "gen:GenericOccupiedSpace"
-"core:AbstractThematicSurface" <|-- "gen:GenericThematicSurface"
-"core:AbstractUnoccupiedSpace" <|-- "gen:GenericUnoccupiedSpace"
-"core:AbstractGenericAttribute" <|-- "gen:IntAttribute"
-"core:AbstractGenericAttribute" <|-- "gen:MeasureAttribute"
-"core:AbstractGenericAttribute" <|-- "gen:StringAttribute"
-"core:AbstractGenericAttribute" <|-- "gen:UriAttribute"
+"core_AbstractGenericAttribute" <|-- "gen_CodeAttribute"
+"core_AbstractGenericAttribute" <|-- "gen_DateAttribute"
+"core_AbstractGenericAttribute" <|-- "gen_DoubleAttribute"
+"core_AbstractGenericAttribute" <|-- "gen_GenericAttributeSet"
+"core_AbstractLogicalSpace" <|-- "gen_GenericLogicalSpace"
+"core_AbstractOccupiedSpace" <|-- "gen_GenericOccupiedSpace"
+"core_AbstractThematicSurface" <|-- "gen_GenericThematicSurface"
+"core_AbstractUnoccupiedSpace" <|-- "gen_GenericUnoccupiedSpace"
+"core_AbstractGenericAttribute" <|-- "gen_IntAttribute"
+"core_AbstractGenericAttribute" <|-- "gen_MeasureAttribute"
+"core_AbstractGenericAttribute" <|-- "gen_StringAttribute"
+"core_AbstractGenericAttribute" <|-- "gen_UriAttribute"
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -153,5 +153,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:57
+footer Generated on 2026-10-14 14:37:56
 @enduml

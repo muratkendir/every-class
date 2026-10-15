@@ -5,39 +5,39 @@ title
 end title
 
 package grp {
-abstract class "grp:ADEOfCityObjectGroup" $adeOf
-class "grp:ADEOfCityObjectGroupProperty" $property $adeOf {
+abstract class "grp:ADEOfCityObjectGroup" as grp_ADEOfCityObjectGroup $adeOf
+class "grp:ADEOfCityObjectGroupProperty" as grp_ADEOfCityObjectGroupProperty $property $adeOf {
   ADEOfCityObjectGroup : grp:ADEOfCityObjectGroup
 }
-class "grp:CityObjectGroup" <<FeatureType>> {
+class "grp:CityObjectGroup" as grp_CityObjectGroup <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
   ~ adeOfCityObjectGroup : grp:ADEOfCityObjectGroup [0..*]
 }
-class "grp:CityObjectGroupProperty" $property {
+class "grp:CityObjectGroupProperty" as grp_CityObjectGroupProperty $property {
   CityObjectGroup : grp:CityObjectGroup
 }
-class "grp:Role" <<ObjectType>> {
+class "grp:Role" as grp_Role <<ObjectType>> {
   # role : xs:string [0..1]
 }
-class "grp:RoleProperty" $property {
+class "grp:RoleProperty" as grp_RoleProperty $property {
   Role : grp:Role
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "core:AbstractCityObject"
-abstract class "core:AbstractLogicalSpace"
-abstract class "gml:AbstractGML"
+abstract class "core:AbstractCityObject" as core_AbstractCityObject
+abstract class "core:AbstractLogicalSpace" as core_AbstractLogicalSpace
+abstract class "gml:AbstractGML" as gml_AbstractGML
 
-"core:AbstractLogicalSpace" <|-- "grp:CityObjectGroup"
-"gml:AbstractGML" <|-- "grp:Role"
+"core_AbstractLogicalSpace" <|-- "grp_CityObjectGroup"
+"gml_AbstractGML" <|-- "grp_Role"
 
 ' Class relations (promoted from property wrappers)
-"grp:CityObjectGroup" "1" *-- "0..*" "grp:Role" : groupMember
-"grp:CityObjectGroup" ..> "0..1" "core:AbstractCityObject" : parent
-"grp:Role" o-- "1" "core:AbstractCityObject" : groupMember
+"grp_CityObjectGroup" "1" *-- "0..*" "grp_Role" : groupMember
+"grp_CityObjectGroup" ..> "0..1" "core_AbstractCityObject" : parent
+"grp_Role" o-- "1" "core_AbstractCityObject" : groupMember
 
 ' ADE hook classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -56,5 +56,5 @@ hide package members
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:56
+footer Generated on 2026-10-14 14:37:55
 @enduml
