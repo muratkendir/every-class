@@ -5,24 +5,24 @@ title
 end title
 
 package gml {
-class "gml:DefaultStyleProperty" $property {
+class "gml:DefaultStyleProperty" as gml_DefaultStyleProperty $property {
   AbstractStyle : gml:AbstractStyle [0..1]
 }
-abstract class "gml:AbstractStyle" <<ObjectType>>
-class "gml:Style" <<ObjectType>> {
+abstract class "gml:AbstractStyle" as gml_AbstractStyle <<ObjectType>>
+class "gml:Style" as gml_Style <<ObjectType>> {
   featureStyle : gml:featureStyle [1..*]
   graphStyle : gml:graphStyle [0..1]
 }
-class "gml:FeatureStyleProperty" $property {
+class "gml:FeatureStyleProperty" as gml_FeatureStyleProperty $property {
   FeatureStyle : gml:FeatureStyle [0..1]
 }
-class "gml:FeatureStyle" <<ObjectType>> {
+class "gml:FeatureStyle" as gml_FeatureStyle <<ObjectType>> {
   # featureConstraint : xs:string [0..1]
   geometryStyle : gml:geometryStyle [0..*]
   topologyStyle : gml:topologyStyle [0..*]
   labelStyle : gml:labelStyle [0..1]
 }
-class "gml:BaseStyleDescriptor" <<ObjectType>> {
+class "gml:BaseStyleDescriptor" as gml_BaseStyleDescriptor <<ObjectType>> {
   spatialResolution : gml:Scale [0..1]
   styleVariation : gml:StyleVariation [0..*]
   # animate : smil20:animate [0..*]
@@ -30,33 +30,33 @@ class "gml:BaseStyleDescriptor" <<ObjectType>> {
   # animateColor : smil20:animateColor [0..*]
   # set : smil20:set [0..*]
 }
-class "gml:GeometryStyleProperty" $property {
+class "gml:GeometryStyleProperty" as gml_GeometryStyleProperty $property {
   GeometryStyle : gml:GeometryStyle [0..1]
 }
-class "gml:GeometryStyle" <<ObjectType>> {
+class "gml:GeometryStyle" as gml_GeometryStyle <<ObjectType>> {
   symbol : gml:symbol
   # style : xs:string
   labelStyle : gml:labelStyle [0..1]
 }
-class "gml:TopologyStyleProperty" $property {
+class "gml:TopologyStyleProperty" as gml_TopologyStyleProperty $property {
   TopologyStyle : gml:TopologyStyle [0..1]
 }
-class "gml:TopologyStyle" <<ObjectType>> {
+class "gml:TopologyStyle" as gml_TopologyStyle <<ObjectType>> {
   symbol : gml:symbol
   # style : xs:string
   labelStyle : gml:labelStyle [0..1]
 }
-class "gml:LabelStyleProperty" $property {
+class "gml:LabelStyleProperty" as gml_LabelStyleProperty $property {
   LabelStyle : gml:LabelStyle [0..1]
 }
-class "gml:LabelStyle" <<ObjectType>> {
+class "gml:LabelStyle" as gml_LabelStyle <<ObjectType>> {
   # style : xs:string
   label : gml:Label
 }
-class "gml:GraphStyleProperty" $property {
+class "gml:GraphStyleProperty" as gml_GraphStyleProperty $property {
   GraphStyle : gml:GraphStyle [0..1]
 }
-class "gml:GraphStyle" <<ObjectType>> {
+class "gml:GraphStyle" as gml_GraphStyle <<ObjectType>> {
   # planar : xs:boolean [0..1]
   # directed : xs:boolean [0..1]
   # grid : xs:boolean [0..1]
@@ -67,36 +67,36 @@ class "gml:GraphStyle" <<ObjectType>> {
   lineType : gml:LineType [0..1]
   aestheticCriteria : gml:AesheticCriteria [0..*]
 }
-class "gml:Symbol" <<DataType>>
-class "gml:Label" <<DataType>> {
+class "gml:Symbol" as gml_Symbol <<DataType>>
+class "gml:Label" as gml_Label <<DataType>> {
   # LabelExpression : xs:string [0..*]
 }
-class "gml:StyleVariation" <<DataType>>
+class "gml:StyleVariation" as gml_StyleVariation <<DataType>>
 
 ' Simple types (from <simpleType> declarations)
-class "gml:QueryGrammarEnumeration" <<Enumeration>> {
+class "gml:QueryGrammarEnumeration" as gml_QueryGrammarEnumeration <<Enumeration>> {
   xpath
   xquery
   other
 }
-class "gml:SymbolTypeEnumeration" <<Enumeration>> {
+class "gml:SymbolTypeEnumeration" as gml_SymbolTypeEnumeration <<Enumeration>> {
   svg
   xpath
   other
 }
-class "gml:GraphType" <<Enumeration>> {
+class "gml:GraphType" as gml_GraphType <<Enumeration>> {
   TREE
   BICONNECTED
 }
-class "gml:DrawingType" <<Enumeration>> {
+class "gml:DrawingType" as gml_DrawingType <<Enumeration>> {
   POLYLINE
   ORTHOGONAL
 }
-class "gml:LineType" <<Enumeration>> {
+class "gml:LineType" as gml_LineType <<Enumeration>> {
   STRAIGHT
   BENT
 }
-class "gml:AesheticCriteria" <<Enumeration>> {
+class "gml:AesheticCriteria" as gml_AesheticCriteria <<Enumeration>> {
   MIN_CROSSINGS
   MIN_AREA
   MIN_BENDS
@@ -113,16 +113,16 @@ class "gml:AesheticCriteria" <<Enumeration>> {
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractGML"
+abstract class "gml:AbstractGML" as gml_AbstractGML
 
-"gml:AbstractGML" <|-- "gml:AbstractStyle"
-"gml:AbstractStyle" <|-- "gml:Style"
-"gml:AbstractGML" <|-- "gml:FeatureStyle"
-"gml:AbstractGML" <|-- "gml:BaseStyleDescriptor"
-"gml:BaseStyleDescriptor" <|-- "gml:GeometryStyle"
-"gml:BaseStyleDescriptor" <|-- "gml:TopologyStyle"
-"gml:BaseStyleDescriptor" <|-- "gml:LabelStyle"
-"gml:BaseStyleDescriptor" <|-- "gml:GraphStyle"
+"gml_AbstractGML" <|-- "gml_AbstractStyle"
+"gml_AbstractStyle" <|-- "gml_Style"
+"gml_AbstractGML" <|-- "gml_FeatureStyle"
+"gml_AbstractGML" <|-- "gml_BaseStyleDescriptor"
+"gml_BaseStyleDescriptor" <|-- "gml_GeometryStyle"
+"gml_BaseStyleDescriptor" <|-- "gml_TopologyStyle"
+"gml_BaseStyleDescriptor" <|-- "gml_LabelStyle"
+"gml_BaseStyleDescriptor" <|-- "gml_GraphStyle"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -133,5 +133,5 @@ remove $property
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:59
+footer Generated on 2026-10-21 03:55:54
 @enduml

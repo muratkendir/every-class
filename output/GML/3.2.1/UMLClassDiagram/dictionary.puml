@@ -5,33 +5,33 @@ title
 end title
 
 package gml {
-class "gml:DefinitionBase" <<ObjectType>> {
+class "gml:DefinitionBase" as gml_DefinitionBase <<ObjectType>> {
   metaDataProperty : gml:metaData [0..*]
   description : gml:description [0..1]
   descriptionReference : gml:descriptionReference [0..1]
   identifier : gml:identifier
   name : gml:name [0..*]
 }
-class "gml:Definition" <<ObjectType>> {
+class "gml:Definition" as gml_Definition <<ObjectType>> {
   remarks : gml:remarks [0..1]
 }
-class "gml:Dictionary" <<ObjectType>> {
+class "gml:Dictionary" as gml_Dictionary <<ObjectType>> {
   dictionaryEntry : gml:dictionaryEntry
   indirectEntry : gml:indirectEntry
 }
-class "gml:DictionaryEntry" <<ObjectType>> {
+class "gml:DictionaryEntry" as gml_DictionaryEntry <<ObjectType>> {
   Definition : gml:Definition
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractGML"
-abstract class "gml:AbstractMember"
+abstract class "gml:AbstractGML" as gml_AbstractGML
+abstract class "gml:AbstractMember" as gml_AbstractMember
 
-"gml:AbstractGML" <|-- "gml:DefinitionBase"
-"gml:DefinitionBase" <|-- "gml:Definition"
-"gml:Definition" <|-- "gml:Dictionary"
-"gml:AbstractMember" <|-- "gml:DictionaryEntry"
+"gml_AbstractGML" <|-- "gml_DefinitionBase"
+"gml_DefinitionBase" <|-- "gml_Definition"
+"gml_Definition" <|-- "gml_Dictionary"
+"gml_AbstractMember" <|-- "gml_DictionaryEntry"
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

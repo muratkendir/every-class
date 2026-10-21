@@ -5,39 +5,39 @@ title
 end title
 
 package gml {
-class "gml:Curve" <<ObjectType>> {
+class "gml:Curve" as gml_Curve <<ObjectType>> {
   segments : gml:segments
 }
-class "gml:OrientableCurve" <<ObjectType>> {
+class "gml:OrientableCurve" as gml_OrientableCurve <<ObjectType>> {
   baseCurve : gml:baseCurve
 }
-abstract class "gml:AbstractCurveSegment" <<DataType>>
-class "gml:CurveSegmentArrayProperty" $property {
+abstract class "gml:AbstractCurveSegment" as gml_AbstractCurveSegment <<DataType>>
+class "gml:CurveSegmentArrayProperty" as gml_CurveSegmentArrayProperty $property {
   AbstractCurveSegment : gml:AbstractCurveSegment
 }
-class "gml:LineStringSegment" <<ObjectType>> {
+class "gml:LineStringSegment" as gml_LineStringSegment <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
   posList : gml:posList
   coordinates : gml:coordinates
 }
-class "gml:ArcString" <<ObjectType>> {
+class "gml:ArcString" as gml_ArcString <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
   posList : gml:posList
   coordinates : gml:coordinates
 }
-class "gml:Arc" <<ObjectType>> {
+class "gml:Arc" as gml_Arc <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
   posList : gml:posList
   coordinates : gml:coordinates
 }
-class "gml:Circle" <<ObjectType>>
-class "gml:ArcStringByBulge" <<ObjectType>> {
+class "gml:Circle" as gml_Circle <<ObjectType>>
+class "gml:ArcStringByBulge" as gml_ArcStringByBulge <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -46,7 +46,7 @@ class "gml:ArcStringByBulge" <<ObjectType>> {
   # bulge : xs:double [1..*]
   normal : gml:Vector [1..*]
 }
-class "gml:ArcByBulge" <<ObjectType>> {
+class "gml:ArcByBulge" as gml_ArcByBulge <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -55,7 +55,7 @@ class "gml:ArcByBulge" <<ObjectType>> {
   # bulge : xs:double
   normal : gml:Vector
 }
-class "gml:ArcByCenterPoint" <<ObjectType>> {
+class "gml:ArcByCenterPoint" as gml_ArcByCenterPoint <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -65,7 +65,7 @@ class "gml:ArcByCenterPoint" <<ObjectType>> {
   startAngle : gml:Angle [0..1]
   endAngle : gml:Angle [0..1]
 }
-class "gml:CircleByCenterPoint" <<ObjectType>> {
+class "gml:CircleByCenterPoint" as gml_CircleByCenterPoint <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -73,7 +73,7 @@ class "gml:CircleByCenterPoint" <<ObjectType>> {
   coordinates : gml:coordinates
   radius : gml:Length
 }
-class "gml:CubicSpline" <<ObjectType>> {
+class "gml:CubicSpline" as gml_CubicSpline <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -82,7 +82,7 @@ class "gml:CubicSpline" <<ObjectType>> {
   vectorAtStart : gml:Vector
   vectorAtEnd : gml:Vector
 }
-class "gml:BSpline" <<ObjectType>> {
+class "gml:BSpline" as gml_BSpline <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -91,15 +91,15 @@ class "gml:BSpline" <<ObjectType>> {
   # degree : xs:nonNegativeInteger
   knot : gml:Knot [2..*]
 }
-class "gml:Knot" <<DataType>> {
+class "gml:Knot" as gml_Knot <<DataType>> {
   # value : xs:double
   # multiplicity : xs:nonNegativeInteger
   # weight : xs:double
 }
-class "gml:KnotProperty" $property {
+class "gml:KnotProperty" as gml_KnotProperty $property {
   Knot : gml:Knot
 }
-class "gml:Bezier" <<ObjectType>> {
+class "gml:Bezier" as gml_Bezier <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -108,81 +108,81 @@ class "gml:Bezier" <<ObjectType>> {
   # degree : xs:nonNegativeInteger
   knot : gml:Knot [2]
 }
-class "gml:OffsetCurve" <<ObjectType>> {
+class "gml:OffsetCurve" as gml_OffsetCurve <<ObjectType>> {
   offsetBase : gml:Curve
   distance : gml:Length
   refDirection : gml:Vector [0..1]
 }
-class "gml:AffinePlacement" <<DataType>> {
+class "gml:AffinePlacement" as gml_AffinePlacement <<DataType>> {
   location : gml:DirectPosition
   refDirection : gml:Vector [1..*]
   # inDimension : xs:positiveInteger
   # outDimension : xs:positiveInteger
 }
-class "gml:Clothoid" <<ObjectType>> {
+class "gml:Clothoid" as gml_Clothoid <<ObjectType>> {
   # scaleFactor : xs:decimal
   # startParameter : xs:double
   # endParameter : xs:double
 }
-class "gml:GeodesicString" <<ObjectType>> {
+class "gml:GeodesicString" as gml_GeodesicString <<ObjectType>> {
   posList : gml:posList
 }
-class "gml:Geodesic" <<ObjectType>>
-class "gml:Surface" <<ObjectType>> {
+class "gml:Geodesic" as gml_Geodesic <<ObjectType>>
+class "gml:Surface" as gml_Surface <<ObjectType>> {
   patches : gml:patches
 }
-class "gml:OrientableSurface" <<ObjectType>> {
+class "gml:OrientableSurface" as gml_OrientableSurface <<ObjectType>> {
   baseSurface : gml:baseSurface
 }
-abstract class "gml:AbstractSurfacePatch" <<DataType>>
-class "gml:SurfacePatchArrayProperty" $property {
+abstract class "gml:AbstractSurfacePatch" as gml_AbstractSurfacePatch <<DataType>>
+class "gml:SurfacePatchArrayProperty" as gml_SurfacePatchArrayProperty $property {
   AbstractSurfacePatch : gml:AbstractSurfacePatch
 }
-class "gml:PolygonPatch" <<ObjectType>> {
+class "gml:PolygonPatch" as gml_PolygonPatch <<ObjectType>> {
   exterior : gml:exterior [0..1]
   interior : gml:interior [0..*]
 }
-class "gml:Triangle" <<ObjectType>> {
+class "gml:Triangle" as gml_Triangle <<ObjectType>> {
   exterior : gml:exterior
 }
-class "gml:Rectangle" <<ObjectType>> {
+class "gml:Rectangle" as gml_Rectangle <<ObjectType>> {
   exterior : gml:exterior
 }
-class "gml:Ring" <<ObjectType>> {
+class "gml:Ring" as gml_Ring <<ObjectType>> {
   curveMember : gml:curveMember [1..*]
 }
-class "gml:RingProperty" $property {
+class "gml:RingProperty" as gml_RingProperty $property {
   Ring : gml:Ring
 }
-abstract class "gml:AbstractParametricCurveSurface" <<ObjectType>>
-abstract class "gml:AbstractGriddedSurface" <<ObjectType>>
-class "gml:Cone" <<ObjectType>>
-class "gml:Cylinder" <<ObjectType>>
-class "gml:Sphere" <<ObjectType>>
-class "gml:Tin" <<ObjectType>> {
+abstract class "gml:AbstractParametricCurveSurface" as gml_AbstractParametricCurveSurface <<ObjectType>>
+abstract class "gml:AbstractGriddedSurface" as gml_AbstractGriddedSurface <<ObjectType>>
+class "gml:Cone" as gml_Cone <<ObjectType>>
+class "gml:Cylinder" as gml_Cylinder <<ObjectType>>
+class "gml:Sphere" as gml_Sphere <<ObjectType>>
+class "gml:Tin" as gml_Tin <<ObjectType>> {
   maxLength : gml:Length
   controlPoint : gml:posList
 }
-class "gml:LineStringSegmentArrayProperty" $property {
+class "gml:LineStringSegmentArrayProperty" as gml_LineStringSegmentArrayProperty $property {
   LineStringSegment : gml:LineStringSegment
 }
-class "gml:AbstractSolid" <<ObjectType>>
-class "gml:SolidProperty" $property {
+class "gml:AbstractSolid" as gml_AbstractSolid <<ObjectType>>
+class "gml:SolidProperty" as gml_SolidProperty $property {
   AbstractSolid : gml:AbstractSolid
 }
-class "gml:SolidArrayProperty" $property {
+class "gml:SolidArrayProperty" as gml_SolidArrayProperty $property {
   AbstractSolid : gml:AbstractSolid
 }
-class "gml:Solid" <<ObjectType>>
-class "gml:Shell" <<ObjectType>> {
+class "gml:Solid" as gml_Solid <<ObjectType>>
+class "gml:Shell" as gml_Shell <<ObjectType>> {
   surfaceMember : gml:surfaceMember [1..*]
 }
-class "gml:ShellProperty" $property {
+class "gml:ShellProperty" as gml_ShellProperty $property {
   Shell : gml:Shell
 }
 
 ' Simple types (from <simpleType> declarations)
-class "gml:CurveInterpolation" <<Enumeration>> {
+class "gml:CurveInterpolation" as gml_CurveInterpolation <<Enumeration>> {
   linear
   geodesic
   circularArc3Points
@@ -195,12 +195,12 @@ class "gml:CurveInterpolation" <<Enumeration>> {
   cubicSpline
   rationalSpline
 }
-class "gml:KnotTypes" <<Enumeration>> {
+class "gml:KnotTypes" as gml_KnotTypes <<Enumeration>> {
   uniform
   quasiUniform
   piecewiseBezier
 }
-class "gml:SurfaceInterpolation" <<Enumeration>> {
+class "gml:SurfaceInterpolation" as gml_SurfaceInterpolation <<Enumeration>> {
   none
   planar
   spherical
@@ -214,54 +214,54 @@ class "gml:SurfaceInterpolation" <<Enumeration>> {
 }
 
 ' Model groups (from <group> declarations)
-class "gml:PointGrid" <<Union>>
+class "gml:PointGrid" as gml_PointGrid <<Union>>
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractCurve"
-abstract class "gml:AbstractGeometricPrimitive"
-abstract class "gml:AbstractRing"
-abstract class "gml:AbstractSurface"
+abstract class "gml:AbstractCurve" as gml_AbstractCurve
+abstract class "gml:AbstractGeometricPrimitive" as gml_AbstractGeometricPrimitive
+abstract class "gml:AbstractRing" as gml_AbstractRing
+abstract class "gml:AbstractSurface" as gml_AbstractSurface
 
-"gml:AbstractCurve" <|-- "gml:Curve"
-"gml:AbstractCurve" <|-- "gml:OrientableCurve"
-"gml:AbstractCurveSegment" <|-- "gml:LineStringSegment"
-"gml:AbstractCurveSegment" <|-- "gml:ArcString"
-"gml:ArcString" <|-- "gml:Arc"
-"gml:Arc" <|-- "gml:Circle"
-"gml:AbstractCurveSegment" <|-- "gml:ArcStringByBulge"
-"gml:ArcStringByBulge" <|-- "gml:ArcByBulge"
-"gml:AbstractCurveSegment" <|-- "gml:ArcByCenterPoint"
-"gml:ArcByCenterPoint" <|-- "gml:CircleByCenterPoint"
-"gml:AbstractCurveSegment" <|-- "gml:CubicSpline"
-"gml:AbstractCurveSegment" <|-- "gml:BSpline"
-"gml:BSpline" <|-- "gml:Bezier"
-"gml:AbstractCurveSegment" <|-- "gml:OffsetCurve"
-"gml:AbstractCurveSegment" <|-- "gml:Clothoid"
-"gml:AbstractCurveSegment" <|-- "gml:GeodesicString"
-"gml:GeodesicString" <|-- "gml:Geodesic"
-"gml:AbstractSurface" <|-- "gml:Surface"
-"gml:AbstractSurface" <|-- "gml:OrientableSurface"
-"gml:AbstractSurfacePatch" <|-- "gml:PolygonPatch"
-"gml:AbstractSurfacePatch" <|-- "gml:Triangle"
-"gml:AbstractSurfacePatch" <|-- "gml:Rectangle"
-"gml:AbstractRing" <|-- "gml:Ring"
-"gml:AbstractSurfacePatch" <|-- "gml:AbstractParametricCurveSurface"
-"gml:AbstractParametricCurveSurface" <|-- "gml:AbstractGriddedSurface"
-"gml:AbstractGriddedSurface" <|-- "gml:Cone"
-"gml:AbstractGriddedSurface" <|-- "gml:Cylinder"
-"gml:AbstractGriddedSurface" <|-- "gml:Sphere"
-"gml:Surface" <|-- "gml:Tin"
-"gml:AbstractGeometricPrimitive" <|-- "gml:AbstractSolid"
-"gml:AbstractSolid" <|-- "gml:Solid"
-"gml:AbstractSurface" <|-- "gml:Shell"
+"gml_AbstractCurve" <|-- "gml_Curve"
+"gml_AbstractCurve" <|-- "gml_OrientableCurve"
+"gml_AbstractCurveSegment" <|-- "gml_LineStringSegment"
+"gml_AbstractCurveSegment" <|-- "gml_ArcString"
+"gml_ArcString" <|-- "gml_Arc"
+"gml_Arc" <|-- "gml_Circle"
+"gml_AbstractCurveSegment" <|-- "gml_ArcStringByBulge"
+"gml_ArcStringByBulge" <|-- "gml_ArcByBulge"
+"gml_AbstractCurveSegment" <|-- "gml_ArcByCenterPoint"
+"gml_ArcByCenterPoint" <|-- "gml_CircleByCenterPoint"
+"gml_AbstractCurveSegment" <|-- "gml_CubicSpline"
+"gml_AbstractCurveSegment" <|-- "gml_BSpline"
+"gml_BSpline" <|-- "gml_Bezier"
+"gml_AbstractCurveSegment" <|-- "gml_OffsetCurve"
+"gml_AbstractCurveSegment" <|-- "gml_Clothoid"
+"gml_AbstractCurveSegment" <|-- "gml_GeodesicString"
+"gml_GeodesicString" <|-- "gml_Geodesic"
+"gml_AbstractSurface" <|-- "gml_Surface"
+"gml_AbstractSurface" <|-- "gml_OrientableSurface"
+"gml_AbstractSurfacePatch" <|-- "gml_PolygonPatch"
+"gml_AbstractSurfacePatch" <|-- "gml_Triangle"
+"gml_AbstractSurfacePatch" <|-- "gml_Rectangle"
+"gml_AbstractRing" <|-- "gml_Ring"
+"gml_AbstractSurfacePatch" <|-- "gml_AbstractParametricCurveSurface"
+"gml_AbstractParametricCurveSurface" <|-- "gml_AbstractGriddedSurface"
+"gml_AbstractGriddedSurface" <|-- "gml_Cone"
+"gml_AbstractGriddedSurface" <|-- "gml_Cylinder"
+"gml_AbstractGriddedSurface" <|-- "gml_Sphere"
+"gml_Surface" <|-- "gml_Tin"
+"gml_AbstractGeometricPrimitive" <|-- "gml_AbstractSolid"
+"gml_AbstractSolid" <|-- "gml_Solid"
+"gml_AbstractSurface" <|-- "gml_Shell"
 
 ' Class relations (promoted from property wrappers)
-"gml:Clothoid" "1" *-- "1" "gml:AffinePlacement" : refLocation
-"gml:Tin" "1" *-- "0..*" "gml:LineStringSegment" : stopLines
-"gml:Tin" "1" *-- "0..*" "gml:LineStringSegment" : breakLines
-"gml:Solid" "1" *-- "0..1" "gml:Shell" : exterior
-"gml:Solid" "1" *-- "0..*" "gml:Shell" : interior
+"gml_Clothoid" "1" *-- "1" "gml_AffinePlacement" : refLocation
+"gml_Tin" "1" *-- "0..*" "gml_LineStringSegment" : stopLines
+"gml_Tin" "1" *-- "0..*" "gml_LineStringSegment" : breakLines
+"gml_Solid" "1" *-- "0..1" "gml_Shell" : exterior
+"gml_Solid" "1" *-- "0..*" "gml_Shell" : interior
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -272,5 +272,5 @@ remove $property
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

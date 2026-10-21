@@ -5,16 +5,16 @@ title
 end title
 
 package gml {
-class "gml:Length" <<DataType>>
-class "gml:Scale" <<DataType>>
-class "gml:Time" <<DataType>>
-class "gml:GridLength" <<DataType>>
-class "gml:Area" <<DataType>>
-class "gml:Volume" <<DataType>>
-class "gml:Speed" <<DataType>>
-class "gml:Angle" <<DataType>>
+class "gml:Length" as gml_Length <<DataType>>
+class "gml:Scale" as gml_Scale <<DataType>>
+class "gml:Time" as gml_Time <<DataType>>
+class "gml:GridLength" as gml_GridLength <<DataType>>
+class "gml:Area" as gml_Area <<DataType>>
+class "gml:Volume" as gml_Volume <<DataType>>
+class "gml:Speed" as gml_Speed <<DataType>>
+class "gml:Angle" as gml_Angle <<DataType>>
 }
 
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

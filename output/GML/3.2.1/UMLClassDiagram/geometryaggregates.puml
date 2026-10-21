@@ -5,57 +5,57 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractGeometricAggregate" <<ObjectType>>
-class "gml:MultiGeometry" <<ObjectType>> {
+abstract class "gml:AbstractGeometricAggregate" as gml_AbstractGeometricAggregate <<ObjectType>>
+class "gml:MultiGeometry" as gml_MultiGeometry <<ObjectType>> {
   geometryMember : gml:geometryMember [0..*]
   geometryMembers : gml:geometryMembers [0..1]
 }
-class "gml:MultiGeometryProperty" $property {
+class "gml:MultiGeometryProperty" as gml_MultiGeometryProperty $property {
   AbstractGeometricAggregate : gml:AbstractGeometricAggregate
 }
-class "gml:MultiPoint" <<ObjectType>> {
+class "gml:MultiPoint" as gml_MultiPoint <<ObjectType>> {
   pointMember : gml:pointMember [0..*]
   pointMembers : gml:pointMembers [0..1]
 }
-class "gml:MultiPointProperty" $property {
+class "gml:MultiPointProperty" as gml_MultiPointProperty $property {
   MultiPoint : gml:MultiPoint
 }
-class "gml:MultiCurve" <<ObjectType>> {
+class "gml:MultiCurve" as gml_MultiCurve <<ObjectType>> {
   curveMember : gml:curveMember [0..*]
   curveMembers : gml:curveMembers [0..1]
 }
-class "gml:MultiCurveProperty" $property {
+class "gml:MultiCurveProperty" as gml_MultiCurveProperty $property {
   MultiCurve : gml:MultiCurve
 }
-class "gml:MultiSurface" <<ObjectType>> {
+class "gml:MultiSurface" as gml_MultiSurface <<ObjectType>> {
   surfaceMember : gml:surfaceMember [0..*]
   surfaceMembers : gml:surfaceMembers [0..1]
 }
-class "gml:MultiSurfaceProperty" $property {
+class "gml:MultiSurfaceProperty" as gml_MultiSurfaceProperty $property {
   MultiSurface : gml:MultiSurface
 }
-class "gml:MultiSolid" <<ObjectType>> {
+class "gml:MultiSolid" as gml_MultiSolid <<ObjectType>> {
   solidMember : gml:solidMember [0..*]
   solidMembers : gml:solidMembers [0..1]
 }
-class "gml:MultiSolidProperty" $property {
+class "gml:MultiSolidProperty" as gml_MultiSolidProperty $property {
   MultiSolid : gml:MultiSolid
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractGeometry"
+abstract class "gml:AbstractGeometry" as gml_AbstractGeometry
 
-"gml:AbstractGeometry" <|-- "gml:AbstractGeometricAggregate"
-"gml:AbstractGeometricAggregate" <|-- "gml:MultiGeometry"
-"gml:AbstractGeometricAggregate" <|-- "gml:MultiPoint"
-"gml:AbstractGeometricAggregate" <|-- "gml:MultiCurve"
-"gml:AbstractGeometricAggregate" <|-- "gml:MultiSurface"
-"gml:AbstractGeometricAggregate" <|-- "gml:MultiSolid"
+"gml_AbstractGeometry" <|-- "gml_AbstractGeometricAggregate"
+"gml_AbstractGeometricAggregate" <|-- "gml_MultiGeometry"
+"gml_AbstractGeometricAggregate" <|-- "gml_MultiPoint"
+"gml_AbstractGeometricAggregate" <|-- "gml_MultiCurve"
+"gml_AbstractGeometricAggregate" <|-- "gml_MultiSurface"
+"gml_AbstractGeometricAggregate" <|-- "gml_MultiSolid"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

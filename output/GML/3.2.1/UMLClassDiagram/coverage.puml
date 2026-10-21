@@ -5,32 +5,32 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractCoverage" <<FeatureType>> {
+abstract class "gml:AbstractCoverage" as gml_AbstractCoverage <<FeatureType>> {
   domainSet : gml:domainSet
   rangeSet : gml:rangeSet
 }
-class "gml:DiscreteCoverage" <<FeatureType>> {
+class "gml:DiscreteCoverage" as gml_DiscreteCoverage <<FeatureType>> {
   coverageFunction : gml:coverageFunction [0..1]
 }
-abstract class "gml:AbstractContinuousCoverage" <<FeatureType>> {
+abstract class "gml:AbstractContinuousCoverage" as gml_AbstractContinuousCoverage <<FeatureType>> {
   coverageFunction : gml:coverageFunction [0..1]
 }
-class "gml:DomainSet" <<DataType>> {
+class "gml:DomainSet" as gml_DomainSet <<DataType>> {
   AbstractGeometry : gml:AbstractGeometry
   AbstractTimeObject : gml:AbstractTimeObject
 }
-class "gml:RangeSet" <<DataType>> {
+class "gml:RangeSet" as gml_RangeSet <<DataType>> {
   ValueArray : gml:ValueArray [1..*]
   AbstractScalarValueList : gml:AbstractScalarValueList [1..*]
   DataBlock : gml:DataBlock
   File : gml:File
 }
-class "gml:DataBlock" <<DataType>> {
+class "gml:DataBlock" as gml_DataBlock <<DataType>> {
   rangeParameters : gml:rangeParameters
   tupleList : gml:tupleList
   doubleOrNilReasonTupleList : gml:doubleOrNilReasonTupleList
 }
-class "gml:File" <<DataType>> {
+class "gml:File" as gml_File <<DataType>> {
   rangeParameters : gml:rangeParameters
   # fileName : xs:anyURI
   # fileReference : xs:anyURI
@@ -38,23 +38,23 @@ class "gml:File" <<DataType>> {
   # mimeType : xs:anyURI [0..1]
   # compression : xs:anyURI [0..1]
 }
-class "gml:CoverageFunction" <<DataType>> {
+class "gml:CoverageFunction" as gml_CoverageFunction <<DataType>> {
   MappingRule : gml:MappingRule
   CoverageMappingRule : gml:CoverageMappingRule
   GridFunction : gml:GridFunction
 }
-class "gml:MappingRule" <<DataType>> {
+class "gml:MappingRule" as gml_MappingRule <<DataType>> {
   # ruleDefinition : xs:string
   ruleReference : gml:Reference
 }
-class "gml:GridFunction" <<DataType>> {
+class "gml:GridFunction" as gml_GridFunction <<DataType>> {
   sequenceRule : gml:SequenceRule [0..1]
   startPoint : gml:integerList [0..1]
 }
-class "gml:SequenceRule" <<DataType>>
+class "gml:SequenceRule" as gml_SequenceRule <<DataType>>
 
 ' Simple types (from <simpleType> declarations)
-class "gml:SequenceRuleEnumeration" <<Enumeration>> {
+class "gml:SequenceRuleEnumeration" as gml_SequenceRuleEnumeration <<Enumeration>> {
   Linear
   Boustrophedonic
   Cantor-diagonal
@@ -62,21 +62,21 @@ class "gml:SequenceRuleEnumeration" <<Enumeration>> {
   Morton
   Hilbert
 }
-class "gml:AxisDirectionList" <<BasicType>>
-class "gml:AxisDirection" <<BasicType>>
+class "gml:AxisDirectionList" as gml_AxisDirectionList <<BasicType>>
+class "gml:AxisDirection" as gml_AxisDirection <<BasicType>>
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractFeature"
+abstract class "gml:AbstractFeature" as gml_AbstractFeature
 
-"gml:AbstractFeature" <|-- "gml:AbstractCoverage"
-"gml:AbstractCoverage" <|-- "gml:DiscreteCoverage"
-"gml:AbstractCoverage" <|-- "gml:AbstractContinuousCoverage"
+"gml_AbstractFeature" <|-- "gml_AbstractCoverage"
+"gml_AbstractCoverage" <|-- "gml_DiscreteCoverage"
+"gml_AbstractCoverage" <|-- "gml_AbstractContinuousCoverage"
 
 ' Attributes with value types from other namespaces are marked as
 ' protected members (# ) and shown by default; uncomment the next
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:10:59
+footer Generated on 2026-10-21 03:55:54
 @enduml

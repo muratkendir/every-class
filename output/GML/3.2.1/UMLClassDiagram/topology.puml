@@ -5,118 +5,118 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractTopology" <<ObjectType>>
-abstract class "gml:AbstractTopoPrimitive" <<ObjectType>>
-class "gml:NodeOrEdgeProperty" $property {
+abstract class "gml:AbstractTopology" as gml_AbstractTopology <<ObjectType>>
+abstract class "gml:AbstractTopoPrimitive" as gml_AbstractTopoPrimitive <<ObjectType>>
+class "gml:NodeOrEdgeProperty" as gml_NodeOrEdgeProperty $property {
   Node : gml:Node
   Edge : gml:Edge
 }
-class "gml:NodeProperty" $property {
+class "gml:NodeProperty" as gml_NodeProperty $property {
   Node : gml:Node
 }
-class "gml:FaceOrTopoSolidProperty" $property {
+class "gml:FaceOrTopoSolidProperty" as gml_FaceOrTopoSolidProperty $property {
   Face : gml:Face
   TopoSolid : gml:TopoSolid
 }
-class "gml:TopoSolidProperty" $property {
+class "gml:TopoSolidProperty" as gml_TopoSolidProperty $property {
   TopoSolid : gml:TopoSolid
 }
-class "gml:Node" <<ObjectType>> {
+class "gml:Node" as gml_Node <<ObjectType>> {
   directedEdge : gml:directedEdge [0..*]
   pointProperty : gml:point [0..1]
 }
-class "gml:DirectedNodeProperty" $property {
+class "gml:DirectedNodeProperty" as gml_DirectedNodeProperty $property {
   Node : gml:Node
 }
-class "gml:Edge" <<ObjectType>> {
+class "gml:Edge" as gml_Edge <<ObjectType>> {
   directedNode : gml:directedNode [2]
   directedFace : gml:directedFace [0..*]
   curveProperty : gml:curve [0..1]
 }
-class "gml:DirectedEdgeProperty" $property {
+class "gml:DirectedEdgeProperty" as gml_DirectedEdgeProperty $property {
   Edge : gml:Edge
 }
-class "gml:Face" <<ObjectType>> {
+class "gml:Face" as gml_Face <<ObjectType>> {
   directedEdge : gml:directedEdge [1..*]
   directedTopoSolid : gml:directedTopoSolid [0..2]
   surfaceProperty : gml:surface [0..1]
 }
-class "gml:DirectedFaceProperty" $property {
+class "gml:DirectedFaceProperty" as gml_DirectedFaceProperty $property {
   Face : gml:Face
 }
-class "gml:TopoSolid" <<ObjectType>> {
+class "gml:TopoSolid" as gml_TopoSolid <<ObjectType>> {
   directedFace : gml:directedFace [1..*]
   solidProperty : gml:solid [0..1]
 }
-class "gml:DirectedTopoSolidProperty" $property {
+class "gml:DirectedTopoSolidProperty" as gml_DirectedTopoSolidProperty $property {
   TopoSolid : gml:TopoSolid
 }
-class "gml:TopoPoint" <<ObjectType>> {
+class "gml:TopoPoint" as gml_TopoPoint <<ObjectType>> {
   directedNode : gml:directedNode
 }
-class "gml:TopoPointProperty" $property {
+class "gml:TopoPointProperty" as gml_TopoPointProperty $property {
   TopoPoint : gml:TopoPoint
 }
-class "gml:TopoCurve" <<ObjectType>> {
+class "gml:TopoCurve" as gml_TopoCurve <<ObjectType>> {
   directedEdge : gml:directedEdge [1..*]
 }
-class "gml:TopoCurveProperty" $property {
+class "gml:TopoCurveProperty" as gml_TopoCurveProperty $property {
   TopoCurve : gml:TopoCurve
 }
-class "gml:TopoSurface" <<ObjectType>> {
+class "gml:TopoSurface" as gml_TopoSurface <<ObjectType>> {
   directedFace : gml:directedFace [1..*]
 }
-class "gml:TopoSurfaceProperty" $property {
+class "gml:TopoSurfaceProperty" as gml_TopoSurfaceProperty $property {
   TopoSurface : gml:TopoSurface
 }
-class "gml:TopoVolume" <<ObjectType>> {
+class "gml:TopoVolume" as gml_TopoVolume <<ObjectType>> {
   directedTopoSolid : gml:directedTopoSolid [1..*]
 }
-class "gml:TopoVolumeProperty" $property {
+class "gml:TopoVolumeProperty" as gml_TopoVolumeProperty $property {
   TopoVolume : gml:TopoVolume
 }
-class "gml:TopoComplex" <<ObjectType>> {
+class "gml:TopoComplex" as gml_TopoComplex <<ObjectType>> {
   maximalComplex : gml:maximalComplex
   superComplex : gml:superComplex [0..*]
   subComplex : gml:subComplex [0..*]
   topoPrimitiveMember : gml:topoPrimitiveMember [0..*]
   topoPrimitiveMembers : gml:topoPrimitiveMembers [0..1]
 }
-class "gml:TopoPrimitiveMember" <<DataType>> {
+class "gml:TopoPrimitiveMember" as gml_TopoPrimitiveMember <<DataType>> {
   AbstractTopoPrimitive : gml:AbstractTopoPrimitive
 }
-class "gml:TopoPrimitiveArrayAssociation" <<DataType>> {
+class "gml:TopoPrimitiveArrayAssociation" as gml_TopoPrimitiveArrayAssociation <<DataType>> {
   AbstractTopoPrimitive : gml:AbstractTopoPrimitive
 }
-class "gml:TopoComplexProperty" $property {
+class "gml:TopoComplexProperty" as gml_TopoComplexProperty $property {
   TopoComplex : gml:TopoComplex
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractGML"
+abstract class "gml:AbstractGML" as gml_AbstractGML
 
-"gml:AbstractGML" <|-- "gml:AbstractTopology"
-"gml:AbstractTopology" <|-- "gml:AbstractTopoPrimitive"
-"gml:AbstractTopoPrimitive" <|-- "gml:Node"
-"gml:AbstractTopoPrimitive" <|-- "gml:Edge"
-"gml:AbstractTopoPrimitive" <|-- "gml:Face"
-"gml:AbstractTopoPrimitive" <|-- "gml:TopoSolid"
-"gml:AbstractTopology" <|-- "gml:TopoPoint"
-"gml:AbstractTopology" <|-- "gml:TopoCurve"
-"gml:AbstractTopology" <|-- "gml:TopoSurface"
-"gml:AbstractTopology" <|-- "gml:TopoVolume"
-"gml:AbstractTopology" <|-- "gml:TopoComplex"
+"gml_AbstractGML" <|-- "gml_AbstractTopology"
+"gml_AbstractTopology" <|-- "gml_AbstractTopoPrimitive"
+"gml_AbstractTopoPrimitive" <|-- "gml_Node"
+"gml_AbstractTopoPrimitive" <|-- "gml_Edge"
+"gml_AbstractTopoPrimitive" <|-- "gml_Face"
+"gml_AbstractTopoPrimitive" <|-- "gml_TopoSolid"
+"gml_AbstractTopology" <|-- "gml_TopoPoint"
+"gml_AbstractTopology" <|-- "gml_TopoCurve"
+"gml_AbstractTopology" <|-- "gml_TopoSurface"
+"gml_AbstractTopology" <|-- "gml_TopoVolume"
+"gml_AbstractTopology" <|-- "gml_TopoComplex"
 
 ' Class relations (promoted from property wrappers)
-"gml:Node" ..> "0..1" "gml:Face" : container
-"gml:Edge" ..> "0..1" "gml:TopoSolid" : container
-"gml:Face" ..> "0..*" "gml:Node" : isolated
-"gml:TopoSolid" ..> "0..*" "gml:Node" : isolated
+"gml_Node" ..> "0..1" "gml_Face" : container
+"gml_Edge" ..> "0..1" "gml_TopoSolid" : container
+"gml_Face" ..> "0..*" "gml_Node" : isolated
+"gml_TopoSolid" ..> "0..*" "gml_Node" : isolated
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

@@ -5,42 +5,42 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractTimeObject" <<ObjectType>>
-abstract class "gml:AbstractTimePrimitive" <<ObjectType>> {
+abstract class "gml:AbstractTimeObject" as gml_AbstractTimeObject <<ObjectType>>
+abstract class "gml:AbstractTimePrimitive" as gml_AbstractTimePrimitive <<ObjectType>> {
   relatedTime : gml:RelatedTime [0..*]
 }
-class "gml:TimePrimitiveProperty" $property {
+class "gml:TimePrimitiveProperty" as gml_TimePrimitiveProperty $property {
   AbstractTimePrimitive : gml:AbstractTimePrimitive
 }
-class "gml:RelatedTime" <<ObjectType>>
-abstract class "gml:AbstractTimeComplex" <<ObjectType>>
-abstract class "gml:AbstractTimeGeometricPrimitive" <<ObjectType>>
-class "gml:TimeInstant" <<ObjectType>> {
+class "gml:RelatedTime" as gml_RelatedTime <<ObjectType>>
+abstract class "gml:AbstractTimeComplex" as gml_AbstractTimeComplex <<ObjectType>>
+abstract class "gml:AbstractTimeGeometricPrimitive" as gml_AbstractTimeGeometricPrimitive <<ObjectType>>
+class "gml:TimeInstant" as gml_TimeInstant <<ObjectType>> {
   timePosition : gml:timePosition
 }
-class "gml:TimeInstantProperty" $property {
+class "gml:TimeInstantProperty" as gml_TimeInstantProperty $property {
   TimeInstant : gml:TimeInstant
 }
-class "gml:TimePeriod" <<ObjectType>> {
+class "gml:TimePeriod" as gml_TimePeriod <<ObjectType>> {
   beginPosition : gml:TimePosition
   endPosition : gml:TimePosition
 }
-class "gml:TimePeriodProperty" $property {
+class "gml:TimePeriodProperty" as gml_TimePeriodProperty $property {
   TimePeriod : gml:TimePeriod
 }
-class "gml:TimePosition" <<DataType>>
-class "gml:TimeIntervalLength" <<DataType>>
+class "gml:TimePosition" as gml_TimePosition <<DataType>>
+class "gml:TimeIntervalLength" as gml_TimeIntervalLength <<DataType>>
 
 ' Simple types (from <simpleType> declarations)
-class "gml:TimeIndeterminateValue" <<Enumeration>> {
+class "gml:TimeIndeterminateValue" as gml_TimeIndeterminateValue <<Enumeration>> {
   after
   before
   now
   unknown
 }
-class "gml:TimePositionUnion" <<Union>>
-class "gml:CalDate" <<Union>>
-class "gml:TimeUnit" <<Union>> {
+class "gml:TimePositionUnion" as gml_TimePositionUnion <<Union>>
+class "gml:CalDate" as gml_CalDate <<Union>>
+class "gml:TimeUnit" as gml_TimeUnit <<Union>> {
   year
   month
   day
@@ -50,27 +50,27 @@ class "gml:TimeUnit" <<Union>> {
 }
 
 ' Model groups (from <group> declarations)
-class "gml:timeLength" <<Union>>
+class "gml:timeLength" as gml_timeLength <<Union>>
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractGML"
+abstract class "gml:AbstractGML" as gml_AbstractGML
 
-"gml:AbstractGML" <|-- "gml:AbstractTimeObject"
-"gml:AbstractTimeObject" <|-- "gml:AbstractTimePrimitive"
-"gml:TimePrimitiveProperty" <|-- "gml:RelatedTime"
-"gml:AbstractTimeObject" <|-- "gml:AbstractTimeComplex"
-"gml:AbstractTimePrimitive" <|-- "gml:AbstractTimeGeometricPrimitive"
-"gml:AbstractTimeGeometricPrimitive" <|-- "gml:TimeInstant"
-"gml:AbstractTimeGeometricPrimitive" <|-- "gml:TimePeriod"
+"gml_AbstractGML" <|-- "gml_AbstractTimeObject"
+"gml_AbstractTimeObject" <|-- "gml_AbstractTimePrimitive"
+"gml_TimePrimitiveProperty" <|-- "gml_RelatedTime"
+"gml_AbstractTimeObject" <|-- "gml_AbstractTimeComplex"
+"gml_AbstractTimePrimitive" <|-- "gml_AbstractTimeGeometricPrimitive"
+"gml_AbstractTimeGeometricPrimitive" <|-- "gml_TimeInstant"
+"gml_AbstractTimeGeometricPrimitive" <|-- "gml_TimePeriod"
 
 ' Class relations (promoted from property wrappers)
-"gml:TimePeriod" ..> "1" "gml:TimeInstant" : begin
-"gml:TimePeriod" ..> "1" "gml:TimeInstant" : end
+"gml_TimePeriod" ..> "1" "gml_TimeInstant" : begin
+"gml_TimePeriod" ..> "1" "gml_TimeInstant" : end
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

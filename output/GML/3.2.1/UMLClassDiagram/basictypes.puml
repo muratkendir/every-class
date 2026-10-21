@@ -5,48 +5,48 @@ title
 end title
 
 package gml {
-class "gml:Code" <<DataType>>
-class "gml:CodeWithAuthority" <<DataType>>
-class "gml:Measure" <<DataType>>
-class "gml:Coordinates" <<DataType>>
-class "gml:CodeList" <<DataType>>
-class "gml:CodeOrNilReasonList" <<DataType>>
-class "gml:MeasureList" <<DataType>>
-class "gml:MeasureOrNilReasonList" <<DataType>>
+class "gml:Code" as gml_Code <<DataType>>
+class "gml:CodeWithAuthority" as gml_CodeWithAuthority <<DataType>>
+class "gml:Measure" as gml_Measure <<DataType>>
+class "gml:Coordinates" as gml_Coordinates <<DataType>>
+class "gml:CodeList" as gml_CodeList <<DataType>>
+class "gml:CodeOrNilReasonList" as gml_CodeOrNilReasonList <<DataType>>
+class "gml:MeasureList" as gml_MeasureList <<DataType>>
+class "gml:MeasureOrNilReasonList" as gml_MeasureOrNilReasonList <<DataType>>
 
 ' Simple types (from <simpleType> declarations)
-class "gml:NilReason" <<Union>>
-class "gml:NilReasonEnumeration" <<Union>> {
+class "gml:NilReason" as gml_NilReason <<Union>>
+class "gml:NilReasonEnumeration" as gml_NilReasonEnumeration <<Union>> {
   inapplicable
   missing
   template
   unknown
   withheld
 }
-class "gml:Sign" <<Enumeration>> {
+class "gml:Sign" as gml_Sign <<Enumeration>> {
   -
   +
 }
-class "gml:booleanOrNilReason" <<Union>>
-class "gml:doubleOrNilReason" <<Union>>
-class "gml:integerOrNilReason" <<Union>>
-class "gml:NameOrNilReason" <<Union>>
-class "gml:stringOrNilReason" <<Union>>
-class "gml:UomIdentifier" <<Union>>
-class "gml:UomSymbol" <<BasicType>>
-class "gml:UomURI" <<BasicType>>
-class "gml:booleanList" <<BasicType>>
-class "gml:doubleList" <<BasicType>>
-class "gml:integerList" <<BasicType>>
-class "gml:NameList" <<BasicType>>
-class "gml:NCNameList" <<BasicType>>
-class "gml:QNameList" <<BasicType>>
-class "gml:booleanOrNilReasonList" <<BasicType>>
-class "gml:NameOrNilReasonList" <<BasicType>>
-class "gml:doubleOrNilReasonList" <<BasicType>>
-class "gml:integerOrNilReasonList" <<BasicType>>
+class "gml:booleanOrNilReason" as gml_booleanOrNilReason <<Union>>
+class "gml:doubleOrNilReason" as gml_doubleOrNilReason <<Union>>
+class "gml:integerOrNilReason" as gml_integerOrNilReason <<Union>>
+class "gml:NameOrNilReason" as gml_NameOrNilReason <<Union>>
+class "gml:stringOrNilReason" as gml_stringOrNilReason <<Union>>
+class "gml:UomIdentifier" as gml_UomIdentifier <<Union>>
+class "gml:UomSymbol" as gml_UomSymbol <<BasicType>>
+class "gml:UomURI" as gml_UomURI <<BasicType>>
+class "gml:booleanList" as gml_booleanList <<BasicType>>
+class "gml:doubleList" as gml_doubleList <<BasicType>>
+class "gml:integerList" as gml_integerList <<BasicType>>
+class "gml:NameList" as gml_NameList <<BasicType>>
+class "gml:NCNameList" as gml_NCNameList <<BasicType>>
+class "gml:QNameList" as gml_QNameList <<BasicType>>
+class "gml:booleanOrNilReasonList" as gml_booleanOrNilReasonList <<BasicType>>
+class "gml:NameOrNilReasonList" as gml_NameOrNilReasonList <<BasicType>>
+class "gml:doubleOrNilReasonList" as gml_doubleOrNilReasonList <<BasicType>>
+class "gml:integerOrNilReasonList" as gml_integerOrNilReasonList <<BasicType>>
 }
 
 
-footer Generated on 2026-08-03 13:10:59
+footer Generated on 2026-10-21 03:55:54
 @enduml

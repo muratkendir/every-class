@@ -5,15 +5,15 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractGML" <<DataType>>
-class "gml:AssociationRole" <<DataType>>
-class "gml:Reference" <<DataType>>
-class "gml:InlineProperty" $property
-abstract class "gml:AbstractMember" <<DataType>>
-abstract class "gml:AbstractMetadataProperty" $property
+abstract class "gml:AbstractGML" as gml_AbstractGML <<DataType>>
+class "gml:AssociationRole" as gml_AssociationRole <<DataType>>
+class "gml:Reference" as gml_Reference <<DataType>>
+class "gml:InlineProperty" as gml_InlineProperty $property
+abstract class "gml:AbstractMember" as gml_AbstractMember <<DataType>>
+abstract class "gml:AbstractMetadataProperty" as gml_AbstractMetadataProperty $property
 
 ' Simple types (from <simpleType> declarations)
-class "gml:Aggregation" <<Enumeration>> {
+class "gml:Aggregation" as gml_Aggregation <<Enumeration>> {
   set
   bag
   sequence
@@ -23,7 +23,7 @@ class "gml:Aggregation" <<Enumeration>> {
 }
 
 ' Model groups (from <group> declarations)
-class "gml:StandardObjectProperties" <<Union>>
+class "gml:StandardObjectProperties" as gml_StandardObjectProperties <<Union>>
 }
 
 
@@ -31,5 +31,5 @@ class "gml:StandardObjectProperties" <<Union>>
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml
