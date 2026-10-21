@@ -12,7 +12,11 @@ Usage:
     scan_dir     directory holding the module .puml files
                  (default: step 09's DEFAULT_DIR)
     output_path  where to write the combined .puml
-    module       module file stem(s), e.g. core con bldg xal
+    module       module file stem(s) or package name(s) in scan_dir,
+                 e.g. core con bldg xal — OR a path to a .puml file in
+                 ANOTHER model-version's UMLClassDiagram directory,
+                 which pulls that module in across models, e.g.
+                 docs/output/GML/3.2.1/UMLClassDiagram/geometryprimitives.puml
                  (order on the command line does not matter; the
                  modules are inlined owner-first, as in step 09)
 
@@ -20,10 +24,28 @@ Example:
     python3 step10_compilation.py docs/output/CityGML/3.0/UMLClassDiagram \
         compilations/core-con-bldg-xal.puml core con bldg xal
 
+Cross-model note: modules from other models must carry the alias
+declarations (`class "gml:Curve" as gml_Curve`, step 01) introduced
+2026-10-14 — regenerate old-format models with every_class.py first,
+otherwise their classes and the merged edges split into duplicate
+boxes under current PlantUML.
+
 The hidden-link layering is centered on the "core" package when it is
 among the selected modules, otherwise on the first selected package.
-The title is "<model> - <version> - <Module, List & Names> Modules",
-derived from the module files like step 09 derives its own.
+The title is "<model> - <version>[ + <model2> - <version2>] -
+<Module, List & Names> Modules", derived from the module files like
+step 09 derives its own (one "<model> - <version>" base per source
+model-version, in owner-first order).
+
+Unlike step 09's all_packages diagram, compilations PROMOTE attributes
+whose value type is declared as a class in the same diagram to relation
+arrows (build_combined(promote_attrs=True), see
+step09_all_packages.promote_attribute_relations): e.g.
+`bldg:BuildingUnit`'s `# address : core:Address [0..*]` leaves the class
+body and becomes `"bldg_BuildingUnit" o-- "0..*" "core_Address" :
+address`. «FeatureType» targets get an aggregation, all others a
+dependency; `~`/`-` members, $-tagged class bodies and types not in the
+diagram stay as attributes.
 """
 
 import sys
@@ -34,8 +56,10 @@ from step09_all_packages import (DEFAULT_DIR, build_combined, include_order,
 
 
 def resolve_modules(scan_dir: Path, args: list[str]) -> dict[str, Path]:
-    """Map each module argument to its .puml file in scan_dir, by file
-    stem or by package name ("con" -> construction.puml)."""
+    """Map each module argument to its .puml file: an existing .puml
+    path is used directly (cross-model compilations), otherwise the
+    argument is looked up in scan_dir by file stem or by package name
+    ("con" -> construction.puml)."""
     available = {p.stem: p for p in sorted(scan_dir.glob("*.puml"))}
     by_package = {}
     for stem, path in available.items():
@@ -45,12 +69,17 @@ def resolve_modules(scan_dir: Path, args: list[str]) -> dict[str, Path]:
     paths = {}
     for arg in args:
         key = arg[:-5] if arg.endswith(".puml") else arg
-        path = available.get(key) or available.get(key.lower()) \
+        direct = Path(arg)
+        path = direct if direct.suffix == ".puml" and direct.is_file() \
+            else available.get(key) or available.get(key.lower()) \
             or by_package.get(key) or by_package.get(key.lower())
         if path is None:
             sys.exit(f"unknown module {arg!r} in {scan_dir}; "
                      f"available: {', '.join(available)}")
-        paths[path.name] = path
+        # key by bare file name; only a cross-model name collision
+        # (same stem from two directories) falls back to the full path
+        name = path.name if path.name not in paths else str(path)
+        paths[name] = path
     return paths
 
 
@@ -68,25 +97,35 @@ def main() -> None:
              for name, p in paths.items()}
     order = include_order(modules)
 
-    # Diagram title: "<model> - <version>" from any module's title
-    # ("CityGML - 3.0 - Core - Only XSD based" -> "CityGML - 3.0"),
+    # Diagram title: one "<model> - <version>" base per source
+    # model-version ("CityGML - 3.0 - Core - Only XSD based" ->
+    # "CityGML - 3.0"; cross-model compilations join them with " + "),
     # plus the selected packages in owner-first order.
-    first_title = next((m["title"] for m in modules.values() if m["title"]), "")
-    base = " - ".join(first_title.split(" - ")[:2])
+    bases = []
+    for name in order:
+        t = modules[name]["title"]
+        if t:
+            b = " - ".join(t.split(" - ")[:2])
+            if b not in bases:
+                bases.append(b)
+    base = " + ".join(bases)
     pkgs = []
     for name in order:
         pkg = modules[name]["package"] or Path(name).stem
         if pkg not in pkgs:
             pkgs.append(pkg)
-    display = [p.capitalize() if p.islower() else p for p in pkgs]
+    PKG_DISPLAY = {"gml": "GML", "xal": "xAL"}
+    display = [PKG_DISPLAY.get(p, p.capitalize() if p.islower() else p)
+               for p in pkgs]
     label = display[0] if len(display) == 1 else \
         ", ".join(display[:-1]) + " & " + display[-1]
-    title = f"{base} - {label} Modules"
+    title = f"{base} - {label} Modules" if base else f"{label} Modules"
 
     center = "core" if "core" in pkgs else pkgs[0]
 
     source = build_combined(modules, texts, order, title, center,
-                            header="step10_compilation.py")
+                            header="step10_compilation.py",
+                            promote_attrs=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(source, encoding="utf-8")
     print(f"{len(order)} modules merged ({', '.join(pkgs)}), "

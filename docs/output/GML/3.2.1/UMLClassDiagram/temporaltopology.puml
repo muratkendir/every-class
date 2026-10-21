@@ -5,49 +5,49 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractTimeTopologyPrimitive" <<ObjectType>> {
+abstract class "gml:AbstractTimeTopologyPrimitive" as gml_AbstractTimeTopologyPrimitive <<ObjectType>> {
   complex : gml:Reference [0..1]
 }
-class "gml:TimeTopologyPrimitiveProperty" $property {
+class "gml:TimeTopologyPrimitiveProperty" as gml_TimeTopologyPrimitiveProperty $property {
   AbstractTimeTopologyPrimitive : gml:AbstractTimeTopologyPrimitive
 }
-abstract class "gml:TimeTopologyComplex" <<ObjectType>>
-class "gml:TimeTopologyComplexProperty" $property {
+abstract class "gml:TimeTopologyComplex" as gml_TimeTopologyComplex <<ObjectType>>
+class "gml:TimeTopologyComplexProperty" as gml_TimeTopologyComplexProperty $property {
   TimeTopologyComplex : gml:TimeTopologyComplex
 }
-class "gml:TimeNode" <<ObjectType>> {
+class "gml:TimeNode" as gml_TimeNode <<ObjectType>> {
   position : gml:TimeInstant [0..1]
 }
-class "gml:TimeNodeProperty" $property {
+class "gml:TimeNodeProperty" as gml_TimeNodeProperty $property {
   TimeNode : gml:TimeNode
 }
-class "gml:TimeEdge" <<ObjectType>> {
+class "gml:TimeEdge" as gml_TimeEdge <<ObjectType>> {
   extent : gml:TimePeriod [0..1]
 }
-class "gml:TimeEdgeProperty" $property {
+class "gml:TimeEdgeProperty" as gml_TimeEdgeProperty $property {
   TimeEdge : gml:TimeEdge
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractTimeComplex"
-abstract class "gml:AbstractTimePrimitive"
+abstract class "gml:AbstractTimeComplex" as gml_AbstractTimeComplex
+abstract class "gml:AbstractTimePrimitive" as gml_AbstractTimePrimitive
 
-"gml:AbstractTimePrimitive" <|-- "gml:AbstractTimeTopologyPrimitive"
-"gml:AbstractTimeComplex" <|-- "gml:TimeTopologyComplex"
-"gml:AbstractTimeTopologyPrimitive" <|-- "gml:TimeNode"
-"gml:AbstractTimeTopologyPrimitive" <|-- "gml:TimeEdge"
+"gml_AbstractTimePrimitive" <|-- "gml_AbstractTimeTopologyPrimitive"
+"gml_AbstractTimeComplex" <|-- "gml_TimeTopologyComplex"
+"gml_AbstractTimeTopologyPrimitive" <|-- "gml_TimeNode"
+"gml_AbstractTimeTopologyPrimitive" <|-- "gml_TimeEdge"
 
 ' Class relations (promoted from property wrappers)
-"gml:TimeTopologyComplex" ..> "1..*" "gml:AbstractTimeTopologyPrimitive" : primitive
-"gml:TimeNode" ..> "0..*" "gml:TimeEdge" : previousEdge
-"gml:TimeNode" ..> "0..*" "gml:TimeEdge" : nextEdge
-"gml:TimeEdge" ..> "1" "gml:TimeNode" : start
-"gml:TimeEdge" ..> "1" "gml:TimeNode" : end
+"gml_TimeTopologyComplex" ..> "1..*" "gml_AbstractTimeTopologyPrimitive" : primitive
+"gml_TimeNode" ..> "0..*" "gml_TimeEdge" : previousEdge
+"gml_TimeNode" ..> "0..*" "gml_TimeEdge" : nextEdge
+"gml_TimeEdge" ..> "1" "gml_TimeNode" : start
+"gml_TimeEdge" ..> "1" "gml_TimeNode" : end
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

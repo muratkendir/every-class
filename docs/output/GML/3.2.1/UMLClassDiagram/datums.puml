@@ -5,53 +5,53 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractDatum" <<ObjectType>> {
+abstract class "gml:AbstractDatum" as gml_AbstractDatum <<ObjectType>> {
   domainOfValidity : gml:domainOfValidity [0..1]
   scope : gml:scope [1..*]
   anchorDefinition : gml:anchorDefinition [0..1]
   realizationEpoch : gml:realizationEpoch [0..1]
 }
-class "gml:DatumProperty" $property {
+class "gml:DatumProperty" as gml_DatumProperty $property {
   AbstractDatum : gml:AbstractDatum
 }
-class "gml:GeodeticDatum" <<ObjectType>> {
+class "gml:GeodeticDatum" as gml_GeodeticDatum <<ObjectType>> {
   primeMeridian : gml:primeMeridian
   ellipsoid : gml:ellipsoid
 }
-class "gml:GeodeticDatumProperty" $property {
+class "gml:GeodeticDatumProperty" as gml_GeodeticDatumProperty $property {
   GeodeticDatum : gml:GeodeticDatum
 }
-class "gml:Ellipsoid" <<ObjectType>> {
+class "gml:Ellipsoid" as gml_Ellipsoid <<ObjectType>> {
   semiMajorAxis : gml:semiMajorAxis
   secondDefiningParameter : gml:secondDefiningParameter
 }
-class "gml:EllipsoidProperty" $property {
+class "gml:EllipsoidProperty" as gml_EllipsoidProperty $property {
   Ellipsoid : gml:Ellipsoid
 }
-class "gml:PrimeMeridian" <<ObjectType>> {
+class "gml:PrimeMeridian" as gml_PrimeMeridian <<ObjectType>> {
   greenwichLongitude : gml:greenwichLongitude
 }
-class "gml:PrimeMeridianProperty" $property {
+class "gml:PrimeMeridianProperty" as gml_PrimeMeridianProperty $property {
   PrimeMeridian : gml:PrimeMeridian
 }
-class "gml:EngineeringDatum" <<ObjectType>>
-class "gml:EngineeringDatumProperty" $property {
+class "gml:EngineeringDatum" as gml_EngineeringDatum <<ObjectType>>
+class "gml:EngineeringDatumProperty" as gml_EngineeringDatumProperty $property {
   EngineeringDatum : gml:EngineeringDatum
 }
-class "gml:ImageDatum" <<ObjectType>> {
+class "gml:ImageDatum" as gml_ImageDatum <<ObjectType>> {
   pixelInCell : gml:pixelInCell
 }
-class "gml:ImageDatumProperty" $property {
+class "gml:ImageDatumProperty" as gml_ImageDatumProperty $property {
   ImageDatum : gml:ImageDatum
 }
-class "gml:VerticalDatum" <<ObjectType>>
-class "gml:VerticalDatumProperty" $property {
+class "gml:VerticalDatum" as gml_VerticalDatum <<ObjectType>>
+class "gml:VerticalDatumProperty" as gml_VerticalDatumProperty $property {
   VerticalDatum : gml:VerticalDatum
 }
-class "gml:TemporalDatum" <<ObjectType>> {
+class "gml:TemporalDatum" as gml_TemporalDatum <<ObjectType>> {
   origin : gml:origin
 }
-abstract class "gml:TemporalDatumBase" <<ObjectType>> {
+abstract class "gml:TemporalDatumBase" as gml_TemporalDatumBase <<ObjectType>> {
   metaDataProperty : gml:metaData [0..*]
   description : gml:description [0..1]
   descriptionReference : gml:descriptionReference [0..1]
@@ -61,27 +61,27 @@ abstract class "gml:TemporalDatumBase" <<ObjectType>> {
   domainOfValidity : gml:domainOfValidity [0..1]
   scope : gml:scope [1..*]
 }
-class "gml:TemporalDatumProperty" $property {
+class "gml:TemporalDatumProperty" as gml_TemporalDatumProperty $property {
   TemporalDatum : gml:TemporalDatum
 }
 }
 
 ' External types (unresolved namespaces)
-class "gml:IdentifiedObject"
+class "gml:IdentifiedObject" as gml_IdentifiedObject
 
-"gml:IdentifiedObject" <|-- "gml:AbstractDatum"
-"gml:AbstractDatum" <|-- "gml:GeodeticDatum"
-"gml:IdentifiedObject" <|-- "gml:Ellipsoid"
-"gml:IdentifiedObject" <|-- "gml:PrimeMeridian"
-"gml:AbstractDatum" <|-- "gml:EngineeringDatum"
-"gml:AbstractDatum" <|-- "gml:ImageDatum"
-"gml:AbstractDatum" <|-- "gml:VerticalDatum"
-"gml:TemporalDatumBase" <|-- "gml:TemporalDatum"
-"gml:AbstractDatum" <|-- "gml:TemporalDatumBase"
+"gml_IdentifiedObject" <|-- "gml_AbstractDatum"
+"gml_AbstractDatum" <|-- "gml_GeodeticDatum"
+"gml_IdentifiedObject" <|-- "gml_Ellipsoid"
+"gml_IdentifiedObject" <|-- "gml_PrimeMeridian"
+"gml_AbstractDatum" <|-- "gml_EngineeringDatum"
+"gml_AbstractDatum" <|-- "gml_ImageDatum"
+"gml_AbstractDatum" <|-- "gml_VerticalDatum"
+"gml_TemporalDatumBase" <|-- "gml_TemporalDatum"
+"gml_AbstractDatum" <|-- "gml_TemporalDatumBase"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:10:59
+footer Generated on 2026-10-21 03:55:54
 @enduml

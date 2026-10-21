@@ -5,44 +5,44 @@ title
 end title
 
 package gml {
-class "gml:ValueProperty" $property
-class "gml:ValueArrayProperty" $property
-class "gml:CompositeValue" <<ObjectType>> {
+class "gml:ValueProperty" as gml_ValueProperty $property
+class "gml:ValueArrayProperty" as gml_ValueArrayProperty $property
+class "gml:CompositeValue" as gml_CompositeValue <<ObjectType>> {
   valueComponent : gml:valueComponent [0..*]
   valueComponents : gml:valueComponents [0..1]
 }
-class "gml:ValueArray" <<ObjectType>>
-class "gml:CategoryExtent" <<DataType>>
-class "gml:QuantityExtent" <<DataType>>
-class "gml:BooleanProperty" $property {
+class "gml:ValueArray" as gml_ValueArray <<ObjectType>>
+class "gml:CategoryExtent" as gml_CategoryExtent <<DataType>>
+class "gml:QuantityExtent" as gml_QuantityExtent <<DataType>>
+class "gml:BooleanProperty" as gml_BooleanProperty $property {
   Boolean : gml:Boolean
 }
-class "gml:CategoryProperty" $property {
+class "gml:CategoryProperty" as gml_CategoryProperty $property {
   Category : gml:Category
 }
-class "gml:QuantityProperty" $property {
+class "gml:QuantityProperty" as gml_QuantityProperty $property {
   Quantity : gml:Quantity
 }
-class "gml:CountProperty" $property {
+class "gml:CountProperty" as gml_CountProperty $property {
   Count : gml:Count
 }
 
 ' Simple types (from <simpleType> declarations)
-class "gml:CountExtent" <<BasicType>>
+class "gml:CountExtent" as gml_CountExtent <<BasicType>>
 
 ' Model groups (from <group> declarations)
-class "gml:Value" <<Union>>
+class "gml:Value" as gml_Value <<Union>>
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractGML"
+abstract class "gml:AbstractGML" as gml_AbstractGML
 
-"gml:AbstractGML" <|-- "gml:CompositeValue"
-"gml:CompositeValue" <|-- "gml:ValueArray"
+"gml_AbstractGML" <|-- "gml_CompositeValue"
+"gml_CompositeValue" <|-- "gml_ValueArray"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

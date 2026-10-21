@@ -5,19 +5,19 @@ title
 end title
 
 package gml {
-class "gml:DirectionProperty" $property {
+class "gml:DirectionProperty" as gml_DirectionProperty $property {
   DirectionVector : gml:DirectionVector
   DirectionDescription : gml:DirectionDescription
   CompassPoint : gml:CompassPointEnumeration
   DirectionKeyword : gml:Code
   DirectionString : gml:StringOrRef
 }
-class "gml:DirectionVector" <<DataType>> {
+class "gml:DirectionVector" as gml_DirectionVector <<DataType>> {
   vector : gml:vector
   horizontalAngle : gml:Angle
   verticalAngle : gml:Angle
 }
-class "gml:DirectionDescription" <<DataType>> {
+class "gml:DirectionDescription" as gml_DirectionDescription <<DataType>> {
   compassPoint : gml:CompassPointEnumeration
   keyword : gml:Code
   # description : xs:string
@@ -25,7 +25,7 @@ class "gml:DirectionDescription" <<DataType>> {
 }
 
 ' Simple types (from <simpleType> declarations)
-class "gml:CompassPointEnumeration" <<Enumeration>> {
+class "gml:CompassPointEnumeration" as gml_CompassPointEnumeration <<Enumeration>> {
   N
   NNE
   NE
@@ -55,5 +55,5 @@ remove $property
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

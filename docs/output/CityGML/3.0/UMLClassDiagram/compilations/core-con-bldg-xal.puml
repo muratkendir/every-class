@@ -84,8 +84,6 @@ class "core:AbstractAppearanceProperty" as core_AbstractAppearanceProperty $prop
   AbstractAppearance : core:AbstractAppearance
 }
 abstract class "core:AbstractCityObject" as core_AbstractCityObject <<FeatureType>> {
-  relativeToTerrain : core:RelativeToTerrain [0..1]
-  relativeToWater : core:RelativeToWater [0..1]
   ~ adeOfAbstractCityObject : core:ADEOfAbstractCityObject [0..*]
   - externalReference : core:ExternalReference [0..*]
 }
@@ -146,7 +144,6 @@ class "core:AbstractPointCloudProperty" as core_AbstractPointCloudProperty $prop
   AbstractPointCloud : core:AbstractPointCloud
 }
 abstract class "core:AbstractSpace" as core_AbstractSpace <<FeatureType>> {
-  spaceType : core:SpaceType [0..1]
   # lod0Point : gml:Point [0..1]
   # lod0MultiSurface : gml:MultiSurface [0..1]
   # lod0MultiCurve : gml:MultiCurve [0..1]
@@ -201,7 +198,6 @@ class "core:AbstractVersionTransitionProperty" as core_AbstractVersionTransition
   AbstractVersionTransition : core:AbstractVersionTransition
 }
 class "core:Address" as core_Address <<FeatureType>> {
-  # xalAddress : xAL:Address
   # multiPoint : gml:MultiPoint [0..1]
   ~ adeOfAddress : core:ADEOfAddress [0..*]
 }
@@ -236,7 +232,6 @@ class "core:ExternalReferenceProperty" as core_ExternalReferenceProperty $proper
   ExternalReference : core:ExternalReference
 }
 class "core:ImplicitGeometry" as core_ImplicitGeometry <<ObjectType>> {
-  transformationMatrix : core:TransformationMatrix4x4
   # mimeType : gml:Code [0..1]
   # libraryObject : xs:anyURI [0..1]
   # referencePoint : gml:Point
@@ -385,11 +380,9 @@ class "xAL:Country" as xAL_Country <<DataType>> {
 class "xAL:Identifier" as xAL_Identifier <<DataType>>
 class "xAL:Premises" as xAL_Premises <<DataType>> {
   # NameElement : anonymous
-  Number : xAL:Identifier
 }
 class "xAL:Thoroughfare" as xAL_Thoroughfare <<DataType>> {
   # NameElement : anonymous
-  Number : xAL:Identifier
 }
 }
 
@@ -483,10 +476,8 @@ class "con:ADEOfWindowSurfaceProperty" as con_ADEOfWindowSurfaceProperty $proper
   ADEOfWindowSurface : con:ADEOfWindowSurface
 }
 abstract class "con:AbstractConstruction" as con_AbstractConstruction <<FeatureType>> {
-  conditionOfConstruction : con:ConditionOfConstructionValue [0..1]
   # dateOfConstruction : xs:date [0..1]
   # dateOfDemolition : xs:date [0..1]
-  # occupancy : core:Occupancy [0..*]
   ~ adeOfAbstractConstruction : con:ADEOfAbstractConstruction [0..*]
   - constructionEvent : con:ConstructionEvent [0..*]
   - elevation : con:Elevation [0..*]
@@ -527,7 +518,6 @@ class "con:AbstractFurnitureProperty" as con_AbstractFurnitureProperty $property
   AbstractFurniture : con:AbstractFurniture
 }
 abstract class "con:AbstractInstallation" as con_AbstractInstallation <<FeatureType>> {
-  relationToConstruction : con:RelationToConstruction [0..1]
   ~ adeOfAbstractInstallation : con:ADEOfAbstractInstallation [0..*]
 }
 class "con:AbstractInstallationProperty" as con_AbstractInstallationProperty $property {
@@ -551,14 +541,12 @@ class "con:Door" as con_Door <<FeatureType>> {
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
-  # address : core:Address [0..*]
   ~ adeOfDoor : con:ADEOfDoor [0..*]
 }
 class "con:DoorProperty" as con_DoorProperty $property {
   Door : con:Door
 }
 class "con:DoorSurface" as con_DoorSurface <<FeatureType>> {
-  # address : core:Address [0..*]
   ~ adeOfDoorSurface : con:ADEOfDoorSurface [0..*]
 }
 class "con:DoorSurfaceProperty" as con_DoorSurfaceProperty $property {
@@ -586,7 +574,6 @@ class "con:GroundSurfaceProperty" as con_GroundSurfaceProperty $property {
 class "con:Height" as con_Height <<DataType>> {
   # highReference : gml:Code
   # lowReference : gml:Code
-  status : con:HeightStatusValue
   # value : gml:Length
 }
 class "con:HeightProperty" as con_HeightProperty $property {
@@ -763,7 +750,6 @@ abstract class "bldg:AbstractBuilding" as bldg_AbstractBuilding <<FeatureType>> 
   # storeysBelowGround : xs:integer [0..1]
   # storeyHeightsAboveGround : gml:MeasureOrNilReasonList [0..1]
   # storeyHeightsBelowGround : gml:MeasureOrNilReasonList [0..1]
-  # address : core:Address [0..*]
   ~ adeOfAbstractBuilding : bldg:ADEOfAbstractBuilding [0..*]
 }
 class "bldg:AbstractBuildingProperty" as bldg_AbstractBuildingProperty $property {
@@ -773,7 +759,6 @@ abstract class "bldg:AbstractBuildingSubdivision" as bldg_AbstractBuildingSubdiv
   # class : gml:Code [0..1]
   # function : gml:Code [0..*]
   # usage : gml:Code [0..*]
-  # elevation : con:Elevation [0..*]
   # sortKey : xs:double [0..1]
   ~ adeOfAbstractBuildingSubdivision : bldg:ADEOfAbstractBuildingSubdivision [0..*]
 }
@@ -830,7 +815,6 @@ class "bldg:BuildingRoomProperty" as bldg_BuildingRoomProperty $property {
   BuildingRoom : bldg:BuildingRoom
 }
 class "bldg:BuildingUnit" as bldg_BuildingUnit <<FeatureType>> {
-  # address : core:Address [0..*]
   ~ adeOfBuildingUnit : bldg:ADEOfBuildingUnit [0..*]
 }
 class "bldg:BuildingUnitProperty" as bldg_BuildingUnitProperty $property {
@@ -839,7 +823,6 @@ class "bldg:BuildingUnitProperty" as bldg_BuildingUnitProperty $property {
 class "bldg:RoomHeight" as bldg_RoomHeight <<DataType>> {
   # highReference : gml:Code
   # lowReference : gml:Code
-  # status : con:HeightStatusValue
   # value : gml:Length
 }
 class "bldg:RoomHeightProperty" as bldg_RoomHeightProperty $property {
@@ -900,6 +883,29 @@ hide package members
 ' hide protected members
 
 
+' ---- attribute promotions ----
+' attributes whose value type is declared in this diagram,
+' drawn as relations instead (FeatureType target ->
+' aggregation, else dependency; target-end cardinality
+' from the XSD occurrence)
+"core_AbstractCityObject" ..> "0..1" "core_RelativeToTerrain" : relativeToTerrain
+"core_AbstractCityObject" ..> "0..1" "core_RelativeToWater" : relativeToWater
+"core_AbstractSpace" ..> "0..1" "core_SpaceType" : spaceType
+"core_Address" ..> "xAL_Address" : xalAddress
+"core_ImplicitGeometry" ..> "core_TransformationMatrix4x4" : transformationMatrix
+"xAL_Premises" ..> "xAL_Identifier" : Number
+"xAL_Thoroughfare" ..> "xAL_Identifier" : Number
+"con_AbstractConstruction" ..> "0..1" "con_ConditionOfConstructionValue" : conditionOfConstruction
+"con_AbstractConstruction" ..> "0..*" "core_Occupancy" : occupancy
+"con_AbstractInstallation" ..> "0..1" "con_RelationToConstruction" : relationToConstruction
+"con_Door" o-- "0..*" "core_Address" : address
+"con_DoorSurface" o-- "0..*" "core_Address" : address
+"con_Height" ..> "con_HeightStatusValue" : status
+"bldg_AbstractBuilding" o-- "0..*" "core_Address" : address
+"bldg_AbstractBuildingSubdivision" ..> "0..*" "con_Elevation" : elevation
+"bldg_BuildingUnit" o-- "0..*" "core_Address" : address
+"bldg_RoomHeight" ..> "con_HeightStatusValue" : status
+
 left to right direction
 
 ' hidden links: tree-like layering away from the
@@ -916,5 +922,5 @@ title
   CityGML - 3.0 - Core, xAL, Con & Bldg Modules
 end title
 
-footer Generated on 2026-10-15 11:00:41
+footer Generated on 2026-10-21 04:02:44
 @enduml

@@ -5,51 +5,51 @@ title
 end title
 
 package gml {
-class "gml:SingleCRSProperty" $property {
+class "gml:SingleCRSProperty" as gml_SingleCRSProperty $property {
   AbstractSingleCRS : gml:AbstractSingleCRS
 }
-abstract class "gml:AbstractGeneralDerivedCRS" <<ObjectType>> {
+abstract class "gml:AbstractGeneralDerivedCRS" as gml_AbstractGeneralDerivedCRS <<ObjectType>> {
   conversion : gml:conversion
 }
-class "gml:CompoundCRS" <<ObjectType>> {
+class "gml:CompoundCRS" as gml_CompoundCRS <<ObjectType>> {
   componentReferenceSystem : gml:componentReferenceSystem [2..*]
 }
-class "gml:CompoundCRSProperty" $property {
+class "gml:CompoundCRSProperty" as gml_CompoundCRSProperty $property {
   CompoundCRS : gml:CompoundCRS
 }
-class "gml:GeodeticCRS" <<ObjectType>> {
+class "gml:GeodeticCRS" as gml_GeodeticCRS <<ObjectType>> {
   ellipsoidalCS : gml:ellipsoidalCS
   cartesianCS : gml:cartesianCS
   sphericalCS : gml:sphericalCS
   geodeticDatum : gml:geodeticDatum
 }
-class "gml:GeodeticCRSProperty" $property {
+class "gml:GeodeticCRSProperty" as gml_GeodeticCRSProperty $property {
   GeodeticCRS : gml:GeodeticCRS
 }
-class "gml:VerticalCRS" <<ObjectType>> {
+class "gml:VerticalCRS" as gml_VerticalCRS <<ObjectType>> {
   verticalCS : gml:verticalCS
   verticalDatum : gml:verticalDatum
 }
-class "gml:VerticalCRSProperty" $property {
+class "gml:VerticalCRSProperty" as gml_VerticalCRSProperty $property {
   VerticalCRS : gml:VerticalCRS
 }
-class "gml:ProjectedCRS" <<ObjectType>> {
+class "gml:ProjectedCRS" as gml_ProjectedCRS <<ObjectType>> {
   baseGeodeticCRS : gml:baseGeodeticCRS
   baseGeographicCRS : gml:baseGeographicCRS
   cartesianCS : gml:cartesianCS
 }
-class "gml:ProjectedCRSProperty" $property {
+class "gml:ProjectedCRSProperty" as gml_ProjectedCRSProperty $property {
   ProjectedCRS : gml:ProjectedCRS
 }
-class "gml:DerivedCRS" <<ObjectType>> {
+class "gml:DerivedCRS" as gml_DerivedCRS <<ObjectType>> {
   baseCRS : gml:baseCRS
   derivedCRSType : gml:derivedCRS
   coordinateSystem : gml:coordinateSystem
 }
-class "gml:DerivedCRSProperty" $property {
+class "gml:DerivedCRSProperty" as gml_DerivedCRSProperty $property {
   DerivedCRS : gml:DerivedCRS
 }
-class "gml:EngineeringCRS" <<ObjectType>> {
+class "gml:EngineeringCRS" as gml_EngineeringCRS <<ObjectType>> {
   affineCS : gml:affineCS
   cartesianCS : gml:cartesianCS
   cylindricalCS : gml:cylindricalCS
@@ -60,44 +60,44 @@ class "gml:EngineeringCRS" <<ObjectType>> {
   coordinateSystem : gml:coordinateSystem
   engineeringDatum : gml:engineeringDatum
 }
-class "gml:EngineeringCRSProperty" $property {
+class "gml:EngineeringCRSProperty" as gml_EngineeringCRSProperty $property {
   EngineeringCRS : gml:EngineeringCRS
 }
-class "gml:ImageCRS" <<ObjectType>> {
+class "gml:ImageCRS" as gml_ImageCRS <<ObjectType>> {
   cartesianCS : gml:cartesianCS
   affineCS : gml:affineCS
   usesObliqueCartesianCS : gml:usesObliqueCartesianCS
   imageDatum : gml:imageDatum
 }
-class "gml:ImageCRSProperty" $property {
+class "gml:ImageCRSProperty" as gml_ImageCRSProperty $property {
   ImageCRS : gml:ImageCRS
 }
-class "gml:TemporalCRS" <<ObjectType>> {
+class "gml:TemporalCRS" as gml_TemporalCRS <<ObjectType>> {
   timeCS : gml:timeCS
   usesTemporalCS : gml:usesTemporalCS
   temporalDatum : gml:temporalDatum
 }
-class "gml:TemporalCRSProperty" $property {
+class "gml:TemporalCRSProperty" as gml_TemporalCRSProperty $property {
   TemporalCRS : gml:TemporalCRS
 }
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractCRS"
+abstract class "gml:AbstractCRS" as gml_AbstractCRS
 
-"gml:AbstractCRS" <|-- "gml:AbstractGeneralDerivedCRS"
-"gml:AbstractCRS" <|-- "gml:CompoundCRS"
-"gml:AbstractCRS" <|-- "gml:GeodeticCRS"
-"gml:AbstractCRS" <|-- "gml:VerticalCRS"
-"gml:AbstractGeneralDerivedCRS" <|-- "gml:ProjectedCRS"
-"gml:AbstractGeneralDerivedCRS" <|-- "gml:DerivedCRS"
-"gml:AbstractCRS" <|-- "gml:EngineeringCRS"
-"gml:AbstractCRS" <|-- "gml:ImageCRS"
-"gml:AbstractCRS" <|-- "gml:TemporalCRS"
+"gml_AbstractCRS" <|-- "gml_AbstractGeneralDerivedCRS"
+"gml_AbstractCRS" <|-- "gml_CompoundCRS"
+"gml_AbstractCRS" <|-- "gml_GeodeticCRS"
+"gml_AbstractCRS" <|-- "gml_VerticalCRS"
+"gml_AbstractGeneralDerivedCRS" <|-- "gml_ProjectedCRS"
+"gml_AbstractGeneralDerivedCRS" <|-- "gml_DerivedCRS"
+"gml_AbstractCRS" <|-- "gml_EngineeringCRS"
+"gml_AbstractCRS" <|-- "gml_ImageCRS"
+"gml_AbstractCRS" <|-- "gml_TemporalCRS"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:10:59
+footer Generated on 2026-10-21 03:55:54
 @enduml

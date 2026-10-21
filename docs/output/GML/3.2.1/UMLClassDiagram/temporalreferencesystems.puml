@@ -5,64 +5,64 @@ title
 end title
 
 package gml {
-class "gml:TimeReferenceSystem" <<ObjectType>> {
+class "gml:TimeReferenceSystem" as gml_TimeReferenceSystem <<ObjectType>> {
   # domainOfValidity : xs:string
 }
-class "gml:TimeCoordinateSystem" <<ObjectType>> {
+class "gml:TimeCoordinateSystem" as gml_TimeCoordinateSystem <<ObjectType>> {
   originPosition : gml:TimePosition
   origin : gml:TimeInstant
   interval : gml:TimeIntervalLength
 }
-class "gml:TimeCalendar" <<ObjectType>>
-class "gml:TimeCalendarEra" <<ObjectType>> {
+class "gml:TimeCalendar" as gml_TimeCalendar <<ObjectType>>
+class "gml:TimeCalendarEra" as gml_TimeCalendarEra <<ObjectType>> {
   referenceEvent : gml:StringOrRef
   referenceDate : gml:CalDate
   # julianReference : xs:decimal
   epochOfUse : gml:TimePeriod
 }
-class "gml:TimeCalendarProperty" $property {
+class "gml:TimeCalendarProperty" as gml_TimeCalendarProperty $property {
   TimeCalendar : gml:TimeCalendar
 }
-class "gml:TimeCalendarEraProperty" $property {
+class "gml:TimeCalendarEraProperty" as gml_TimeCalendarEraProperty $property {
   TimeCalendarEra : gml:TimeCalendarEra
 }
-class "gml:TimeClock" <<ObjectType>> {
+class "gml:TimeClock" as gml_TimeClock <<ObjectType>> {
   referenceEvent : gml:StringOrRef
   # referenceTime : xs:time
   # utcReference : xs:time
 }
-class "gml:TimeClockProperty" $property {
+class "gml:TimeClockProperty" as gml_TimeClockProperty $property {
   TimeClock : gml:TimeClock
 }
-class "gml:TimeOrdinalReferenceSystem" <<ObjectType>>
-class "gml:TimeOrdinalEra" <<ObjectType>> {
+class "gml:TimeOrdinalReferenceSystem" as gml_TimeOrdinalReferenceSystem <<ObjectType>>
+class "gml:TimeOrdinalEra" as gml_TimeOrdinalEra <<ObjectType>> {
   relatedTime : gml:RelatedTime [0..*]
   start : gml:TimeNode [0..1]
   end : gml:TimeNode [0..1]
   extent : gml:TimePeriod [0..1]
   group : gml:Reference [0..1]
 }
-class "gml:TimeOrdinalEraProperty" $property {
+class "gml:TimeOrdinalEraProperty" as gml_TimeOrdinalEraProperty $property {
   TimeOrdinalEra : gml:TimeOrdinalEra
 }
 }
 
 ' External types (unresolved namespaces)
-class "gml:Definition"
+class "gml:Definition" as gml_Definition
 
-"gml:Definition" <|-- "gml:TimeReferenceSystem"
-"gml:TimeReferenceSystem" <|-- "gml:TimeCoordinateSystem"
-"gml:TimeReferenceSystem" <|-- "gml:TimeCalendar"
-"gml:Definition" <|-- "gml:TimeCalendarEra"
-"gml:TimeReferenceSystem" <|-- "gml:TimeClock"
-"gml:TimeReferenceSystem" <|-- "gml:TimeOrdinalReferenceSystem"
-"gml:Definition" <|-- "gml:TimeOrdinalEra"
+"gml_Definition" <|-- "gml_TimeReferenceSystem"
+"gml_TimeReferenceSystem" <|-- "gml_TimeCoordinateSystem"
+"gml_TimeReferenceSystem" <|-- "gml_TimeCalendar"
+"gml_Definition" <|-- "gml_TimeCalendarEra"
+"gml_TimeReferenceSystem" <|-- "gml_TimeClock"
+"gml_TimeReferenceSystem" <|-- "gml_TimeOrdinalReferenceSystem"
+"gml_Definition" <|-- "gml_TimeOrdinalEra"
 
 ' Class relations (promoted from property wrappers)
-"gml:TimeCalendar" ..> "1..*" "gml:TimeCalendarEra" : referenceFrame
-"gml:TimeClock" ..> "0..*" "gml:TimeCalendar" : dateBasis
-"gml:TimeOrdinalReferenceSystem" ..> "1..*" "gml:TimeOrdinalEra" : component
-"gml:TimeOrdinalEra" ..> "0..*" "gml:TimeOrdinalEra" : member
+"gml_TimeCalendar" ..> "1..*" "gml_TimeCalendarEra" : referenceFrame
+"gml_TimeClock" ..> "0..*" "gml_TimeCalendar" : dateBasis
+"gml_TimeOrdinalReferenceSystem" ..> "1..*" "gml_TimeOrdinalEra" : component
+"gml_TimeOrdinalEra" ..> "0..*" "gml_TimeOrdinalEra" : member
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
@@ -73,5 +73,5 @@ remove $property
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

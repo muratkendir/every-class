@@ -5,83 +5,83 @@ title
 end title
 
 package gml {
-class "gml:CoordinateSystemAxis" <<ObjectType>> {
+class "gml:CoordinateSystemAxis" as gml_CoordinateSystemAxis <<ObjectType>> {
   axisAbbrev : gml:axisAbbrev
   axisDirection : gml:axisDirection
   minimumValue : gml:minimumValue [0..1]
   maximumValue : gml:maximumValue [0..1]
   rangeMeaning : gml:rangeMeaning [0..1]
 }
-class "gml:CoordinateSystemAxisProperty" $property {
+class "gml:CoordinateSystemAxisProperty" as gml_CoordinateSystemAxisProperty $property {
   CoordinateSystemAxis : gml:CoordinateSystemAxis
 }
-abstract class "gml:AbstractCoordinateSystem" <<ObjectType>> {
+abstract class "gml:AbstractCoordinateSystem" as gml_AbstractCoordinateSystem <<ObjectType>> {
   axis : gml:axis [1..*]
 }
-class "gml:CoordinateSystemProperty" $property {
+class "gml:CoordinateSystemProperty" as gml_CoordinateSystemProperty $property {
   AbstractCoordinateSystem : gml:AbstractCoordinateSystem
 }
-class "gml:EllipsoidalCS" <<ObjectType>>
-class "gml:EllipsoidalCSProperty" $property {
+class "gml:EllipsoidalCS" as gml_EllipsoidalCS <<ObjectType>>
+class "gml:EllipsoidalCSProperty" as gml_EllipsoidalCSProperty $property {
   EllipsoidalCS : gml:EllipsoidalCS
 }
-class "gml:CartesianCS" <<ObjectType>>
-class "gml:CartesianCSProperty" $property {
+class "gml:CartesianCS" as gml_CartesianCS <<ObjectType>>
+class "gml:CartesianCSProperty" as gml_CartesianCSProperty $property {
   CartesianCS : gml:CartesianCS
 }
-class "gml:VerticalCS" <<ObjectType>>
-class "gml:VerticalCSProperty" $property {
+class "gml:VerticalCS" as gml_VerticalCS <<ObjectType>>
+class "gml:VerticalCSProperty" as gml_VerticalCSProperty $property {
   VerticalCS : gml:VerticalCS
 }
-class "gml:TimeCS" <<ObjectType>>
-class "gml:TimeCSProperty" $property {
+class "gml:TimeCS" as gml_TimeCS <<ObjectType>>
+class "gml:TimeCSProperty" as gml_TimeCSProperty $property {
   TimeCS : gml:TimeCS
 }
-class "gml:LinearCS" <<ObjectType>>
-class "gml:LinearCSProperty" $property {
+class "gml:LinearCS" as gml_LinearCS <<ObjectType>>
+class "gml:LinearCSProperty" as gml_LinearCSProperty $property {
   LinearCS : gml:LinearCS
 }
-class "gml:UserDefinedCS" <<ObjectType>>
-class "gml:UserDefinedCSProperty" $property {
+class "gml:UserDefinedCS" as gml_UserDefinedCS <<ObjectType>>
+class "gml:UserDefinedCSProperty" as gml_UserDefinedCSProperty $property {
   UserDefinedCS : gml:UserDefinedCS
 }
-class "gml:SphericalCS" <<ObjectType>>
-class "gml:SphericalCSProperty" $property {
+class "gml:SphericalCS" as gml_SphericalCS <<ObjectType>>
+class "gml:SphericalCSProperty" as gml_SphericalCSProperty $property {
   SphericalCS : gml:SphericalCS
 }
-class "gml:PolarCS" <<ObjectType>>
-class "gml:PolarCSProperty" $property {
+class "gml:PolarCS" as gml_PolarCS <<ObjectType>>
+class "gml:PolarCSProperty" as gml_PolarCSProperty $property {
   PolarCS : gml:PolarCS
 }
-class "gml:CylindricalCS" <<ObjectType>>
-class "gml:CylindricalCSProperty" $property {
+class "gml:CylindricalCS" as gml_CylindricalCS <<ObjectType>>
+class "gml:CylindricalCSProperty" as gml_CylindricalCSProperty $property {
   CylindricalCS : gml:CylindricalCS
 }
-class "gml:AffineCS" <<ObjectType>>
-class "gml:AffineCSProperty" $property {
+class "gml:AffineCS" as gml_AffineCS <<ObjectType>>
+class "gml:AffineCSProperty" as gml_AffineCSProperty $property {
   AffineCS : gml:AffineCS
 }
 }
 
 ' External types (unresolved namespaces)
-class "gml:IdentifiedObject"
+class "gml:IdentifiedObject" as gml_IdentifiedObject
 
-"gml:IdentifiedObject" <|-- "gml:CoordinateSystemAxis"
-"gml:IdentifiedObject" <|-- "gml:AbstractCoordinateSystem"
-"gml:AbstractCoordinateSystem" <|-- "gml:EllipsoidalCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:CartesianCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:VerticalCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:TimeCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:LinearCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:UserDefinedCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:SphericalCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:PolarCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:CylindricalCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:AffineCS"
+"gml_IdentifiedObject" <|-- "gml_CoordinateSystemAxis"
+"gml_IdentifiedObject" <|-- "gml_AbstractCoordinateSystem"
+"gml_AbstractCoordinateSystem" <|-- "gml_EllipsoidalCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_CartesianCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_VerticalCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_TimeCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_LinearCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_UserDefinedCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_SphericalCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_PolarCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_CylindricalCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_AffineCS"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:10:59
+footer Generated on 2026-10-21 03:55:54
 @enduml

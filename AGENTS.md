@@ -318,12 +318,49 @@ package name (`bldg`); owner-first ordering is automatic. The title is
 "<model> - <version> - <A, B & C> Modules" with the packages in
 owner-first order; the hidden-link layering centers on `core` when it is
 among the selected modules, else the first selected package. Run
-manually — every_class.py does not invoke step 10. Verified 2026-10-15:
+manually — every_class.py does not invoke step 10.
+
+Attribute promotion (added 2026-10-21): unlike all_packages,
+compilations call `build_combined(..., promote_attrs=True)`
+(`promote_attribute_relations` in step 09): any attribute whose value
+type is declared as a class in the same diagram leaves its class body
+and becomes a relation arrow — e.g. `bldg:BuildingUnit`'s
+`# address : core:Address [0..*]` becomes
+`"bldg_BuildingUnit" o-- "0..*" "core_Address" : address`. The arrow
+type follows step 05's by-reference rule: «FeatureType» target →
+aggregation, anything else → dependency; the attribute's `[min..max]`
+becomes the target-end cardinality, the source end stays unlabeled.
+`~` (adeOf) and `-` (step 06's demoted DataType members) attributes,
+bodies of `$`-tagged classes, and types not declared in the diagram
+stay as attributes. The core-con-bldg-xal compilation gained 17 such
+arrows.
+
+Cross-model compilations (added 2026-10-21): a module argument that is
+an existing .puml PATH is used directly, so modules from another
+model-version's UMLClassDiagram directory can be pulled in; the title
+then carries one "<model> - <version>" base per source joined with
+" + ". Prerequisite: the foreign model's files must be in the
+alias-based format (regenerate with every_class.py first — see the
+GML 3.2.1 regeneration note under every_class.py). Example:
+`python3 step10_compilation.py docs/output/CityGML/3.0/UMLClassDiagram
+docs/output/CityGML/3.0/UMLClassDiagram/compilations/core-gen-gml.puml
+core gen docs/output/GML/3.2.1/UMLClassDiagram/geometryprimitives.puml
+docs/output/GML/3.2.1/UMLClassDiagram/geometryaggregates.puml` →
+`compilations/core-gen-gml.puml` (+ server-rendered .svg sibling),
+title "CityGML - 3.0 + GML - 3.2.1 - Core, GML & Gen Modules", 26
+promoted attributes (core's `lodXSolid/MultiSurface/MultiCurve` and
+`core:Address`'s `multiPoint` now point at the REAL gml geometry
+classes). Verified rendering on the Jetty 12 server (PlantUML
+1.2026.6) and in the mkdocs build (nav entry under CityGML 3.0 →
+Compilations).
+
+Verified 2026-10-15:
 `python3 step10_compilation.py docs/output/CityGML/3.0/UMLClassDiagram
 compilations/core-con-bldg-xal.puml core con bldg xal` renders correctly
 on the Jetty 12 server (PlantUML 1.2026.6). The first compilation also
-has a server-rendered `.svg` sibling (`core-con-bldg-xal.svg`, 5636×4282
-px) for direct download. Since 2026-10-15 compilation files ARE part of
+has a `.svg` sibling (`core-con-bldg-xal.svg`) for direct download —
+re-rendered on the Jetty 12 server on 2026-10-21 after attribute
+promotion. Since 2026-10-15 compilation files ARE part of
 the website: gen_pages.py scans the `compilations/` SUBDIRECTORY of the
 UMLClassDiagram folder (`output/*/*/UMLClassDiagram/compilations/*.puml`)
 and adds a "Compilations" sub-entry under the owning model-version in
@@ -545,6 +582,14 @@ step 02 bug (see below); after the fix, re-running citygml/kml/
 indoorgml/infragml/pipelineml produced byte-identical outputs (this
 predates the timestamp footer added later that day — since then the
 footer line is the expected per-run diff).
+
+Regenerated 2026-10-21: GML **3.2.1** (all 29 packages +
+all_packages) with the current pipeline (`every_class.py
+schemas/xsds/gml --version 3.2.1`) — the 2026-08-03 files predated
+the alias mechanism and the inlined step 09 format, so they could not
+be mixed into compilations and its all_packages (`!include`-based) no
+longer rendered on the Jetty 12 server. GML 3.1.1 is still in the old
+format.
 
 Known limitations: steps 05's appinfo lookup hardcodes the GML 3.2
 namespace (CityGML 2.0's and GML 3.1.1's appinfo is not read);

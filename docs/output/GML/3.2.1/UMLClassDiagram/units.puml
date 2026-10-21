@@ -5,29 +5,29 @@ title
 end title
 
 package gml {
-class "gml:UnitOfMeasure" <<DataType>>
-class "gml:UnitDefinition" <<ObjectType>> {
+class "gml:UnitOfMeasure" as gml_UnitOfMeasure <<DataType>>
+class "gml:UnitDefinition" as gml_UnitDefinition <<ObjectType>> {
   quantityType : gml:quantity [0..1]
   quantityTypeReference : gml:quantityTypeReference [0..1]
   catalogSymbol : gml:catalogSymbol [0..1]
 }
-class "gml:BaseUnit" <<ObjectType>> {
+class "gml:BaseUnit" as gml_BaseUnit <<ObjectType>> {
   unitsSystem : gml:Reference
 }
-class "gml:DerivedUnit" <<ObjectType>> {
+class "gml:DerivedUnit" as gml_DerivedUnit <<ObjectType>> {
   derivationUnitTerm : gml:derivationUnitTerm [1..*]
 }
-class "gml:DerivationUnitTerm" <<ObjectType>>
-class "gml:ConventionalUnit" <<ObjectType>> {
+class "gml:DerivationUnitTerm" as gml_DerivationUnitTerm <<ObjectType>>
+class "gml:ConventionalUnit" as gml_ConventionalUnit <<ObjectType>> {
   conversionToPreferredUnit : gml:conversionToPreferredUnit
   roughConversionToPreferredUnit : gml:roughConversionToPreferredUnit
   derivationUnitTerm : gml:derivationUnitTerm [0..*]
 }
-class "gml:ConversionToPreferredUnit" <<ObjectType>> {
+class "gml:ConversionToPreferredUnit" as gml_ConversionToPreferredUnit <<ObjectType>> {
   # factor : xs:double
   formula : gml:Formula
 }
-class "gml:Formula" <<DataType>> {
+class "gml:Formula" as gml_Formula <<DataType>> {
   # a : xs:double [0..1]
   # b : xs:double
   # c : xs:double
@@ -36,19 +36,19 @@ class "gml:Formula" <<DataType>> {
 }
 
 ' External types (unresolved namespaces)
-class "gml:Definition"
+class "gml:Definition" as gml_Definition
 
-"gml:Definition" <|-- "gml:UnitDefinition"
-"gml:UnitDefinition" <|-- "gml:BaseUnit"
-"gml:UnitDefinition" <|-- "gml:DerivedUnit"
-"gml:UnitOfMeasure" <|-- "gml:DerivationUnitTerm"
-"gml:UnitDefinition" <|-- "gml:ConventionalUnit"
-"gml:UnitOfMeasure" <|-- "gml:ConversionToPreferredUnit"
+"gml_Definition" <|-- "gml_UnitDefinition"
+"gml_UnitDefinition" <|-- "gml_BaseUnit"
+"gml_UnitDefinition" <|-- "gml_DerivedUnit"
+"gml_UnitOfMeasure" <|-- "gml_DerivationUnitTerm"
+"gml_UnitDefinition" <|-- "gml_ConventionalUnit"
+"gml_UnitOfMeasure" <|-- "gml_ConversionToPreferredUnit"
 
 ' Attributes with value types from other namespaces are marked as
 ' protected members (# ) and shown by default; uncomment the next
 ' line to hide them.
 ' hide protected members
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

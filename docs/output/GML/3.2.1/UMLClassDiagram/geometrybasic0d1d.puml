@@ -5,44 +5,44 @@ title
 end title
 
 package gml {
-abstract class "gml:AbstractGeometry" <<ObjectType>>
-class "gml:GeometryProperty" $property {
+abstract class "gml:AbstractGeometry" as gml_AbstractGeometry <<ObjectType>>
+class "gml:GeometryProperty" as gml_GeometryProperty $property {
   AbstractGeometry : gml:AbstractGeometry
 }
-class "gml:GeometryArrayProperty" $property {
+class "gml:GeometryArrayProperty" as gml_GeometryArrayProperty $property {
   AbstractGeometry : gml:AbstractGeometry
 }
-class "gml:DirectPosition" <<DataType>>
-class "gml:DirectPositionList" <<DataType>>
-class "gml:Vector" <<DataType>>
-class "gml:Envelope" <<DataType>> {
+class "gml:DirectPosition" as gml_DirectPosition <<DataType>>
+class "gml:DirectPositionList" as gml_DirectPositionList <<DataType>>
+class "gml:Vector" as gml_Vector <<DataType>>
+class "gml:Envelope" as gml_Envelope <<DataType>> {
   lowerCorner : gml:DirectPosition
   upperCorner : gml:DirectPosition
   pos : gml:pos [2]
   coordinates : gml:coordinates
 }
-abstract class "gml:AbstractGeometricPrimitive" <<ObjectType>>
-class "gml:GeometricPrimitiveProperty" $property {
+abstract class "gml:AbstractGeometricPrimitive" as gml_AbstractGeometricPrimitive <<ObjectType>>
+class "gml:GeometricPrimitiveProperty" as gml_GeometricPrimitiveProperty $property {
   AbstractGeometricPrimitive : gml:AbstractGeometricPrimitive
 }
-class "gml:Point" <<ObjectType>> {
+class "gml:Point" as gml_Point <<ObjectType>> {
   pos : gml:pos
   coordinates : gml:coordinates
 }
-class "gml:PointProperty" $property {
+class "gml:PointProperty" as gml_PointProperty $property {
   Point : gml:Point
 }
-class "gml:PointArrayProperty" $property {
+class "gml:PointArrayProperty" as gml_PointArrayProperty $property {
   Point : gml:Point
 }
-abstract class "gml:AbstractCurve" <<ObjectType>>
-class "gml:CurveProperty" $property {
+abstract class "gml:AbstractCurve" as gml_AbstractCurve <<ObjectType>>
+class "gml:CurveProperty" as gml_CurveProperty $property {
   AbstractCurve : gml:AbstractCurve
 }
-class "gml:CurveArrayProperty" $property {
+class "gml:CurveArrayProperty" as gml_CurveArrayProperty $property {
   AbstractCurve : gml:AbstractCurve
 }
-class "gml:LineString" <<ObjectType>> {
+class "gml:LineString" as gml_LineString <<ObjectType>> {
   pos : gml:pos
   pointProperty : gml:point
   pointRep : gml:pointRep
@@ -51,22 +51,22 @@ class "gml:LineString" <<ObjectType>> {
 }
 
 ' Model groups (from <group> declarations)
-class "gml:geometricPosition" <<Union>>
-class "gml:geometricPositionList" <<Union>>
+class "gml:geometricPosition" as gml_geometricPosition <<Union>>
+class "gml:geometricPositionList" as gml_geometricPositionList <<Union>>
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractGML"
+abstract class "gml:AbstractGML" as gml_AbstractGML
 
-"gml:AbstractGML" <|-- "gml:AbstractGeometry"
-"gml:AbstractGeometry" <|-- "gml:AbstractGeometricPrimitive"
-"gml:AbstractGeometricPrimitive" <|-- "gml:Point"
-"gml:AbstractGeometricPrimitive" <|-- "gml:AbstractCurve"
-"gml:AbstractCurve" <|-- "gml:LineString"
+"gml_AbstractGML" <|-- "gml_AbstractGeometry"
+"gml_AbstractGeometry" <|-- "gml_AbstractGeometricPrimitive"
+"gml_AbstractGeometricPrimitive" <|-- "gml_Point"
+"gml_AbstractGeometricPrimitive" <|-- "gml_AbstractCurve"
+"gml_AbstractCurve" <|-- "gml_LineString"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml

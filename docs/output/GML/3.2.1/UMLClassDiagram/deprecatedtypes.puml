@@ -5,85 +5,85 @@ title
 end title
 
 package gml {
-class "gml:OperationProperty" $property {
+class "gml:OperationProperty" as gml_OperationProperty $property {
   AbstractOperation : gml:AbstractOperation
 }
-class "gml:TemporalCS" <<ObjectType>>
-class "gml:TemporalCSProperty" $property {
+class "gml:TemporalCS" as gml_TemporalCS <<ObjectType>>
+class "gml:TemporalCSProperty" as gml_TemporalCSProperty $property {
   TemporalCS : gml:TemporalCS
 }
-class "gml:ObliqueCartesianCS" <<ObjectType>>
-class "gml:ObliqueCartesianCSProperty" $property {
+class "gml:ObliqueCartesianCS" as gml_ObliqueCartesianCS <<ObjectType>>
+class "gml:ObliqueCartesianCSProperty" as gml_ObliqueCartesianCSProperty $property {
   ObliqueCartesianCS : gml:ObliqueCartesianCS
 }
-class "gml:GeographicCRS" <<ObjectType>> {
+class "gml:GeographicCRS" as gml_GeographicCRS <<ObjectType>> {
   usesEllipsoidalCS : gml:usesEllipsoidalCS
   usesGeodeticDatum : gml:usesGeodeticDatum
 }
-class "gml:GeographicCRSProperty" $property {
+class "gml:GeographicCRSProperty" as gml_GeographicCRSProperty $property {
   GeographicCRS : gml:GeographicCRS
 }
-class "gml:GeocentricCRS" <<ObjectType>> {
+class "gml:GeocentricCRS" as gml_GeocentricCRS <<ObjectType>> {
   usesCartesianCS : gml:usesCartesianCS
   usesSphericalCS : gml:usesSphericalCS
   usesGeodeticDatum : gml:usesGeodeticDatum
 }
-class "gml:GeocentricCRSProperty" $property {
+class "gml:GeocentricCRSProperty" as gml_GeocentricCRSProperty $property {
   GeocentricCRS : gml:GeocentricCRS
 }
-class "gml:DMSAngle" <<DataType>> {
+class "gml:DMSAngle" as gml_DMSAngle <<DataType>> {
   degrees : gml:degrees
   decimalMinutes : gml:decimalMinutes
   minutes : gml:minutes
   seconds : gml:seconds [0..1]
 }
-class "gml:Degrees" <<DataType>>
-class "gml:AngleChoice" <<DataType>> {
+class "gml:Degrees" as gml_Degrees <<DataType>>
+class "gml:AngleChoice" as gml_AngleChoice <<DataType>> {
   angle : gml:angle
   dmsAngle : gml:dmsAngle
 }
-class "gml:ArrayAssociation" <<DataType>> {
+class "gml:ArrayAssociation" as gml_ArrayAssociation <<DataType>> {
   AbstractObject : gml:AbstractObject [0..*]
 }
-class "gml:StringOrRef" <<DataType>>
-class "gml:Bag" <<ObjectType>> {
+class "gml:StringOrRef" as gml_StringOrRef <<DataType>>
+class "gml:Bag" as gml_Bag <<ObjectType>> {
   member : gml:member [0..*]
   members : gml:members [0..1]
 }
-class "gml:Array" <<ObjectType>> {
+class "gml:Array" as gml_Array <<ObjectType>> {
   members : gml:members [0..1]
 }
-class "gml:MetaDataProperty" $property {
+class "gml:MetaDataProperty" as gml_MetaDataProperty $property {
   AbstractMetaData : gml:AbstractMetaData
 }
-abstract class "gml:AbstractMetaData" <<DataType>>
-class "gml:GenericMetaData" <<ObjectType>>
-class "gml:LocationProperty" $property {
+abstract class "gml:AbstractMetaData" as gml_AbstractMetaData <<DataType>>
+class "gml:GenericMetaData" as gml_GenericMetaData <<ObjectType>>
+class "gml:LocationProperty" as gml_LocationProperty $property {
   AbstractGeometry : gml:AbstractGeometry
   LocationKeyWord : gml:LocationKeyWord
   LocationString : gml:LocationString
   Null : gml:Null
 }
-class "gml:PriorityLocationProperty" $property
-class "gml:FeatureArrayProperty" $property {
+class "gml:PriorityLocationProperty" as gml_PriorityLocationProperty $property
+class "gml:FeatureArrayProperty" as gml_FeatureArrayProperty $property {
   AbstractFeature : gml:AbstractFeature
 }
-abstract class "gml:BoundedFeature" <<FeatureType>> {
+abstract class "gml:BoundedFeature" as gml_BoundedFeature <<FeatureType>> {
   boundedBy : gml:boundedBy
   location : gml:location [0..1]
 }
-abstract class "gml:AbstractFeatureCollection" <<FeatureType>> {
+abstract class "gml:AbstractFeatureCollection" as gml_AbstractFeatureCollection <<FeatureType>> {
   featureMember : gml:featureMember [0..*]
   featureMembers : gml:featureMembers [0..1]
 }
-class "gml:FeatureCollection" <<FeatureType>>
-class "gml:IndirectEntry" <<DataType>> {
+class "gml:FeatureCollection" as gml_FeatureCollection <<FeatureType>>
+class "gml:IndirectEntry" as gml_IndirectEntry <<DataType>> {
   DefinitionProxy : gml:DefinitionProxy
 }
-class "gml:DefinitionProxy" <<ObjectType>> {
+class "gml:DefinitionProxy" as gml_DefinitionProxy <<ObjectType>> {
   definitionRef : gml:definitionRef
 }
-class "gml:MovingObjectStatus" <<ObjectType>> {
+class "gml:MovingObjectStatus" as gml_MovingObjectStatus <<ObjectType>> {
   position : gml:Geometry
   pos : gml:pos
   locationName : gml:locationName
@@ -98,17 +98,17 @@ class "gml:MovingObjectStatus" <<ObjectType>> {
 }
 
 ' Simple types (from <simpleType> declarations)
-class "gml:Succession" <<Enumeration>> {
+class "gml:Succession" as gml_Succession <<Enumeration>> {
   substitution
   division
   fusion
   initiation
 }
-class "gml:DegreeValue" <<BasicType>>
-class "gml:DecimalMinutes" <<BasicType>>
-class "gml:ArcMinutes" <<BasicType>>
-class "gml:ArcSeconds" <<BasicType>>
-class "gml:IncrementOrder" <<Enumeration>> {
+class "gml:DegreeValue" as gml_DegreeValue <<BasicType>>
+class "gml:DecimalMinutes" as gml_DecimalMinutes <<BasicType>>
+class "gml:ArcMinutes" as gml_ArcMinutes <<BasicType>>
+class "gml:ArcSeconds" as gml_ArcSeconds <<BasicType>>
+class "gml:IncrementOrder" as gml_IncrementOrder <<Enumeration>> {
   +x+y
   +y+x
   +x-y
@@ -117,30 +117,30 @@ class "gml:IncrementOrder" <<Enumeration>> {
 }
 
 ' External types (unresolved namespaces)
-abstract class "gml:AbstractCRS"
-abstract class "gml:AbstractCoordinateSystem"
-abstract class "gml:AbstractFeature"
-abstract class "gml:AbstractGML"
-abstract class "gml:AbstractTimeSlice"
-class "gml:Definition"
+abstract class "gml:AbstractCRS" as gml_AbstractCRS
+abstract class "gml:AbstractCoordinateSystem" as gml_AbstractCoordinateSystem
+abstract class "gml:AbstractFeature" as gml_AbstractFeature
+abstract class "gml:AbstractGML" as gml_AbstractGML
+abstract class "gml:AbstractTimeSlice" as gml_AbstractTimeSlice
+class "gml:Definition" as gml_Definition
 
-"gml:AbstractCoordinateSystem" <|-- "gml:TemporalCS"
-"gml:AbstractCoordinateSystem" <|-- "gml:ObliqueCartesianCS"
-"gml:AbstractCRS" <|-- "gml:GeographicCRS"
-"gml:AbstractCRS" <|-- "gml:GeocentricCRS"
-"gml:AbstractGML" <|-- "gml:Bag"
-"gml:AbstractGML" <|-- "gml:Array"
-"gml:AbstractMetaData" <|-- "gml:GenericMetaData"
-"gml:LocationProperty" <|-- "gml:PriorityLocationProperty"
-"gml:AbstractFeature" <|-- "gml:BoundedFeature"
-"gml:AbstractFeature" <|-- "gml:AbstractFeatureCollection"
-"gml:AbstractFeatureCollection" <|-- "gml:FeatureCollection"
-"gml:Definition" <|-- "gml:DefinitionProxy"
-"gml:AbstractTimeSlice" <|-- "gml:MovingObjectStatus"
+"gml_AbstractCoordinateSystem" <|-- "gml_TemporalCS"
+"gml_AbstractCoordinateSystem" <|-- "gml_ObliqueCartesianCS"
+"gml_AbstractCRS" <|-- "gml_GeographicCRS"
+"gml_AbstractCRS" <|-- "gml_GeocentricCRS"
+"gml_AbstractGML" <|-- "gml_Bag"
+"gml_AbstractGML" <|-- "gml_Array"
+"gml_AbstractMetaData" <|-- "gml_GenericMetaData"
+"gml_LocationProperty" <|-- "gml_PriorityLocationProperty"
+"gml_AbstractFeature" <|-- "gml_BoundedFeature"
+"gml_AbstractFeature" <|-- "gml_AbstractFeatureCollection"
+"gml_AbstractFeatureCollection" <|-- "gml_FeatureCollection"
+"gml_Definition" <|-- "gml_DefinitionProxy"
+"gml_AbstractTimeSlice" <|-- "gml_MovingObjectStatus"
 
 ' Property pseudo-classes are removed from rendering by default;
 ' remove the next line to show them.
 remove $property
 
-footer Generated on 2026-08-03 13:11:00
+footer Generated on 2026-10-21 03:55:54
 @enduml
