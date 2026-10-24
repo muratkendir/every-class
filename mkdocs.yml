@@ -20,7 +20,6 @@ theme:
         name: Switch to light mode
   features:
     - navigation.top
-    - navigation.sections
 
 plugins:
   - gen-files:
@@ -38,6 +37,7 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/nav-divider.css
 
 extra_javascript:
   - javascripts/fullscreen.js

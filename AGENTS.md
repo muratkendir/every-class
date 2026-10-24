@@ -704,7 +704,17 @@ with `source .env/bin/activate`.
   `Compilations` (step 10 compilations scanned from
   `docs/output/*/*/UMLClassDiagram/compilations/*.puml`, virtual pages
   at `compilations/<Model>-<Version>/<name>.md` that additionally link
-  a sibling `.svg` file when one exists).
+  a sibling `.svg` file when one exists). The Material
+  `navigation.sections` feature was REMOVED the same day (it rendered
+  top-level sections always expanded, so the sub-menu titles were
+  visible without expanding the model); top-level model entries are
+  now collapsed by default and reveal `Class Diagrams`/`Compilations`
+  via their arrow. A thin divider line separates the featured models
+  from the older ones: `gen_pages.py` generates the virtual
+  `stylesheets/nav-divider.css` (registered in `extra_css` after
+  extra.css) with an `:nth-child()` selector computed as
+  `2 + <featured models present>` (Home is nav item 1), so the divider
+  position stays in sync with FEATURED automatically.
 - mkdocs-gen-files / mkdocs-literate-nav ≥ 0.6 pull in `properdocs`
   (an MkDocs 1.x continuation by the same maintainers) and print a
   "MkDocs 2.0" migration warning; silence with
