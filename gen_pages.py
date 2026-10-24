@@ -11,10 +11,10 @@ and a "Compilations" sub-entry in the nav below their model-version.
 `!include` lines (used by all_packages.puml) are inlined, since the
 server cannot resolve files that only exist locally.
 
-The tree nav (Class Diagrams / <Model> <Version> / <name> for the
-featured models, Others / <Model> <Version> / <name> for the rest) is
-written to SUMMARY.md, consumed by the literate-nav plugin (see
-mkdocs.yml).
+The tree nav (<Model> <Version> as the top-level entry with the
+sub-menus "Class Diagrams" and "Compilations" below it; featured
+model-versions first, then the rest alphabetically) is written to
+SUMMARY.md, consumed by the literate-nav plugin (see mkdocs.yml).
 """
 
 import re
@@ -26,8 +26,8 @@ DOCS_DIR = Path("docs")
 PUML_GLOB = "output/*/*/UMLClassDiagram/*.puml"
 COMPILATION_GLOB = "output/*/*/UMLClassDiagram/compilations/*.puml"
 
-# Featured model-versions, listed directly under "Class Diagrams" in this
-# order; everything else goes under "Others".
+# Featured model-versions, listed first in the nav in this order;
+# everything else follows alphabetically.
 FEATURED = [("CityGML", "3.0"), ("GML", "3.2.1"), ("IndoorGML", "1.1")]
 
 INCLUDE_RE = re.compile(r"!include\s+(\S+)")
@@ -71,37 +71,37 @@ diagrams = {}
 for puml in sorted(DOCS_DIR.glob(PUML_GLOB)):
     diagrams.setdefault((puml.parts[2], puml.parts[3]), []).append(puml)
 
-others = sorted(mv for mv in diagrams if mv not in FEATURED)
-for section, keys in (("Class Diagrams", FEATURED), ("Others", others)):
-    for model, version in keys:
-        for puml in diagrams.get((model, version), []):
-            name = puml.stem
-            page = (Path(section.lower().replace(" ", "-"))
-                    / f"{model}-{version}" / f"{name}.md")
-            # Relative path from the virtual page to the real .puml file
-            # (the page lives two levels below the docs root).
-            diagram_dir = Path("../../output") / model / version / "UMLClassDiagram"
-            with mkdocs_gen_files.open(page, "w") as f:
-                f.write(f"# {model} {version} — {name}\n\n")
-                f.write(f"```puml\n{puml_source(puml)}\n```\n\n")
-                f.write(f"[PlantUML source: {puml.name}]({diagram_dir}/{puml.name})\n")
-            nav[section, f"{model} {version}", name] = page.as_posix()
-
 # Compilations (step 10): user-selected module subsets living in the
 # UMLClassDiagram/compilations/ subdirectory of a model-version. Same
 # page shape as the module diagrams; the pages live under
 # compilations/<Model>-<Version>/ (two levels deep, like the module
-# pages) and the nav gets a "Compilations" sub-entry under the owning
-# model-version, in the same section (Class Diagrams / Others) it
-# lives in.
+# pages).
 compilations = {}
 for puml in sorted(DOCS_DIR.glob(COMPILATION_GLOB)):
     compilations.setdefault((puml.parts[2], puml.parts[3]), []).append(puml)
 
-for (model, version), pumls in compilations.items():
-    section = ("Class Diagrams" if (model, version) in FEATURED
-               else "Others")
-    for puml in pumls:
+# Nav hierarchy (user decision 2026-10-24): the model-version is the
+# top-level entry, with two sub-menus below it — "Class Diagrams"
+# (per-module diagrams incl. all_packages) and "Compilations" (step 10
+# subset diagrams). FEATURED model-versions come first, the rest follow
+# alphabetically. The virtual page PATHS stay at
+# class-diagrams/<Model>-<Version>/ and compilations/<Model>-<Version>/
+# so existing URLs keep working.
+others = sorted(mv for mv in set(diagrams) | set(compilations)
+                if mv not in FEATURED)
+for model, version in [*FEATURED, *others]:
+    for puml in diagrams.get((model, version), []):
+        name = puml.stem
+        page = Path("class-diagrams") / f"{model}-{version}" / f"{name}.md"
+        # Relative path from the virtual page to the real .puml file
+        # (the page lives two levels below the docs root).
+        diagram_dir = Path("../../output") / model / version / "UMLClassDiagram"
+        with mkdocs_gen_files.open(page, "w") as f:
+            f.write(f"# {model} {version} — {name}\n\n")
+            f.write(f"```puml\n{puml_source(puml)}\n```\n\n")
+            f.write(f"[PlantUML source: {puml.name}]({diagram_dir}/{puml.name})\n")
+        nav[f"{model} {version}", "Class Diagrams", name] = page.as_posix()
+    for puml in compilations.get((model, version), []):
         name = puml.stem
         page = Path("compilations") / f"{model}-{version}" / f"{name}.md"
         # Relative path from the virtual page to the real diagram
@@ -116,8 +116,7 @@ for (model, version), pumls in compilations.items():
             if svg.exists():
                 f.write(f" · [SVG: {svg.name}]({diagram_dir}/{svg.name})")
             f.write("\n")
-        nav[section, f"{model} {version}", "Compilations", name] = \
-            page.as_posix()
+        nav[f"{model} {version}", "Compilations", name] = page.as_posix()
 
 with mkdocs_gen_files.open("SUMMARY.md", "w") as f:
     f.writelines(nav.build_literate_nav())

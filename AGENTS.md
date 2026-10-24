@@ -260,8 +260,8 @@ exist on this machine). Standard library only (`xml.etree.ElementTree`).
   auto-detect patterns, so --core is required). Enum-heavy model:
   e.g. Raumordnungsplan has 49 classes, 49 inheritance relations,
   56 «Enumeration»; LPlan_Kernmodell 56 classes, 32 «Enumeration».
-  Prefix `xplan`. On the website it lands under "Others"
-  (not in gen_pages.py's FEATURED).
+  Prefix `xplan`. Not in gen_pages.py's FEATURED, so on the website it
+  follows the featured model-versions in the nav.
 
 ### Cross-module relation typing (step 05 + 02)
 
@@ -685,7 +685,7 @@ with `source .env/bin/activate`.
   virtual `SUMMARY.md` consumed by the literate-nav plugin. It scans
   `docs/output/*/*/UMLClassDiagram/*.puml` and creates one VIRTUAL page
   per diagram (`<section>/<Model>-<Version>/<name>.md`, section =
-  `class-diagrams` or `others`) that embeds the full PlantUML source in a
+  `class-diagrams`) that embeds the full PlantUML source in a
   ```` ```puml ```` fence and links the `.puml` file. `!include` lines
   (all_packages.puml) are INLINED by gen_pages.py
   (`@startuml`/`@enduml` stripped from included bodies), because the
@@ -693,16 +693,18 @@ with `source .env/bin/activate`.
   `skinparam backgroundColor transparent` before `@enduml` (user
   decision 2026-08-04) so diagrams blend into the page background in
   both modes; placed last, it wins over the theme `!include` that
-  mkdocs_puml injects after `@startuml`. Menu hierarchy (user decision
-  2026-08-04): featured model-versions (FEATURED in gen_pages.py:
-  CityGML 3.0, GML 3.2.1, IndoorGML 1.1) are listed under
-  `Class Diagrams / <Model> <Version> / <puml name>`; all other
-  model-versions go under `Others / <Model> <Version> / <puml name>`.
-  Since 2026-10-15 it also scans `docs/output/*/*/UMLClassDiagram/
-  compilations/*.puml` (step 10 compilations) and lists them under a
-  `Compilations` sub-entry of their model-version, on virtual pages at
-  `compilations/<Model>-<Version>/<name>.md` that additionally link a
-  sibling `.svg` file when one exists.
+  mkdocs_puml injects after `@startuml`. Menu hierarchy (restructured
+  by user decision 2026-10-24): the top-level entry is the
+  model-version itself, `<Model> <Version>` (featured ones first —
+  FEATURED in gen_pages.py: CityGML 3.0, GML 3.2.1, IndoorGML 1.1 —
+  then the rest alphabetically; the old "Class Diagrams"/"Others"
+  section split is gone), with two sub-menus below it:
+  `Class Diagrams` (per-module diagrams incl. all_packages, virtual
+  pages at `class-diagrams/<Model>-<Version>/<name>.md`) and
+  `Compilations` (step 10 compilations scanned from
+  `docs/output/*/*/UMLClassDiagram/compilations/*.puml`, virtual pages
+  at `compilations/<Model>-<Version>/<name>.md` that additionally link
+  a sibling `.svg` file when one exists).
 - mkdocs-gen-files / mkdocs-literate-nav ≥ 0.6 pull in `properdocs`
   (an MkDocs 1.x continuation by the same maintainers) and print a
   "MkDocs 2.0" migration warning; silence with
