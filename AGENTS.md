@@ -298,6 +298,7 @@ models regenerate byte-identical outputs.
 | 08 | `step08_enumerations.py` | enumeration values as enum members | 3 enums with their values |
 | 09 | `step09_all_packages.py` | single combined diagram, modules inlined & deduplicated | 20 modules (17 + xAL suite) → `docs/output/CityGML/3.0/UMLClassDiagram/all_packages.puml` |
 | 10 | `step10_compilation.py` | combined diagram of a user-selected module subset (reuses step 09's `build_combined()`) | core, xAL, con, bldg → `docs/output/CityGML/3.0/UMLClassDiagram/compilations/core-con-bldg-xal.puml` |
+| 11 | `step11_crowsfoot.py` | crow's-foot E-R diagram centered on one class of a module | `core:CityModel` → `docs/output/CityGML/3.0/UMLClassDiagram/crowsfoot/core-citymodel.puml` (5 relationships + ISA parent) |
 
 Step 02 imports helpers from step 01 (`parse_classes`, `schema_prefix`,
 `qualify`, `strip_type_suffix`, `XSD_NS`); step 03 imports from both;
@@ -306,7 +307,53 @@ records `min`/`max` occurrence data); step 05 imports from steps 01–04;
 step 06 imports from steps 01–05; step 07 imports from steps 01–06.
 Step 09 is standalone (no XSD parsing): it scans `docs/output/CityGML/3.0/UMLClassDiagram/*.puml`.
 Step 10 imports `build_combined`, `include_order`, `parse_module` and
-`strip_frame` from step 09.
+`strip_frame` from step 09. Step 11 parses module .puml files on its own
+and imports `alias_of`/`generation_footer` from step 01 and
+`ATTR_RE`/`DECL_RE`/`STEREO_RE`/`decl_key` from step 09.
+
+### Crow's-foot E-R diagrams (step 11)
+
+`step11_crowsfoot.py <module.puml> <class> [output.puml]` (added
+2026-10-24, user decision) draws a crow's-foot E-R diagram centered on
+one class of one module, parsed from the module's previously generated
+.puml (not the XSD — the .puml already carries attributes,
+cardinalities, relations and stereotypes). `<class>` accepts the
+prefixed display name (`core:CityModel`), the bare local name or the
+alias; ambiguous or stub-only names are refused with the list of
+available classes. Default output:
+`<module_dir>/crowsfoot/<module_stem>-<classname>.puml` (lowercase).
+
+- center class → `entity` box with its attributes (`~` adeOf members
+  skipped; mandatory = minOccurs >= 1 marked `*`; the `[min..max]`
+  suffix is dropped — PlantUML ER attributes carry no cardinality);
+- relation edges touching the center (both directions) → crow's-foot
+  relationships; same-module class-typed attributes are promoted to
+  relationships too (same rule as step 10's attribute promotion);
+  target-end cardinality mapping: `1`→`||`, `0..1`→`o|`,
+  `0..*`/`*`→`o{`, `1..*`→`|{`; source ends get `||` only for
+  composition, else stay plain (not derivable);
+- direct inheritance parents of the center are added as empty entities
+  with a generalization arrow (EER ISA); neighbor entities are empty
+  boxes to keep the star focused.
+
+Notation caveat (verified against the Jetty 12 server, 2026-10-24):
+classic Chen shapes are NOT expressible in PlantUML — its ER syntax is
+crow's-foot, `usecase` ovals cannot be mixed into class/entity diagrams
+(HTTP 400), the `<< (D,...) >>` spot is a lettered circle not a diamond,
+and `@startdot` passthrough is suppressed by the server ("This feature
+has been suppressed"). Hence E-R semantics with crow's-foot rendering —
+and, by user decision, everything is NAMED "crowsfoot" (script, output
+directory, nav label) rather than "chen", to avoid implying Chen
+notation. gen_pages.py scans `crowsfoot/*.puml` and adds a "Crow's Foot
+Diagrams" sub-menu under the model-version (pages at
+`crowsfoot/<Model>-<Version>/<name>.md`, linking the `.puml` and a
+sibling `.svg` when one exists — render the `.svg` via
+`mkdocs_puml.encoder.encode` against the local server, as for
+compilations). every_class.py does not invoke step 11 — crow's-foot
+diagrams are created manually. Generated so far (CityGML 3.0):
+`core-citymodel` (5 relationships + ISA parent), `building-building`,
+`building-storey` and `building-buildingroom` (each with a `.svg`
+sibling).
 
 ### Compilations (step 10)
 
@@ -698,13 +745,16 @@ with `source .env/bin/activate`.
   model-version itself, `<Model> <Version>` (featured ones first —
   FEATURED in gen_pages.py: CityGML 3.0, GML 3.2.1, IndoorGML 1.1 —
   then the rest alphabetically; the old "Class Diagrams"/"Others"
-  section split is gone), with two sub-menus below it:
+  section split is gone), with sub-menus below it:
   `Class Diagrams` (per-module diagrams incl. all_packages, virtual
-  pages at `class-diagrams/<Model>-<Version>/<name>.md`) and
+  pages at `class-diagrams/<Model>-<Version>/<name>.md`),
   `Compilations` (step 10 compilations scanned from
   `docs/output/*/*/UMLClassDiagram/compilations/*.puml`, virtual pages
   at `compilations/<Model>-<Version>/<name>.md` that additionally link
-  a sibling `.svg` file when one exists). The Material
+  a sibling `.svg` file when one exists) and — added 2026-10-24 —
+  `Crow's Foot Diagrams` (step 11, scanned from
+  `docs/output/*/*/UMLClassDiagram/crowsfoot/*.puml`, virtual pages at
+  `crowsfoot/<Model>-<Version>/<name>.md`, same `.svg` sibling rule). The Material
   `navigation.sections` feature was REMOVED the same day (it rendered
   top-level sections always expanded, so the sub-menu titles were
   visible without expanding the model); top-level model entries are
