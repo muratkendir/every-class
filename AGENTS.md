@@ -630,7 +630,13 @@ with `source .env/bin/activate`.
   `.puml:fullscreen` the page background (diagrams are transparent) and
   fits the svg to the viewport (`height: 100vh`, meet aspect) — the
   `body` prefix is needed for specificity because the plugin's
-  puml.css loads after extra.css.
+  puml.css loads after extra.css. extra.css also carries
+  `body .puml .diagram { height: auto !important; }` (added
+  2026-10-24): mkdocs_puml stretches diagrams to width:100% but keeps
+  the SVG's fixed pixel height, and its own `.wide-svg` fix only
+  covers width > height diagrams, so width <= height ones (e.g. the
+  portrait all_packages) rendered with large empty bands above/below;
+  height:auto makes the box follow the viewBox aspect ratio.
 - The server is a local Docker container (image
   `plantuml/plantuml-server:jetty`, serves at ROOT context, not
   `/plantuml`):
