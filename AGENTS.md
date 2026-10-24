@@ -325,16 +325,34 @@ available classes. Default output:
 
 - center class → `entity` box with its attributes (`~` adeOf members
   skipped; mandatory = minOccurs >= 1 marked `*`; the `[min..max]`
-  suffix is dropped — PlantUML ER attributes carry no cardinality);
-- relation edges touching the center (both directions) → crow's-foot
-  relationships; same-module class-typed attributes are promoted to
-  relationships too (same rule as step 10's attribute promotion);
-  target-end cardinality mapping: `1`→`||`, `0..1`→`o|`,
+  suffix is dropped on plain attribute rows but kept on
+  relation-derived rows);
+- relations are typed by the OTHER end's stereotype (user decision
+  2026-10-25): «FeatureType» target → crow's-foot relationship; known
+  non-FeatureType (DataType, ObjectType, ...) → attribute row
+  (`name : Type [card]`) — only when the center is the source; unknown
+  stereotype (external stub) → stays a relationship. Same-module
+  class-typed attributes follow the same rule and are promoted only to
+  «FeatureType» targets (a promoted attribute never also stays a box
+  row). Target-end cardinality mapping: `1`→`||`, `0..1`→`o|`,
   `0..*`/`*`→`o{`, `1..*`→`|{`; source ends get `||` only for
   composition, else stay plain (not derivable);
-- direct inheritance parents of the center are added as empty entities
-  with a generalization arrow (EER ISA); neighbor entities are empty
-  boxes to keep the star focused.
+- INHERITED members are flattened onto the center and drawn in GRAY
+  (`<color:gray>` box rows, `-[#gray]-` edges with gray labels — the
+  `#` prefix is required in ER edge colors): the whole ancestor chain
+  contributes its attributes and its OUTGOING relations (incoming
+  edges to ancestors are not inherited members and would flood the
+  diagram with every module's references to the base classes); the
+  center's own relations still count both directions. A member present
+  both as own and inherited is drawn once, as own; the ancestor chain
+  is drawn as empty entities connected by generalization arrows (EER
+  ISA), documenting where the gray members come from;
+- cross-module resolution: ancestors/relation targets usually live in
+  other modules (bldg → core:), where the module file only has stubs.
+  `load_index()` therefore parses `<module_dir>/all_packages.puml` (all
+  real classes of the model-version) as a gap-filling index — the
+  module file stays authoritative. The chain stops at ancestors not in
+  the index (external stubs like gml: classes are not flattened).
 
 Notation caveat (verified against the Jetty 12 server, 2026-10-24):
 classic Chen shapes are NOT expressible in PlantUML — its ER syntax is
