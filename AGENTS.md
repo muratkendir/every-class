@@ -360,7 +360,16 @@ compilations/core-con-bldg-xal.puml core con bldg xal` renders correctly
 on the Jetty 12 server (PlantUML 1.2026.6). The first compilation also
 has a `.svg` sibling (`core-con-bldg-xal.svg`) for direct download —
 re-rendered on the Jetty 12 server on 2026-10-21 after attribute
-promotion. Since 2026-10-15 compilation files ARE part of
+promotion. Added 2026-10-24: `core-con-bldg-gml32.puml` (+ `.svg`
+sibling rendered via `mkdocs_puml.encoder.encode` against the local
+server) — CityGML core/con/bldg + the GML 3.2.1 geometry modules
+geometryprimitives, geometryaggregates and geometrybasic0d1d (47
+promoted attributes); its purpose is showing which gml: objects
+CityGML 3.0 classes relate to (lodX Solid/MultiSurface/MultiCurve,
+Point, MultiPoint, DirectPosition). geometrycomplexes and
+geometrybasic2d were dropped by user decision (2026-10-24): no class
+declared in them is referenced from the CityGML modules, so they had
+no direct connection to core/con/bldg. Since 2026-10-15 compilation files ARE part of
 the website: gen_pages.py scans the `compilations/` SUBDIRECTORY of the
 UMLClassDiagram folder (`output/*/*/UMLClassDiagram/compilations/*.puml`)
 and adds a "Compilations" sub-entry under the owning model-version in
