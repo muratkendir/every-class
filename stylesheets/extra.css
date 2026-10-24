@@ -70,6 +70,16 @@ body .puml:fullscreen .diagram {
   height: 100vh !important;
 }
 
+/* mkdocs_puml stretches .diagram to width:100% but keeps the SVG's fixed
+   pixel height, so width <= height diagrams render with large empty bands
+   above/below (the plugin's .wide-svg fix only covers width > height).
+   height:auto makes the box follow the viewBox aspect ratio. The body
+   prefix + !important beat the plugin's puml.css, which loads after this
+   file; the :fullscreen rule above is more specific and still wins. */
+body .puml .diagram {
+  height: auto !important;
+}
+
 /* Hide the site-name/logo block above the sidebar nav (user decision:
    redundant with the header title) */
 .md-nav--primary label.md-nav__title[for="__drawer"] {
